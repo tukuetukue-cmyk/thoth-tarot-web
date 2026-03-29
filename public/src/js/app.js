@@ -72,6 +72,26 @@ const I18N = {
         "kofi.text": "このリーディングは無料です。これからもずっと。<br>ハルの導きが心に触れたなら、猫たちへの小さな「おやつ」を贈って下さい。",
         "kofi.btn": "🐾 猫たちにおやつを贈る",
         "kofi.sub": "すべての星は、小さな愛の光すらあれば更に輝く。✨",
+        "header.subtitle": "あなたを導く内なる知恵との対話",
+        "report.notice": "3カード解析は、より深く多層的な象徴叙述型と構造解析型の2種による鑑定報告書[PDF]にて承っております。<br>詳細は cinnamoncloveand@gmail.com までお問い合わせください",
+        "thelema.intro": "トート・タロットは、単なる吉凶を占う道具ではありません。<br>20世紀最大の魔術師アレイスター・クロウリーが提唱した<strong>「テレマ（Thelema）」</strong>という哲学を形にした、自己発見のための「地図」であり「鏡」です。",
+        "thelema.meaning": "テレマとは、ギリシャ語で<strong>「意志」</strong>を意味します。",
+        "thelema.pillar1.title": "「汝の欲する事を為せ」",
+        "thelema.pillar1.subtitle": "── 真の意志の探求",
+        "thelema.pillar1.text": "これは「好き勝手に生きる」という意味ではありません。<br>私たちは一人ひとりが、宇宙において固有の軌道を持つ<strong>「星」</strong>のような存在です。自分自身の魂の底にある、本当の目的や役割を<strong>「真の意志（True Will）」</strong>と呼びます。<br><br>エゴや社会の常識に惑わされず、この「真の意志」を見つけ出し、その道を真っ直ぐに進むことこそが、人生の究極の目的であるとテレマは説いています。",
+        "thelema.pillar2.title": "「意志の下の愛」",
+        "thelema.pillar2.subtitle": "── 創造のエネルギー",
+        "thelema.pillar2.text": "宇宙を動かす最大のエネルギーは「愛」です。<br>しかし、それはただの盲目的な感情ではなく、自らの「意志」によって正しく方向づけられたものであるべきだと考えます。<br><br>自分を律し、目的を持って愛の力を使うことで、私たちは自分自身の世界を創造していくことができるのです。",
+        "thelema.pillar3.title": "ホルスのアイオーン",
+        "thelema.pillar3.subtitle": "── 自立と輝きの時代",
+        "thelema.pillar3.text": "テレマは、人類が新しい時代（ホルスのアイオーン）に入ったことを告げています。<br>それは、何かに依存したり、自分を犠牲にしたりする「古い道徳」から脱却し、誰もが<strong>「自立した個」</strong>として、太陽のように自ら光り輝く時代です。<br><br>トート・タロットはこの「新しい時代」のエネルギーを象徴しており、私たちが自らの足で歩むための知恵を授けてくれます。",
+        "thelema.pillar4.title": "「運命の奴隷」にならないための道具",
+        "thelema.pillar4.subtitle": "── タロットの真の役割",
+        "thelema.pillar4.text": "テレマにおいて、未来は固定されたものではありません。<br>タロットが映し出すのは、現在のあなたのエネルギーと、そこから予測される「軌道」です。<br><br>もし望まない結果が出たとしても、自らの「意志」によって行動を変えれば、未来の軌道は書き換えることができます。タロットは、あなたが<strong>「自分自身の人生の主（あるじ）」</strong>であることを思い出すためのガイドブックなのです。",
+        "thelema.empowerment_quote": "Every man and every woman is a star.",
+        "thelema.empowerment_quote_jp": "「すべての男と女は星である」",
+        "thelema.empowerment_text": "あなたは唯一無二の輝きを持つ存在です。<br>このタロットが、あなたの「真の意志」を照らす鏡となりますように。",
+        "footer.legal": "特定商取引法に基づく表記",
     },
     en: {
         "page.title": "Thoth Tarot Reading | Self-Discovery Coaching",
@@ -142,7 +162,28 @@ const I18N = {
         "kofi.text": "This reading is free, and always will be.<br>If Haru's guidance has touched your heart, a small treat for our cats would mean the world to us.",
         "kofi.btn": "🐾 Buy the Cats a Treat on Ko-fi",
         "kofi.sub": "Every star shines brighter with a little love. ✨",
+        "header.subtitle": "Conversation with your inner wisdom",
+        "report.notice": "3-card analytics available via deep Symbolic & Structural appraisal reports [PDF].<br>For details, contact cinnamoncloveand@gmail.com",
+        "thelema.intro": "Thoth Tarot is not merely a tool for telling fortunes.<br>It is a 'map' and a 'mirror' for self-discovery, embodying the philosophy of <strong>'Thelema'</strong> proposed by Aleister Crowley, the greatest magus of the 20th century.",
+        "thelema.meaning": "Thelema means <strong>'Will'</strong> in Greek.",
+        "thelema.pillar1.title": "\"Do what thou wilt\"",
+        "thelema.pillar1.subtitle": "── Seeking True Will",
+        "thelema.pillar1.text": "This does not mean \"do as you please.\"<br>Each of us is like a <strong>'Star'</strong> with a unique orbit in the universe. The true purpose and role deep within one's soul is called <strong>'True Will'</strong>.<br><br>Thelema teaches that finding this True Will and following its path, undeterred by ego or social norms, is the ultimate purpose of life.",
+        "thelema.pillar2.title": "\"Love under will\"",
+        "thelema.pillar2.subtitle": "── Energy of Creation",
+        "thelema.pillar2.text": "The greatest energy moving the universe is \"Love.\"<br>However, it is not merely a blind emotion; it should be correctly directed by one's own \"Will.\"<br><br>By disciplining ourselves and using the power of love with purpose, we can create our own world.",
+        "thelema.pillar3.title": "Aeon of Horus",
+        "thelema.pillar3.subtitle": "── Age of Independence and Radiance",
+        "thelema.pillar3.text": "Thelema announces that humanity has entered a new era: the Aeon of Horus.<br>It is an age where we break away from \"old morality\" that involves dependency or sacrifice, and everyone shines like the sun as an <strong>'Independent Individual'</strong>.<br><br>Thoth Tarot symbolizes the energy of this new age and provides us with the wisdom to walk on our own feet.",
+        "thelema.pillar4.title": "A Tool to Avoid Becoming a 'Slave of Fate'",
+        "thelema.pillar4.subtitle": "── True Role of Tarot",
+        "thelema.pillar4.text": "In Thelema, the future is not fixed.<br>The Tarot reflects your current energy and the predicted 'orbit' from it.<br><br>Even if undesired results appear, the future orbit can be rewritten by changing your actions through your own \"Will.\" The Tarot is a guidebook to remind you that you are the <strong>'Master of your own life'</strong>.",
+        "thelema.empowerment_quote": "Every man and every woman is a star.",
+        "thelema.empowerment_quote_jp": "\"All men and women are stars\"",
+        "thelema.empowerment_text": "You are a being with a unique and singular radiance.<br>May this Tarot be a mirror that illuminates your 'True Will'.",
+        "footer.legal": "Legal Notation (Specified Commercial Transactions Act)",
     }
+
 };
 
 // ====================================================
@@ -169,7 +210,14 @@ function applyI18n() {
     const metaDesc = document.querySelector('[data-i18n-meta]');
     if (metaDesc) metaDesc.setAttribute('content', t('page.desc'));
     document.querySelectorAll('[data-i18n]').forEach(el => {
-        el.textContent = t(el.getAttribute('data-i18n'));
+        const key = el.getAttribute('data-i18n');
+        const text = t(key);
+        // If the text contains HTML tags, use innerHTML
+        if (text.includes('<')) {
+            el.innerHTML = text;
+        } else {
+            el.textContent = text;
+        }
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
@@ -291,9 +339,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 readingResult = data.reading;
             } else {
                 console.error("API error status:", response.status);
+                // Simple error handling for user, no maintenance text
+                readingResult = t('result.error');
             }
         } catch (error) {
             console.error("API call failed:", error);
+            readingResult = t('result.error');
         }
         
         // 3. Process Reading
@@ -453,33 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${allSymbolsHtml}
                         </div>
                     </div>
-                    
-                    <!-- Premium AI Chat Section -->
-                    <div class="premium-ai-chat-section">
-                        <div class="premium-chat-header">
-                            <h3><span class="premium-badge">Premium</span> ハルとの対話（チャット）</h3>
-                            <p class="helper-text">リーディング結果について、さらに深く質問してみましょう。<br>例：「この結果を踏まえて、明日まず何をすべき？」「このオラクルは現状をどう示してる？」</p>
-                        </div>
-                        ${window.userPlan === 'premium' ? `
-                        <div id="chat-messages-container" class="chat-messages-container">
-                            <!-- Messages will be injected here -->
-                        </div>
-                        <div class="chat-input-area">
-                            <input type="text" id="ai-chat-input" placeholder="ハルに質問する..." class="mystic-input" />
-                            <button id="ai-chat-send-btn" class="mystic-btn action-btn">送信</button>
-                        </div>
-                        ` : `
-                        <div class="locked-overlay">
-                            <div class="locked-content">
-                                <span class="lock-emoji">🔒</span>
-                                <p>この機能は <strong>Premium会員</strong> 限定です。</p>
-                                <p class="lock-sub">アップグレードすると、ハルに無制限に追加質問ができます。</p>
-                                <button class="upgrade-btn lock-upgrade-btn" onclick="document.getElementById('upgrade-btn').click()">Premiumにアップグレード</button>
-                            </div>
-                        </div>
-                        `}
-                    </div>
-                    
+
                     <div class="result-actions">
                         <button id="save-image-btn" class="mystic-btn action-btn">${t('result.btn_save_img')}</button>
                         <button id="save-text-btn" class="mystic-btn action-btn">${t('result.btn_save_txt')}</button>
@@ -490,6 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `;
+
         
         resultSection.innerHTML = resultHtml;
         const donationArea = document.getElementById('donation-area');

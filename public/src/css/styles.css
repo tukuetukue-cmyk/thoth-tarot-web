@@ -9,9 +9,64 @@
     --accent-gold-hover: #f1c40f;
     --accent-purple: #4a235a;
     
+    /* Maintenance / Premium Gold Accent */
+    --premium-gold: #ffdf00;
+    --deep-gold: #b8860b;
+
     /* Typography */
     --font-heading: 'Cinzel', serif;
     --font-body: 'Noto Serif JP', serif;
+}
+
+/* Maintenance Notice Button (Styled like One Oracle Radio) */
+.report-notice-btn {
+    display: block;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--accent-gold);
+    border-radius: 8px;
+    color: var(--accent-gold);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    max-width: 600px;
+    margin: 1rem auto;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    text-align: center;
+}
+
+.report-notice-btn:hover {
+    background: rgba(74, 35, 90, 0.2);
+    border-color: var(--accent-gold-hover);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
+.report-notice-btn .email-link {
+    color: var(--accent-gold);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Relocated Support Section */
+.kofi-section {
+    transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .report-notice-btn {
+        font-size: 0.8rem;
+        padding: 0.8rem 1rem;
+        line-height: 1.4;
+        width: 90%;
+    }
+}
+
+.maintenance-hidden {
+    display: none !important;
 }
 
 * {
@@ -809,30 +864,62 @@ footer {
     padding: 0.8rem 1.5rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .result-card {
+        display: flex;
         flex-direction: row;
         align-items: flex-start;
+        gap: 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
     }
     
     .cards-display {
-        flex: 0 0 35%;
-    }
-    
-    .result-card.three-card-result {
+        flex: 0 0 380px;
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        position: sticky;
+        top: 2rem;
+        padding-right: 2rem;
     }
     
-    .result-card.three-card-result .cards-display {
-        flex: 1 1 100%;
-        width: 100%;
-        margin-bottom: 1rem;
+    .cards-display.three-cards-layout {
+        flex-direction: column;
     }
     
     .reading-content {
         flex: 1;
+        background: transparent;
+        padding: 0 0 0 4rem;
+        border-left: 1px solid rgba(212, 175, 55, 0.2);
+        border-right: none;
+        margin: 0;
+        text-align: left;
+    }
+    
+    .result-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 4rem;
+        width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .result-actions .mystic-btn {
+        width: 100%;
+        margin: 0;
+        text-align: center;
     }
 }
+
+
 
 /* Upgrade Button */
 .upgrade-btn {
