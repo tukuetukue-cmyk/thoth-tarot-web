@@ -1,0 +1,876 @@
+
+// ====================================================
+// i18n: Bilingual Dictionary (Japanese / English)
+// ====================================================
+const I18N = {
+    ja: {
+        "page.title": "トート・タロット リーディング | 自己探求コーチング",
+        "page.desc": "AIがあなたの状況に合わせた深いトート・タロットのリーディングを提供します。",
+        "auth.login": "ログイン",
+        "auth.premium": "Premium Access 🗝️",
+        "premium.title": "Premium Access 🗝️",
+        "premium.auth_desc": "ログインして履歴機能を解放する",
+        "premium.license_desc": "Gumroadライセンスキーで深淵（3枚引き・ディープ解釈）の扉を開く",
+        "premium.license_placeholder": "License Key (ex: XXXXXX-XXXXXX-XXXXXX)",
+        "premium.verify_btn": "キーを認証する",
+        "history.btn": "履歴",
+        "history.title": "リーディング履歴",
+        "history.empty": "まだ履歴がありません。カードを引いて星の導きを記録しましょう。",
+        "input.heading": "あなたが今、心に抱えているものは何ですか？",
+        "input.helper": "迷いや不安、あるいは叶えたい願い。どんな小さなことでも構いません。ハルがここで、あなたの心の声を静かに聴きます。",
+        "input.name_label": "お名前（ニックネーム等）",
+        "input.name_placeholder": "あなたのお名前",
+        "input.birthdate_label": "生年月日（任意）",
+        "input.context_placeholder": "例：最近、デイトレードでうまくいっていません。手法をどう改善すればいいかヒントが欲しいです。",
+        "input.spread_one": "ワンオラクル（1枚引き）",
+        "input.spread_three": "スリーカード（経緯・現状・可能性）",
+        "input.draw_btn": "カードを引く",
+        "loading.default": "宇宙の叡智と繋がり中...",
+        "loading.msgs": ["すべての男と女は星である...", "汝の欲する事を為せ、それが法の全てとなろう...", "愛は法なり、意志の下の愛こそが..."],
+        "thelema.title": "トート・タロットの魂",
+        "thelema.subtitle": "── 「テレマ」の思想 ──",
+        "result.your_theme": "あなたのテーマ:",
+        "result.no_theme": "（特になし）",
+        "result.reading_title": "ハルからのリーディング",
+        "result.symbols_title": "象徴（シンボル）の学び",
+        "result.symbols_helper": "気になるキーワードに触れてみてください。",
+        "result.symbols_pending": "※ このカードの象徴図鑑は現在準備中です。今後のアップデートをお待ちください。",
+        "result.btn_save_img": "結果を画像で保存",
+        "result.btn_save_txt": "結果を文章でコピー",
+        "result.btn_share_x": "𝕏 でシェア",
+        "result.btn_share_ig": "Instagram でシェア",
+        "result.btn_restart": "もう一度対話する",
+        "result.error": "申し訳ありません。星の導きがうまく読み取れませんでした。もう一度お試しください。",
+        "result.user_label": "【{name}さんのテーマ】",
+        "result.no_context": "（星の導きのままに）",
+        "result.arcana_major": "大アルカナ",
+        "result.arcana_minor": "小アルカナ",
+        "result.positions": ["経緯", "現状", "可能性"],
+        "result.copy_success": "リーディング結果の文章（テキスト）をコピーしました！\nメモ帳やLINEなどに「貼り付け（ペースト）」して保存してください✨",
+        "result.copy_fail": "コピーに失敗しました。お使いのブラウザでは手動でテキストを選択してコピーしてください。",
+        "result.ig_success": "【Instagram投稿の準備完了！】\n画像をダウンロードし、ハッシュタグ付きのテキストをコピーしました。\nInstagramアプリを開いて、画像を貼り付けて投稿してください📸✨",
+        "result.ig_fail": "画像の保存に失敗しました。",
+        "modal.symbol_in_card": "{card}における意味:",
+        "modal.esoteric_title": "── 象徴の深淵 ──",
+        "modal.kabbalah": "カバラ (生命の樹)",
+        "modal.astrology": "占星術の対応",
+        "modal.alchemy": "錬金術プロセス",
+        "modal.hebrew": "ヘブライ文字",
+        "modal.unknown": "不明",
+        "modal.esoteric_pending": "※ このカードの深淵なる象徴データ（カバラ・占星術・錬金術）は現在研究・編集中です。",
+        "chat.thinking": "思考中...",
+        "chat.send": "送信",
+        "chat.placeholder": "ハルに質問する...",
+        "chat.error": "星の導きが弱まっています。時間をおいてから再度お尋ねください。",
+        "image.title": "トート・タロット リーディング",
+        "image.theme_label": "私のテーマ：",
+        "image.reading_label": "【ハルからのリーディング】",
+        "image.taking": "📸 画像を撮影中...",
+        "share.x_text": "神秘のAI解釈でトート・タロットを引きました。\n私のテーマ: {theme}\n引いたカード: {cards}\n\n",
+        "share.x_tags": "トートタロット,アレイスタークロウリー,真の意志",
+        "kofi.title": "猫たちをサポートする",
+        "kofi.text": "このリーディングは無料です。これからもずっと。<br>ハルの導きが心に触れたなら、猫たちへの小さな「おやつ」を贈って下さい。",
+        "kofi.btn": "🐾 猫たちにおやつを贈る",
+        "kofi.sub": "すべての星は、小さな愛の光すらあれば更に輝く。✨",
+    },
+    en: {
+        "page.title": "Thoth Tarot Reading | Self-Discovery Coaching",
+        "page.desc": "An AI-powered Thoth Tarot reading service, tuned to your unique situation.",
+        "auth.login": "Login",
+        "auth.premium": "Premium Access 🗝️",
+        "premium.title": "Premium Access 🗝️",
+        "premium.auth_desc": "Login to unlock Reading History",
+        "premium.license_desc": "Enter Gumroad License Key to open the abyss (3-card spread, deep interpretation)",
+        "premium.license_placeholder": "License Key (ex: XXXXXX-XXXXXX-XXXXXX)",
+        "premium.verify_btn": "Verify Key",
+        "history.btn": "History",
+        "history.title": "Reading History",
+        "history.empty": "No history yet. Draw a card to record the stars' guidance.",
+        "input.heading": "What is weighing on your heart right now?",
+        "input.helper": "A doubt, a fear, or a wish you wish to manifest. No matter how small — Haru listens, in quiet and in truth.",
+        "input.name_label": "Your Name (or a nickname)",
+        "input.name_placeholder": "Your name",
+        "input.birthdate_label": "Date of Birth (optional)",
+        "input.context_placeholder": "e.g. I have been struggling with my trading strategy lately. I'm looking for a hint on how to improve.",
+        "input.spread_one": "One Oracle (1 card)",
+        "input.spread_three": "Three Cards (Past · Present · Potential)",
+        "input.draw_btn": "Draw the Cards",
+        "loading.default": "Attuning to the cosmic intelligence...",
+        "loading.msgs": ["Every man and every woman is a star...", "Do what thou wilt shall be the whole of the Law...", "Love is the law, love under will..."],
+        "thelema.title": "The Soul of Thoth Tarot",
+        "thelema.subtitle": "── The Philosophy of Thelema ──",
+        "result.your_theme": "Your Theme:",
+        "result.no_theme": "(No theme specified)",
+        "result.reading_title": "Haru's Reading",
+        "result.symbols_title": "The Study of Symbols",
+        "result.symbols_helper": "Tap a keyword to explore its occult meaning.",
+        "result.symbols_pending": "※ The symbol encyclopedia for this card is currently being compiled.",
+        "result.btn_save_img": "Save as Image",
+        "result.btn_save_txt": "Copy as Text",
+        "result.btn_share_x": "Share on 𝕏",
+        "result.btn_share_ig": "Share on Instagram",
+        "result.btn_restart": "Begin Again",
+        "result.error": "I apologize. The stellar guidance could not be read clearly. Please try again.",
+        "result.user_label": "【{name}'s Theme】",
+        "result.no_context": "(Following the stars' guidance)",
+        "result.arcana_major": "Major Arcana",
+        "result.arcana_minor": "Minor Arcana",
+        "result.positions": ["Past", "Present", "Potential"],
+        "result.copy_success": "Reading copied to clipboard!\nPaste it into your notes app or share it as you wish. ✨",
+        "result.copy_fail": "Copy failed. Please select the text manually in your browser.",
+        "result.ig_success": "【Ready for Instagram!】\nYour image has been downloaded and your caption (with hashtags) is copied.\nOpen your Instagram app, post the image, and paste the caption. 📸✨",
+        "result.ig_fail": "Failed to save the image.",
+        "modal.symbol_in_card": "Meaning in {card}:",
+        "modal.esoteric_title": "── Abyss of Symbols ──",
+        "modal.kabbalah": "Kabbalah (Tree of Life)",
+        "modal.astrology": "Astrological Correspondence",
+        "modal.alchemy": "Alchemical Process",
+        "modal.hebrew": "Hebrew Letter",
+        "modal.unknown": "Unknown",
+        "modal.esoteric_pending": "※ The esoteric data (Kabbalah, Astrology, Alchemy) for this card is currently being researched.",
+        "chat.thinking": "Contemplating...",
+        "chat.send": "Send",
+        "chat.placeholder": "Ask Haru...",
+        "chat.error": "The stellar guidance grows faint. Please wait a moment and try again.",
+        "image.title": "Thoth Tarot Reading",
+        "image.theme_label": "My Theme:",
+        "image.reading_label": "【Haru's Reading】",
+        "image.taking": "📸 Capturing your reading...",
+        "share.x_text": "I drew a Thoth Tarot card with AI-powered cosmic interpretation.\nMy theme: {theme}\nCard drawn: {cards}\n\n",
+        "share.x_tags": "ThothTarot,AleisterCrowley,TrueWill",
+        "kofi.title": "Support the Cats",
+        "kofi.text": "This reading is free, and always will be.<br>If Haru's guidance has touched your heart, a small treat for our cats would mean the world to us.",
+        "kofi.btn": "🐾 Buy the Cats a Treat on Ko-fi",
+        "kofi.sub": "Every star shines brighter with a little love. ✨",
+    }
+};
+
+// ====================================================
+// i18n: 言語の自動検知と切り替えシステム
+// ====================================================
+const savedLang = localStorage.getItem('tarot_lang');
+const browserLang = navigator.language || navigator.userLanguage || 'ja';
+window.currentLang = savedLang || (browserLang.startsWith('ja') ? 'ja' : 'en');
+
+/** テキスト取得ヘルパー */
+function t(key, vars = {}) {
+    const dict = I18N[window.currentLang] || I18N['ja'];
+    let str = dict[key] || I18N['ja'][key] || key;
+    Object.entries(vars).forEach(([k, v]) => { str = String(str).replace(`{${k}}`, v); });
+    return str;
+}
+
+/** DOM全体のテキストを現在の言語で更新する */
+function applyI18n() {
+    const lang = window.currentLang;
+    document.getElementById('html-root').lang = lang;
+    const titleEl = document.querySelector('[data-i18n-title]');
+    if (titleEl) titleEl.textContent = t('page.title');
+    const metaDesc = document.querySelector('[data-i18n-meta]');
+    if (metaDesc) metaDesc.setAttribute('content', t('page.desc'));
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.textContent = t(el.getAttribute('data-i18n'));
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
+    });
+    const toggleBtn = document.getElementById('lang-toggle-btn');
+    if (toggleBtn) toggleBtn.textContent = lang === 'ja' ? 'EN' : 'JP';
+}
+
+/** 言語を切り替える */
+function switchLang() {
+    window.currentLang = window.currentLang === 'ja' ? 'en' : 'ja';
+    localStorage.setItem('tarot_lang', window.currentLang);
+    applyI18n();
+}
+
+// 起動時に言語を適用
+applyI18n();
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 言語トグルボタン
+    const langToggleBtn = document.getElementById('lang-toggle-btn');
+    if (langToggleBtn) langToggleBtn.addEventListener('click', switchLang);
+
+    // Initialize Particles.js background
+    initParticles();
+    
+    const drawBtn = document.getElementById('draw-btn');
+    const userContextInput = document.getElementById('user-context');
+    
+    // Section elements
+    const inputSection = document.getElementById('input-section');
+    const loadingSection = document.getElementById('loading-section');
+    const resultSection = document.getElementById('result-section');
+
+    // Elements for displaying results
+    const userContextDisplay = document.getElementById('result-user-context');
+    const drawnCardImg = document.getElementById('result-card-img');
+    const drawnCardName = document.getElementById('result-card-name');
+    const drawnCardInfo = document.getElementById('result-card-info');
+    const readingText = document.getElementById('result-reading-text');
+    const symbolTagsContainer = document.getElementById('symbol-tags-container');
+    
+    // Handle Draw Button Click
+    drawBtn.addEventListener('click', async () => {
+        const context = userContextInput.value.trim();
+        const spreadType = document.querySelector('input[name="reading-type"]:checked').value;
+        const userName = document.getElementById('user-name').value.trim() || t('input.name_placeholder');
+        const userBirthdate = document.getElementById('user-birthdate').value;
+        
+        window.tempUserName = userName;
+        window.tempUserBirthdate = userBirthdate;
+        
+        // 1. Show Loading State
+        const loadingMessages = [
+            "すべての男と女は星である...",
+            "汝の欲する事を為せ、それが法の全てとなろう...",
+            "愛は法なり、意志の下の愛こそが..."
+        ];
+        const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+        document.getElementById('loading-text').textContent = randomMessage;
+        switchSection(inputSection, loadingSection);
+        
+        let drawnCards = [];
+        let apiCardsPayload = [];
+        
+        if (spreadType === 'three_card') {
+            drawnCards = drawUniqueCards(3);
+            const positions = [
+                window.currentLang === 'en' ? 'Past (Background)' : '経緯 (Background)',
+                window.currentLang === 'en' ? 'Present (Current)' : '現状 (Current)',
+                window.currentLang === 'en' ? 'Potential' : '可能性 (Potential)'
+            ];
+            drawnCards.forEach((card, i) => {
+                let formattedName = formatCardName(card);
+                apiCardsPayload.push({
+                    card_id: card.id,
+                    card_name: formattedName,
+                    card_element: card.element,
+                    position: positions[i]
+                });
+            });
+        } else {
+            drawnCards = drawUniqueCards(1);
+            let formattedName = formatCardName(drawnCards[0]);
+            apiCardsPayload.push({
+                card_id: drawnCards[0].id,
+                card_name: formattedName,
+                card_element: drawnCards[0].element,
+                position: null
+            });
+        }
+
+        let readingResult = t('result.error');
+        
+        try {
+            let historyDataPayload = [];
+            // Fetch history data if this user is premium
+            if (window.userPlan === 'premium' && typeof window.fetchRecentHistoryForSynthesis === 'function') {
+                historyDataPayload = await window.fetchRecentHistoryForSynthesis();
+            }
+
+            const response = await fetch('https://thoth-tarot-api.onrender.com/api/read', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    theme: context || t('result.no_theme'),
+                    spread_type: spreadType,
+                    cards: apiCardsPayload,
+                    user_name: userName,
+                    birth_date: userBirthdate,
+                    language: window.currentLang,
+                    is_premium: window.userPlan === 'premium',
+                    history_data: historyDataPayload
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                readingResult = data.reading;
+            } else {
+                console.error("API error status:", response.status);
+            }
+        } catch (error) {
+            console.error("API call failed:", error);
+        }
+        
+        // 3. Process Reading
+        renderResult(drawnCards, context, spreadType, readingResult);
+        
+        // 4. Save to History (if logged in and function available)
+        if (typeof window.saveReadingToHistory === 'function') {
+            const resultHtmlSummary = `## ${t('result.your_theme')}\n${context || t('result.no_theme')}\n\n## ${t('result.reading_title')}\n${readingResult}`;
+            window.saveReadingToHistory(context, spreadType, drawnCards, resultHtmlSummary);
+        }
+
+        // 5. Show Result State
+        switchSection(loadingSection, resultSection);
+    });
+
+    function drawUniqueCards(count) {
+        const result = [];
+        const usedIndices = new Set();
+        while(result.length < count) {
+            const randomIndex = Math.floor(Math.random() * ALL_CARDS.length);
+            if (!usedIndices.has(randomIndex)) {
+                usedIndices.add(randomIndex);
+                result.push(ALL_CARDS[randomIndex]);
+            }
+        }
+        return result;
+    }
+
+    function formatCardName(card) {
+        let fullCardNameForApi = card.name;
+        if (card.type === 'minor') {
+            const suitMap = { "wands": "ワンド", "cups": "カップ", "swords": "ソード", "disks": "ディスク" };
+            const numMap = { 
+                "1": "エース", "2": "2", "3": "3", "4": "4", "5": "5", 
+                "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
+                "knight": "ナイト", "queen": "クイーン", "prince": "プリンス", "princess": "プリンセス" 
+            };
+            const suitKey = card.id.split('_')[0];
+            const numKey = String(card.number);
+            const suitName = suitMap[suitKey] || "";
+            const numName = numMap[numKey] || numKey;
+            if (suitName) {
+                fullCardNameForApi = `小アルカナ ${suitName}の${numName} 「${card.name}」`;
+            }
+        } else {
+            fullCardNameForApi = `大アルカナ 「${card.name}」`;
+        }
+        return fullCardNameForApi;
+    }
+    
+    // Helper to switch sections with animation
+    function switchSection(hideElem, showElem) {
+        hideElem.classList.remove('active-section');
+        hideElem.classList.add('hidden-section');
+        
+        setTimeout(() => {
+            showElem.classList.remove('hidden-section');
+            showElem.classList.add('active-section');
+        }, 100); // Slight delay for smoother transition
+    }
+
+    // Render result UI
+    function renderResult(cards, context, spreadType, readingResult) {
+        // Clear previous results
+        if (drawnCardImg) drawnCardImg.innerHTML = '';
+        if (drawnCardName) drawnCardName.innerHTML = '';
+        if (drawnCardInfo) drawnCardInfo.innerHTML = '';
+        if (symbolTagsContainer) symbolTagsContainer.innerHTML = '';
+        
+        const userNameDisplay = window.tempUserName || t('input.name_placeholder');
+        if (userContextDisplay) userContextDisplay.innerHTML = `<strong>${t('result.user_label', {name: userNameDisplay})}</strong><br>${context || t('result.no_context')}`;
+        
+        let cardsHtml = '';
+        const positions = t('result.positions');
+
+        cards.forEach((card, index) => {
+            let arcanaText = card.type === 'major' ? t('result.arcana_major') : t('result.arcana_minor');
+            if (card.type === 'minor') {
+                const suitMap_ja = { "wands": "ワンド", "cups": "カップ", "swords": "ソード", "disks": "ディスク" };
+                const suitMap_en = { "wands": "of Wands", "cups": "of Cups", "swords": "of Swords", "disks": "of Disks" };
+                const numMap_ja = { "1": "エース", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "knight": "ナイト", "queen": "クイーン", "prince": "プリンス", "princess": "プリンセス" };
+                const numMap_en = { "1": "Ace", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10", "knight": "Knight", "queen": "Queen", "prince": "Prince", "princess": "Princess" };
+                const suitKey = card.id.split('_')[0];
+                const numKey = String(card.number);
+                if (window.currentLang === 'en') {
+                    const suitName = suitMap_en[suitKey] || '';
+                    const numName = numMap_en[numKey] || numKey;
+                    arcanaText = `<strong>${numName} ${suitName}</strong>`;
+                } else {
+                    const suitName = suitMap_ja[suitKey] || '';
+                    const numName = numMap_ja[numKey] || numKey;
+                    if (suitName) arcanaText = `<strong>${suitName}の${numName}</strong>`;
+                }
+            }
+            
+            let positionHtml = spreadType === 'three_card' ? `<h3 class="card-position-title">${Array.isArray(positions) ? positions[index] : ''}</h3>` : '';
+
+            cardsHtml += `
+                <div class="card-image-container">
+                    ${positionHtml}
+                    <div class="tarot-img-wrapper">
+                        <img src="${card.image}?v=remaster" alt="${card.name}" class="tarot-card-img" id="img-${card.id}" />
+                        <div class="symbol-highlight-box" id="highlight-${card.id}"></div>
+                    </div>
+                    <div class="card-info">
+                        <h2>${card.name}</h2>
+                        <p class="card-meta">${arcanaText} | 対応: ${card.element}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Generate Interactive Symbols HTML (combine all symbols)
+        let allSymbolsHtml = '';
+        let hasSymbols = false;
+        cards.forEach(card => {
+            if (card.symbols && card.symbols.length > 0) {
+                hasSymbols = true;
+                allSymbolsHtml += card.symbols.map(sym => {
+                    const rectStr = sym.rect ? JSON.stringify(sym.rect) : '';
+                    return `<div class="symbol-tag" data-symbol="${sym.name}" data-desc="${sym.desc}" data-card="${card.name}" data-card-id="${card.id}" data-rect='${rectStr}'>${sym.name}</div>`;
+                }).join('');
+            }
+        });
+
+        if (!hasSymbols) {
+            allSymbolsHtml = `<p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px;">${t('result.symbols_pending')}</p>`;
+        }
+
+        let personalizedReading = readingResult;
+        if (window.tempUserName && window.tempUserName !== 'あなた') {
+            personalizedReading = personalizedReading.replace(/あなた/g, window.tempUserName + 'さん');
+            personalizedReading = personalizedReading.replace(/さんさん/g, 'さん');
+        }
+
+        const resultHtml = `
+            <div class="result-card ${spreadType === 'three_card' ? 'three-card-result' : ''}">
+                <div class="cards-display ${spreadType === 'three_card' ? 'three-cards-layout' : ''}">
+                    ${cardsHtml}
+                </div>
+                
+                <div class="reading-content">
+                    <div class="user-context-echo">
+                        <strong>${t('result.your_theme')}</strong>
+                        <p>${context || t('result.no_theme')}</p>
+                    </div>
+                    
+                    <div class="reading-text">
+                        <h3>${t('result.reading_title')}</h3>
+                        <p>${personalizedReading}</p>
+                    </div>
+                    
+                    <div class="interactive-symbols">
+                        <h3>${t('result.symbols_title')}</h3>
+                        ${hasSymbols ? `<p class="helper-text">${t('result.symbols_helper')}</p>` : ''}
+                        <div class="symbol-tags-container">
+                            ${allSymbolsHtml}
+                        </div>
+                    </div>
+                    
+                    <!-- Premium AI Chat Section -->
+                    <div class="premium-ai-chat-section">
+                        <div class="premium-chat-header">
+                            <h3><span class="premium-badge">Premium</span> ハルとの対話（チャット）</h3>
+                            <p class="helper-text">リーディング結果について、さらに深く質問してみましょう。<br>例：「この結果を踏まえて、明日まず何をすべき？」「このオラクルは現状をどう示してる？」</p>
+                        </div>
+                        ${window.userPlan === 'premium' ? `
+                        <div id="chat-messages-container" class="chat-messages-container">
+                            <!-- Messages will be injected here -->
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="ai-chat-input" placeholder="ハルに質問する..." class="mystic-input" />
+                            <button id="ai-chat-send-btn" class="mystic-btn action-btn">送信</button>
+                        </div>
+                        ` : `
+                        <div class="locked-overlay">
+                            <div class="locked-content">
+                                <span class="lock-emoji">🔒</span>
+                                <p>この機能は <strong>Premium会員</strong> 限定です。</p>
+                                <p class="lock-sub">アップグレードすると、ハルに無制限に追加質問ができます。</p>
+                                <button class="upgrade-btn lock-upgrade-btn" onclick="document.getElementById('upgrade-btn').click()">Premiumにアップグレード</button>
+                            </div>
+                        </div>
+                        `}
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button id="save-image-btn" class="mystic-btn action-btn">${t('result.btn_save_img')}</button>
+                        <button id="save-text-btn" class="mystic-btn action-btn">${t('result.btn_save_txt')}</button>
+                        <button id="share-x-btn" class="mystic-btn action-btn x-share-btn">${t('result.btn_share_x')}</button>
+                        <button id="share-ig-btn" class="mystic-btn action-btn ig-share-btn">${t('result.btn_share_ig')}</button>
+                        <button class="mystic-btn restart-btn" onclick="location.reload()">${t('result.btn_restart')}</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        resultSection.innerHTML = resultHtml;
+        const donationArea = document.getElementById('donation-area');
+        if (donationArea) {
+            donationArea.classList.remove('hidden-section');
+        }
+
+        // Add event listeners for symbol tags to open the modal
+        const symbolTags = document.querySelectorAll('.symbol-tag');
+        const modal = document.getElementById('symbol-modal');
+        const modalName = document.getElementById('modal-symbol-name');
+        const modalDesc = document.getElementById('modal-symbol-desc');
+        const closeBtn = document.getElementById('close-modal-btn');
+        const esotericDetails = document.querySelector('.symbol-esoteric-details');
+
+        symbolTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                const name = tag.getAttribute('data-symbol');
+                const desc = tag.getAttribute('data-desc');
+                const cardName = tag.getAttribute('data-card');
+                const cardId = tag.getAttribute('data-card-id');
+                const rectStr = tag.getAttribute('data-rect');
+
+                // Clear previous highlights
+                document.querySelectorAll('.symbol-highlight-box').forEach(box => {
+                    box.classList.remove('active');
+                });
+
+                // Apply highlight if rect data exists
+                if (rectStr) {
+                    const rect = JSON.parse(rectStr);
+                    const highlightBox = document.getElementById(`highlight-${cardId}`);
+                    if (highlightBox) {
+                        highlightBox.style.left = `${rect.x}%`;
+                        highlightBox.style.top = `${rect.y}%`;
+                        highlightBox.style.width = `${rect.w}%`;
+                        highlightBox.style.height = `${rect.h}%`;
+                        highlightBox.classList.add('active');
+                    }
+                }
+
+                modalName.textContent = name;
+                modalDesc.innerHTML = `<strong>${cardName}</strong><br>${t('modal.symbol_in_card', {card: cardName})}<br>${desc}`;
+                
+                // 該当カードのデータをcards.jsから取得してesoteric部分をレンダリング
+                const cardData = cards.find(c => c.id === cardId);
+                
+                if (cardData && cardData.esoteric) {
+                    esotericDetails.innerHTML = `
+                        <div class="esoteric-section">
+                            <h4 class="esoteric-title">${t('modal.esoteric_title')}</h4>
+                            <div class="esoteric-grid">
+                                <div class="eso-item">
+                                    <span class="eso-label">${t('modal.kabbalah')}</span>
+                                    <span class="eso-value">${cardData.esoteric.kabbalah || t('modal.unknown')}</span>
+                                </div>
+                                <div class="eso-item">
+                                    <span class="eso-label">${t('modal.astrology')}</span>
+                                    <span class="eso-value">${cardData.esoteric.astrology || t('modal.unknown')}</span>
+                                </div>
+                                <div class="eso-item">
+                                    <span class="eso-label">${t('modal.alchemy')}</span>
+                                    <span class="eso-value">${cardData.esoteric.alchemy || t('modal.unknown')}</span>
+                                </div>
+                                <div class="eso-item">
+                                    <span class="eso-label">${t('modal.hebrew')}</span>
+                                    <span class="eso-value">${cardData.esoteric.hebrew || t('modal.unknown')}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    esotericDetails.innerHTML = `
+                        <div class="esoteric-detail-item">
+                            <span>${t('modal.esoteric_pending')}</span>
+                        </div>
+                    `;
+                }
+
+                modal.classList.add('active');
+            });
+        });
+
+        // Close modal logic
+        const clearHighlights = () => {
+            document.querySelectorAll('.symbol-highlight-box').forEach(b => b.classList.remove('active'));
+        };
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            clearHighlights();
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                clearHighlights();
+            }
+        });
+
+        // Image generation function
+        // Image generation function (バグ完全回避のため、撮影用の無垢なDOMをゼロから作る)
+        const generateAndDownloadImage = async (filename) => {
+            const captureContainer = document.createElement('div');
+            // ブラウザの描画省略（画面外だから描画しない）による「真っ黒バグ」を防ぐため、
+            // あえて画面のド真ん中に「カメラのフラッシュ」として白紙を堂々と表示する
+            captureContainer.style.position = 'fixed'; // absoluteではなくfixedで画面に確実に固定
+            captureContainer.style.top = '0';
+            captureContainer.style.left = '0';
+            captureContainer.style.width = '100vw'; // 画面全体を覆う
+            captureContainer.style.height = '100vh';
+            captureContainer.style.overflowY = 'auto'; // はみ出す場合はスクロール可能に
+            captureContainer.style.padding = '50px';
+            captureContainer.style.background = '#ffffff'; // 完璧な白
+            captureContainer.style.color = '#111111'; // 完璧な黒
+            captureContainer.style.fontFamily = '"Noto Serif JP", serif';
+            captureContainer.style.boxSizing = 'border-box';
+            captureContainer.style.zIndex = '99999'; // 最前面に持ってきて確実に画面に描画させる
+            
+            // 撮影用のコンテナの中に中身を寄せるラッパー
+            const innerWrapper = document.createElement('div');
+            innerWrapper.style.maxWidth = '800px';
+            innerWrapper.style.margin = '0 auto';
+            innerWrapper.style.background = '#ffffff';
+            captureContainer.appendChild(innerWrapper);
+            
+            // タイトル
+            const titleDiv = document.createElement('h2');
+            titleDiv.innerText = t('image.title');
+            titleDiv.style.textAlign = 'center';
+            titleDiv.style.color = '#d4af37';
+            titleDiv.style.borderBottom = '1px solid #eeeeee';
+            titleDiv.style.paddingBottom = '20px';
+            innerWrapper.appendChild(titleDiv);
+
+            // テーマ
+            const themeDiv = document.createElement('div');
+            themeDiv.style.background = '#f9f9f9';
+            themeDiv.style.borderLeft = '6px solid #d4af37';
+            themeDiv.style.padding = '20px';
+            themeDiv.style.margin = '30px 0';
+            themeDiv.style.fontSize = '18px';
+            themeDiv.innerHTML = `<strong>${t('image.theme_label')}</strong><br>${context || t('result.no_theme')}`;
+            captureContainer.appendChild(themeDiv);
+
+            // カード群
+            const cardsFlex = document.createElement('div');
+            cardsFlex.style.display = 'flex';
+            cardsFlex.style.justifyContent = 'center';
+            cardsFlex.style.gap = '20px';
+            cardsFlex.style.marginBottom = '40px';
+            
+            cards.forEach(card => {
+                const cardWrap = document.createElement('div');
+                cardWrap.style.textAlign = 'center';
+                
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                // キャッシュ回避のパラメータをつけて確実に追加
+                img.src = card.image + '?v=remaster';
+                img.style.maxHeight = '300px';
+                img.style.borderRadius = '10px';
+                img.style.border = '2px solid #dddddd';
+                
+                const cardName = document.createElement('div');
+                cardName.style.marginTop = '10px';
+                cardName.style.fontWeight = 'bold';
+                cardName.style.fontSize = '14px';
+                cardName.innerText = card.name;
+                
+                cardWrap.appendChild(img);
+                cardWrap.appendChild(cardName);
+                cardsFlex.appendChild(cardWrap);
+            });
+            innerWrapper.appendChild(cardsFlex);
+
+            // 結果テキスト
+            const readingDiv = document.createElement('div');
+            readingDiv.style.whiteSpace = 'pre-wrap';
+            readingDiv.style.lineHeight = '1.8';
+            readingDiv.style.fontSize = '16px';
+            readingDiv.style.borderTop = '1px dotted #cccccc';
+            readingDiv.style.paddingTop = '30px';
+            readingDiv.innerHTML = `<strong>${t('image.reading_label')}</strong><br><br>${personalizedReading}`;
+            innerWrapper.appendChild(readingDiv);
+
+            // フッター
+            const footerDiv = document.createElement('div');
+            footerDiv.style.marginTop = '50px';
+            footerDiv.style.textAlign = 'center';
+            footerDiv.style.color = '#888888';
+            footerDiv.innerText = 'cinnamonclove.com';
+            innerWrapper.appendChild(footerDiv);
+
+            // 画面の最前面に被せる（フラッシュ演出）
+            document.body.appendChild(captureContainer);
+            
+            // カメラフラッシュのようなテキスト演出
+            const loadingText = document.createElement('div');
+            loadingText.innerText = t('image.taking');
+            loadingText.style.position = 'fixed';
+            loadingText.style.top = '20px';
+            loadingText.style.right = '20px';
+            loadingText.style.background = '#d4af37';
+            loadingText.style.color = '#000';
+            loadingText.style.padding = '10px 20px';
+            loadingText.style.borderRadius = '5px';
+            loadingText.style.fontWeight = 'bold';
+            captureContainer.appendChild(loadingText);
+            
+            // 画像の完全な読み込みを待つ
+            const images = Array.from(captureContainer.querySelectorAll('img'));
+            await Promise.all(images.map(img => {
+                if (img.complete) return Promise.resolve();
+                return new Promise(resolve => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // 失敗しても止まらないように
+                });
+            }));
+            
+            // 描画がスキップされないように、実際に画面に表示してから少し待つ（重要！）
+            await new Promise(resolve => setTimeout(resolve, 800));
+
+            try {
+                // innerWrapper（中身）の範囲だけを撮影する
+                const canvas = await html2canvas(innerWrapper, {
+                    backgroundColor: '#ffffff', 
+                    scale: 2,
+                    useCORS: true, 
+                    logging: false
+                });
+                
+                document.body.removeChild(captureContainer);
+
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                return true;
+            } catch (err) {
+                console.error("画像生成エラー:", err);
+                if(captureContainer.parentNode) document.body.removeChild(captureContainer);
+                return false;
+            }
+        };
+
+        // Attach event listeners for new buttons
+        document.getElementById('save-image-btn').addEventListener('click', async () => {
+            await generateAndDownloadImage(`thoth-reading-${new Date().getTime()}.png`);
+        });
+
+        document.getElementById('save-text-btn').addEventListener('click', async () => {
+            let cardNames = cards.map(c => c.name).join(', ');
+            let text = `${t('image.title')}\n\n`;
+            text += `${t('result.your_theme')} ${context || t('result.no_theme')}\n`;
+            text += `Card: ${cardNames}\n\n`;
+            text += `${t('image.reading_label')}\n${personalizedReading}\n\n`;
+            text += `https://cinnamonclove.com`;
+            
+            try {
+                await navigator.clipboard.writeText(text);
+                alert(t('result.copy_success'));
+            } catch(e) {
+                console.error("Copy error:", e);
+                alert(t('result.copy_fail'));
+            }
+        });
+
+        document.getElementById('share-x-btn').addEventListener('click', () => {
+            const text = encodeURIComponent(t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>c.name).join(', ')}));
+            const hashtags = t('share.x_tags');
+            const url = `https://twitter.com/intent/tweet?text=${text}&hashtags=${hashtags}`;
+            window.open(url, '_blank');
+        });
+
+        document.getElementById('share-ig-btn').addEventListener('click', async () => {
+            // Instagram doesnt have a web share intent for images.
+            // We download the image and copy text to clipboard.
+            const textToCopy = t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>c.name).join(', ')}) + `#${t('share.x_tags').split(',').join(' #')}`;
+            
+            const imageSuccess = await generateAndDownloadImage(`thoth-reading-ig-${new Date().getTime()}.png`);
+            
+            if (imageSuccess) {
+                try {
+                    await navigator.clipboard.writeText(textToCopy);
+                    alert(t('result.ig_success'));
+                } catch (err) {
+                    console.error("Clipboard error:", err);
+                    alert(t('result.ig_fail'));
+                }
+            } else {
+                alert(t('result.ig_fail'));
+            }
+        });
+
+        // Setup Premium AI Chat (only for premium users)
+        if (window.userPlan === 'premium') {
+            const chatInput = document.getElementById('ai-chat-input');
+            const chatSendBtn = document.getElementById('ai-chat-send-btn');
+            const chatMessages = document.getElementById('chat-messages-container');
+            
+            if (chatInput && chatSendBtn && chatMessages) {
+                // Keep conversation history in memory for this session
+                let conversationHistory = [];
+
+                const appendMessage = (text, sender) => {
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = `chat-message ${sender}`;
+                    msgDiv.textContent = text;
+                    chatMessages.appendChild(msgDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                };
+
+                const sendChatMessage = async () => {
+                    const text = chatInput.value.trim();
+                    if(!text) return;
+                    
+                    appendMessage(text, 'user');
+                    chatInput.value = '';
+                    chatSendBtn.disabled = true;
+                    chatSendBtn.textContent = '思考中...';
+
+                    try {
+                        const response = await fetch('https://thoth-tarot-api.onrender.com/api/chat', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                question: text,
+                                context: context || "",
+                                reading_result: readingResult,
+                                history: conversationHistory,
+                                user_name: window.tempUserName || 'あなた',
+                                birth_date: window.tempUserBirthdate || null
+                            })
+                        });
+
+                        if (!response.ok) throw new Error('API Error');
+                        
+                        const data = await response.json();
+                        appendMessage(data.answer, 'ai');
+                        
+                        conversationHistory.push({ role: "user", parts: text });
+                        conversationHistory.push({ role: "model", parts: data.answer });
+
+                    } catch (err) {
+                        console.error(err);
+                        appendMessage('星の導きが弱まっています。時間をおいてから再度お尋ねください。', 'ai');
+                    } finally {
+                        chatSendBtn.disabled = false;
+                        chatSendBtn.textContent = '送信';
+                    }
+                };
+
+                chatSendBtn.addEventListener('click', sendChatMessage);
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') sendChatMessage();
+                });
+            }
+        }
+    }
+});
+
+function initParticles() {
+    // Simple mystical particle configuration
+    if(window.particlesJS) {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#d4af37", "#4a235a", "#ffffff"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#d4af37", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true },
+                "modes": { "bubble": { "distance": 250, "size": 6, "duration": 2, "opacity": 0.8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 } }
+            },
+            "retina_detect": true
+        });
+    }
+}

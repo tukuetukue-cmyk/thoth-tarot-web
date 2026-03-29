@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-title="true">トート・タロット リーディング | 自己探求コーチング</title>
+    <meta name="description" data-i18n-meta="true" content="AIがあなたの状況に合わせた深いトート・タロットのリーディングを提供します。">
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/styles.css?v=27">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.jpg">
+</head>
+<body>
+    <div id="particles-js" class="particles-bg"></div>
+    <div class="glass-container">
+        <header class="app-header">
+            <div class="header-logo-container">
+                <h1 class="logo-text">Thoth Tarot Reading</h1>
+                <p class="subtitle">あなたを導く内なる知恵との対話</p>
+            </div>
+            <div class="auth-container">
+                <a href="#kofi-area" class="donation-nav-link" title="猫たちをサポートする🐾">🐾 Support</a>
+                <button id="auth-btn" class="mystic-btn action-btn auth-btn" data-i18n="auth.premium">Premium Access 🗝️</button>
+                <div id="user-profile" class="user-profile hidden-section">
+                    <span id="user-email"></span>
+                    <button id="history-btn" class="action-btn mystic-btn" data-i18n="history.btn" style="padding:4px 12px; font-size:0.8rem; margin:0 10px;">履歴</button>
+                    <span id="user-badge" class="badge">Free</span>
+                </div>
+            </div>
+            <!-- Language Toggle -->
+            <div class="lang-toggle-container">
+                <button id="lang-toggle-btn" class="lang-toggle" aria-label="Switch language">EN</button>
+            </div>
+        </header>
+
+        <main id="app-container">
+            <!-- Phase 1: Input -->
+            <section id="input-section" class="active-section">
+                <div class="input-card">
+                    <h2 data-i18n="input.heading">あなたが今、心に抱えているものは何ですか？</h2>
+                    <p class="helper-text" data-i18n="input.helper">迷いや不安、あるいは叶えたい願い。どんな小さなことでも構いません。ハルがここで、あなたの心の声を静かに聴きます。</p>
+                    
+                    <div class="user-details-inputs">
+                        <div class="input-group">
+                            <label for="user-name" data-i18n="input.name_label">お名前（ニックネーム等）</label>
+                            <input type="text" id="user-name" data-i18n-placeholder="input.name_placeholder" placeholder="あなたのお名前">
+                        </div>
+                        <div class="input-group">
+                            <label for="user-birthdate" data-i18n="input.birthdate_label">生年月日（任意）</label>
+                            <input type="date" id="user-birthdate">
+                        </div>
+                    </div>
+                    <textarea id="user-context" data-i18n-placeholder="input.context_placeholder" placeholder="例：最近、デイトレードでうまくいっていません。手法をどう改善すればいいかヒントが欲しいです。"></textarea>
+                    
+                    <div class="reading-type-selector">
+                        <label class="spread-option">
+                            <input type="radio" name="reading-type" value="one_oracle" checked>
+                            <span class="spread-label-text" data-i18n="input.spread_one">ワンオラクル（1枚引き）</span>
+                        </label>
+                        <label class="spread-option">
+                            <input type="radio" name="reading-type" value="three_card">
+                            <span class="spread-label-text" data-i18n="input.spread_three">スリーカード（経緯・現状・可能性）</span>
+                        </label>
+                    </div>
+
+                    <button id="draw-btn" class="mystic-btn" data-i18n="input.draw_btn">カードを引く</button>
+                </div>
+            </section>
+
+            <!-- Phase 2: Drawing Animation (Hidden by default) -->
+            <section id="loading-section" class="hidden-section">
+                <div class="loader-container">
+                    <div class="mystic-loader"></div>
+                    <p id="loading-text" data-i18n="loading.default">宇宙の叡智と繋がり中...</p>
+                </div>
+            </section>
+
+            <!-- Phase 3: Result (Hidden by default) -->
+            <section id="result-section" class="hidden-section">
+                <!-- Result content will be injected by JS -->
+            </section>
+        </main>
+
+        <!-- Philosophy Section -->
+
+
+        <!-- Donation Section -->
+        <!-- Donation Section (Stripe審査待ちのため一時非表示) -->
+        <!--
+        <section class="donation-section hidden-section" id="donation-area">
+            ...
+        </section>
+        -->
+        
+        <!-- Thelema Philosophy Section -->
+        <section class="thelema-section" id="thelema-section">
+            <div class="thelema-header">
+                <div class="thelema-star">✦</div>
+                <h2 class="thelema-title" data-i18n="thelema.title">トート・タロットの魂</h2>
+                <p class="thelema-subtitle" data-i18n="thelema.subtitle">── 「テレマ」の思想 ──</p>
+            </div>
+
+            <div class="thelema-intro">
+                <p>
+                    トート・タロットは、単なる吉凶を占う道具ではありません。<br>
+                    20世紀最大の魔術師アレイスター・クロウリーが提唱した<strong>「テレマ（Thelema）」</strong>という哲学を形にした、自己発見のための「地図」であり「鏡」です。
+                </p>
+                <p class="thelema-meaning">
+                    テレマとは、ギリシャ語で<strong>「意志」</strong>を意味します。
+                </p>
+            </div>
+
+            <div class="thelema-pillars">
+                <!-- Pillar 1 -->
+                <div class="thelema-pillar">
+                    <div class="pillar-number">Ⅰ</div>
+                    <h3 class="pillar-title">「汝の欲する事を為せ」</h3>
+                    <p class="pillar-subtitle">── 真の意志の探求</p>
+                    <blockquote class="thelema-quote">
+                        "Do what thou wilt shall be the whole of the Law."
+                    </blockquote>
+                    <p class="pillar-text">
+                        これは「好き勝手に生きる」という意味ではありません。<br>
+                        私たちは一人ひとりが、宇宙において固有の軌道を持つ<strong>「星」</strong>のような存在です。自分自身の魂の底にある、本当の目的や役割を<strong>「真の意志（True Will）」</strong>と呼びます。
+                    </p>
+                    <p class="pillar-text">
+                        エゴや社会の常識に惑わされず、この「真の意志」を見つけ出し、その道を真っ直ぐに進むことこそが、人生の究極の目的であるとテレマは説いています。
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="thelema-pillar">
+                    <div class="pillar-number">Ⅱ</div>
+                    <h3 class="pillar-title">「意志の下の愛」</h3>
+                    <p class="pillar-subtitle">── 創造のエネルギー</p>
+                    <blockquote class="thelema-quote">
+                        "Love is the law, love under will."
+                    </blockquote>
+                    <p class="pillar-text">
+                        宇宙を動かす最大のエネルギーは「愛」です。<br>
+                        しかし、それはただの盲目的な感情ではなく、自らの「意志」によって正しく方向づけられたものであるべきだと考えます。
+                    </p>
+                    <p class="pillar-text">
+                        自分を律し、目的を持って愛の力を使うことで、私たちは自分自身の世界を創造していくことができるのです。
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="thelema-pillar">
+                    <div class="pillar-number">Ⅲ</div>
+                    <h3 class="pillar-title">ホルスのアイオーン</h3>
+                    <p class="pillar-subtitle">── 自立と輝きの時代</p>
+                    <p class="pillar-text">
+                        テレマは、人類が新しい時代（ホルスのアイオーン）に入ったことを告げています。<br>
+                        それは、何かに依存したり、自分を犠牲にしたりする「古い道徳」から脱却し、誰もが<strong>「自立した個」</strong>として、太陽のように自ら光り輝く時代です。
+                    </p>
+                    <p class="pillar-text">
+                        トート・タロットはこの「新しい時代」のエネルギーを象徴しており、私たちが自らの足で歩むための知恵を授けてくれます。
+                    </p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="thelema-pillar">
+                    <div class="pillar-number">Ⅳ</div>
+                    <h3 class="pillar-title">「運命の奴隷」にならないための道具</h3>
+                    <p class="pillar-subtitle">── タロットの真の役割</p>
+                    <p class="pillar-text">
+                        テレマにおいて、未来は固定されたものではありません。<br>
+                        タロットが映し出すのは、現在のあなたのエネルギーと、そこから予測される「軌道」です。
+                    </p>
+                    <p class="pillar-text">
+                        もし望まない結果が出たとしても、自らの「意志」によって行動を変えれば、未来の軌道は書き換えることができます。タロットは、あなたが<strong>「自分自身の人生の主（あるじ）」</strong>であることを思い出すためのガイドブックなのです。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Empowerment Quote -->
+            <div class="thelema-empowerment">
+                <div class="empowerment-stars">★ ★ ★</div>
+                <blockquote class="empowerment-quote">
+                    "Every man and every woman is a star."<br>
+                    <span class="quote-jp">「すべての男と女は星である」</span>
+                </blockquote>
+                <p class="empowerment-text">
+                    あなたは唯一無二の輝きを持つ存在です。<br>
+                    このタロットが、あなたの「真の意志」を照らす鏡となりますように。
+                </p>
+            </div>
+
+            <!-- Footer Quote -->
+            <div class="thelema-footer-quote">
+                <span class="footer-law">Love is the law, love under will.</span>
+            </div>
+        </section>
+
+        <!-- Ko-fi Support Section -->
+        <section class="kofi-section" id="kofi-area">
+            <div class="kofi-inner">
+                <div class="kofi-cats">
+                    <span class="kofi-cat-icon" aria-hidden="true">🐾</span>
+                    <span class="kofi-cat-icon" aria-hidden="true">🐾</span>
+                    <span class="kofi-cat-icon" aria-hidden="true">🐾</span>
+                </div>
+                <h2 class="kofi-title" data-i18n="kofi.title">Support the Cats</h2>
+                <p class="kofi-text" data-i18n="kofi.text">This reading is free, and always will be.<br>If Haru's guidance has touched your heart, a small treat for our cats would mean the world to us.</p>
+                <a href="https://ko-fi.com/cinnamonclove" target="_blank" rel="noopener noreferrer" class="kofi-btn" id="kofi-link">
+                    <span class="kofi-btn-icon">☕</span>
+                    <span data-i18n="kofi.btn">Buy the Cats a Treat on Ko-fi</span>
+                </a>
+                <p class="kofi-sub" data-i18n="kofi.sub">Every star shines brighter with a little love. ✨</p>
+            </div>
+        </section>
+
+        <footer style="text-align: center; margin-top: 2rem;">
+            <p>&copy; 2026 Thoth Tarot Reading App. Created with Gemini.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                <a href="tokushoho.html" style="color: var(--accent-gold); text-decoration: none;">特定商取引法に基づく表記</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Particles.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    </div>
+
+    <!-- Symbol Modal -->
+    <div id="symbol-modal" class="modal-overlay">
+        <div class="symbol-modal-content glass-card">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <div class="symbol-header">
+                <h3 id="modal-symbol-name">シンボル名</h3>
+            </div>
+            <div class="symbol-body">
+                <p id="modal-symbol-desc">基本的な意味...</p>
+                <div class="symbol-esoteric-details">
+                    <!-- Kabbalah, Astrology, Alchemy details will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK Setup -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+    <!-- Premium Access Modal -->
+    <div id="premium-modal" class="modal-overlay">
+        <div class="premium-modal-content glass-card premium-bg-pattern">
+            <button id="close-premium-btn" class="close-btn">&times;</button>
+            <div class="premium-header" style="text-align:center; margin-bottom: 20px;">
+                <span class="thelema-star" style="color:var(--accent-gold); font-size:1.5rem;">✦</span>
+                <h3 data-i18n="premium.title" style="font-family:var(--font-heading); color:var(--accent-gold); letter-spacing:0.1em; margin-top:10px;">Premium Access 🗝️</h3>
+            </div>
+            <div class="premium-body">
+                <div id="firebase-auth-container" style="text-align:center; margin-bottom: 25px;">
+                    <p data-i18n="premium.auth_desc" class="helper-text">ログインして履歴機能を解放する</p>
+                    <button id="google-login-btn" class="mystic-btn action-btn" style="width:100%;">Google Sign-in</button>
+                    <p id="auth-status-msg" style="color:var(--text-secondary); font-size:0.85rem; margin-top:10px;"></p>
+                </div>
+                
+                <hr style="border:0; border-top:1px solid rgba(212,175,55,0.2); margin: 25px 0;">
+                
+                <div id="license-key-container" style="text-align:center;">
+                    <p data-i18n="premium.license_desc" class="helper-text">Gumroadライセンスキーで深淵（3枚引き・ディープ解釈）の扉を開く</p>
+                    <div class="input-group" style="margin-bottom:15px;">
+                        <input type="text" id="license-key-input" data-i18n-placeholder="premium.license_placeholder" placeholder="License Key (ex: XXXXXX-XXXXXX-XXXXXX)">
+                    </div>
+                    <button id="verify-license-btn" class="mystic-btn" data-i18n="premium.verify_btn" style="width:100%;">キーを認証する</button>
+                    <p id="license-status-msg" class="msg-text" style="margin-top:10px;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="history-modal" class="modal-overlay">
+        <div class="history-modal-content glass-card" style="max-height:80vh; overflow-y:auto; width:90%; max-width:600px;">
+            <button id="close-history-btn" class="close-btn">&times;</button>
+            <div class="symbol-header" style="text-align:center; margin-bottom:20px;">
+                <h3 data-i18n="history.title" style="font-family:var(--font-heading); color:var(--accent-gold);">リーディング履歴</h3>
+            </div>
+            <div id="history-list" class="history-list-container">
+                <div class="mystic-loader" style="margin:40px auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Detail Modal -->
+    <div id="history-detail-modal" class="modal-overlay">
+        <div class="history-detail-modal-content glass-card premium-detail-card" style="max-height:90vh; overflow-y:auto; width:95%; max-width:800px; padding: 2rem;">
+            <button id="close-history-detail-btn" class="close-btn">&times;</button>
+            
+            <!-- Reflection Section -->
+            <div id="reflection-container" class="reflection-box hidden-section">
+                <div class="reflection-stars"></div>
+                <h4 style="color:var(--accent-gold); text-align:center; font-family:var(--font-heading); letter-spacing: 2px;">ハルからの振り返り</h4>
+                <p id="reflection-text" style="line-height:1.8; color:var(--text-primary);"></p>
+            </div>
+            <div style="text-align:center; margin-bottom: 20px;">
+                <button id="get-reflection-btn" class="mystic-btn" style="display:none; margin: 0 auto; box-shadow: 0 0 15px rgba(212,175,55,0.4);">
+                    <span class="thelema-star">✦</span> 今だから言えるハルの一言 <span class="thelema-star">✦</span>
+                </button>
+            </div>
+
+            <!-- Original Reading Content -->
+            <div id="history-detail-content" class="history-detail-content">
+                <!-- Injected reading HTML goes here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- html2canvas for image generation -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="src/js/cards.js?v=33"></script>
+    <script src="src/js/firebase-auth.js?v=1"></script>
+    <script src="src/js/app.js?v=41"></script>
+</body>
+</html>
