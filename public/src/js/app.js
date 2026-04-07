@@ -21,7 +21,7 @@ const I18N = {
         "input.name_label": "お名前（ニックネーム等）",
         "input.name_placeholder": "あなたのお名前",
         "input.birthdate_label": "生年月日（任意）",
-        "input.context_placeholder": "例：最近、デイトレードでうまくいっていません。手法をどう改善すればいいかヒントが欲しいです。",
+        "input.context_placeholder": "現在の直面している課題や、占いたいテーマをご自由にご記入ください。",
         "input.spread_one": "ワンオラクル（1枚引き）",
         "input.spread_three": "スリーカード（経緯・現状・可能性）",
         "input.draw_btn": "カードを引く",
@@ -55,9 +55,10 @@ const I18N = {
         "modal.kabbalah": "カバラ (生命の樹)",
         "modal.astrology": "占星術の対応",
         "modal.alchemy": "錬金術プロセス",
+        "modal.iching": "易経 (I Ching)",
         "modal.hebrew": "ヘブライ文字",
         "modal.unknown": "不明",
-        "modal.esoteric_pending": "※ このカードの深淵なる象徴データ（カバラ・占星術・錬金術）は現在研究・編集中です。",
+        "modal.esoteric_pending": "※ このカードの深淵なる象徴データ（カバラ・占星術・錬金術・易経）は現在研究・編集中です。",
         "chat.thinking": "思考中...",
         "chat.send": "送信",
         "chat.placeholder": "ハルに質問する...",
@@ -73,7 +74,7 @@ const I18N = {
         "kofi.btn": "🐾 猫たちにおやつを贈る",
         "kofi.sub": "すべての星は、小さな愛の光すらあれば更に輝く。✨",
         "header.subtitle": "あなたを導く内なる知恵との対話",
-        "report.notice": "3カード解析は、より深く多層的な象徴叙述型と構造解析型の2種による鑑定報告書[PDF]にて承っております。<br>詳細は cinnamoncloveand@gmail.com までお問い合わせください",
+        "report.notice": "<strong>【スリーカード詳細鑑定のご案内】</strong><br>多層的に深く読み解く鑑定書[PDF]も作成しております。<br>お問い合わせ： cinnamoncloveand@gmail.com",
         "thelema.intro": "トート・タロットは、単なる吉凶を占う道具ではありません。<br>20世紀最大の魔術師アレイスター・クロウリーが提唱した<strong>「テレマ（Thelema）」</strong>という哲学を形にした、自己発見のための「地図」であり「鏡」です。",
         "thelema.meaning": "テレマとは、ギリシャ語で<strong>「意志」</strong>を意味します。",
         "thelema.pillar1.title": "「汝の欲する事を為せ」",
@@ -111,7 +112,7 @@ const I18N = {
         "input.name_label": "Your Name (or a nickname)",
         "input.name_placeholder": "Your name",
         "input.birthdate_label": "Date of Birth (optional)",
-        "input.context_placeholder": "e.g. I have been struggling with my trading strategy lately. I'm looking for a hint on how to improve.",
+        "input.context_placeholder": "Please feel free to write about the challenges you are currently facing or the theme you wish to explore.",
         "input.spread_one": "One Oracle (1 card)",
         "input.spread_three": "Three Cards (Past · Present · Potential)",
         "input.draw_btn": "Draw the Cards",
@@ -145,6 +146,7 @@ const I18N = {
         "modal.kabbalah": "Kabbalah (Tree of Life)",
         "modal.astrology": "Astrological Correspondence",
         "modal.alchemy": "Alchemical Process",
+        "modal.iching": "I Ching",
         "modal.hebrew": "Hebrew Letter",
         "modal.unknown": "Unknown",
         "modal.esoteric_pending": "※ The esoteric data (Kabbalah, Astrology, Alchemy) for this card is currently being researched.",
@@ -163,7 +165,7 @@ const I18N = {
         "kofi.btn": "🐾 Buy the Cats a Treat on Ko-fi",
         "kofi.sub": "Every star shines brighter with a little love. ✨",
         "header.subtitle": "Conversation with your inner wisdom",
-        "report.notice": "3-card analytics available via deep Symbolic & Structural appraisal reports [PDF].<br>For details, contact cinnamoncloveand@gmail.com",
+        "report.notice": "<strong>[Three-Card Deep Reading Available]</strong><br>We also offer comprehensive PDF reports with multi-layered symbolic analysis.<br>Inquiries: cinnamoncloveand@gmail.com",
         "thelema.intro": "Thoth Tarot is not merely a tool for telling fortunes.<br>It is a 'map' and a 'mirror' for self-discovery, embodying the philosophy of <strong>'Thelema'</strong> proposed by Aleister Crowley, the greatest magus of the 20th century.",
         "thelema.meaning": "Thelema means <strong>'Will'</strong> in Greek.",
         "thelema.pillar1.title": "\"Do what thou wilt\"",
@@ -264,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     drawBtn.addEventListener('click', async () => {
         const context = userContextInput.value.trim();
         const spreadType = document.querySelector('input[name="reading-type"]:checked').value;
-        const userName = document.getElementById('user-name').value.trim() || t('input.name_placeholder');
+        const userName = document.getElementById('user-name').value.trim();
         const userBirthdate = document.getElementById('user-birthdate').value;
         
         window.tempUserName = userName;
@@ -414,8 +416,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (drawnCardInfo) drawnCardInfo.innerHTML = '';
         if (symbolTagsContainer) symbolTagsContainer.innerHTML = '';
         
-        const userNameDisplay = window.tempUserName || t('input.name_placeholder');
-        if (userContextDisplay) userContextDisplay.innerHTML = `<strong>${t('result.user_label', {name: userNameDisplay})}</strong><br>${context || t('result.no_context')}`;
+        const userNameDisplay = window.tempUserName;
+        if (userContextDisplay) {
+            if (userNameDisplay) {
+                userContextDisplay.innerHTML = `<strong>${t('result.user_label', {name: userNameDisplay})}</strong><br>${context || t('result.no_context')}`;
+            } else {
+                const themeText = t('result.your_theme').replace(':', '').replace('：', '');
+                userContextDisplay.innerHTML = `<strong>【${themeText}】</strong><br>${context || t('result.no_context')}`;
+            }
+        }
         
         let cardsHtml = '';
         const positions = t('result.positions');
@@ -579,6 +588,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="eso-item">
                                     <span class="eso-label">${t('modal.alchemy')}</span>
                                     <span class="eso-value">${cardData.esoteric.alchemy || t('modal.unknown')}</span>
+                                </div>
+                                <div class="eso-item">
+                                    <span class="eso-label">${t('modal.iching')}</span>
+                                    <span class="eso-value">${cardData.esoteric.iching || t('modal.unknown')}</span>
                                 </div>
                                 <div class="eso-item">
                                     <span class="eso-label">${t('modal.hebrew')}</span>

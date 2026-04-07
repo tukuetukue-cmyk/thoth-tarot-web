@@ -54,9 +54,12 @@
                             <input type="date" id="user-birthdate">
                         </div>
                     </div>
-                    <textarea id="user-context" data-i18n-placeholder="input.context_placeholder" placeholder="例：最近、デイトレードでうまくいっていません。手法をどう改善すればいいかヒントが欲しいです。"></textarea>
+                    <div class="input-group" style="margin-top: 1.5rem;">
+                        <label for="user-context" style="display: block; margin-bottom: 0.5rem; color: var(--accent-gold); font-family: var(--font-heading);">相談内容（任意）</label>
+                        <textarea id="user-context" data-i18n-placeholder="input.context_placeholder" placeholder="例：最近、デイトレードでうまくいっていません。手法をどう改善すればいいかヒントが欲しいです。"></textarea>
+                    </div>
                     
-                    <div class="reading-type-selector">
+                    <div class="reading-type-selector" style="display: none;">
                         <label class="spread-option">
                             <input type="radio" name="reading-type" value="one_oracle" checked>
                             <span class="spread-label-text" data-i18n="input.spread_one">ワンオラクル（1枚引き）</span>
