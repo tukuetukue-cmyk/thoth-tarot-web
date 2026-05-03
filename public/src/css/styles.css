@@ -45,10 +45,20 @@
     transform: translateY(-2px);
 }
 
-.report-notice-btn .email-link {
-    color: var(--accent-gold);
-    font-weight: bold;
-    text-decoration: underline;
+.premium-mosh-btn {
+    background: linear-gradient(135deg, rgba(82, 37, 100, 0.4), rgba(41, 16, 51, 0.6));
+    border: 1px solid rgba(212, 175, 55, 0.8);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3), inset 0 0 10px rgba(74, 35, 90, 0.5);
+    position: relative;
+    overflow: hidden;
+    font-size: 1.05rem;
+}
+
+.premium-mosh-btn:hover {
+    background: linear-gradient(135deg, rgba(92, 47, 110, 0.6), rgba(51, 26, 61, 0.8));
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5), inset 0 0 15px rgba(74, 35, 90, 0.7);
+    transform: translateY(-3px);
 }
 
 /* Relocated Support Section */
