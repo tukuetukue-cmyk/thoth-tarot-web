@@ -1,0 +1,642 @@
+/* ====================================================
+   生命の樹｜Tree of Life ── 専用スタイル
+   ==================================================== */
+
+/* --- ページレイアウト --- */
+.tree-header {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: var(--accent-gold);
+}
+
+.tree-page-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+}
+
+.tree-page-subtitle {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.15em;
+}
+
+/* --- メインレイアウト --- */
+.tree-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+    .tree-main {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+}
+
+/* --- SVGコンテナ --- */
+.tree-container {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 5 / 7;
+    position: relative;
+    transition: transform 0.15s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+#tree-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ====================================================
+   フラワー・オブ・ライフ ── 神聖幾何学
+   ==================================================== */
+.fol-circle {
+    fill: none;
+    stroke: rgba(212, 175, 55, 0.07);
+    stroke-width: 0.6;
+    pointer-events: none;
+}
+
+/* parallaxラッパー：スムーズな動き */
+#fol-wrapper,
+#paths-wrapper {
+    transition: transform 0.08s linear;
+    will-change: transform;
+}
+
+/* 星 */
+.star-dot {
+    fill: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    animation: starTwinkle var(--twinkle-duration, 4s) ease-in-out infinite;
+    animation-delay: var(--twinkle-delay, 0s);
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.9; }
+}
+
+/* ====================================================
+   パスの脈動アニメーション
+   ==================================================== */
+.tree-path {
+    stroke: rgba(212, 175, 55, 0.18);
+    stroke-width: 1.5;
+    fill: none;
+    cursor: pointer;
+    animation: pathPulse 6s ease-in-out infinite;
+    animation-delay: var(--pulse-delay, 0s);
+    transition: stroke 0.3s, stroke-width 0.3s;
+}
+
+.tree-path:hover,
+.tree-path.active {
+    stroke: var(--accent-gold);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+    animation: none;
+}
+
+.tree-path.reading-highlight {
+    stroke: #FFD700;
+    stroke-width: 4;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    animation: pulseGlowPath 2s infinite alternate;
+}
+
+@keyframes pathPulse {
+    0%, 100% { stroke-opacity: 0.18; }
+    50% { stroke-opacity: 0.45; }
+}
+
+
+/* パスのヘブライ文字ラベル */
+.path-label {
+    fill: rgba(212, 175, 55, 0.4);
+    font-size: 10px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+    transition: fill 0.3s;
+}
+
+.tree-path:hover + .path-label,
+.tree-path.active + .path-label {
+    fill: var(--accent-gold);
+}
+
+/* --- 深淵ライン --- */
+.abyss-line {
+    stroke: rgba(255, 255, 255, 0.08);
+    stroke-width: 1;
+    stroke-dasharray: 8, 6;
+    fill: none;
+}
+
+.abyss-label {
+    fill: rgba(255, 255, 255, 0.15);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    text-anchor: middle;
+    letter-spacing: 0.3em;
+}
+
+/* --- セフィラ（球） --- */
+.sephira-group {
+    cursor: pointer;
+}
+
+.sephira-circle {
+    fill: rgba(20, 20, 30, 0.8);
+    stroke: rgba(212, 175, 55, 0.3);
+    stroke-width: 1.5;
+    transition: all 0.4s ease;
+}
+
+.sephira-group:hover .sephira-circle,
+.sephira-group.active .sephira-circle {
+    stroke: var(--accent-gold);
+    stroke-width: 2.5;
+    fill: rgba(40, 35, 20, 0.9);
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.4));
+}
+
+/* セフィラの内側の光 */
+.sephira-glow {
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.sephira-group:hover .sephira-glow,
+.sephira-group.active .sephira-glow {
+    opacity: 1;
+}
+
+/* セフィラの名前 */
+.sephira-name-en {
+    fill: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+}
+
+.sephira-name-ja {
+    fill: var(--text-secondary);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 8px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+}
+
+.sephira-number {
+    fill: rgba(212, 175, 55, 0.3);
+    font-family: var(--font-heading);
+    font-size: 7px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+}
+
+/* ダアト（点線の円） */
+.daath-circle {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 1;
+    stroke-dasharray: 4, 3;
+}
+
+.sephira-group:hover .daath-circle {
+    stroke: rgba(255, 255, 255, 0.3);
+}
+
+/* --- 三柱のガイドライン（オプション） --- */
+.pillar-line {
+    stroke: rgba(255, 255, 255, 0.03);
+    stroke-width: 1;
+    stroke-dasharray: 2, 4;
+}
+
+/* --- リーディング結果のハイライト --- */
+.sephira-group.reading-highlight .sephira-circle {
+    stroke: #FFD700;
+    stroke-width: 3;
+    fill: rgba(212, 175, 55, 0.6);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    animation: pulseGlow 2s infinite alternate;
+}
+
+.tree-path.reading-highlight {
+    stroke: #FFD700;
+    stroke-width: 4;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    animation: pulseGlowPath 2s infinite alternate;
+}
+
+.tree-path.reading-highlight + .path-label {
+    fill: #FFD700;
+    font-weight: bold;
+}
+
+@keyframes pulseGlow {
+    from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+    to { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)); }
+}
+
+@keyframes pulseGlowPath {
+    from { stroke-width: 3; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+    to { stroke-width: 5; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)); }
+}
+
+/* --- 情報パネル --- */
+.tree-info-panel {
+    width: 100%;
+    max-width: 500px;
+    min-height: 300px;
+}
+
+@media (min-width: 900px) {
+    .tree-info-panel {
+        max-width: 400px;
+        position: sticky;
+        top: 2rem;
+    }
+}
+
+.info-panel-inner {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    min-height: 300px;
+}
+
+.info-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+}
+
+.info-hint {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    opacity: 0.6;
+    text-align: center;
+}
+
+/* 情報コンテンツ */
+.info-content {
+    animation: fadeIn 0.3s ease;
+}
+
+.info-content.hidden-section {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* セフィラ情報 */
+.info-sephira-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-sephira-number {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent-gold);
+    opacity: 0.4;
+    line-height: 1;
+}
+
+.info-sephira-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.05em;
+}
+
+.info-sephira-ja {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.info-divider {
+    border: none;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    margin: 1rem 0;
+}
+
+.info-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.info-meta-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 1rem;
+    font-size: 0.85rem;
+}
+
+.info-meta-label {
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.info-meta-value {
+    color: var(--text-primary);
+}
+
+/* 関連カード */
+.info-cards-section {
+    margin-top: 1.5rem;
+}
+
+.info-cards-title {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+}
+
+.info-card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.info-card-chip {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 16px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    cursor: default;
+    transition: all 0.3s;
+}
+
+.info-card-chip:hover {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: var(--accent-gold);
+}
+
+/* パス情報 */
+.info-path-header {
+    margin-bottom: 0.5rem;
+}
+
+.info-path-number {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+}
+
+.info-path-card-name {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.05em;
+}
+
+.info-hebrew-large {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    opacity: 0.5;
+    text-align: center;
+    margin: 0.5rem 0;
+    line-height: 1;
+}
+
+/* --- フッター --- */
+.tree-footer {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    margin-top: 3rem;
+}
+
+.footer-back-link {
+    display: inline-block;
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s;
+}
+
+.footer-back-link:hover {
+    opacity: 0.7;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.footer-rights {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.4;
+    margin-top: 0.5rem;
+}
+
+/* ====================================================
+   カード図鑑（Dictionary Modal）
+   ==================================================== */
+.dictionary-modal-content {
+    width: 95%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.dictionary-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .dictionary-layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .dictionary-image-section {
+        flex: 0 0 320px;
+        position: sticky;
+        top: 0;
+    }
+}
+
+/* 画像セクション */
+.dictionary-image-section .tarot-img-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    /* overflow: hidden はハイライト枠がクリップされるので削除 */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    display: block;
+    line-height: 0; /* 画像下の謎の余白を除去 */
+}
+
+.dictionary-image-section .tarot-card-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* シンボルハイライト枠 ── 確実に画像の上に重ねる */
+#dictionary-img-wrapper {
+    position: relative; /* 明示的に再宣言 */
+    display: inline-block;
+    width: 100%;
+}
+
+#dictionary-highlight-box {
+    position: absolute;
+    border: 3px solid #D4AF37;
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.8), inset 0 0 12px rgba(212, 175, 55, 0.2);
+    border-radius: 6px;
+    background-color: rgba(212, 175, 55, 0.12);
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease, top 0.25s ease, left 0.25s ease, width 0.25s ease, height 0.25s ease;
+}
+
+#dictionary-highlight-box.active {
+    opacity: 1;
+}
+
+/* 情報セクション */
+.dictionary-info-section {
+    flex: 1;
+}
+
+.dictionary-card-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.05em;
+}
+
+.dictionary-card-meta {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding-bottom: 1rem;
+}
+
+/* セクションタイトル */
+.dictionary-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.1em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* キーワード */
+.dictionary-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.dictionary-keyword-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+/* エソテリック・グリッド */
+.esoteric-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.8rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-gold);
+}
+
+.eso-label {
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.eso-value {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* シンボル解説 */
+.dictionary-symbol-desc {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-height: 80px;
+}

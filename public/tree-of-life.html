@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命の樹｜Tree of Life ── トート・タロット</title>
+    <meta name="description" content="トート・タロットの背骨となるカバラの生命の樹。10のセフィラと22のパスを探索し、78枚のカードとの対応を視覚的に学ぶ。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Noto+Sans+JP:wght@100;300;400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/styles.css?v=27">
+    <link rel="stylesheet" href="src/css/tree-of-life.css?v=4">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+</head>
+<body>
+    <div class="app-container">
+        <!-- ヘッダー -->
+        <header class="tree-header">
+            <a href="index.html" class="back-link">← リーディングに戻る</a>
+            <h1 class="tree-page-title">Tree of Life</h1>
+            <p class="tree-page-subtitle">生命の樹｜セフィロトの探索</p>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <main class="tree-main">
+            <!-- SVG 生命の樹 -->
+            <div class="tree-container" id="tree-container">
+                <svg id="tree-svg" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <clipPath id="fol-clip">
+                            <rect x="0" y="0" width="500" height="700"/>
+                        </clipPath>
+                    </defs>
+                    <!-- 星空（スターフィールド） -->
+                    <g id="stars-layer"></g>
+                    <!-- フラワー・オブ・ライフ（背景） -->
+                    <g id="fol-wrapper" clip-path="url(#fol-clip)">
+                        <g id="fol-layer"></g>
+                    </g>
+                    <!-- パス（線）parallaxラッパー付き -->
+                    <g id="paths-wrapper">
+                        <g id="paths-layer"></g>
+                    </g>
+                    <!-- 深淵ライン -->
+                    <g id="abyss-layer"></g>
+                    <!-- セフィラ（球） -->
+                    <g id="sephiroth-layer"></g>
+                </svg>
+            </div>
+
+            <!-- 情報パネル -->
+            <aside class="tree-info-panel" id="info-panel">
+                <div class="info-panel-inner">
+                    <div id="info-placeholder" class="info-placeholder">
+                        <p class="info-hint">セフィラまたはパスに触れてください</p>
+                    </div>
+                    <div id="info-content" class="info-content hidden-section">
+                        <!-- JSで動的に注入 -->
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- フッター -->
+        <footer class="tree-footer">
+            <a href="index.html" class="footer-back-link">← トート・タロット リーディングに戻る</a>
+            <p class="footer-copyright">&copy; 2026 Thoth Tarot Reading App. Created with Gemini.</p>
+            <p class="footer-rights">The images of the Thoth Tarot cards used on this site are © O.T.O. / AGM-Urania.</p>
+        </footer>
+    </div>
+
+    <!-- カード図鑑（Dictionary Modal） -->
+    <div id="dictionary-modal" class="modal-overlay">
+        <div class="dictionary-modal-content glass-card">
+            <button id="close-dictionary-btn" class="close-btn">&times;</button>
+            <div class="dictionary-layout">
+                <!-- 左側：カード画像とシンボル枠 -->
+                <div class="dictionary-image-section">
+                    <div class="tarot-img-wrapper" id="dictionary-img-wrapper">
+                        <img src="" alt="Card" class="tarot-card-img" id="dictionary-card-img" />
+                        <div class="symbol-highlight-box" id="dictionary-highlight-box"></div>
+                    </div>
+                </div>
+                <!-- 右側：カード情報 -->
+                <div class="dictionary-info-section">
+                    <h2 class="dictionary-card-title" id="dictionary-card-name">カード名</h2>
+                    <p class="dictionary-card-meta" id="dictionary-card-meta">エレメント / 属性</p>
+                    
+                    <div class="dictionary-keywords" id="dictionary-keywords">
+                        <!-- キーワードチップがJSで入る -->
+                    </div>
+
+                    <div class="dictionary-esoteric">
+                        <h4 class="dictionary-section-title">ESOTERIC ── 神秘的対応</h4>
+                        <div class="esoteric-grid" id="dictionary-esoteric-grid">
+                            <!-- カバラ、占星術などのデータが入る -->
+                        </div>
+                    </div>
+
+                    <div class="dictionary-symbols" id="dictionary-symbols-container">
+                        <h4 class="dictionary-section-title">SYMBOLS ── 象徴図解</h4>
+                        <p class="helper-text" style="text-align:left; font-size: 0.8rem; margin-top: -5px; margin-bottom: 10px;">シンボル名に触れると、図解の位置が光ります。</p>
+                        <div class="symbol-tags-container" id="dictionary-symbol-tags">
+                            <!-- シンボルチップがJSで入る -->
+                        </div>
+                        <p id="dictionary-symbol-desc" class="dictionary-symbol-desc hidden-section"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- データ & ロジック -->
+    <script src="src/js/cards.js?v=33"></script>
+    <script src="src/js/tree-of-life.js?v=4"></script>
+    <script src="src/js/tree-of-life-ui.js?v=6"></script>
+</body>
+</html>

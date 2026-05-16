@@ -10,7 +10,7 @@ const I18N = {
         "auth.premium": "Premium Access 🗝️",
         "premium.title": "Premium Access 🗝️",
         "premium.auth_desc": "ログインして履歴機能を解放する",
-        "premium.license_desc": "Gumroadライセンスキーで深淵（3枚引き・ディープ解釈）の扉を開く",
+        "premium.license_desc": "Gumroadライセンスキーで深淵｜3枚引き・ディープ解釈の扉を開く",
         "premium.license_placeholder": "License Key (ex: XXXXXX-XXXXXX-XXXXXX)",
         "premium.verify_btn": "キーを認証する",
         "history.btn": "履歴",
@@ -18,21 +18,22 @@ const I18N = {
         "history.empty": "まだ履歴がありません。カードを引いて星の導きを記録しましょう。",
         "input.heading": "あなたが今、心に抱えているものは何ですか？",
         "input.helper": "迷いや不安、あるいは叶えたい願い。どんな小さなことでも構いません。ハルがここで、あなたの心の声を静かに聴きます。",
-        "input.name_label": "お名前（ニックネーム等）",
+        "input.name_label": "お名前｜ニックネーム等",
         "input.name_placeholder": "あなたのお名前",
-        "input.birthdate_label": "生年月日（任意）",
+        "input.birthdate_label": "生年月日｜任意",
+        "input.context_label": "相談内容｜任意",
         "input.context_placeholder": "現在の直面している課題や、占いたいテーマをご自由にご記入ください。",
-        "input.spread_one": "ワンオラクル（1枚引き）",
-        "input.spread_three": "スリーカード（経緯・現状・可能性）",
+        "input.spread_one": "ワンオラクル｜1枚引き",
+        "input.spread_three": "スリーカード｜経緯・現状・可能性",
         "input.draw_btn": "カードを引く",
         "loading.default": "宇宙の叡智と繋がり中...",
         "loading.msgs": ["すべての男と女は星である...", "汝の欲する事を為せ、それが法の全てとなろう...", "愛は法なり、意志の下の愛こそが..."],
         "thelema.title": "トート・タロット「テレマ」の思想",
         "thelema.subtitle": "",
         "result.your_theme": "あなたのテーマ:",
-        "result.no_theme": "（特になし）",
+        "result.no_theme": "特になし",
         "result.reading_title": "ハルからのリーディング",
-        "result.symbols_title": "象徴（シンボル）の学び",
+        "result.symbols_title": "象徴｜シンボルの学び",
         "result.symbols_helper": "気になるキーワードに触れてみてください。",
         "result.symbols_pending": "※ このカードの象徴図鑑は現在準備中です。今後のアップデートをお待ちください。",
         "result.btn_save_img": "結果を画像で保存",
@@ -42,11 +43,11 @@ const I18N = {
         "result.btn_restart": "もう一度対話する",
         "result.error": "申し訳ありません。星の導きがうまく読み取れませんでした。もう一度お試しください。",
         "result.user_label": "【{name}さんのテーマ】",
-        "result.no_context": "（星の導きのままに）",
+        "result.no_context": "星の導きのままに",
         "result.arcana_major": "大アルカナ",
         "result.arcana_minor": "小アルカナ",
         "result.positions": ["経緯", "現状", "可能性"],
-        "result.copy_success": "リーディング結果の文章（テキスト）をコピーしました！\nメモ帳やLINEなどに「貼り付け（ペースト）」して保存してください✨",
+        "result.copy_success": "リーディング結果のテキストをコピーしました！\nメモ帳やLINEなどに貼り付け｜ペーストして保存してください✨",
         "result.copy_fail": "コピーに失敗しました。お使いのブラウザでは手動でテキストを選択してコピーしてください。",
         "result.ig_success": "【Instagram投稿の準備完了！】\n画像をダウンロードし、ハッシュタグ付きのテキストをコピーしました。\nInstagramアプリを開いて、画像を貼り付けて投稿してください📸✨",
         "result.ig_fail": "画像の保存に失敗しました。",
@@ -58,7 +59,7 @@ const I18N = {
         "modal.iching": "易経 (I Ching)",
         "modal.hebrew": "ヘブライ文字",
         "modal.unknown": "不明",
-        "modal.esoteric_pending": "※ このカードの深淵なる象徴データ（カバラ・占星術・錬金術・易経）は現在研究・編集中です。",
+        "modal.esoteric_pending": "※ このカードの深淵なる象徴データ｜カバラ・占星術・錬金術・易経は現在研究・編集中です。",
         "chat.thinking": "思考中...",
         "chat.send": "送信",
         "chat.placeholder": "ハルに質問する...",
@@ -69,26 +70,26 @@ const I18N = {
         "image.taking": "📸 画像を撮影中...",
         "share.x_text": "神秘の導きでトート・タロットを引きました。\n私のテーマ: {theme}\n引いたカード: {cards}\n\n",
         "share.x_tags": "トートタロット,アレイスタークロウリー,真の意志",
-        "kofi.title": "猫たちをサポートする",
-        "kofi.text": "このリーディングは無料です。これからもずっと。<br>ハルの導きが心に触れたなら、猫たちへの小さな「おやつ」を贈って下さい。",
-        "kofi.btn": "🐾 猫たちにおやつを贈る",
-        "kofi.sub": "すべての星は、小さな愛の光すらあれば更に輝く。✨",
+        "kofi.title": "猫へ、小さなおやつを贈る",
+        "kofi.text": "このリーディングは無料です。これからもずっと。<br>もしハルの導きが少しでもお役に立てたなら、共に過ごす猫へおやつを贈っていただけると嬉しいです。",
+        "kofi.btn": "猫におやつを贈る",
+        "kofi.sub": "",
         "header.subtitle": "あなたを導く内なる知恵との対話",
         "report.notice": "<strong>【スリーカード詳細鑑定のご案内】</strong><br>多層的に深く読み解く鑑定書[PDF]も作成しております。<br>お問い合わせ： cinnamoncloveand@gmail.com",
-        "thelema.intro": "トート・タロットは、単なる吉凶を占う道具ではありません。<br>20世紀最大の魔術師アレイスター・クロウリーが提唱した<strong>「テレマ（Thelema）」</strong>という哲学を形にした、自己発見のための「地図」であり「鏡」です。",
+        "thelema.intro": "トート・タロットは、単なる吉凶を占う道具ではありません。<br>20世紀最大の魔術師アレイスター・クロウリーが提唱した<strong>テレマ｜Thelema</strong> という哲学を形にした、自己発見のための地図であり鏡です。",
         "thelema.meaning": "テレマとは、ギリシャ語で<strong>「意志」</strong>を意味します。",
         "thelema.pillar1.title": "「汝の欲する事を為せ」",
         "thelema.pillar1.subtitle": "── 真の意志の探求",
-        "thelema.pillar1.text": "これは「好き勝手に生きる」という意味ではありません。<br>私たちは一人ひとりが、宇宙において固有の軌道を持つ<strong>「星」</strong>のような存在です。自分自身の魂の底にある、本当の目的や役割を<strong>「真の意志（True Will）」</strong>と呼びます。<br><br>エゴや社会の常識に惑わされず、この「真の意志」を見つけ出し、その道を真っ直ぐに進むことこそが、人生の究極の目的であるとテレマは説いています。",
+        "thelema.pillar1.text": "これは好き勝手に生きるという意味ではありません。<br>私たちは一人ひとりが、宇宙において固有の軌道を持つ<strong>星</strong>のような存在です。自分自身の魂の底にある、本当の目的や役割を<strong>真の意志｜True Will</strong>と呼びます。<br><br>エゴや社会の常識に惑わされず、この真の意志を見つけ出し、その道を真っ直ぐに進むことこそが、人生の究極の目的であるとテレマは説いています。",
         "thelema.pillar2.title": "「意志の下の愛」",
         "thelema.pillar2.subtitle": "── 創造のエネルギー",
         "thelema.pillar2.text": "宇宙を動かす最大のエネルギーは「愛」です。<br>しかし、それはただの盲目的な感情ではなく、自らの「意志」によって正しく方向づけられたものであるべきだと考えます。<br><br>自分を律し、目的を持って愛の力を使うことで、私たちは自分自身の世界を創造していくことができるのです。",
         "thelema.pillar3.title": "ホルスのアイオーン",
         "thelema.pillar3.subtitle": "── 自立と輝きの時代",
-        "thelema.pillar3.text": "テレマは、人類が新しい時代（ホルスのアイオーン）に入ったことを告げています。<br>それは、何かに依存したり、自分を犠牲にしたりする「古い道徳」から脱却し、誰もが<strong>「自立した個」</strong>として、太陽のように自ら光り輝く時代です。<br><br>トート・タロットはこの「新しい時代」のエネルギーを象徴しており、私たちが自らの足で歩むための知恵を授けてくれます。",
+        "thelema.pillar3.text": "テレマは、人類が新しい時代、ホルスのアイオーンに入ったことを告げています。<br>それは、何かに依存したり、自分を犠牲にしたりする古い道徳から脱却し、誰もが<strong>自立した個</strong>として、太陽のように自ら光り輝く時代です。<br><br>トート・タロットはこの新しい時代のエネルギーを象徴しており、私たちが自らの足で歩むための知恵を授けてくれます。",
         "thelema.pillar4.title": "「運命の奴隷」にならないための道具",
         "thelema.pillar4.subtitle": "── タロットの真の役割",
-        "thelema.pillar4.text": "テレマにおいて、未来は固定されたものではありません。<br>タロットが映し出すのは、現在のあなたのエネルギーと、そこから予測される「軌道」です。<br><br>もし望まない結果が出たとしても、自らの「意志」によって行動を変えれば、未来の軌道は書き換えることができます。タロットは、あなたが<strong>「自分自身の人生の主（あるじ）」</strong>であることを思い出すためのガイドブックなのです。",
+        "thelema.pillar4.text": "テレマにおいて、未来は固定されたものではありません。<br>タロットが映し出すのは、現在のあなたのエネルギーと、そこから予測される軌道です。<br><br>もし望まない結果が出たとしても、自らの意志によって行動を変えれば、未来の軌道は書き換えることができます。タロットは、あなたが<strong>自分自身の人生の主</strong>であることを思い出すためのガイドブックなのです。",
         "thelema.empowerment_quote": "Every man and every woman is a star.",
         "thelema.empowerment_quote_jp": "「すべての男と女は星である」",
         "thelema.empowerment_text": "あなたは唯一無二の輝きを持つ存在です。<br>このタロットが、あなたの「真の意志」を照らす鏡となりますように。",
@@ -112,6 +113,7 @@ const I18N = {
         "input.name_label": "Your Name (or a nickname)",
         "input.name_placeholder": "Your name",
         "input.birthdate_label": "Date of Birth (optional)",
+        "input.context_label": "Consultation Content｜Optional",
         "input.context_placeholder": "Please feel free to write about the challenges you are currently facing or the theme you wish to explore.",
         "input.spread_one": "One Oracle (1 card)",
         "input.spread_three": "Three Cards (Past · Present · Potential)",
@@ -160,10 +162,10 @@ const I18N = {
         "image.taking": "📸 Capturing your reading...",
         "share.x_text": "I drew a Thoth Tarot card with guidance from Haru.\nMy theme: {theme}\nCard drawn: {cards}\n\n",
         "share.x_tags": "ThothTarot,AleisterCrowley,TrueWill",
-        "kofi.title": "Support the Cats",
-        "kofi.text": "This reading is free, and always will be.<br>If Haru's guidance has touched your heart, a small treat for our cats would mean the world to us.",
-        "kofi.btn": "🐾 Buy the Cats a Treat on Ko-fi",
-        "kofi.sub": "Every star shines brighter with a little love. ✨",
+        "kofi.title": "Treats for Cats",
+        "kofi.text": "This reading is free, and always will be.<br>If Haru's guidance has helped you even a little, we would be delighted if you could give a treat to the cats you spend your time with.",
+        "kofi.btn": "Buy the Cats a Treat",
+        "kofi.sub": "",
         "header.subtitle": "Conversation with your inner wisdom",
         "report.notice": "<strong>[Three-Card Deep Reading Available]</strong><br>We also offer comprehensive PDF reports with multi-layered symbolic analysis.<br>Inquiries: cinnamoncloveand@gmail.com",
         "thelema.intro": "Thoth Tarot is not merely a tool for telling fortunes.<br>It is a 'map' and a 'mirror' for self-discovery, embodying the philosophy of <strong>'Thelema'</strong> proposed by Aleister Crowley, the greatest magus of the 20th century.",
@@ -451,6 +453,18 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let positionHtml = spreadType === 'three_card' ? `<h3 class="card-position-title">${Array.isArray(positions) ? positions[index] : ''}</h3>` : '';
 
+            let esotericHtml = '';
+            if (card.esoteric) {
+                esotericHtml = `
+                    <div class="esoteric-panel">
+                        <div class="eso-row"><span class="eso-label">${t('modal.kabbalah')}</span> <span class="eso-val">${card.esoteric.kabbalah || '-'}</span></div>
+                        <div class="eso-row"><span class="eso-label">${t('modal.astrology')}</span> <span class="eso-val">${card.esoteric.astrology || '-'}</span></div>
+                        <div class="eso-row"><span class="eso-label">${t('modal.alchemy')}</span> <span class="eso-val">${card.esoteric.alchemy || '-'}</span></div>
+                        <div class="eso-row"><span class="eso-label">${t('modal.iching')}</span> <span class="eso-val">${card.esoteric.iching || '-'}</span></div>
+                    </div>
+                `;
+            }
+
             cardsHtml += `
                 <div class="card-image-container">
                     ${positionHtml}
@@ -458,10 +472,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${card.image}?v=remaster" alt="${card.name}" class="tarot-card-img" id="img-${card.id}" />
                         <div class="symbol-highlight-box" id="highlight-${card.id}"></div>
                     </div>
+                    <div class="card-copyright">© O.T.O. / AGM-Urania</div>
                     <div class="card-info">
-                        <h2>${card.name}</h2>
+                        <h2>${reformatCardName(card.name, true)}</h2>
                         <p class="card-meta">${arcanaText} | 対応: ${card.element}</p>
                     </div>
+                    ${esotericHtml}
                 </div>
             `;
         });
@@ -474,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hasSymbols = true;
                 allSymbolsHtml += card.symbols.map(sym => {
                     const rectStr = sym.rect ? JSON.stringify(sym.rect) : '';
-                    return `<div class="symbol-tag" data-symbol="${sym.name}" data-desc="${sym.desc}" data-card="${card.name}" data-card-id="${card.id}" data-rect='${rectStr}'>${sym.name}</div>`;
+                    return `<div class="symbol-tag" data-symbol="${sym.name}" data-desc="${sym.desc}" data-card="${reformatCardName(card.name)}" data-card-id="${card.id}" data-rect='${rectStr}'>${sym.name}</div>`;
                 }).join('');
             }
         });
@@ -488,6 +504,8 @@ document.addEventListener('DOMContentLoaded', () => {
             personalizedReading = personalizedReading.replace(/あなた/g, window.tempUserName + 'さん');
             personalizedReading = personalizedReading.replace(/さんさん/g, 'さん');
         }
+
+        const drawnCardIds = cards.map(c => c.id).join(',');
 
         const resultHtml = `
             <div class="result-card ${spreadType === 'three_card' ? 'three-card-result' : ''}">
@@ -506,15 +524,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>${personalizedReading}</p>
                     </div>
                     
+                    ${hasSymbols ? `
                     <div class="interactive-symbols">
                         <h3>${t('result.symbols_title')}</h3>
-                        ${hasSymbols ? `<p class="helper-text">${t('result.symbols_helper')}</p>` : ''}
+                        <p class="helper-text">${t('result.symbols_helper')}</p>
                         <div class="symbol-tags-container">
                             ${allSymbolsHtml}
                         </div>
                     </div>
+                    ` : ''}
 
                     <div class="result-actions">
+                        <a href="tree-of-life.html?cards=${drawnCardIds}" target="_blank" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; width:100%; margin-bottom:15px; background:rgba(212,175,55,0.15); border:1px solid var(--accent-gold); box-shadow: 0 0 15px rgba(212,175,55,0.2);">生命の樹で展開する</a>
                         <button id="save-image-btn" class="mystic-btn action-btn">${t('result.btn_save_img')}</button>
                         <button id="save-text-btn" class="mystic-btn action-btn">${t('result.btn_save_txt')}</button>
                         <button id="share-x-btn" class="mystic-btn action-btn x-share-btn">${t('result.btn_share_x')}</button>
@@ -781,7 +802,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById('save-text-btn').addEventListener('click', async () => {
-            let cardNames = cards.map(c => c.name).join(', ');
+            let cardNames = cards.map(c => reformatCardName(c.name)).join(', ');
             let text = `${t('image.title')}\n\n`;
             text += `${t('result.your_theme')} ${context || t('result.no_theme')}\n`;
             text += `Card: ${cardNames}\n\n`;
@@ -798,7 +819,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById('share-x-btn').addEventListener('click', () => {
-            const text = encodeURIComponent(t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>c.name).join(', ')}));
+            const text = encodeURIComponent(t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>reformatCardName(c.name)).join(', ')}));
             const hashtags = t('share.x_tags');
             const url = `https://twitter.com/intent/tweet?text=${text}&hashtags=${hashtags}`;
             window.open(url, '_blank');
@@ -807,7 +828,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('share-ig-btn').addEventListener('click', async () => {
             // Instagram doesnt have a web share intent for images.
             // We download the image and copy text to clipboard.
-            const textToCopy = t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>c.name).join(', ')}) + `#${t('share.x_tags').split(',').join(' #')}`;
+            const textToCopy = t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>reformatCardName(c.name)).join(', ')}) + `#${t('share.x_tags').split(',').join(' #')}`;
             
             const imageSuccess = await generateAndDownloadImage(`thoth-reading-ig-${new Date().getTime()}.png`);
             
@@ -912,4 +933,17 @@ function initParticles() {
             "retina_detect": true
         });
     }
+}
+
+/** カード名のフォーマット変換: "名前 (Subname)" -> "Subname｜名前" */
+function reformatCardName(fullName, isHtml = false) {
+    if (!fullName) return '';
+    const match = fullName.match(/^(.+)\s\((.+)\)$/);
+    if (match) {
+        if (isHtml) {
+            return `${match[2].toUpperCase()} <span class="card-name-sep">｜</span> <span class="card-name-jp">${match[1]}</span>`;
+        }
+        return `${match[2].toUpperCase()}｜${match[1]}`;
+    }
+    return fullName;
 }

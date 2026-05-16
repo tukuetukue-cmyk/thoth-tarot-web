@@ -14,7 +14,7 @@
     --deep-gold: #b8860b;
 
     /* Typography */
-    --font-heading: 'Cinzel', serif;
+    --font-heading: 'Julius Sans One', sans-serif;
     --font-body: 'Noto Serif JP', serif;
 }
 
@@ -156,6 +156,7 @@ body {
     font-size: 2.5rem;
     color: var(--accent-gold);
     letter-spacing: 0.1em;
+    text-transform: uppercase;
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
@@ -187,8 +188,10 @@ body {
 .input-card h2 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
+    font-weight: 300; /* Thinner weight for a more delicate look */
     color: var(--accent-gold);
     text-align: center;
+    letter-spacing: 0.05em;
 }
 
 .helper-text {
@@ -197,25 +200,73 @@ body {
     color: var(--text-secondary);
 }
 
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    display: block;
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+input[type="text"],
+input[type="date"],
 textarea {
     width: 100%;
-    min-height: 140px;
-    background: rgba(20, 20, 30, 0.5); /* Slightly lighter background */
-    border: 1px solid rgba(212, 175, 55, 0.4); /* Faint gold border instead of dark glass */
+    background: rgba(20, 20, 30, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 1rem;
-    resize: vertical;
     transition: all 0.3s ease;
+    color-scheme: dark; /* Force dark mode for date picker icons */
 }
 
+/* Ensure date input text is always the same color as text input */
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+    color: var(--text-primary);
+}
+
+/* Placeholder-like color for unentered state if browser supports it */
+input[type="date"]:invalid {
+    color: var(--text-primary);
+}
+
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
 textarea:focus {
     outline: none;
     border-color: var(--accent-gold);
     background: rgba(30, 30, 40, 0.7);
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.user-details-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .user-details-inputs {
+        grid-template-columns: 1fr;
+    }
 }
 
 .reading-type-selector {
@@ -432,6 +483,17 @@ footer {
     opacity: 1;
 }
 
+.card-copyright {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+    width: 100%;
+}
+
 .card-info {
     text-align: center;
 }
@@ -439,8 +501,45 @@ footer {
 .card-info h2 {
     color: var(--accent-gold);
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 2.2rem; /* Increased slightly for English dominance */
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-name-jp {
+    font-weight: 400; /* Normal weight instead of Light */
+    font-size: 0.95em; /* Slightly larger */
+    opacity: 0.9; /* Slightly more opaque for better legibility */
+    letter-spacing: 0.05em;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.card-name-sep {
+    font-weight: 100;
+    opacity: 0.3;
+    margin: 0 0.8rem;
+    font-size: 0.9em;
+}
+
+.kofi-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem; /* Smaller size */
+    font-weight: 300; /* Thinner weight */
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+.kofi-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--text-primary);
 }
 
 .card-meta {
@@ -1544,3 +1643,97 @@ footer {
     border-top: 1px dashed rgba(212, 175, 55, 0.3);
     padding-top: 20px;
 }
+
+/* Esoteric Panel (In-card) */
+.esoteric-panel {
+    background: rgba(10, 10, 15, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.eso-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.4rem 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+}
+
+.eso-row:last-child {
+    border-bottom: none;
+}
+
+.eso-label {
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    min-width: 80px;
+    margin-right: 10px;
+    opacity: 0.9;
+}
+
+.eso-val {
+    color: var(--text-primary);
+    text-align: right;
+    word-break: break-word;
+    opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+    .eso-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .eso-val {
+        text-align: left;
+        margin-top: 0.2rem;
+    }
+}
+
+/* Unicursal Hexagram Styling */
+.unicursal-hexagram {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+    animation: mystic-glow 4s ease-in-out infinite;
+}
+
+.hex-path {
+    fill: none;
+    stroke: var(--accent-gold);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.hex-rose {
+    fill: var(--accent-gold);
+    opacity: 0.8;
+}
+
+@keyframes mystic-glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.4));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.9));
+        transform: scale(1.05);
+    }
+}
+
+.thelema-star {
+    margin-bottom: 1.5rem;
+}
+
+.empowerment-stars {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+

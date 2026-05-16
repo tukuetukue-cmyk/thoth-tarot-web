@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 6. Auth State Observer
-    auth.onAuthStateChange(async (user) => {
+    auth.onAuthStateChanged(async (user) => {
         if (user) {
             window.currentUser = user;
             

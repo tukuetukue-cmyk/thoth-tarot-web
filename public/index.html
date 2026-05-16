@@ -8,7 +8,7 @@
     <!-- Google Fonts for typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Noto+Sans+JP:wght@100;300;400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/styles.css?v=27">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
@@ -54,27 +54,27 @@
                     
                     <div class="user-details-inputs">
                         <div class="input-group">
-                            <label for="user-name" data-i18n="input.name_label">お名前（ニックネーム等）</label>
+                            <label for="user-name" data-i18n="input.name_label">お名前｜ニックネーム等</label>
                             <input type="text" id="user-name" data-i18n-placeholder="input.name_placeholder" placeholder="あなたのお名前">
                         </div>
                         <div class="input-group">
-                            <label for="user-birthdate" data-i18n="input.birthdate_label">生年月日（任意）</label>
+                            <label for="user-birthdate" data-i18n="input.birthdate_label">生年月日｜任意</label>
                             <input type="date" id="user-birthdate">
                         </div>
                     </div>
                     <div class="input-group" style="margin-top: 1.5rem;">
-                        <label for="user-context" style="display: block; margin-bottom: 0.5rem; color: var(--accent-gold); font-family: var(--font-heading);">相談内容（任意）</label>
+                        <label for="user-context" data-i18n="input.context_label">相談内容｜任意</label>
                         <textarea id="user-context" data-i18n-placeholder="input.context_placeholder" placeholder="例：最近、デイトレードでうまくいっていません。手法をどう改善すればいいかヒントが欲しいです。"></textarea>
                     </div>
                     
                     <div class="reading-type-selector" style="display: none;">
                         <label class="spread-option">
                             <input type="radio" name="reading-type" value="one_oracle" checked>
-                            <span class="spread-label-text" data-i18n="input.spread_one">ワンオラクル（1枚引き）</span>
+                            <span class="spread-label-text" data-i18n="input.spread_one">ワンオラクル｜1枚引き</span>
                         </label>
                         <label class="spread-option maintenance-hidden">
                             <input type="radio" name="reading-type" value="three_card">
-                            <span class="spread-label-text" data-i18n="input.spread_three">スリーカード（経緯・現状・可能性）</span>
+                            <span class="spread-label-text" data-i18n="input.spread_three">スリーカード｜経緯・現状・可能性</span>
                         </label>
                     </div>
 
@@ -106,25 +106,31 @@
         <!-- Ko-fi Support Section (Relocated above Philosophy) -->
         <section class="kofi-section" id="kofi-area" style="margin: 4rem auto; max-width: 800px; background: rgba(0,0,0,0.2); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(212,175,55,0.2);">
             <div class="kofi-inner">
-                <div class="kofi-cats" style="margin-bottom: 1.5rem;">
-                    <span class="kofi-cat-icon" aria-hidden="true">🐾</span>
-                    <span class="kofi-cat-icon" aria-hidden="true">🐾</span>
-                    <span class="kofi-cat-icon" aria-hidden="true">🐾</span>
-                </div>
-                <h2 class="kofi-title" data-i18n="kofi.title" style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent-gold);">猫たちをサポートする</h2>
-                <p class="kofi-text" data-i18n="kofi.text" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">このリーディングは無料です。これからもずっと。<br>ハルの導きが心に触れたなら、猫たちへの小さな「おやつ」を贈って下さい。</p>
+                <!-- Decorative icons removed per user request -->
+                <h2 class="kofi-title" data-i18n="kofi.title">猫へ、小さなおやつを贈る</h2>
+                <p class="kofi-text" data-i18n="kofi.text">このリーディングは無料です。これからもずっと。<br>ハルの導きが心に触れたなら、猫たちへの小さなおやつを贈って下さい。</p>
                 <a href="https://ko-fi.com/cinnamonclove" target="_blank" rel="noopener noreferrer" class="kofi-btn" id="kofi-link" style="background: rgba(212,175,55,0.1); border: 1px solid var(--accent-gold);">
-                    <span class="kofi-btn-icon">☕</span>
-                    <span data-i18n="kofi.btn">🐾 猫たちにおやつを贈る</span>
+                    <span data-i18n="kofi.btn">猫におやつを贈る</span>
                 </a>
-                <p class="kofi-sub" data-i18n="kofi.sub" style="margin-top: 1.5rem; opacity: 0.7;">すべての星は、小さな愛の光すらあれば更に輝く。✨</p>
             </div>
         </section>
 
         <!-- Thelema Philosophy Section -->
         <section class="thelema-section" id="thelema-section">
             <div class="thelema-header">
-                <div class="thelema-star">✦</div>
+                <div class="thelema-star">
+                    <svg class="unicursal-hexagram" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+                        <path class="hex-path" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <path class="hex-path" transform="rotate(180,100,110)" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <g class="hex-rose">
+                            <path id="rose-petal" d="m100,110c0,0 15,-19 0,-19c-15,0 0,19 0,19"/>
+                            <use transform="rotate(72,100,110)" href="#rose-petal"/>
+                            <use transform="rotate(-72,100,110)" href="#rose-petal"/>
+                            <use transform="rotate(144,100,110)" href="#rose-petal"/>
+                            <use transform="rotate(216,100,110)" href="#rose-petal"/>
+                        </g>
+                    </svg>
+                </div>
                 <h2 class="thelema-title" data-i18n="thelema.title">トート・タロット「テレマ」の思想</h2>
                 <p class="thelema-subtitle" data-i18n="thelema.subtitle"></p>
             </div>
@@ -132,7 +138,7 @@
             <div class="thelema-intro">
                 <p data-i18n="thelema.intro">
                     トート・タロットは、単なる吉凶を占う道具ではありません。<br>
-                    20世紀最大の魔術師アレイスター・クロウリーが提唱した<strong>「テレマ（Thelema）」</strong>という哲学を形にした、自己発見のための「地図」であり「鏡」です。
+                    20世紀最大の魔術師アレイスター・クロウリーが提唱した<strong>テレマ｜Thelema</strong> という哲学を形にした、自己発見のための地図であり鏡です。
                 </p>
                 <p class="thelema-meaning" data-i18n="thelema.meaning">
                     テレマとは、ギリシャ語で<strong>「意志」</strong>を意味します。
@@ -150,8 +156,8 @@
                     </blockquote>
                     <p class="pillar-text" data-i18n="thelema.pillar1.text">
                         これは「好き勝手に生きる」という意味ではありません。<br>
-                        私たちは一人ひとりが、宇宙において固有の軌道を持つ<strong>「星」</strong>のような存在です。自分自身の魂の底にある、本当の目的や役割を<strong>「真の意志（True Will）」</strong>と呼びます。<br><br>
-                        エゴや社会の常識に惑わされず、この「真の意志」を見つけ出し、その道を真っ直ぐに進むことこそが、人生の究極の目的であるとテレマは説いています。
+                        私たちは一人ひとりが、宇宙において固有の軌道を持つ<strong>星</strong>のような存在です。自分自身の魂の底にある、本当の目的や役割を<strong>真の意志｜True Will</strong>と呼びます。<br><br>
+                        エゴや社会の常識に惑わされず、この真の意志を見つけ出し、その道を真っ直ぐに進むことこそが、人生の究極の目的であるとテレマは説いています。
                     </p>
                 </div>
 
@@ -176,9 +182,9 @@
                     <h3 class="pillar-title" data-i18n="thelema.pillar3.title">ホルスのアイオーン</h3>
                     <p class="pillar-subtitle" data-i18n="thelema.pillar3.subtitle">── 自立と輝きの時代</p>
                     <p class="pillar-text" data-i18n="thelema.pillar3.text">
-                        テレマは、人類が新しい時代（ホルスのアイオーン）に入ったことを告げています。<br>
-                        それは、何かに依存したり、自分を犠牲にしたりする「古い道徳」から脱却し、誰もが<strong>「自立した個」</strong>として、太陽のように自ら光り輝く時代です。<br><br>
-                        トート・タロットはこの「新しい時代」のエネルギーを象徴しており、私たちが自らの足で歩むための知恵を授けてくれます。
+                        テレマは、人類が新しい時代、ホルスのアイオーンに入ったことを告げています。<br>
+                        それは、何かに依存したり、自分を犠牲にしたりする古い道徳から脱却し、誰もが<strong>自立した個</strong>として、太陽のように自ら光り輝く時代です。<br><br>
+                        トート・タロットはこの新しい時代のエネルギーを象徴しており、私たちが自らの足で歩むための知恵を授けてくれます。
                     </p>
                 </div>
 
@@ -188,16 +194,26 @@
                     <h3 class="pillar-title" data-i18n="thelema.pillar4.title">「運命の奴隷」にならないための道具</h3>
                     <p class="pillar-subtitle" data-i18n="thelema.pillar4.subtitle">── タロットの真の役割</p>
                     <p class="pillar-text" data-i18n="thelema.pillar4.text">
-                        テレマにおいて、未来は固定されたものではありません。<br>
-                        タロットが映し出すのは、現在のあなたのエネルギーと、そこから予測される「軌道」です。<br><br>
-                        もし望まない結果が出たとしても、自らの「意志」によって行動を変えれば、未来の軌道は書き換えることができます。タロットは、あなたが<strong>「自分自身の人生の主（あるじ）」</strong>であることを思い出すためのガイドブックなのです。
+                        もし望まない結果が出たとしても、自らの意志によって行動を変えれば、未来の軌道は書き換えることができます。タロットは、あなたが<strong>自分自身の人生の主</strong>であることを思い出すためのガイドブックなのです。
                     </p>
                 </div>
             </div>
 
             <!-- Empowerment Quote -->
             <div class="thelema-empowerment">
-                <div class="empowerment-stars">★ ★ ★</div>
+                <div class="empowerment-stars">
+                    <svg class="unicursal-hexagram" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+                        <path class="hex-path" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <path class="hex-path" transform="rotate(180,100,110)" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <g class="hex-rose">
+                            <path id="rose-petal-2" d="m100,110c0,0 15,-19 0,-19c-15,0 0,19 0,19"/>
+                            <use transform="rotate(72,100,110)" href="#rose-petal-2"/>
+                            <use transform="rotate(-72,100,110)" href="#rose-petal-2"/>
+                            <use transform="rotate(144,100,110)" href="#rose-petal-2"/>
+                            <use transform="rotate(216,100,110)" href="#rose-petal-2"/>
+                        </g>
+                    </svg>
+                </div>
                 <blockquote class="empowerment-quote">
                     <span data-i18n="thelema.empowerment_quote">Every man and every woman is a star.</span><br>
                     <span class="quote-jp" data-i18n="thelema.empowerment_quote_jp">「すべての男と女は星である」</span>
@@ -216,9 +232,13 @@
 
         </section>
         
-        <footer style="text-align: center; margin-top: 2rem;">
+        <footer style="text-align: center; margin-top: 2rem; padding-bottom: 2rem;">
             <p>&copy; 2026 Thoth Tarot Reading App. Created with Gemini.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7; color: var(--text-secondary);">
+                The images of the Thoth Tarot cards used on this site are © O.T.O. / AGM-Urania.
+            </p>
             <p style="margin-top: 10px; font-size: 0.9rem;">
+                <a href="tree-of-life.html" style="color: var(--accent-gold); text-decoration: none; margin-right: 20px;">生命の樹｜Tree of Life</a>
                 <a href="tokushoho.html" style="color: var(--accent-gold); text-decoration: none;" data-i18n="footer.legal">特定商取引法に基づく表記</a>
             </p>
         </footer>
@@ -254,7 +274,19 @@
         <div class="premium-modal-content glass-card premium-bg-pattern">
             <button id="close-premium-btn" class="close-btn">&times;</button>
             <div class="premium-header" style="text-align:center; margin-bottom: 20px;">
-                <span class="thelema-star" style="color:var(--accent-gold); font-size:1.5rem;">✦</span>
+                <div class="thelema-star" style="width: 40px; height: 40px; margin: 0 auto;">
+                    <svg class="unicursal-hexagram" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+                        <path class="hex-path" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <path class="hex-path" transform="rotate(180,100,110)" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <g class="hex-rose">
+                            <path id="rose-petal-3" d="m100,110c0,0 15,-19 0,-19c-15,0 0,19 0,19"/>
+                            <use transform="rotate(72,100,110)" href="#rose-petal-3"/>
+                            <use transform="rotate(-72,100,110)" href="#rose-petal-3"/>
+                            <use transform="rotate(144,100,110)" href="#rose-petal-3"/>
+                            <use transform="rotate(216,100,110)" href="#rose-petal-3"/>
+                        </g>
+                    </svg>
+                </div>
                 <h3 data-i18n="premium.title" style="font-family:var(--font-heading); color:var(--accent-gold); letter-spacing:0.1em; margin-top:10px;">Premium Access 🗝️</h3>
             </div>
             <div class="premium-body">
@@ -303,8 +335,16 @@
                 <p id="reflection-text" style="line-height:1.8; color:var(--text-primary);"></p>
             </div>
             <div style="text-align:center; margin-bottom: 20px;">
-                <button id="get-reflection-btn" class="mystic-btn" style="display:none; margin: 0 auto; box-shadow: 0 0 15px rgba(212,175,55,0.4);">
-                    <span class="thelema-star">✦</span> 今だから言えるハルの一言 <span class="thelema-star">✦</span>
+                <button id="get-reflection-btn" class="mystic-btn" style="display:none; margin: 0 auto; box-shadow: 0 0 15px rgba(212,175,55,0.4); display: flex; align-items: center; gap: 8px;">
+                    <svg class="unicursal-hexagram" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                        <path class="hex-path" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <path class="hex-path" transform="rotate(180,100,110)" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                    </svg>
+                    今だから言えるハルの一言
+                    <svg class="unicursal-hexagram" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                        <path class="hex-path" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                        <path class="hex-path" transform="rotate(180,100,110)" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
+                    </svg>
                 </button>
             </div>
 
