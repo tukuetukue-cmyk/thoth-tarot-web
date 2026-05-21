@@ -396,6 +396,17 @@
         infoPlaceholder.style.display = "none";
         infoPanel.classList.remove("hidden-section");
         infoPanel.innerHTML = html;
+
+        // スマホ表示時（画面幅が狭い場合）は自動で説明パネルへスクロールする
+        if (window.innerWidth <= 768) {
+            const asidePanel = document.getElementById("info-panel");
+            if (asidePanel) {
+                // 少し上部に余裕を持たせてスクロール
+                const yOffset = -20;
+                const y = asidePanel.getBoundingClientRect().top + window.scrollY + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
     }
 
     // ====================================================
