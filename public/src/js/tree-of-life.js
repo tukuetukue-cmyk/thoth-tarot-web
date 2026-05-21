@@ -14,12 +14,13 @@ const SEPHIROTH = [
         pillar: "middle",
         planet: "Primum Mobile",
         planetJa: "原初の旋回",
-        color: { queen: "#FFFFFF" },  // クイーン・スケール（代表色）
+        color: { queen: "#FFFFFF" },
         divineName: "אהיה (Eheieh)",
         divineNameJa: "エヘイエ「我は在る」",
         archangel: "メタトロン (Metatron)",
         angelOrder: "聖なる生き物 (Chayoth ha-Qadesh)",
         description: "存在の根源。すべてが流出する究極の一点。「在る」という純粋な意志。",
+        inquiry: "あなたが本当に成し遂げたいと願う「純粋な意志」は何ですか？",
         position: { x: 50, y: 5 }
     },
     {
@@ -35,6 +36,7 @@ const SEPHIROTH = [
         archangel: "ラツィエル (Raziel)",
         angelOrder: "車輪 (Ophanim)",
         description: "最初の閃き。方向を持たない純粋なエネルギーの噴出。父なる力。",
+        inquiry: "今、あなたの内側から湧き上がっている抑えきれない衝動は何ですか？",
         position: { x: 80, y: 15 }
     },
     {
@@ -44,12 +46,13 @@ const SEPHIROTH = [
         pillar: "severity",
         planet: "Saturn",
         planetJa: "土星",
-        color: { queen: "#000000" },
+        color: { queen: "#4A4A5A" }, // UI上の視認性を高めるため、純黒ではなくダークグレー・インディゴ系に変更
         divineName: "יהוה אלהים (YHVH Elohim)",
         divineNameJa: "ヤハウェ・エロヒム",
         archangel: "ツァフキエル (Tzaphkiel)",
         angelOrder: "座天使 (Aralim)",
         description: "形を与える母。理解と制限により、混沌に構造を与える。大いなる海。",
+        inquiry: "形にするために、あなたが今受け入れ、制限すべきものは何ですか？",
         position: { x: 20, y: 15 }
     },
     {
@@ -65,6 +68,7 @@ const SEPHIROTH = [
         archangel: "ツァドキエル (Tzadkiel)",
         angelOrder: "主天使 (Chasmalim)",
         description: "恩寵と拡張。秩序ある慈愛により万物を育む建設的な力。",
+        inquiry: "あなたが今、最も自分を許し、豊かさを広げるべき領域はどこですか？",
         position: { x: 80, y: 35 }
     },
     {
@@ -80,6 +84,7 @@ const SEPHIROTH = [
         archangel: "カマエル (Kamael)",
         angelOrder: "熾天使 (Seraphim)",
         description: "裁きと浄化の炎。不要なものを焼き払い、真の強さを鍛え上げる。",
+        inquiry: "真の強さを得るために、今あなたが断ち切るべきものは何ですか？",
         position: { x: 20, y: 35 }
     },
     {
@@ -95,6 +100,7 @@ const SEPHIROTH = [
         archangel: "ラファエル (Raphael)",
         angelOrder: "王 (Melekim)",
         description: "生命の樹の中心。上位と下位を調和させる太陽の如き美と均衡。",
+        inquiry: "あなたの内なる光と陰が調和したとき、世界にはどんな「美」がもたらされますか？",
         position: { x: 50, y: 45 }
     },
     {
@@ -104,13 +110,14 @@ const SEPHIROTH = [
         pillar: "mercy",
         planet: "Venus",
         planetJa: "金星",
-        color: { queen: "#228B22" },
+        color: { queen: "#00FF00" },
         divineName: "יהוה צבאות (YHVH Tzabaoth)",
-        divineNameJa: "ヤハウェ・ツェバオト「万軍の主」",
+        divineNameJa: "ヤハウェ・ツァバオト「万軍の神」",
         archangel: "ハニエル (Haniel)",
-        angelOrder: "神々 (Elohim)",
-        description: "本能的な情熱と美の追求。感情の力で創造を駆動する。",
-        position: { x: 75, y: 65 }
+        angelOrder: "権天使 (Elohim)",
+        description: "感情、芸術、情熱。本能的な欲求と美的な喜びを生み出す豊かなエネルギー。",
+        inquiry: "論理を超えて、あなたの心が心底求めている喜びは何ですか？",
+        position: { x: 80, y: 60 }
     },
     {
         id: "hod",
@@ -121,11 +128,12 @@ const SEPHIROTH = [
         planetJa: "水星",
         color: { queen: "#FFA500" },
         divineName: "אלהים צבאות (Elohim Tzabaoth)",
-        divineNameJa: "エロヒム・ツェバオト",
+        divineNameJa: "エロヒム・ツァバオト「万軍の神」",
         archangel: "ミカエル (Michael)",
-        angelOrder: "神の子ら (Bene Elohim)",
-        description: "知性と分析。言語と論理で世界を分節し、理解する力。",
-        position: { x: 25, y: 65 }
+        angelOrder: "大天使 (Beni Elohim)",
+        description: "知性、コミュニケーション、論理。流動するエネルギーを思考によって型に流し込む。",
+        inquiry: "あふれる感情を現実に活かすために、どんな「思考の型」が必要ですか？",
+        position: { x: 20, y: 60 }
     },
     {
         id: "yesod",
@@ -140,6 +148,7 @@ const SEPHIROTH = [
         archangel: "ガブリエル (Gabriel)",
         angelOrder: "ケルビム (Kerubim)",
         description: "アストラル界の基盤。夢と無意識が物質世界へ投影される門。",
+        inquiry: "あなたの無意識の底で、まだ目覚めを待っている可能性は何ですか？",
         position: { x: 50, y: 75 }
     },
     {
@@ -155,6 +164,7 @@ const SEPHIROTH = [
         archangel: "サンダルフォン (Sandalphon)",
         angelOrder: "人間の魂 (Ashim)",
         description: "物質世界。すべての力が最終的に顕現する場所。私たちの現実。",
+        inquiry: "ここまでのすべての気づきを、今日「現実の行動」としてどう生かしますか？",
         position: { x: 50, y: 95 }
     }
 ];
@@ -167,6 +177,7 @@ const DAATH = {
     pillar: "middle",
     isHidden: true,
     description: "深淵の向こう側にある「知識」。セフィラではなく、上位三角形と下位七セフィラの間の裂け目。",
+    inquiry: "あなたが直視することを恐れている、あなた自身の「隠された真実」は何ですか？",
     position: { x: 50, y: 25 }
 };
 
@@ -238,30 +249,30 @@ const FOUR_WORLDS = {
 //    皇帝 = ツァディ (Path 28), 星 = ヘー (Path 15)
 const PATHS = [
     // --- 深淵より上 ---
-    { number: 11, from: "kether",    to: "chokmah",   hebrew: "א", hebrewName: "Aleph",  hebrewMeaning: "雄牛",   cardId: "fool",        astrological: "風" },
-    { number: 12, from: "kether",    to: "binah",     hebrew: "ב", hebrewName: "Beth",   hebrewMeaning: "家",     cardId: "magus",       astrological: "水星" },
-    { number: 13, from: "kether",    to: "tiphareth", hebrew: "ג", hebrewName: "Gimel",  hebrewMeaning: "駱駝",   cardId: "priestess",   astrological: "月" },
-    { number: 14, from: "chokmah",   to: "binah",     hebrew: "ד", hebrewName: "Daleth", hebrewMeaning: "扉",     cardId: "empress",     astrological: "金星" },
-    { number: 15, from: "chokmah",   to: "tiphareth", hebrew: "ה", hebrewName: "He",     hebrewMeaning: "窓",     cardId: "star",        astrological: "水瓶座" },
-    { number: 16, from: "chokmah",   to: "chesed",    hebrew: "ו", hebrewName: "Vav",    hebrewMeaning: "釘",     cardId: "hierophant",  astrological: "牡牛座" },
+    { number: 11, from: "kether",    to: "chokmah",   hebrew: "א", hebrewName: "Aleph",  hebrewMeaning: "雄牛",   cardId: "fool",        astrological: "風", inquiry: "未知なるものへ飛び込むために、あなたが手放すべき「常識」は何ですか？" },
+    { number: 12, from: "kether",    to: "binah",     hebrew: "ב", hebrewName: "Beth",   hebrewMeaning: "家",     cardId: "magus",       astrological: "水星", inquiry: "あなたに与えられた才能を、どう現実に形づくりますか？" },
+    { number: 13, from: "kether",    to: "tiphareth", hebrew: "ג", hebrewName: "Gimel",  hebrewMeaning: "駱駝",   cardId: "priestess",   astrological: "月", inquiry: "静寂の中で、あなたの内なる声は何を語りかけていますか？" },
+    { number: 14, from: "chokmah",   to: "binah",     hebrew: "ד", hebrewName: "Daleth", hebrewMeaning: "扉",     cardId: "empress",     astrological: "金星", inquiry: "あなたが今、豊かに育み、愛を注ぐべき対象は何ですか？" },
+    { number: 15, from: "chokmah",   to: "tiphareth", hebrew: "ה", hebrewName: "He",     hebrewMeaning: "窓",     cardId: "star",        astrological: "水瓶座", inquiry: "絶望の先に、あなたが希望を見出している「星」は何ですか？" },
+    { number: 16, from: "chokmah",   to: "chesed",    hebrew: "ו", hebrewName: "Vav",    hebrewMeaning: "釘",     cardId: "hierophant",  astrological: "牡牛座", inquiry: "あなたが頑なに守り続けている「信念」は、本当にあなた自身のものですか？" },
     // --- 深淵を跨ぐ ---
-    { number: 17, from: "binah",     to: "tiphareth", hebrew: "ז", hebrewName: "Zain",   hebrewMeaning: "剣",     cardId: "lovers",      astrological: "双子座" },
-    { number: 18, from: "binah",     to: "geburah",   hebrew: "ח", hebrewName: "Cheth",  hebrewMeaning: "柵",     cardId: "chariot",     astrological: "蟹座" },
+    { number: 17, from: "binah",     to: "tiphareth", hebrew: "ז", hebrewName: "Zain",   hebrewMeaning: "剣",     cardId: "lovers",      astrological: "双子座", inquiry: "今のあなたが統合すべき「相反する二つのもの」は何ですか？" },
+    { number: 18, from: "binah",     to: "geburah",   hebrew: "ח", hebrewName: "Cheth",  hebrewMeaning: "柵",     cardId: "chariot",     astrological: "蟹座", inquiry: "あなたの人生の「戦車」を前進させるための明確な目的地はどこですか？" },
     // --- 深淵より下 ---
-    { number: 19, from: "chesed",    to: "geburah",   hebrew: "ט", hebrewName: "Teth",   hebrewMeaning: "蛇",     cardId: "lust",        astrological: "獅子座" },
-    { number: 20, from: "chesed",    to: "tiphareth", hebrew: "י", hebrewName: "Yod",    hebrewMeaning: "手",     cardId: "hermit",      astrological: "乙女座" },
-    { number: 21, from: "chesed",    to: "netzach",   hebrew: "כ", hebrewName: "Kaph",   hebrewMeaning: "掌",     cardId: "fortune",     astrological: "木星" },
-    { number: 22, from: "geburah",   to: "tiphareth", hebrew: "ל", hebrewName: "Lamed",  hebrewMeaning: "牛突棒", cardId: "adjustment",  astrological: "天秤座" },
-    { number: 23, from: "geburah",   to: "hod",       hebrew: "מ", hebrewName: "Mem",    hebrewMeaning: "水",     cardId: "hanged-man",  astrological: "水" },
-    { number: 24, from: "tiphareth", to: "netzach",   hebrew: "נ", hebrewName: "Nun",    hebrewMeaning: "魚",     cardId: "death",       astrological: "蠍座" },
-    { number: 25, from: "tiphareth", to: "yesod",     hebrew: "ס", hebrewName: "Samekh", hebrewMeaning: "支柱",   cardId: "art",         astrological: "射手座" },
-    { number: 26, from: "tiphareth", to: "hod",       hebrew: "ע", hebrewName: "Ayin",   hebrewMeaning: "目",     cardId: "devil",       astrological: "山羊座" },
-    { number: 27, from: "netzach",   to: "hod",       hebrew: "פ", hebrewName: "Pe",     hebrewMeaning: "口",     cardId: "tower",       astrological: "火星" },
-    { number: 28, from: "netzach",   to: "yesod",     hebrew: "צ", hebrewName: "Tzaddi", hebrewMeaning: "釣針",   cardId: "emperor",     astrological: "牡羊座" },
-    { number: 29, from: "netzach",   to: "malkuth",   hebrew: "ק", hebrewName: "Qoph",   hebrewMeaning: "後頭部", cardId: "moon",        astrological: "魚座" },
-    { number: 30, from: "hod",       to: "yesod",     hebrew: "ר", hebrewName: "Resh",   hebrewMeaning: "頭",     cardId: "sun",         astrological: "太陽" },
-    { number: 31, from: "hod",       to: "malkuth",   hebrew: "ש", hebrewName: "Shin",   hebrewMeaning: "歯",     cardId: "aeon",        astrological: "火" },
-    { number: 32, from: "yesod",     to: "malkuth",   hebrew: "ת", hebrewName: "Tav",    hebrewMeaning: "十字",   cardId: "universe",    astrological: "土星" }
+    { number: 19, from: "chesed",    to: "geburah",   hebrew: "ט", hebrewName: "Teth",   hebrewMeaning: "蛇",     cardId: "lust",        astrological: "獅子座", inquiry: "あなたの中に眠る「野性的な情熱」を、どう飼い慣らし、力に変えますか？" },
+    { number: 20, from: "chesed",    to: "tiphareth", hebrew: "י", hebrewName: "Yod",    hebrewMeaning: "手",     cardId: "hermit",      astrological: "乙女座", inquiry: "他者の声から離れ、自分一人の光を見つめる時間を持てていますか？" },
+    { number: 21, from: "chesed",    to: "netzach",   hebrew: "כ", hebrewName: "Kaph",   hebrewMeaning: "掌",     cardId: "fortune",     astrological: "木星", inquiry: "コントロールできない運命の輪の中で、あなたが自らの意志で選べることは何ですか？" },
+    { number: 22, from: "geburah",   to: "tiphareth", hebrew: "ל", hebrewName: "Lamed",  hebrewMeaning: "牛突棒", cardId: "adjustment",  astrological: "天秤座", inquiry: "あなたの人生において、今もっとも「バランス」を必要としている領域はどこですか？" },
+    { number: 23, from: "geburah",   to: "hod",       hebrew: "מ", hebrewName: "Mem",    hebrewMeaning: "水",     cardId: "hanged-man",  astrological: "水", inquiry: "視点を変えるために、あなたが今「あえて身を委ねるべきこと」は何ですか？" },
+    { number: 24, from: "tiphareth", to: "netzach",   hebrew: "נ", hebrewName: "Nun",    hebrewMeaning: "魚",     cardId: "death",       astrological: "蠍座", inquiry: "新しく生まれ変わるために、あなたが今終わらせるべきものは何ですか？" },
+    { number: 25, from: "tiphareth", to: "yesod",     hebrew: "ס", hebrewName: "Samekh", hebrewMeaning: "支柱",   cardId: "art",         astrological: "射手座", inquiry: "相反する要素を混ぜ合わせることで、どんな「新しいあなた」が創造されますか？" },
+    { number: 26, from: "tiphareth", to: "hod",       hebrew: "ע", hebrewName: "Ayin",   hebrewMeaning: "目",     cardId: "devil",       astrological: "山羊座", inquiry: "あなたを縛り付けている「物質的な執着」や「見えない鎖」の正体は何ですか？" },
+    { number: 27, from: "netzach",   to: "hod",       hebrew: "פ", hebrewName: "Pe",     hebrewMeaning: "口",     cardId: "tower",       astrological: "火星", inquiry: "あなたの古い価値観が崩れ去った後、そこにはどんな真実が残りますか？" },
+    { number: 28, from: "netzach",   to: "yesod",     hebrew: "צ", hebrewName: "Tzaddi", hebrewMeaning: "釣針",   cardId: "emperor",     astrological: "牡羊座", inquiry: "あなたの世界に秩序をもたらすために、今どのようなリーダーシップが必要ですか？" },
+    { number: 29, from: "netzach",   to: "malkuth",   hebrew: "ק", hebrewName: "Qoph",   hebrewMeaning: "後頭部", cardId: "moon",        astrological: "魚座", inquiry: "暗闇の中であなたを惑わす「幻想」や「恐怖」は、本当は何を教えていますか？" },
+    { number: 30, from: "hod",       to: "yesod",     hebrew: "ר", hebrewName: "Resh",   hebrewMeaning: "頭",     cardId: "sun",         astrological: "太陽", inquiry: "あなたが最も純粋に「生かされている」と感じる瞬間はどんな時ですか？" },
+    { number: 31, from: "hod",       to: "malkuth",   hebrew: "ש", hebrewName: "Shin",   hebrewMeaning: "歯",     cardId: "aeon",        astrological: "火", inquiry: "古い時代が終わり、あなたが今から歩み出す「新しい時代」とはどんなものですか？" },
+    { number: 32, from: "yesod",     to: "malkuth",   hebrew: "ת", hebrewName: "Tav",    hebrewMeaning: "十字",   cardId: "universe",    astrological: "土星", inquiry: "あなたが今完成させ、そして次なる次元へと昇華させるべきテーマは何ですか？" }
 ];
 
 

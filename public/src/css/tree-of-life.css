@@ -153,12 +153,15 @@
 /* セフィラの内側の光 */
 .sephira-glow {
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: all 0.4s;
 }
 
 .sephira-group:hover .sephira-glow,
 .sephira-group.active .sephira-glow {
     opacity: 1;
+    stroke-width: 3px; /* 選択時は線を太くして視認性を高める */
+    /* ビナーなどの暗い色でも視認できるように、うっすら白い発光を足す */
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
 }
 
 /* セフィラの名前 */
@@ -193,14 +196,18 @@
 
 /* ダアト（点線の円） */
 .daath-circle {
-    fill: none;
+    fill: transparent; /* fill: none だと線の上しかクリック判定されないため透明な塗りを指定 */
     stroke: rgba(255, 255, 255, 0.1);
     stroke-width: 1;
     stroke-dasharray: 4, 3;
+    transition: all 0.4s;
 }
 
-.sephira-group:hover .daath-circle {
-    stroke: rgba(255, 255, 255, 0.3);
+.sephira-group:hover .daath-circle,
+.sephira-group.active .daath-circle {
+    stroke: rgba(255, 255, 255, 0.8);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+    stroke-width: 1.5;
 }
 
 /* --- 三柱のガイドライン（オプション） --- */
@@ -350,6 +357,32 @@
 
 .info-meta-value {
     color: var(--text-primary);
+}
+
+/* 問い (Inquiry) */
+.info-inquiry {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.05);
+    border-left: 2px solid var(--accent-gold);
+    border-radius: 0 4px 4px 0;
+}
+
+.info-inquiry-label {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.info-inquiry-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #FFF;
+    font-weight: 300;
+    font-style: italic;
 }
 
 /* 関連カード */

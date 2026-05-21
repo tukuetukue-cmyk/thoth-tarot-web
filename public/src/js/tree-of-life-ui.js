@@ -233,6 +233,12 @@
             <div class="info-sephira-ja">${sephira.name.ja}｜${sephira.name.meaning}</div>
             <hr class="info-divider">
             <p class="info-desc">${sephira.description}</p>
+            ${sephira.inquiry ? `
+            <div class="info-inquiry">
+                <div class="info-inquiry-label">INQUIRY</div>
+                <div class="info-inquiry-text">『${sephira.inquiry}』</div>
+            </div>
+            ` : ''}
             <div class="info-meta-grid">
                 <span class="info-meta-label">天体</span>
                 <span class="info-meta-value">${sephira.planetJa} (${sephira.planet})</span>
@@ -312,6 +318,12 @@
                 ${path.hebrewName}｜${path.hebrewMeaning}
             </div>
             <hr class="info-divider">
+            ${path.inquiry ? `
+            <div class="info-inquiry" style="margin-bottom: 1.5rem;">
+                <div class="info-inquiry-label">INQUIRY</div>
+                <div class="info-inquiry-text">『${path.inquiry}』</div>
+            </div>
+            ` : ''}
         `;
 
         if (card) {
@@ -362,6 +374,12 @@
             <div class="info-sephira-ja">ダアト｜知識</div>
             <hr class="info-divider">
             <p class="info-desc">${DAATH.description}</p>
+            ${DAATH.inquiry ? `
+            <div class="info-inquiry">
+                <div class="info-inquiry-label">INQUIRY</div>
+                <div class="info-inquiry-text">『${DAATH.inquiry}』</div>
+            </div>
+            ` : ''}
             <p class="info-desc" style="opacity: 0.6; font-size: 0.85rem;">
                 ダアトは正式なセフィラには数えられない。深淵（Abyss）の只中に位置し、上位の三項（至高の三角形）と下位の七セフィラの間の裂け目を象徴する。<br><br>
                 ここを越えることは、エゴの完全な消滅を意味する。
