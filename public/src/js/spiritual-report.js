@@ -601,15 +601,6 @@
 
         // ドラッグ開始
         handleWrapper.addEventListener("pointerdown", onDragStart);
-        // タップ（クリック）による開閉トグル
-        handleWrapper.addEventListener("click", (e) => {
-            // ドラッグではなく純粋なクリックの場合
-            if (sheetState === "expanded") {
-                setSheetState("collapsed"); // 生命の樹全体が見えるように下げる
-            } else {
-                setSheetState("expanded");  // カルテを読むために上げる
-            }
-        });
         // コンテンツラッパーでも、スクロールが最上部にあり、かつ下へドラッグしたい場合にボトムシート全体をドラッグできるようにする
         contentWrapper.addEventListener("pointerdown", (e) => {
             if (contentWrapper.scrollTop <= 0 && sheetState === "expanded") {
@@ -628,6 +619,7 @@
         
         isDragging = true;
         startY = e.clientY;
+        currentY = e.clientY; // タップ判定用に初期化
         
         // 現在のボトムシートの実際の translateY 位置を取得
         const style = window.getComputedStyle(bottomSheet);
@@ -663,6 +655,18 @@
         if (!isDragging) return;
         isDragging = false;
         bottomSheet.classList.remove("dragging");
+
+        const deltaY = currentY - startY;
+
+        // 移動距離が5px未満の場合は「タップ（クリック）」とみなして開閉をトグルする
+        if (Math.abs(deltaY) < 5) {
+            if (sheetState === "expanded") {
+                setSheetState("collapsed");
+            } else {
+                setSheetState("expanded");
+            }
+            return;
+        }
 
         const style = window.getComputedStyle(bottomSheet);
         const matrix = new WebKitCSSMatrix(style.transform);
