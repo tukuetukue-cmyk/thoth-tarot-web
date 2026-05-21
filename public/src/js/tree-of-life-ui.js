@@ -17,121 +17,12 @@
     const pathsLayer = document.getElementById("paths-layer");
     const abyssLayer = document.getElementById("abyss-layer");
     const sephirothLayer = document.getElementById("sephiroth-layer");
-    const folLayer = document.getElementById("fol-layer");
-    const folWrapper = document.getElementById("fol-wrapper");
-    const pathsWrapper = document.getElementById("paths-wrapper");
-    const starsLayer = document.getElementById("stars-layer");
     const infoPanel = document.getElementById("info-content");
     const infoPlaceholder = document.getElementById("info-placeholder");
     const treeContainer = document.getElementById("tree-container");
 
     // --- アクティブ状態の追跡 ---
     let activeElement = null;
-
-    // ====================================================
-    // FoL六角グリッド座標（軸座標 q,r ― 距離2以内の19点）
-    // ====================================================
-    const FOL_HEX = [
-        [-2,0],[-2,1],[-2,2],
-        [-1,-1],[-1,0],[-1,1],[-1,2],
-        [0,-2],[0,-1],[0,0],[0,1],[0,2],
-        [1,-2],[1,-1],[1,0],[1,1],
-        [2,-2],[2,-1],[2,0]
-    ];
-
-    // ====================================================
-    // フラワー・オブ・ライフ描画
-    // ====================================================
-    function drawFlowerOfLife() {
-        const cx = VIEWBOX_W / 2;
-        const cy = VIEWBOX_H / 2;
-        const size = 72; // 円の半径
-
-        FOL_HEX.forEach(([q, r]) => {
-            const x = cx + size * (Math.sqrt(3) * q + Math.sqrt(3) / 2 * r);
-            const y = cy + size * (3 / 2 * r);
-            const circle = createSvgElement("circle", {
-                cx: x, cy: y, r: size,
-                class: "fol-circle"
-            });
-            folLayer.appendChild(circle);
-        });
-
-        // ゆっくりと回転させる（rAF）
-        let angle = 0;
-        (function rotateFoL() {
-            angle += 0.008;
-            folLayer.setAttribute("transform", `rotate(${angle} ${cx} ${cy})`);
-            requestAnimationFrame(rotateFoL);
-        })();
-    }
-
-    // ====================================================
-    // 星空描画
-    // ====================================================
-    function drawStarfield() {
-        const NUM_STARS = 70;
-        for (let i = 0; i < NUM_STARS; i++) {
-            const x = Math.random() * VIEWBOX_W;
-            const y = Math.random() * VIEWBOX_H;
-            const r = Math.random() * 1.2 + 0.3;
-            const dur = (Math.random() * 4 + 2).toFixed(1);
-            const delay = (Math.random() * 5).toFixed(1);
-            const star = createSvgElement("circle", {
-                cx: x, cy: y, r: r,
-                class: "star-dot",
-                style: `--twinkle-duration:${dur}s; --twinkle-delay:${delay}s;`
-            });
-            starsLayer.appendChild(star);
-        }
-    }
-
-    // ====================================================
-    // パララックス（マウス追従）
-    // ====================================================
-    function initParallax() {
-        // タッチデバイスはスキップ
-        if (!window.matchMedia("(pointer: fine)").matches) return;
-
-        let targetFX = 0, targetFY = 0, targetPX = 0, targetPY = 0;
-        let curFX = 0, curFY = 0, curPX = 0, curPY = 0;
-
-        document.addEventListener("mousemove", (e) => {
-            const rect = treeContainer.getBoundingClientRect();
-            const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-            const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-            targetFX = dx * 18;
-            targetFY = dy * 12;
-            targetPX = dx * 8;
-            targetPY = dy * 5;
-        });
-
-        // スムーズなイージングで追従
-        (function lerp() {
-            curFX += (targetFX - curFX) * 0.06;
-            curFY += (targetFY - curFY) * 0.06;
-            curPX += (targetPX - curPX) * 0.06;
-            curPY += (targetPY - curPY) * 0.06;
-
-            if (folWrapper) folWrapper.setAttribute("transform", `translate(${curFX} ${curFY})`);
-            if (pathsWrapper) pathsWrapper.setAttribute("transform", `translate(${curPX} ${curPY})`);
-
-            requestAnimationFrame(lerp);
-        })();
-
-        // 3Dチルト（コンテナ全体）
-        document.addEventListener("mousemove", (e) => {
-            const rect = treeContainer.getBoundingClientRect();
-            const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-            const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-            treeContainer.style.transform = `perspective(900px) rotateY(${dx * 6}deg) rotateX(${-dy * 4}deg)`;
-        });
-
-        treeContainer.addEventListener("mouseleave", () => {
-            treeContainer.style.transform = "";
-            targetFX = targetFY = targetPX = targetPY = 0;
-        });
-    }
 
     // ====================================================
     // 座標変換ヘルパー
@@ -578,12 +469,10 @@
         // 4. シンボル（図解）のセット
         const symTagsContainer = document.getElementById("dictionary-symbol-tags");
         const symDesc = document.getElementById("dictionary-symbol-desc");
-        const highlightBox = document.getElementById("dictionary-highlight-box");
         
         symTagsContainer.innerHTML = "";
         symDesc.classList.add("hidden-section");
         symDesc.innerHTML = "";
-        highlightBox.classList.remove("active");
 
         if (card.symbols && card.symbols.length > 0) {
             document.getElementById("dictionary-symbols-container").style.display = "block";
@@ -602,17 +491,6 @@
                     // 解説を表示
                     symDesc.classList.remove("hidden-section");
                     symDesc.innerHTML = `<strong>${sym.name}</strong><br>${sym.desc}`;
-                    
-                    // ハイライト枠を移動
-                    if (sym.rect) {
-                        highlightBox.style.left = sym.rect.x + "%";
-                        highlightBox.style.top = sym.rect.y + "%";
-                        highlightBox.style.width = sym.rect.w + "%";
-                        highlightBox.style.height = sym.rect.h + "%";
-                        highlightBox.classList.add("active");
-                    } else {
-                        highlightBox.classList.remove("active");
-                    }
                 };
 
                 tag.addEventListener("click", handleSymbolInteraction);
@@ -707,12 +585,9 @@
     // 初期化
     // ====================================================
     function init() {
-        drawStarfield();
-        drawFlowerOfLife();
         drawPaths();
         drawAbyss();
         drawSephiroth();
-        initParallax();
         processReadingParams();
     }
 

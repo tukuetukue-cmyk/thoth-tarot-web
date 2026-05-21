@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Noto+Sans+JP:wght@100;300;400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/styles.css?v=27">
-    <link rel="stylesheet" href="src/css/tree-of-life.css?v=4">
+    <link rel="stylesheet" href="src/css/tree-of-life.css?v=5">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
 </head>
@@ -28,24 +28,11 @@
             <!-- SVG 生命の樹 -->
             <div class="tree-container" id="tree-container">
                 <svg id="tree-svg" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <clipPath id="fol-clip">
-                            <rect x="0" y="0" width="500" height="700"/>
-                        </clipPath>
-                    </defs>
-                    <!-- 星空（スターフィールド） -->
-                    <g id="stars-layer"></g>
-                    <!-- フラワー・オブ・ライフ（背景） -->
-                    <g id="fol-wrapper" clip-path="url(#fol-clip)">
-                        <g id="fol-layer"></g>
-                    </g>
-                    <!-- パス（線）parallaxラッパー付き -->
-                    <g id="paths-wrapper">
-                        <g id="paths-layer"></g>
-                    </g>
+                    <!-- パス（線）はJSで描画 -->
+                    <g id="paths-layer"></g>
                     <!-- 深淵ライン -->
                     <g id="abyss-layer"></g>
-                    <!-- セフィラ（球） -->
+                    <!-- セフィラ（球）はJSで描画 -->
                     <g id="sephiroth-layer"></g>
                 </svg>
             </div>
@@ -80,7 +67,6 @@
                 <div class="dictionary-image-section">
                     <div class="tarot-img-wrapper" id="dictionary-img-wrapper">
                         <img src="" alt="Card" class="tarot-card-img" id="dictionary-card-img" />
-                        <div class="symbol-highlight-box" id="dictionary-highlight-box"></div>
                     </div>
                 </div>
                 <!-- 右側：カード情報 -->
@@ -114,7 +100,7 @@
 
     <!-- データ & ロジック -->
     <script src="src/js/cards.js?v=33"></script>
-    <script src="src/js/tree-of-life.js?v=4"></script>
-    <script src="src/js/tree-of-life-ui.js?v=6"></script>
+    <script src="src/js/tree-of-life.js?v=6"></script>
+    <script src="src/js/tree-of-life-ui.js?v=8"></script>
 </body>
 </html>

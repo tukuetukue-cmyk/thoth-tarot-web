@@ -74,72 +74,34 @@
 }
 
 /* ====================================================
-   フラワー・オブ・ライフ ── 神聖幾何学
-   ==================================================== */
-.fol-circle {
-    fill: none;
-    stroke: rgba(212, 175, 55, 0.07);
-    stroke-width: 0.6;
-    pointer-events: none;
-}
-
-/* parallaxラッパー：スムーズな動き */
-#fol-wrapper,
-#paths-wrapper {
-    transition: transform 0.08s linear;
-    will-change: transform;
-}
-
-/* 星 */
-.star-dot {
-    fill: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
-    animation: starTwinkle var(--twinkle-duration, 4s) ease-in-out infinite;
-    animation-delay: var(--twinkle-delay, 0s);
-}
-
-@keyframes starTwinkle {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.9; }
-}
-
-/* ====================================================
-   パスの脈動アニメーション
+   パスのスタイル（脈動・高視認性）
    ==================================================== */
 .tree-path {
-    stroke: rgba(212, 175, 55, 0.18);
-    stroke-width: 1.5;
+    stroke: rgba(212, 175, 55, 0.4); /* 視認性を高めるため濃くする */
+    stroke-width: 2;
     fill: none;
     cursor: pointer;
-    animation: pathPulse 6s ease-in-out infinite;
-    animation-delay: var(--pulse-delay, 0s);
-    transition: stroke 0.3s, stroke-width 0.3s;
+    transition: stroke 0.3s, stroke-width 0.3s, filter 0.3s;
 }
 
 .tree-path:hover,
 .tree-path.active {
     stroke: var(--accent-gold);
-    stroke-width: 3;
-    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
-    animation: none;
+    stroke-width: 3.5;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.7));
 }
 
 .tree-path.reading-highlight {
     stroke: #FFD700;
-    stroke-width: 4;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    stroke-width: 4.5;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
     animation: pulseGlowPath 2s infinite alternate;
-}
-
-@keyframes pathPulse {
-    0%, 100% { stroke-opacity: 0.18; }
-    50% { stroke-opacity: 0.45; }
 }
 
 
 /* パスのヘブライ文字ラベル */
 .path-label {
-    fill: rgba(212, 175, 55, 0.4);
+    fill: rgba(212, 175, 55, 0.7); /* 視認性を高めるため濃くする */
     font-size: 10px;
     text-anchor: middle;
     dominant-baseline: central;
@@ -534,29 +496,6 @@
     height: auto;
     display: block;
     border-radius: 8px;
-}
-
-/* シンボルハイライト枠 ── 確実に画像の上に重ねる */
-#dictionary-img-wrapper {
-    position: relative; /* 明示的に再宣言 */
-    display: inline-block;
-    width: 100%;
-}
-
-#dictionary-highlight-box {
-    position: absolute;
-    border: 3px solid #D4AF37;
-    box-shadow: 0 0 18px rgba(212, 175, 55, 0.8), inset 0 0 12px rgba(212, 175, 55, 0.2);
-    border-radius: 6px;
-    background-color: rgba(212, 175, 55, 0.12);
-    pointer-events: none;
-    z-index: 20;
-    opacity: 0;
-    transition: opacity 0.3s ease, top 0.25s ease, left 0.25s ease, width 0.25s ease, height 0.25s ease;
-}
-
-#dictionary-highlight-box.active {
-    opacity: 1;
 }
 
 /* 情報セクション */
