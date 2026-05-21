@@ -628,43 +628,29 @@ footer {
 }
 
 .x-share-btn {
-    background: #000;
-    color: #fff;
-    border-color: #333;
+    /* base mystic-btn styles apply */
 }
 
 .x-share-btn:hover {
-    background: #222;
-    color: #fff;
-    border-color: #555;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    /* base mystic-btn hover applies */
 }
 
 .ig-share-btn {
-    background: #000;
-    color: #fff;
-    border: 1px solid #333;
+    /* base mystic-btn styles apply */
 }
 
 .ig-share-btn:hover {
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
-    background: #1a1a1a;
-    border-color: #444;
+    /* base mystic-btn hover applies */
 }
 
 .restart-btn {
     width: 250px;
     font-size: 1rem;
-    background: transparent;
-    border: 1px solid var(--text-secondary);
-    color: var(--text-primary);
+    /* base mystic-btn styles apply for background and border */
 }
 
 .restart-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-color: #fff;
-    box-shadow: none;
+    /* base mystic-btn hover applies */
 }
 
 /* Philosophy Section Styles */
