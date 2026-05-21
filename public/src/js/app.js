@@ -535,7 +535,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ` : ''}
 
                     <div class="result-actions">
-                        <a href="tree-of-life.html?cards=${drawnCardIds}" target="_blank" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; width:100%; margin-bottom:15px; background:rgba(212,175,55,0.15); border:1px solid var(--accent-gold); box-shadow: 0 0 15px rgba(212,175,55,0.2);">生命の樹で展開する</a>
+                        <button id="generate-report-btn" class="mystic-btn action-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(74, 35, 90, 0.4), rgba(44, 62, 80, 0.4)); border:1px solid var(--accent-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.35); font-weight: bold; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);">🔮 霊的カルテを生成する</button>
+                        <a href="tree-of-life.html?cards=${drawnCardIds}" target="_blank" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; background:rgba(212,175,55,0.15); border:1px solid var(--accent-gold); box-shadow: 0 0 15px rgba(212,175,55,0.2);">生命の樹で展開する</a>
                         <button id="save-image-btn" class="mystic-btn action-btn">${t('result.btn_save_img')}</button>
                         <button id="save-text-btn" class="mystic-btn action-btn">${t('result.btn_save_txt')}</button>
                         <button id="share-x-btn" class="mystic-btn action-btn x-share-btn">${t('result.btn_share_x')}</button>
@@ -845,6 +846,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        document.getElementById('generate-report-btn').addEventListener('click', () => {
+            const recentReading = {
+                theme: context || t('result.no_theme'),
+                spread_type: spreadType,
+                cards: cards,
+                userName: window.tempUserName || "",
+                birthDate: window.tempUserBirthdate || "",
+                readingResult: readingResult
+            };
+            localStorage.setItem('recent_reading', JSON.stringify(recentReading));
+            sessionStorage.setItem('recent_reading', JSON.stringify(recentReading));
+            window.location.href = "spiritual-report.html";
+        });
+
         // Setup Premium AI Chat (only for premium users)
         if (window.userPlan === 'premium') {
             const chatInput = document.getElementById('ai-chat-input');
@@ -907,6 +922,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 chatInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') sendChatMessage();
                 });
+            }
+        }
+    }
+    // Check if we need to restore a previous reading
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('restore') === 'true') {
+        const stored = sessionStorage.getItem('recent_reading');
+        if (stored) {
+            try {
+                const data = JSON.parse(stored);
+                window.history.replaceState({}, document.title, window.location.pathname);
+                window.tempUserName = data.userName;
+                window.tempUserBirthdate = data.birthDate;
+                switchSection(inputSection, resultSection);
+                renderResult(data.cards, data.theme, data.spread_type, data.readingResult);
+            } catch (e) {
+                console.error("Failed to restore reading:", e);
             }
         }
     }
