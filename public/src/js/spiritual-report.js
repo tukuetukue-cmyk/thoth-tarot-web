@@ -1,5 +1,5 @@
 // ====================================================
-// 🔮 星のカルテ｜Spiritual Report ── フロントエンドロジック
+// 🔮 霊的カルテ｜Spiritual Report ── フロントエンドロジック
 // モバイルファースト・ハーフモーダル連動・双方向インタラクション
 // ====================================================
 
@@ -244,7 +244,7 @@
     }
 
     // ====================================================
-    // 3. データ取得 & 星のカルテ API 通信
+    // 3. データ取得 & 霊的カルテ API 通信
     // ====================================================
     async function loadSpiritualReport() {
         // セッションまたはローカルストレージから最新のリーディングデータを取得
@@ -315,12 +315,15 @@
                 setSheetState("half"); // モバイルでは半分展開してカルテが見えるようにする
             }
 
-            // スクロール連動ハイライトの初期化
-            initScrollObserver();
+            // スクロール連動ハイライトの初期化と確実な初期描画のための遅延処理
+            setTimeout(() => {
+                highlightActivatedElements();
+                initScrollObserver();
+            }, 300);
 
         } catch (error) {
             console.error("Failed to load spiritual report:", error);
-            showError("星のカルテの生成に失敗しました。時間をおいて再度お試しください。");
+            showError("霊的カルテの生成に失敗しました。時間をおいて再度お試しください。");
         }
     }
 
@@ -359,7 +362,7 @@
 
             // 章タイトル見出しのパース (例: "1. 魂の現在地 ｜ 活性化されたセフィラ")
             // markdown記号を排除しているため、プレーンテキストとして「1.」「2.」「3.」で始まるものを検出
-            const isHeading = /^[1-3]\.\s+/.test(trimmed) || trimmed.startsWith("星のカルテ");
+            const isHeading = /^[1-3]\.\s+/.test(trimmed) || trimmed.startsWith("霊的カルテ");
             
             if (isHeading) {
                 let idAttr = "";
@@ -736,7 +739,7 @@
         drawAbyss();
         drawSephiroth();
 
-        // 星のカルテAPIのデータロード
+        // 霊的カルテAPIのデータロード
         loadSpiritualReport();
 
         // モバイル特有のドラッグイベント

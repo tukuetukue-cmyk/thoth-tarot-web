@@ -535,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ` : ''}
 
                     <div class="result-actions">
-                        <button id="generate-report-btn" class="mystic-btn action-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(74, 35, 90, 0.4), rgba(44, 62, 80, 0.4)); border:1px solid var(--accent-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.35); font-weight: bold; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);">🔮 星のカルテを生成する</button>
+                        <button id="generate-report-btn" class="mystic-btn action-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(74, 35, 90, 0.4), rgba(44, 62, 80, 0.4)); border:1px solid var(--accent-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.35); font-weight: bold; text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);">霊的カルテを生成する</button>
                         <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; background:rgba(212,175,55,0.15); border:1px solid var(--accent-gold); box-shadow: 0 0 15px rgba(212,175,55,0.2);">生命の樹で展開する</a>
                         <button id="save-image-btn" class="mystic-btn action-btn">${t('result.btn_save_img')}</button>
                         <button id="save-text-btn" class="mystic-btn action-btn">${t('result.btn_save_txt')}</button>
