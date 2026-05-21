@@ -283,6 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
         document.getElementById('loading-text').textContent = randomMessage;
         switchSection(inputSection, loadingSection);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         
         let drawnCards = [];
         let apiCardsPayload = [];
