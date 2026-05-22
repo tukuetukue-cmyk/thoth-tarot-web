@@ -191,6 +191,20 @@ const I18N = {
 };
 
 // ====================================================
+// Global Debug Force Cards
+// ====================================================
+window.forceCards = [];
+try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const forceCardsParam = urlParams.get('force_card');
+    if (forceCardsParam) {
+        window.forceCards = forceCardsParam.split(',');
+    }
+} catch (e) {
+    console.error("Failed to parse force_card param:", e);
+}
+
+// ====================================================
 // i18n: 言語の自動検知と切り替えシステム
 // ====================================================
 const savedLang = localStorage.getItem('tarot_lang');
@@ -369,12 +383,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = [];
         const usedIndices = new Set();
 
-        // Debug: force specific cards via URL parameter (e.g. ?force_card=emperor,lovers)
-        const urlParams = new URLSearchParams(window.location.search);
-        const forceCardsParam = urlParams.get('force_card');
-        if (forceCardsParam) {
-            const forceIds = forceCardsParam.split(',');
-            forceIds.forEach(id => {
+        // Debug: force specific cards via pre-parsed global variable
+        if (window.forceCards && window.forceCards.length > 0) {
+            window.forceCards.forEach(id => {
                 const cardIndex = ALL_CARDS.findIndex(c => c.id === id);
                 if (cardIndex !== -1 && result.length < count && !usedIndices.has(cardIndex)) {
                     usedIndices.add(cardIndex);
