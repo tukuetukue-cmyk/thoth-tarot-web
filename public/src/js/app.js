@@ -368,6 +368,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function drawUniqueCards(count) {
         const result = [];
         const usedIndices = new Set();
+
+        // Debug: force specific cards via URL parameter (e.g. ?force_card=emperor,lovers)
+        const urlParams = new URLSearchParams(window.location.search);
+        const forceCardsParam = urlParams.get('force_card');
+        if (forceCardsParam) {
+            const forceIds = forceCardsParam.split(',');
+            forceIds.forEach(id => {
+                const cardIndex = ALL_CARDS.findIndex(c => c.id === id);
+                if (cardIndex !== -1 && result.length < count && !usedIndices.has(cardIndex)) {
+                    usedIndices.add(cardIndex);
+                    result.push(ALL_CARDS[cardIndex]);
+                }
+            });
+        }
+
         while(result.length < count) {
             const randomIndex = Math.floor(Math.random() * ALL_CARDS.length);
             if (!usedIndices.has(randomIndex)) {
