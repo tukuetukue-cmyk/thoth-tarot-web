@@ -1781,3 +1781,5 @@ const MINOR_ARCANA = [
         }
     }
 ];
+
+const ALL_CARDS = [...MAJOR_ARCANA, ...MINOR_ARCANA];
