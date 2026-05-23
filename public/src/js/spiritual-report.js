@@ -307,6 +307,7 @@
 
             // ローディングを隠して本文を表示
             loadingEl.classList.add("hidden-section");
+            loadingEl.style.display = "none";
             textContainer.classList.remove("hidden-section");
 
             // レスポンシブに応じた初期展開状態のセット
