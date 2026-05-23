@@ -158,7 +158,7 @@
                 cx: coords.x, cy: coords.y, r: SEPHIRA_R + 8,
                 class: "sephira-glow",
                 fill: "none",
-                stroke: sephira.color.queen,
+                stroke: "var(--accent-gold)", // 同色（ゴールド）に統一
                 "stroke-width": "1",
                 opacity: "0.3"
             });
@@ -410,20 +410,20 @@
     function highlightActivatedElements() {
         // 全体の非活性化（初期化）
         document.querySelectorAll(".sephira-group, .tree-path").forEach(el => {
-            el.classList.remove("chart-active");
+            el.classList.remove("reading-highlight");
         });
 
         // 活性化セフィラを光らせる
         activatedSephiroth.forEach(sephiraId => {
             const el = document.querySelector(`.sephira-group[data-sephira-id="${sephiraId}"]`);
-            if (el) el.classList.add("chart-active");
+            if (el) el.classList.add("reading-highlight");
         });
 
         // 活性化パスを光らせる
         activatedPaths.forEach(pathNum => {
             const el = document.querySelector(`.tree-path[data-path-number="${pathNum}"]`);
             if (el) {
-                el.classList.add("chart-active");
+                el.classList.add("reading-highlight");
                 // ヘブライ文字ラベルも光らせる
                 const label = el.nextElementSibling;
                 if (label && label.classList.contains("path-label")) {
@@ -525,7 +525,7 @@
                         // 読んでいる要素だけを「より強力に」発光させ、他を少し落とす
                         document.querySelectorAll(".sephira-group, .tree-path").forEach(svgNode => {
                             svgNode.style.transition = "all 0.5s ease";
-                            svgNode.style.opacity = "0.3"; // 周りを薄くする
+                            // セフィロトページと同じ仕様にするため、全体を暗くする処理を削除
                         });
 
                         if (targetType === "sephira") {
@@ -708,7 +708,7 @@
         // 1. パスの処理
         const paths = svgClone.querySelectorAll('.tree-path');
         paths.forEach(p => {
-            const isActivated = p.classList.contains('chart-active');
+            const isActivated = p.classList.contains('reading-highlight');
             p.setAttribute('stroke', isActivated ? '#d4af37' : '#e0e0e0');
             p.setAttribute('stroke-width', isActivated ? '4' : '2');
             p.style.opacity = '1';
@@ -734,7 +734,7 @@
         const pathLabels = svgClone.querySelectorAll('.path-label');
         pathLabels.forEach(lbl => {
             const prevLine = lbl.previousElementSibling;
-            const isActivated = prevLine && prevLine.classList.contains('chart-active');
+            const isActivated = prevLine && prevLine.classList.contains('reading-highlight');
             lbl.setAttribute('fill', isActivated ? '#d4af37' : '#aaaaaa');
             lbl.setAttribute('font-family', 'sans-serif');
             lbl.setAttribute('font-size', '10px');
@@ -745,7 +745,7 @@
         // 4. セフィラの処理
         const sephiraGroups = svgClone.querySelectorAll('.sephira-group');
         sephiraGroups.forEach(g => {
-            const isActivated = g.classList.contains('chart-active');
+            const isActivated = g.classList.contains('reading-highlight');
 
             // 円の処理
             const circle = g.querySelector('.sephira-circle, .daath-circle');

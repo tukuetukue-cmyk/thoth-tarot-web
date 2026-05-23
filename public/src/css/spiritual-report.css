@@ -341,32 +341,3 @@
     }
 }
 
-/* ====================================================
-   生命の樹SVGのカルテ用ハイライトクラス
-   ==================================================== */
-.tree-path.chart-active {
-    stroke: #FFD700;
-    stroke-width: 4.5;
-    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
-    opacity: 1;
-}
-
-.sephira-group.chart-active .sephira-circle {
-    stroke: #FFD700;
-    stroke-width: 3.5;
-    fill: rgba(212, 175, 55, 0.5);
-    filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.8));
-}
-
-.sephira-group.chart-active .sephira-glow {
-    opacity: 1;
-    stroke: #FFD700;
-    stroke-width: 4px;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
-}
-
-.sephira-group.chart-active .sephira-name-en {
-    fill: #FFF;
-    text-shadow: 0 0 4px rgba(212, 175, 55, 0.8);
-    font-weight: bold;
-}
