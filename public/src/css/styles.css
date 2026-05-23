@@ -135,7 +135,7 @@ body {
     text-align: left;
 }
 
-.donation-nav-link {
+.mystic-nav-link {
     color: var(--accent-gold);
     text-decoration: none;
     font-size: 0.95rem;
@@ -146,7 +146,7 @@ body {
     align-items: center;
 }
 
-.donation-nav-link:hover {
+.mystic-nav-link:hover {
     color: var(--text-primary);
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
@@ -1470,7 +1470,7 @@ footer {
 }
 
 /* Header nav link for Ko-fi */
-.donation-nav-link {
+.mystic-nav-link {
     color: var(--accent-gold);
     text-decoration: none;
     font-size: 0.85rem;
@@ -1480,7 +1480,7 @@ footer {
     transition: opacity 0.2s;
     margin-right: 0.5rem;
 }
-.donation-nav-link:hover { opacity: 1; }
+.mystic-nav-link:hover { opacity: 1; }
 
 @media (max-width: 600px) {
     .kofi-section { padding: 3rem 1.2rem; }
