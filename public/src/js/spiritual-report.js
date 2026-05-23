@@ -9,9 +9,9 @@
     // --- 定数と設定 ---
     const SVG_NS = "http://www.w3.org/2000/svg";
     const VIEWBOX_W = 500;
-    const VIEWBOX_H = 750;
-    const SEPHIRA_R = 28;
-    const DAATH_R = 20;
+    const VIEWBOX_H = 700;
+    const SEPHIRA_R = 40;
+    const DAATH_R = 26;
 
     // APIのベースURL決定（開発環境と本番環境の自動切り替え）
     const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
