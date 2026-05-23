@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>生命の樹｜Tree of Life ── トート・タロット</title>
+    <title>Sefirot｜セフィロト ── トート・タロット</title>
     <meta name="description" content="トート・タロットの背骨となるカバラの生命の樹。10のセフィラと22のパスを探索し、78枚のカードとの対応を視覚的に学ぶ。">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Noto+Sans+JP:wght@100;300;400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/css/styles.css?v=28">
-    <link rel="stylesheet" href="src/css/tree-of-life.css?v=10">
+    <link rel="stylesheet" href="src/css/tree-of-life.css?v=13">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
 </head>
@@ -19,8 +19,8 @@
         <!-- ヘッダー -->
         <header class="tree-header">
             <a href="index.html?restore=true" class="back-link">← リーディングに戻る</a>
-            <h1 class="tree-page-title">Tree of Life</h1>
-            <p class="tree-page-subtitle">生命の樹｜セフィロトの探索</p>
+            <h1 class="tree-page-title">Sefirot</h1>
+            <p class="tree-page-subtitle">セフィロト｜生命の樹の探索</p>
         </header>
 
         <!-- メインコンテンツ -->
@@ -39,6 +39,8 @@
 
             <!-- 情報パネル -->
             <aside class="tree-info-panel" id="info-panel">
+                <!-- モバイル用スワイプハンドル -->
+                <div class="drawer-handle" id="drawer-handle"></div>
                 <div class="info-panel-inner">
                     <div id="info-placeholder" class="info-placeholder">
                         <p class="info-hint">セフィラまたはパスに触れてください</p>
@@ -100,6 +102,6 @@
     <!-- データ & ロジック -->
     <script src="src/js/cards.js?v=33"></script>
     <script src="src/js/tree-of-life.js?v=9"></script>
-    <script src="src/js/tree-of-life-ui.js?v=9"></script>
+    <script src="src/js/tree-of-life-ui.js?v=12"></script>
 </body>
 </html>

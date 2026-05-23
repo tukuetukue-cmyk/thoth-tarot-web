@@ -9,8 +9,8 @@
     const SVG_NS = "http://www.w3.org/2000/svg";
     const VIEWBOX_W = 500;
     const VIEWBOX_H = 700;
-    const SEPHIRA_R = 28;   // セフィラの半径
-    const DAATH_R = 20;     // ダアトの半径
+    const SEPHIRA_R = 40;   // セフィラの半径（大きく）
+    const DAATH_R = 26;     // ダアトの半径
 
     // --- DOM参照 ---
     const svgEl = document.getElementById("tree-svg");
@@ -20,9 +20,76 @@
     const infoPanel = document.getElementById("info-content");
     const infoPlaceholder = document.getElementById("info-placeholder");
     const treeContainer = document.getElementById("tree-container");
+    
+    // ドロワー用DOM参照
+    const infoPanelElement = document.getElementById("info-panel");
 
     // --- アクティブ状態の追跡 ---
     let activeElement = null;
+
+    // ====================================================
+    // アンビエント（生命の鼓動）エフェクト
+    // ====================================================
+    let idleTimer = null;
+    let ambientTimeout = null;
+    let currentAmbientElement = null;
+    const IDLE_WAIT_MS = 1000; // 1秒間操作がなければ開始
+
+    function resetIdleTimer() {
+        clearTimeout(idleTimer);
+        clearTimeout(ambientTimeout);
+        
+        // 現在光っているものを消す
+        if (currentAmbientElement) {
+            currentAmbientElement.classList.remove("ambient-glow");
+            currentAmbientElement = null;
+        }
+
+        // 何かアクティブな状態（パネルが開いている等）なら、アンビエントは開始しない
+        if (activeElement !== null) return;
+
+        idleTimer = setTimeout(triggerAmbientGlow, IDLE_WAIT_MS);
+    }
+
+    function triggerAmbientGlow() {
+        if (activeElement !== null) return;
+
+        if (currentAmbientElement) {
+            currentAmbientElement.classList.remove("ambient-glow");
+        }
+
+        // セフィラかパスかランダムに選ぶ
+        const isSephira = Math.random() > 0.5;
+        if (isSephira) {
+            const sephiroth = document.querySelectorAll(".sephira-group");
+            if (sephiroth.length > 0) {
+                const idx = Math.floor(Math.random() * sephiroth.length);
+                currentAmbientElement = sephiroth[idx];
+            }
+        } else {
+            const paths = document.querySelectorAll(".tree-path");
+            if (paths.length > 0) {
+                const idx = Math.floor(Math.random() * paths.length);
+                currentAmbientElement = paths[idx];
+            }
+        }
+
+        if (currentAmbientElement) {
+            currentAmbientElement.classList.add("ambient-glow");
+        }
+
+        // 光を消すタイミング（長く光らせる）
+        setTimeout(() => {
+            if (currentAmbientElement) {
+                currentAmbientElement.classList.remove("ambient-glow");
+                currentAmbientElement = null;
+            }
+        }, 4000);
+
+        // 次の鼓動までランダムな間隔 (3秒〜6秒後)
+        const nextInterval = 3000 + Math.random() * 3000;
+        ambientTimeout = setTimeout(triggerAmbientGlow, nextInterval);
+    }
 
     // ====================================================
     // 座標変換ヘルパー
@@ -131,7 +198,7 @@
                 cx: coords.x, cy: coords.y, r: SEPHIRA_R + 8,
                 class: "sephira-glow",
                 fill: "none",
-                stroke: sephira.color.queen,
+                stroke: "var(--accent-gold)", // 同色（ゴールド）に統一
                 "stroke-width": "1",
                 opacity: "0.3"
             });
@@ -390,23 +457,98 @@
     }
 
     // ====================================================
-    // パネル表示制御
+    // パネル表示制御とドロワー操作
     // ====================================================
     function showInfoPanel(html) {
         infoPlaceholder.style.display = "none";
         infoPanel.classList.remove("hidden-section");
         infoPanel.innerHTML = html;
 
-        // スマホ表示時（画面幅が狭い場合）は自動で説明パネルへスクロールする
-        if (window.innerWidth <= 768) {
-            const asidePanel = document.getElementById("info-panel");
-            if (asidePanel) {
-                // 少し上部に余裕を持たせてスクロール
-                const yOffset = -20;
-                const y = asidePanel.getBoundingClientRect().top + window.scrollY + yOffset;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
+        openDrawer();
+
+        // スマホ表示時、ドロワー内のスクロールをトップへ戻す
+        if (window.innerWidth <= 900) {
+            const inner = document.querySelector(".info-panel-inner");
+            if (inner) inner.scrollTop = 0;
         }
+    }
+
+    // ====================================================
+    // モバイル用スワイプ制御
+    // ====================================================
+    let startY = 0;
+    let isDragging = false;
+
+    function initDrawer() {
+        if (!infoPanelElement) return;
+
+        infoPanelElement.addEventListener("touchstart", (e) => {
+            if (window.innerWidth >= 900) return;
+            
+            // パネル内部を触っている場合、上にスクロールする余裕があればスワイプを無効化
+            const inner = e.target.closest(".info-panel-inner");
+            if (inner && infoPanelElement.classList.contains("active-drawer")) {
+                if (inner.scrollTop > 0) return; 
+            }
+
+            // アクティブ状態設定によって自動的にタイマーは止まるが明示的に呼ぶ
+            resetIdleTimer();
+
+            startY = e.touches[0].clientY;
+            isDragging = true;
+            infoPanelElement.style.setProperty("--drawer-offset", "0px");
+            infoPanelElement.classList.add("dragging");
+        }, { passive: true });
+
+        infoPanelElement.addEventListener("touchmove", (e) => {
+            if (!isDragging) return;
+            const y = e.touches[0].clientY;
+            const deltaY = y - startY;
+
+            if (deltaY > 0) {
+                // 下へ閉じる
+                infoPanelElement.style.setProperty("--drawer-offset", `${deltaY}px`);
+            } else if (deltaY < 0 && !infoPanelElement.classList.contains("active-drawer")) {
+                // 上へ開く（見えている分から引っ張る）
+                infoPanelElement.style.setProperty("--drawer-offset", `${deltaY}px`);
+            }
+        }, { passive: true });
+
+        infoPanelElement.addEventListener("touchend", (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            infoPanelElement.classList.remove("dragging");
+            
+            const currentOffset = parseFloat(infoPanelElement.style.getPropertyValue("--drawer-offset") || "0");
+            infoPanelElement.style.setProperty("--drawer-offset", "0px");
+
+            // 80px以上下へスワイプしたら閉じる
+            if (currentOffset > 80) {
+                closeDrawer();
+            } else if (currentOffset < -40) {
+                openDrawer();
+            }
+        });
+    }
+
+    function openDrawer() {
+        if (!infoPanelElement) return;
+        infoPanelElement.classList.add("active-drawer");
+        infoPanelElement.classList.remove("inactive-drawer-drag");
+    }
+
+    function closeDrawer() {
+        if (!infoPanelElement) return;
+        infoPanelElement.classList.remove("active-drawer");
+        
+        // アクティブ状態の解除
+        document.querySelectorAll(".sephira-group.active, .tree-path.active").forEach(el => {
+            el.classList.remove("active");
+        });
+        activeElement = null;
+
+        // パネルを閉じたのでアンビエントタイマーを再開
+        resetIdleTimer();
     }
 
     // ====================================================
@@ -614,10 +756,20 @@
     // 初期化
     // ====================================================
     function init() {
+        initDrawer();
         drawPaths();
         drawAbyss();
         drawSephiroth();
         processReadingParams();
+
+        // ユーザーインタラクションの監視（アンビエントタイマー用）
+        document.addEventListener("mousemove", resetIdleTimer, { passive: true });
+        document.addEventListener("click", resetIdleTimer, { passive: true });
+        document.addEventListener("touchstart", resetIdleTimer, { passive: true });
+        document.addEventListener("scroll", resetIdleTimer, { passive: true });
+
+        // 初期タイマー起動
+        resetIdleTimer();
     }
 
     // DOMContentLoaded で起動

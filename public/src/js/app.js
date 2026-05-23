@@ -22,7 +22,7 @@ const I18N = {
         "input.name_placeholder": "あなたのお名前",
         "input.birthdate_label": "生年月日｜任意",
         "input.context_label": "相談内容｜任意",
-        "input.context_placeholder": "現在の直面している課題や、占いたいテーマをご自由にご記入ください。",
+        "input.context_placeholder": "現在の直面している課題や、占いたいテーマをご自由にご記入ください。\n未記入の場合は「今日の運勢」をリーディングします。",
         "input.spread_one": "ワンオラクル｜1枚引き",
         "input.spread_three": "スリーカード｜経緯・現状・可能性",
         "input.draw_btn": "カードを引く",
@@ -30,8 +30,8 @@ const I18N = {
         "loading.msgs": ["すべての男と女は星である...", "汝の欲する事を為せ、それが法の全てとなろう...", "愛は法なり、意志の下の愛こそが..."],
         "thelema.title": "トート・タロット「テレマ」の思想",
         "thelema.subtitle": "",
-        "result.your_theme": "あなたのテーマ:",
-        "result.no_theme": "特になし",
+        "result.your_theme": "あなたのテーマ",
+        "result.no_theme": "今日の運勢",
         "result.reading_title": "ハルからのリーディング",
         "result.symbols_title": "象徴｜シンボルの学び",
         "result.symbols_helper": "気になるキーワードに触れてみてください。",
@@ -43,7 +43,8 @@ const I18N = {
         "result.btn_restart": "もう一度対話する",
         "result.error": "申し訳ありません。星の導きがうまく読み取れませんでした。もう一度お試しください。",
         "result.user_label": "【{name}さんのテーマ】",
-        "result.no_context": "星の導きのままに",
+        "result.no_context": "今日の運勢",
+        "result.three_card_cta": "スリーカードでのリーディングをご希望の方はこちら",
         "result.arcana_major": "大アルカナ",
         "result.arcana_minor": "小アルカナ",
         "result.positions": ["経緯", "現状", "可能性"],
@@ -114,7 +115,7 @@ const I18N = {
         "input.name_placeholder": "Your name",
         "input.birthdate_label": "Date of Birth (optional)",
         "input.context_label": "Consultation Content｜Optional",
-        "input.context_placeholder": "Please feel free to write about the challenges you are currently facing or the theme you wish to explore.",
+        "input.context_placeholder": "Please feel free to write about the challenges you are currently facing or the theme you wish to explore.\nIf left blank, a \"Today's Fortune\" reading will be given.",
         "input.spread_one": "One Oracle (1 card)",
         "input.spread_three": "Three Cards (Past · Present · Potential)",
         "input.draw_btn": "Draw the Cards",
@@ -122,8 +123,8 @@ const I18N = {
         "loading.msgs": ["Every man and every woman is a star...", "Do what thou wilt shall be the whole of the Law...", "Love is the law, love under will..."],
         "thelema.title": "The Philosophy of \"Thelema\" in Thoth Tarot",
         "thelema.subtitle": "",
-        "result.your_theme": "Your Theme:",
-        "result.no_theme": "(No theme specified)",
+        "result.your_theme": "Your Theme",
+        "result.no_theme": "Today's Fortune",
         "result.reading_title": "Haru's Reading",
         "result.symbols_title": "The Study of Symbols",
         "result.symbols_helper": "Tap a keyword to explore its occult meaning.",
@@ -135,7 +136,8 @@ const I18N = {
         "result.btn_restart": "Begin Again",
         "result.error": "I apologize. The stellar guidance could not be read clearly. Please try again.",
         "result.user_label": "【{name}'s Theme】",
-        "result.no_context": "(Following the stars' guidance)",
+        "result.no_context": "Today's Fortune",
+        "result.three_card_cta": "Want a deeper Three-Card Reading? Click here",
         "result.arcana_major": "Major Arcana",
         "result.arcana_minor": "Minor Arcana",
         "result.positions": ["Past", "Present", "Potential"],
@@ -265,6 +267,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const drawBtn = document.getElementById('draw-btn');
     const userContextInput = document.getElementById('user-context');
     
+    // Autofill name and birthdate if previously saved
+    const userNameInput = document.getElementById('user-name');
+    const userBirthdateInput = document.getElementById('user-birthdate');
+    if (userNameInput && localStorage.getItem('tarot_user_name')) {
+        userNameInput.value = localStorage.getItem('tarot_user_name');
+    }
+    if (userBirthdateInput && localStorage.getItem('tarot_user_birthdate')) {
+        userBirthdateInput.value = localStorage.getItem('tarot_user_birthdate');
+    }
+    
     // Section elements
     const inputSection = document.getElementById('input-section');
     const loadingSection = document.getElementById('loading-section');
@@ -287,6 +299,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         window.tempUserName = userName;
         window.tempUserBirthdate = userBirthdate;
+        
+        // Save to localStorage for returning users
+        localStorage.setItem('tarot_user_name', userName);
+        localStorage.setItem('tarot_user_birthdate', userBirthdate);
         
         // 1. Show Loading State
         const loadingMessages = [
@@ -355,7 +371,14 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (response.ok) {
                 const data = await response.json();
-                readingResult = data.reading;
+                // data.reading が null / undefined / 空文字列の場合もエラー扱いにする
+                // （Gemini のセーフティフィルターがブロックした場合などに発生しうる）
+                if (data.reading) {
+                    readingResult = data.reading;
+                } else {
+                    console.error("API returned ok but reading is empty/null:", data);
+                    readingResult = t('result.error');
+                }
             } else {
                 console.error("API error status:", response.status);
                 // Simple error handling for user, no maintenance text
@@ -446,13 +469,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (symbolTagsContainer) symbolTagsContainer.innerHTML = '';
         
         const userNameDisplay = window.tempUserName;
-        if (userContextDisplay) {
-            if (userNameDisplay) {
-                userContextDisplay.innerHTML = `<strong>${t('result.user_label', {name: userNameDisplay})}</strong><br>${context || t('result.no_context')}`;
-            } else {
-                const themeText = t('result.your_theme').replace(':', '').replace('：', '');
-                userContextDisplay.innerHTML = `<strong>【${themeText}】</strong><br>${context || t('result.no_context')}`;
-            }
+        let themeDisplayHtml = `<strong>${t('result.your_theme')}</strong><br>${context || t('result.no_theme')}`;
+        
+        if (userNameDisplay && userNameDisplay !== 'あなた') {
+            themeDisplayHtml = `<strong>${t('result.user_label', {name: userNameDisplay})}</strong><br>${context || t('result.no_context')}`;
+        } else {
+            const themeText = t('result.your_theme').replace(':', '').replace('：', '');
+            themeDisplayHtml = `<strong>【${themeText}】</strong><br>${context || t('result.no_context')}`;
         }
         
         let cardsHtml = '';
@@ -532,6 +555,15 @@ document.addEventListener('DOMContentLoaded', () => {
             personalizedReading = personalizedReading.replace(/さんさん/g, 'さん');
         }
 
+        // --- Simple Markdown Parser for Reading Text ---
+        // 見出しの変換 (## 見出し)
+        personalizedReading = personalizedReading.replace(/^##\s+(.+)$/gm, '<h4 class="reading-subheading">$1</h4>');
+        // 見出しの直後の改行を削除（white-space: pre-wrapによる無駄な余白を防ぐため）
+        personalizedReading = personalizedReading.replace(/<\/h4>\n+/g, '</h4>');
+        // 太字の変換 (**太字**)
+        personalizedReading = personalizedReading.replace(/\*\*(.*?)\*\*/g, '<strong class="reading-bold">$1</strong>');
+        // ----------------------------------------------
+
         const drawnCardIds = cards.map(c => c.id).join(',');
 
         const resultHtml = `
@@ -542,13 +574,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 <div class="reading-content">
                     <div class="user-context-echo">
-                        <strong>${t('result.your_theme')}</strong>
-                        <p>${context || t('result.no_theme')}</p>
+                        ${themeDisplayHtml}
                     </div>
                     
                     <div class="reading-text">
                         <h3>${t('result.reading_title')}</h3>
-                        <p>${personalizedReading}</p>
+                        <div class="reading-body">${personalizedReading}</div>
                     </div>
                     
                     ${hasSymbols ? `
@@ -564,11 +595,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="result-actions">
                         <button id="generate-report-btn" class="mystic-btn action-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold;">霊的カルテを生成する</button>
                         <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold;">生命の樹で展開する</a>
-                        <button id="save-image-btn" class="mystic-btn action-btn">${t('result.btn_save_img')}</button>
-                        <button id="save-text-btn" class="mystic-btn action-btn">${t('result.btn_save_txt')}</button>
-                        <button id="share-x-btn" class="mystic-btn action-btn x-share-btn">${t('result.btn_share_x')}</button>
-                        <button id="share-ig-btn" class="mystic-btn action-btn ig-share-btn">${t('result.btn_share_ig')}</button>
-                        <button class="mystic-btn restart-btn" onclick="location.reload()">${t('result.btn_restart')}</button>
+                        <button id="save-image-btn" class="mystic-btn action-btn transparent-btn">${t('result.btn_save_img')}</button>
+                        <button id="save-text-btn" class="mystic-btn action-btn transparent-btn">${t('result.btn_save_txt')}</button>
+                        <a href="https://mosh.jp/cinnamonclove/profile" target="_blank" rel="noopener noreferrer" class="mystic-btn action-btn premium-mosh-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; text-align:center;">${t('result.three_card_cta')}</a>
+                        <button class="mystic-btn restart-btn transparent-btn" onclick="location.reload()">${t('result.btn_restart')}</button>
                     </div>
                 </div>
             </div>
@@ -843,33 +873,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch(e) {
                 console.error("Copy error:", e);
                 alert(t('result.copy_fail'));
-            }
-        });
-
-        document.getElementById('share-x-btn').addEventListener('click', () => {
-            const text = encodeURIComponent(t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>reformatCardName(c.name)).join(', ')}));
-            const hashtags = t('share.x_tags');
-            const url = `https://twitter.com/intent/tweet?text=${text}&hashtags=${hashtags}`;
-            window.open(url, '_blank');
-        });
-
-        document.getElementById('share-ig-btn').addEventListener('click', async () => {
-            // Instagram doesnt have a web share intent for images.
-            // We download the image and copy text to clipboard.
-            const textToCopy = t('share.x_text', {theme: context || t('result.no_theme'), cards: cards.map(c=>reformatCardName(c.name)).join(', ')}) + `#${t('share.x_tags').split(',').join(' #')}`;
-            
-            const imageSuccess = await generateAndDownloadImage(`thoth-reading-ig-${new Date().getTime()}.png`);
-            
-            if (imageSuccess) {
-                try {
-                    await navigator.clipboard.writeText(textToCopy);
-                    alert(t('result.ig_success'));
-                } catch (err) {
-                    console.error("Clipboard error:", err);
-                    alert(t('result.ig_fail'));
-                }
-            } else {
-                alert(t('result.ig_fail'));
             }
         });
 

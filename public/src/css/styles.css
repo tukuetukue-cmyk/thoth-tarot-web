@@ -340,6 +340,19 @@ textarea:focus {
     transform: translateY(-2px);
 }
 
+/* 背景色を排除した透明ボタンのスタイル（枠線とテキストはゴールド） */
+.transparent-btn {
+    background: transparent !important;
+    border: 1px solid var(--accent-gold) !important;
+    box-shadow: none !important;
+}
+
+.transparent-btn:hover {
+    background: rgba(212, 175, 55, 0.1) !important; /* ホバー時にうっすらと神秘的なゴールドの光を灯す */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3) !important;
+    transform: translateY(-2px);
+}
+
 /* Loading Animation */
 .loader-container {
     display: flex;
@@ -580,7 +593,27 @@ footer {
 .reading-text {
     margin-bottom: 2rem;
     line-height: 1.8;
+}
+
+.reading-body {
     white-space: pre-wrap;
+}
+
+.reading-subheading {
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.reading-bold {
+    color: var(--accent-gold);
+    font-weight: 600;
 }
 
 .interactive-symbols {
@@ -1349,6 +1382,25 @@ footer {
         margin-bottom: 1.5rem;
     }
     .header-logo-container { text-align: center; }
+    .auth-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+    .lang-toggle-container {
+        justify-content: center;
+        margin-left: 0 !important;
+        width: 100%;
+    }
+    .top-sefirot-link {
+        margin-right: 0 !important;
+        font-size: 1.3rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-indent: 0.15em; /* Fix visual centering offset from letter-spacing */
+    }
     .mystic-btn { width: 100%; max-width: 280px; font-size: 1.1rem; }
     .spread-label-text { min-width: 100%; }
     .tarot-card-img { max-width: 220px; }
@@ -1372,6 +1424,7 @@ footer {
     font-family: var(--font-heading);
     font-size: 0.85rem;
     letter-spacing: 0.1em;
+    text-indent: 0.1em; /* Fix visual centering */
     padding: 5px 12px;
     border-radius: 20px;
     cursor: pointer;

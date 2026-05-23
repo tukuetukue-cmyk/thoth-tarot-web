@@ -57,10 +57,15 @@
     }
 }
 
+@media (max-width: 767px) {
+    .tree-main { padding: 0.5rem; gap: 1rem; }
+    .tree-container { padding: 5px; max-width: 100%; width: 100vw; height: auto; margin-top: -10px; }
+}
+
 /* --- SVGコンテナ --- */
 .tree-container {
     width: 100%;
-    max-width: 500px;
+    max-width: 650px;
     aspect-ratio: 5 / 7;
     position: relative;
     padding: 20px;
@@ -83,7 +88,7 @@
     stroke-width: 2;
     fill: none;
     cursor: pointer;
-    transition: stroke 0.3s, stroke-width 0.3s, filter 0.3s;
+    transition: stroke 3s ease, stroke-width 3s ease, filter 3s ease; /* ホタルのようにゆっくり消える */
 }
 
 .tree-path:hover,
@@ -91,6 +96,7 @@
     stroke: var(--accent-gold);
     stroke-width: 3.5;
     filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.7));
+    transition: stroke 0.4s ease, stroke-width 0.4s ease, filter 0.4s ease; /* 現れる時はスッと */
 }
 
 .tree-path.reading-highlight {
@@ -141,21 +147,27 @@
     fill: rgba(20, 20, 30, 0.8);
     stroke: rgba(212, 175, 55, 0.3);
     stroke-width: 1.5;
-    transition: all 0.4s ease;
+    transition: all 3s ease; /* ホタルのようにゆっくり消える */
 }
 
 .sephira-group:hover .sephira-circle,
 .sephira-group.active .sephira-circle {
     stroke: var(--accent-gold);
     stroke-width: 2.5;
-    fill: rgba(40, 35, 20, 0.9);
+    fill: rgba(74, 35, 90, 0.9); /* 紫系に統一 */
     filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.4));
+    transition: all 0.4s ease; /* 現れる時はスッと */
 }
 
 /* セフィラの内側の光 */
 .sephira-glow {
     opacity: 0;
-    transition: all 0.4s;
+    transition: all 3s ease; /* ゆっくり消える */
+}
+
+.sephira-group:hover .sephira-glow,
+.sephira-group.active .sephira-glow {
+    transition: all 0.4s ease; /* 現れる時はスッと */
 }
 
 .sephira-group:hover .sephira-glow,
@@ -250,27 +262,134 @@
     to { stroke-width: 5; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)); }
 }
 
-/* --- 情報パネル --- */
+/* --- アンビエント（生命の鼓動）エフェクト --- */
+.sephira-group.ambient-glow .sephira-circle {
+    stroke: rgba(212, 175, 55, 0.8);
+    stroke-width: 2.5;
+    fill: rgba(74, 35, 90, 0.6); /* 紫系でふんわり光る */
+    filter: drop-shadow(0 0 12px rgba(138, 43, 226, 0.5));
+    transition: all 3s ease-in-out;
+}
+
+.sephira-group.ambient-glow .sephira-glow {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+    transition: all 3s ease-in-out;
+}
+
+.tree-path.ambient-glow {
+    stroke: rgba(212, 175, 55, 0.8);
+    stroke-width: 3.5;
+    filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.6)); /* 紫系のグロー */
+    transition: all 3s ease-in-out;
+}
+
+/* --- 情報パネル（モバイル・ボトムドロワー＆PC・サイドパネル） --- */
 .tree-info-panel {
     width: 100%;
-    max-width: 500px;
-    min-height: 300px;
+    /* モバイル・ボトムドロワーのベーススタイル */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    /* スワイプ用のハンドルのスペースを考慮したパディング */
+    padding-top: 20px;
+    /* デフォルトは画面下に隠す */
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* 背景色とグラスモーフィズム */
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
+    
+    /* JSからの動的スワイプ更新に対応するための変数 */
+    --drawer-offset: 0px; 
+}
+
+/* ドロワーがアクティブ（開いている）状態 */
+.tree-info-panel.active-drawer {
+    /* offsetも加味したY位置 */
+    transform: translateY(calc(0px + var(--drawer-offset)));
+}
+
+/* 非アクティブ時にスワイプで引っ張られている状態（ちょっと見せる等）の補助 */
+.tree-info-panel.inactive-drawer-drag {
+    transform: translateY(calc(100% + var(--drawer-offset)));
+    transition: none; /* ドラッグ中はアニメーションを切る */
+}
+
+/* ドラッグ中はトランジションを切って指に追従させる */
+.tree-info-panel.dragging {
+    transition: none;
+}
+
+/* ドロワーのドラッグハンドル */
+.drawer-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    z-index: 2;
+}
+
+.drawer-handle:active {
+    cursor: grabbing;
+}
+
+.drawer-handle::after {
+    content: '';
+    width: 40px;
+    height: 4px;
+    background: rgba(212, 175, 55, 0.5);
+    border-radius: 2px;
+}
+
+/* パネル内部の要素 */
+.info-panel-inner {
+    position: relative;
+    z-index: 1;
+    /* モバイルドロワー用のパディングと高さ制限 */
+    padding: 0.5rem 1.5rem 2rem;
+    min-height: 40vh;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 @media (min-width: 900px) {
     .tree-info-panel {
-        max-width: 400px;
         position: sticky;
         top: 2rem;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        transform: none !important; /* PCではドロワーのトランスフォームを無効化 */
+        max-width: 400px;
+        background: rgba(10, 10, 15, 0.5);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 16px;
+        box-shadow: none;
+        padding-top: 0;
     }
-}
 
-.info-panel-inner {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    border-radius: 16px;
-    padding: 2rem;
-    min-height: 300px;
+    .drawer-handle {
+        display: none; /* PCではドラッグハンドル不要 */
+    }
+
+    .info-panel-inner {
+        min-height: 300px;
+        max-height: calc(100vh - 4rem);
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.2); /* PC用微調整 */
+    }
 }
 
 .info-placeholder {

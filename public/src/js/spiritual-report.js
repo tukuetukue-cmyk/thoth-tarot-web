@@ -315,6 +315,9 @@
                 setSheetState("half"); // モバイルでは半分展開してカルテが見えるようにする
             }
 
+            // 保存・コピー用ボタンの設定
+            setupActionButtons(userName, birthDate, theme);
+
             // スクロール連動ハイライトの初期化と確実な初期描画のための遅延処理
             setTimeout(() => {
                 highlightActivatedElements();
@@ -688,6 +691,303 @@
             setSheetState("half");
         } else {
             setSheetState("collapsed");
+        }
+    }
+
+    // ====================================================
+    // 6.5. 霊的カルテの保存・コピー処理
+    // ====================================================
+    function customizeSvgForCapture(svgClone) {
+        svgClone.style.background = '#ffffff';
+        svgClone.style.width = '100%';
+        svgClone.style.maxWidth = '360px';
+        svgClone.style.height = 'auto';
+        svgClone.style.display = 'block';
+        svgClone.style.margin = '0 auto 30px auto';
+
+        // 1. パスの処理
+        const paths = svgClone.querySelectorAll('.tree-path');
+        paths.forEach(p => {
+            const isActivated = p.classList.contains('chart-active');
+            p.setAttribute('stroke', isActivated ? '#d4af37' : '#e0e0e0');
+            p.setAttribute('stroke-width', isActivated ? '4' : '2');
+            p.style.opacity = '1';
+            p.style.filter = '';
+        });
+
+        // 2. アビス線の処理
+        const abyssLines = svgClone.querySelectorAll('.abyss-line');
+        abyssLines.forEach(l => {
+            l.setAttribute('stroke', '#cccccc');
+            l.setAttribute('stroke-dasharray', '4');
+            l.style.opacity = '1';
+        });
+        const abyssLabels = svgClone.querySelectorAll('.abyss-label');
+        abyssLabels.forEach(lbl => {
+            lbl.setAttribute('fill', '#888888');
+            lbl.setAttribute('font-size', '10px');
+            lbl.setAttribute('font-family', 'sans-serif');
+            lbl.style.opacity = '1';
+        });
+
+        // 3. パスラベル（ヘブライ文字）の処理
+        const pathLabels = svgClone.querySelectorAll('.path-label');
+        pathLabels.forEach(lbl => {
+            const prevLine = lbl.previousElementSibling;
+            const isActivated = prevLine && prevLine.classList.contains('chart-active');
+            lbl.setAttribute('fill', isActivated ? '#d4af37' : '#aaaaaa');
+            lbl.setAttribute('font-family', 'sans-serif');
+            lbl.setAttribute('font-size', '10px');
+            lbl.style.fill = isActivated ? '#d4af37' : '#aaaaaa';
+            lbl.style.opacity = '1';
+        });
+
+        // 4. セフィラの処理
+        const sephiraGroups = svgClone.querySelectorAll('.sephira-group');
+        sephiraGroups.forEach(g => {
+            const isActivated = g.classList.contains('chart-active');
+
+            // 円の処理
+            const circle = g.querySelector('.sephira-circle, .daath-circle');
+            if (circle) {
+                circle.setAttribute('fill', '#ffffff');
+                circle.setAttribute('stroke', isActivated ? '#d4af37' : '#666666');
+                circle.setAttribute('stroke-width', isActivated ? '3' : '1.5');
+                circle.style.fill = '#ffffff';
+                circle.style.stroke = isActivated ? '#d4af37' : '#666666';
+                circle.style.strokeWidth = isActivated ? '3px' : '1.5px';
+            }
+
+            // 外側の光輪（glow）の処理
+            const glow = g.querySelector('.sephira-glow');
+            if (glow) {
+                glow.setAttribute('stroke', isActivated ? '#d4af37' : '#cccccc');
+                glow.setAttribute('stroke-width', isActivated ? '1.5' : '0.5');
+                glow.setAttribute('opacity', isActivated ? '0.8' : '0.2');
+                glow.style.stroke = isActivated ? '#d4af37' : '#cccccc';
+                glow.style.strokeWidth = isActivated ? '1.5px' : '0.5px';
+                glow.style.opacity = isActivated ? '0.8' : '0.2';
+            }
+
+            // 番号の処理
+            const numText = g.querySelector('.sephira-number');
+            if (numText) {
+                numText.setAttribute('fill', isActivated ? '#d4af37' : '#888888');
+                numText.setAttribute('font-family', 'sans-serif');
+                numText.setAttribute('font-size', '10px');
+                numText.style.fill = isActivated ? '#d4af37' : '#888888';
+                numText.style.opacity = '1';
+            }
+
+            // 英語名の処理
+            const nameEn = g.querySelector('.sephira-name-en');
+            if (nameEn) {
+                nameEn.setAttribute('fill', isActivated ? '#d4af37' : '#333333');
+                nameEn.setAttribute('font-family', 'sans-serif');
+                nameEn.setAttribute('font-size', '10px');
+                nameEn.setAttribute('font-weight', isActivated ? 'bold' : 'normal');
+                nameEn.style.fill = isActivated ? '#d4af37' : '#333333';
+                nameEn.style.fontWeight = isActivated ? 'bold' : 'normal';
+                nameEn.style.opacity = '1';
+            }
+
+            // 日本語名の処理
+            const nameJa = g.querySelector('.sephira-name-ja');
+            if (nameJa) {
+                nameJa.setAttribute('fill', isActivated ? '#d4af37' : '#666666');
+                nameJa.setAttribute('font-family', 'sans-serif');
+                nameJa.setAttribute('font-size', '10px');
+                nameJa.setAttribute('font-weight', isActivated ? 'bold' : 'normal');
+                nameJa.style.fill = isActivated ? '#d4af37' : '#666666';
+                nameJa.style.fontWeight = isActivated ? 'bold' : 'normal';
+                nameJa.style.opacity = '1';
+            }
+        });
+    }
+
+    async function generateAndDownloadReportImage(filename, userName, birthDate, theme) {
+        if (!reportData) return;
+
+        const captureContainer = document.createElement('div');
+        captureContainer.style.position = 'fixed';
+        captureContainer.style.top = '0';
+        captureContainer.style.left = '0';
+        captureContainer.style.width = '100vw';
+        captureContainer.style.height = '100vh';
+        captureContainer.style.overflowY = 'auto';
+        captureContainer.style.padding = '50px';
+        captureContainer.style.background = '#ffffff';
+        captureContainer.style.color = '#111111';
+        captureContainer.style.fontFamily = '"Noto Serif JP", serif';
+        captureContainer.style.boxSizing = 'border-box';
+        captureContainer.style.zIndex = '99999';
+
+        const innerWrapper = document.createElement('div');
+        innerWrapper.style.maxWidth = '800px';
+        innerWrapper.style.margin = '0 auto';
+        innerWrapper.style.background = '#ffffff';
+        captureContainer.appendChild(innerWrapper);
+
+        // タイトル
+        const titleDiv = document.createElement('h2');
+        titleDiv.innerText = 'Spiritual Chart ｜ 霊的カルテ';
+        titleDiv.style.textAlign = 'center';
+        titleDiv.style.color = '#d4af37';
+        titleDiv.style.borderBottom = '1px solid #eeeeee';
+        titleDiv.style.paddingBottom = '20px';
+        titleDiv.style.fontFamily = '"Julius Sans One", serif';
+        titleDiv.style.letterSpacing = '2px';
+        titleDiv.style.fontSize = '24px';
+        innerWrapper.appendChild(titleDiv);
+
+        // メタ情報
+        const metaDiv = document.createElement('div');
+        metaDiv.style.background = '#f9f9f9';
+        metaDiv.style.borderLeft = '6px solid #d4af37';
+        metaDiv.style.padding = '20px';
+        metaDiv.style.margin = '30px 0';
+        metaDiv.style.fontSize = '15px';
+        metaDiv.style.lineHeight = '1.6';
+        
+        let metaHtml = `<strong>THEME:</strong> ${escapeHtml(theme || '総合リーディング')}<br>`;
+        if (userName && userName !== 'あなた') {
+            metaHtml += `<strong>SEEKER:</strong> ${escapeHtml(userName)}<br>`;
+        }
+        if (birthDate) {
+            metaHtml += `<strong>BIRTH DATE:</strong> ${escapeHtml(birthDate)}<br>`;
+        }
+        metaDiv.innerHTML = metaHtml;
+        innerWrapper.appendChild(metaDiv);
+
+        // 生命の樹のSVGをクローンして調整
+        const svgClone = document.getElementById("tree-svg").cloneNode(true);
+        customizeSvgForCapture(svgClone);
+        innerWrapper.appendChild(svgClone);
+
+        // レポート本文
+        const bodyDiv = document.createElement('div');
+        bodyDiv.style.lineHeight = '1.8';
+        bodyDiv.style.fontSize = '15px';
+        bodyDiv.style.borderTop = '1px dotted #cccccc';
+        bodyDiv.style.paddingTop = '30px';
+        
+        // 元のHTMLをクローンしてインラインで綺麗にする
+        const reportBodyClone = reportBodyEl.cloneNode(true);
+        
+        // クローンされた要素のスタイルを調整（白背景用）
+        reportBodyClone.querySelectorAll('h3').forEach(h => {
+            h.style.color = '#d4af37';
+            h.style.borderBottom = '1px solid #f0f0f0';
+            h.style.paddingBottom = '8px';
+            h.style.marginTop = '30px';
+            h.style.fontSize = '18px';
+            h.style.fontFamily = '"Noto Serif JP", serif';
+        });
+        reportBodyClone.querySelectorAll('p').forEach(p => {
+            p.style.marginBottom = '20px';
+            p.style.color = '#333333';
+            p.style.fontSize = '15px';
+            p.style.lineHeight = '1.8';
+        });
+        
+        // アクションボタンコンテナは画像に入れないように削除
+        const actionsInClone = reportBodyClone.querySelector('.report-actions');
+        if (actionsInClone) {
+            reportBodyClone.removeChild(actionsInClone);
+        }
+        
+        reportBodyClone.querySelectorAll('.report-closure').forEach(c => {
+            c.style.textAlign = 'center';
+            c.style.fontStyle = 'italic';
+            c.style.color = '#888888';
+            c.style.marginTop = '40px';
+            c.style.fontSize = '16px';
+        });
+        
+        bodyDiv.appendChild(reportBodyClone);
+        innerWrapper.appendChild(bodyDiv);
+
+        // フッター
+        const footerDiv = document.createElement('div');
+        footerDiv.style.marginTop = '50px';
+        footerDiv.style.textAlign = 'center';
+        footerDiv.style.color = '#888888';
+        footerDiv.style.fontSize = '12px';
+        footerDiv.innerText = 'cinnamonclove.com';
+        innerWrapper.appendChild(footerDiv);
+
+        // 画面の最前面に被せる
+        document.body.appendChild(captureContainer);
+
+        // カメラフラッシュのようなテキスト演出
+        const loadingText = document.createElement('div');
+        loadingText.innerText = '画像を作成中...';
+        loadingText.style.position = 'fixed';
+        loadingText.style.top = '20px';
+        loadingText.style.right = '20px';
+        loadingText.style.background = '#d4af37';
+        loadingText.style.color = '#000';
+        loadingText.style.padding = '10px 20px';
+        loadingText.style.borderRadius = '5px';
+        loadingText.style.fontWeight = 'bold';
+        loadingText.style.zIndex = '100000';
+        captureContainer.appendChild(loadingText);
+
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        try {
+            const canvas = await html2canvas(innerWrapper, {
+                backgroundColor: '#ffffff',
+                scale: 2,
+                useCORS: true,
+                logging: false
+            });
+
+            document.body.removeChild(captureContainer);
+
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            return true;
+        } catch (err) {
+            console.error("画像生成エラー:", err);
+            if(captureContainer.parentNode) document.body.removeChild(captureContainer);
+            return false;
+        }
+    }
+
+    function setupActionButtons(userName, birthDate, theme) {
+        const copyBtn = document.getElementById("report-save-text-btn");
+        const saveImgBtn = document.getElementById("report-save-image-btn");
+
+        if (copyBtn) {
+            copyBtn.addEventListener("click", async () => {
+                if (!reportData) return;
+                const textToCopy = `Spiritual Chart ｜ 霊的カルテ\n\n` +
+                    `THEME: ${theme}\n` +
+                    (userName && userName !== "あなた" ? `SEEKER: ${userName}\n` : "") +
+                    (birthDate ? `BIRTH DATE: ${birthDate}\n` : "") +
+                    `\n----------------------------------------\n\n` +
+                    reportData.reportText.trim() +
+                    `\n\n----------------------------------------\n` +
+                    `https://cinnamonclove.com`;
+
+                try {
+                    await navigator.clipboard.writeText(textToCopy);
+                    alert("霊的カルテのテキストをクリップボードにコピーしたよ！");
+                } catch(e) {
+                    console.error("Copy error:", e);
+                    alert("コピーに失敗しちゃった。ブラウザの権限を確認してみてね。");
+                }
+            });
+        }
+
+        if (saveImgBtn) {
+            saveImgBtn.addEventListener("click", async () => {
+                const filename = `thoth-spiritual-chart-${new Date().getTime()}.png`;
+                await generateAndDownloadReportImage(filename, userName, birthDate, theme);
+            });
         }
     }
 
