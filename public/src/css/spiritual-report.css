@@ -93,9 +93,9 @@
 
 .report-tree-section .tree-container {
     width: 100%;
-    max-width: 420px;
+    max-width: 500px;
     height: auto;
-    aspect-ratio: 500 / 750;
+    aspect-ratio: 500 / 700;
     margin: 0 auto;
     overflow: visible;
 }
@@ -309,7 +309,7 @@
 
     /* 生命の樹を固定配置 */
     .report-tree-section {
-        flex: 0 0 420px;
+        flex: 0 0 500px;
         position: sticky;
         top: 3rem;
         padding-bottom: 0;

@@ -701,7 +701,7 @@
     function customizeSvgForCapture(svgClone) {
         svgClone.style.background = '#ffffff';
         svgClone.style.width = '100%';
-        svgClone.style.maxWidth = '360px';
+        svgClone.style.maxWidth = '500px';
         svgClone.style.height = 'auto';
         svgClone.style.display = 'block';
         svgClone.style.margin = '0 auto 30px auto';
