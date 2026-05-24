@@ -42,9 +42,9 @@ const I18N = {
         "result.arcana_major": "大アルカナ",
         "result.arcana_minor": "小アルカナ",
         "result.positions": ["経緯", "現状", "可能性"],
-        "result.copy_success": "リーディング結果のテキストをコピーしました！\nメモ帳やLINEなどに貼り付け｜ペーストして保存してください✨",
+        "result.copy_success": "リーディング結果のテキストをコピーしました！\nメモ帳やLINEなどに貼り付け｜ペーストして保存してください。",
         "result.copy_fail": "コピーに失敗しました。お使いのブラウザでは手動でテキストを選択してコピーしてください。",
-        "result.ig_success": "【Instagram投稿の準備完了！】\n画像をダウンロードし、ハッシュタグ付きのテキストをコピーしました。\nInstagramアプリを開いて、画像を貼り付けて投稿してください📸✨",
+        "result.ig_success": "【Instagram投稿の準備完了！】\n画像をダウンロードし、ハッシュタグ付きのテキストをコピーしました。\nInstagramアプリを開いて、画像を貼り付けて投稿してください。",
         "result.ig_fail": "画像の保存に失敗しました。",
         "modal.symbol_in_card": "{card}における意味:",
         "modal.esoteric_title": "── 象徴の深淵 ──",
@@ -129,9 +129,9 @@ const I18N = {
         "result.arcana_major": "Major Arcana",
         "result.arcana_minor": "Minor Arcana",
         "result.positions": ["Past", "Present", "Potential"],
-        "result.copy_success": "Reading copied to clipboard!\nPaste it into your notes app or share it as you wish. ✨",
+        "result.copy_success": "Reading copied to clipboard!\nPaste it into your notes app or share it as you wish.",
         "result.copy_fail": "Copy failed. Please select the text manually in your browser.",
-        "result.ig_success": "【Ready for Instagram!】\nYour image has been downloaded and your caption (with hashtags) is copied.\nOpen your Instagram app, post the image, and paste the caption. 📸✨",
+        "result.ig_success": "【Ready for Instagram!】\nYour image has been downloaded and your caption (with hashtags) is copied.\nOpen your Instagram app, post the image, and paste the caption.",
         "result.ig_fail": "Failed to save the image.",
         "modal.symbol_in_card": "Meaning in {card}:",
         "modal.esoteric_title": "── Abyss of Symbols ──",
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         if (!isLocalhost && cooldown.count >= 6) {
             alert(
-                "🔮 本日の鑑定は6回受け取っています。\n\n" +
+                "本日の鑑定は6回受け取っています。\n\n" +
                 "魂のエネルギーを休め、明日また新たな問いかけを行ってみてね。"
             );
             return;
@@ -391,6 +391,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error("API returned ok but reading is empty/null:", data);
                     readingResult = t('result.error');
                 }
+            } else if (response.status === 429) {
+                console.error("API Rate Limit Exceeded");
+                readingResult = "今、星の導きが混み合っているようです。\n魂のエネルギーを少し休ませてから、1分後にもう一度問いかけてみてください。";
             } else {
                 console.error("API error status:", response.status);
                 // Simple error handling for user, no maintenance text
@@ -943,6 +946,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             })
                         });
 
+                        if (response.status === 429) throw new Error('RateLimit');
                         if (!response.ok) throw new Error('API Error');
                         
                         const data = await response.json();
@@ -953,7 +957,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     } catch (err) {
                         console.error(err);
-                        appendMessage('星の導きが弱まっています。時間をおいてから再度お尋ねください。', 'ai');
+                        if (err.message === 'RateLimit') {
+                            appendMessage('今、星の導きが混み合っているようです。魂のエネルギーを少し休ませてから、1分後にもう一度問いかけてみてください。', 'ai');
+                        } else {
+                            appendMessage('星の導きが弱まっています。時間をおいてから再度お尋ねください。', 'ai');
+                        }
                     } finally {
                         chatSendBtn.disabled = false;
                         chatSendBtn.textContent = '送信';
