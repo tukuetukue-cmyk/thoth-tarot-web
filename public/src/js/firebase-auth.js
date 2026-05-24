@@ -22,8 +22,6 @@ window.currentUser = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const authBtn = document.getElementById('auth-btn');
-    const premiumModal = document.getElementById('premium-modal');
-    const closePremiumBtn = document.getElementById('close-premium-btn');
     const googleLoginBtn = document.getElementById('google-login-btn');
     const userProfile = document.getElementById('user-profile');
     const userEmailSpan = document.getElementById('user-email');
@@ -32,9 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyBtn = document.getElementById('history-btn');
     const historyModal = document.getElementById('history-modal');
     const closeHistoryBtn = document.getElementById('close-history-btn');
-    const verifyLicenseBtn = document.getElementById('verify-license-btn');
-    const licenseInput = document.getElementById('license-key-input');
-    const licenseMsg = document.getElementById('license-status-msg');
 
     // 1. Auth Button Click (Opens Modal or Logs out)
     if (authBtn) {
@@ -52,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Close Modals
-    if (closePremiumBtn) closePremiumBtn.addEventListener('click', () => premiumModal.classList.remove('active'));
     if (closeHistoryBtn) closeHistoryBtn.addEventListener('click', () => historyModal.classList.remove('active'));
 
     // 3. Google Sign in
@@ -86,64 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Verify License Key
-    if (verifyLicenseBtn) {
-        verifyLicenseBtn.addEventListener('click', async () => {
-            if (!window.currentUser) {
-                licenseMsg.textContent = "先に上部のボタンからログインしてください。/ Please login first.";
-                licenseMsg.style.color = "var(--error-color)";
-                return;
-            }
-            
-            const key = licenseInput.value.trim();
-            if (!key) {
-                licenseMsg.textContent = "ライセンスキーを入力してください。 / Enter license key.";
-                licenseMsg.style.color = "var(--error-color)";
-                return;
-            }
-
-            verifyLicenseBtn.disabled = true;
-            licenseMsg.textContent = "検証中... / Verifying...";
-            licenseMsg.style.color = "var(--text-secondary)";
-
-            try {
-                // Call FastAPI backend
-                const response = await fetch('http://localhost:8000/api/verify-license', { // Changed to localhost for testing
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        user_id: window.currentUser.uid,
-                        license_key: key 
-                    })
-                });
-
-                const data = await response.json();
-                if (response.ok && data.valid) {
-                    licenseMsg.textContent = "✨ 認証成功！プレミアム機能が解放されました。";
-                    licenseMsg.style.color = "var(--accent-gold)";
-                    window.userPlan = 'premium';
-                    updateUIForUser(window.currentUser, true);
-                    updatePremiumGates();
-                    
-                    // Update user profile in Firestore directly to mock permanent save
-                    await db.collection('profiles').doc(window.currentUser.uid).update({
-                        premium: true
-                    });
-
-                    setTimeout(() => premiumModal.classList.remove('active'), 2000);
-                } else {
-                    licenseMsg.textContent = data.message || "無効なライセンスキーです。/ Invalid key.";
-                    licenseMsg.style.color = "var(--error-color)";
-                    verifyLicenseBtn.disabled = false;
-                }
-            } catch (err) {
-                console.error("Verification Error:", err);
-                licenseMsg.textContent = "通信エラーが発生しました。 / Network error.";
-                licenseMsg.style.color = "var(--error-color)";
-                verifyLicenseBtn.disabled = false;
-            }
-        });
-    }
+    // 4. Removed
 
     // 5. Open History Modal & Load Data
     if (historyBtn) {
@@ -159,18 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             window.currentUser = user;
             
-            // Check premium status from Firestore
-            let isPremium = false;
-            try {
-                const doc = await db.collection('profiles').doc(user.uid).get();
-                if (doc.exists && doc.data().premium === true) {
-                    isPremium = true;
-                }
-            } catch (e) {
-                console.warn("Failed to fetch profile:", e);
-            }
-
-            window.userPlan = isPremium ? 'premium' : 'free';
+            window.userPlan = 'free';
             updateUIForUser(user, isPremium);
             updatePremiumGates();
             
@@ -233,29 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updatePremiumGates() {
-        const isPremium = window.userPlan === 'premium';
-        const threeCardOption = document.querySelector('.spread-option input[value="three_card"]');
-        if (threeCardOption) {
-            const label = threeCardOption.closest('.spread-option');
-            if (isPremium) {
-                threeCardOption.disabled = false;
-                label.classList.remove('locked');
-                const lockIcon = label.querySelector('.lock-icon');
-                if (lockIcon) lockIcon.remove();
-            } else {
-                threeCardOption.disabled = true;
-                threeCardOption.checked = false;
-                const oneCardOption = document.querySelector('.spread-option input[value="one_oracle"]');
-                if (oneCardOption) oneCardOption.checked = true;
-                label.classList.add('locked');
-                if (!label.querySelector('.lock-icon')) {
-                    const lockSpan = document.createElement('span');
-                    lockSpan.className = 'lock-icon';
-                    lockSpan.textContent = ' 🔒 Premium';
-                    label.querySelector('.spread-label-text').appendChild(lockSpan);
-                }
-            }
-        }
+        // Gates logic removed
     }
 
     async function loadReadingHistory() {
@@ -387,7 +291,7 @@ window.saveReadingToHistory = async function(theme, spread, cards, resultHtml) {
 };
 
 window.fetchRecentHistoryForSynthesis = async function() {
-    if (!window.currentUser || window.userPlan !== 'premium') return [];
+    if (!window.currentUser) return [];
     try {
         const snapshot = await db.collection('readings')
             .where('userId', '==', window.currentUser.uid)
