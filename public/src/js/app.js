@@ -7,12 +7,6 @@ const I18N = {
         "page.title": "トート・タロット リーディング | 自己探求コーチング",
         "page.desc": "ハルがあなたの状況に合わせた深いトート・タロットのリーディングを提供します。",
         "auth.login": "ログイン",
-        "auth.premium": "Premium Access 🗝️",
-        "premium.title": "Premium Access 🗝️",
-        "premium.auth_desc": "ログインして履歴機能を解放する",
-        "premium.license_desc": "Gumroadライセンスキーで深淵｜3枚引き・ディープ解釈の扉を開く",
-        "premium.license_placeholder": "License Key (ex: XXXXXX-XXXXXX-XXXXXX)",
-        "premium.verify_btn": "キーを認証する",
         "history.btn": "履歴",
         "history.title": "リーディング履歴",
         "history.empty": "まだ履歴がありません。カードを引いて星の導きを記録しましょう。",
@@ -100,12 +94,6 @@ const I18N = {
         "page.title": "Thoth Tarot Reading | Self-Discovery Coaching",
         "page.desc": "A profound Thoth Tarot reading service, tuned to your unique situation.",
         "auth.login": "Login",
-        "auth.premium": "Premium Access 🗝️",
-        "premium.title": "Premium Access 🗝️",
-        "premium.auth_desc": "Login to unlock Reading History",
-        "premium.license_desc": "Enter Gumroad License Key to open the abyss (3-card spread, deep interpretation)",
-        "premium.license_placeholder": "License Key (ex: XXXXXX-XXXXXX-XXXXXX)",
-        "premium.verify_btn": "Verify Key",
         "history.btn": "History",
         "history.title": "Reading History",
         "history.empty": "No history yet. Draw a card to record the stars' guidance.",
@@ -292,6 +280,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Handle Draw Button Click
     drawBtn.addEventListener('click', async () => {
+        let cooldown = { date: new Date().toLocaleDateString("sv-SE"), count: 0 };
+        const today = new Date().toLocaleDateString("sv-SE");
+        const cooldownStr = localStorage.getItem("thoth_tarot_reading_cooldown");
+        if (cooldownStr) {
+            try {
+                const parsed = JSON.parse(cooldownStr);
+                if (parsed.date === today) {
+                    cooldown = parsed;
+                }
+            } catch (e) {
+                console.error("Reading cooldown parse error", e);
+            }
+        }
+
+        // 1日1回制限に達している場合、警告を出して処理を中断
+        if (cooldown.count >= 1) {
+            alert(
+                "🔮 トート・タロットの今日の託宣はすでに受け取っています。\n\n" +
+                "占いは「1日1回まで」となっております。\n\n" +
+                "魂のメッセージを深く内省し、明日また新たな問いかけを行ってみてね。"
+            );
+            return;
+        }
+
         const context = userContextInput.value.trim();
         const spreadType = document.querySelector('input[name="reading-type"]:checked').value;
         const userName = document.getElementById('user-name').value.trim();
@@ -349,8 +361,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             let historyDataPayload = [];
-            // Fetch history data if this user is premium
-            if (window.userPlan === 'premium' && typeof window.fetchRecentHistoryForSynthesis === 'function') {
+            // Fetch history data if available
+            if (typeof window.fetchRecentHistoryForSynthesis === 'function') {
                 historyDataPayload = await window.fetchRecentHistoryForSynthesis();
             }
 
@@ -364,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     user_name: userName,
                     birth_date: userBirthdate,
                     language: window.currentLang,
-                    is_premium: window.userPlan === 'premium',
+                    is_premium: false,
                     history_data: historyDataPayload
                 })
             });
@@ -375,6 +387,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // （Gemini のセーフティフィルターがブロックした場合などに発生しうる）
                 if (data.reading) {
                     readingResult = data.reading;
+
+                    // --- 2. 占いの成功時に回数カウントを1増やす ---
+                    cooldown.count += 1;
+                    localStorage.setItem("thoth_tarot_reading_cooldown", JSON.stringify(cooldown));
                 } else {
                     console.error("API returned ok but reading is empty/null:", data);
                     readingResult = t('result.error');
@@ -594,10 +610,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div class="result-actions">
                         <button id="generate-report-btn" class="mystic-btn action-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold;">霊的カルテを生成する</button>
-                        <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold;">生命の樹で展開する</a>
-                        <button id="save-image-btn" class="mystic-btn action-btn transparent-btn">${t('result.btn_save_img')}</button>
-                        <button id="save-text-btn" class="mystic-btn action-btn transparent-btn">${t('result.btn_save_txt')}</button>
-                        <a href="https://mosh.jp/cinnamonclove/profile" target="_blank" rel="noopener noreferrer" class="mystic-btn action-btn premium-mosh-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; text-align:center;">${t('result.three_card_cta')}</a>
+                        <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold;">セフィロトで展開する</a>
+                        <button class="mystic-btn action-btn" style="border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2); font-weight: bold;" onclick="document.getElementById('type-three').checked = true; window.scrollTo({top:0, behavior:'smooth'});">スリーカード鑑定を依頼する</button>
+                        <div style="display: flex; gap: 10px; width: 100%;">
+                            <button id="save-image-btn" class="mystic-btn action-btn transparent-btn" style="flex:1;">${t('result.btn_save_img')}</button>
+                            <button id="save-text-btn" class="mystic-btn action-btn transparent-btn" style="flex:1;">${t('result.btn_save_txt')}</button>
+                        </div>
                         <button class="mystic-btn restart-btn transparent-btn" onclick="location.reload()">${t('result.btn_restart')}</button>
                     </div>
                 </div>

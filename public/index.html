@@ -34,7 +34,6 @@
                 <a href="tree-of-life.html" class="mystic-nav-link top-sefirot-link">
                     <span>SEFIROT</span>
                 </a>
-                <button id="auth-btn" class="mystic-btn action-btn auth-btn maintenance-hidden" data-i18n="auth.premium">Premium Access 🗝️</button>
                 <div id="user-profile" class="user-profile hidden-section">
                     <span id="user-email"></span>
                     <button id="history-btn" class="action-btn mystic-btn" data-i18n="history.btn" style="padding:4px 12px; font-size:0.8rem; margin:0 10px;">履歴</button>
@@ -81,7 +80,6 @@
                     </div>
 
                     <button id="draw-btn" class="mystic-btn" data-i18n="input.draw_btn">カードを引く</button>
-
                     <!-- PDF Report Notice Styled as a Button -->
                     <div class="report-notice-container" style="text-align:center; margin-top:2rem;">
                         <a href="https://mosh.jp/cinnamonclove/profile" target="_blank" rel="noopener noreferrer" class="report-notice-btn premium-mosh-btn">
@@ -270,46 +268,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-    <!-- Premium Access Modal -->
-    <div id="premium-modal" class="modal-overlay">
-        <div class="premium-modal-content glass-card premium-bg-pattern">
-            <button id="close-premium-btn" class="close-btn">&times;</button>
-            <div class="premium-header" style="text-align:center; margin-bottom: 20px;">
-                <div class="thelema-star" style="width: 40px; height: 40px; margin: 0 auto;">
-                    <svg class="unicursal-hexagram" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-                        <path class="hex-path" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
-                        <path class="hex-path" transform="rotate(180,100,110)" d="m100,10l86.602539,150l-86.602539,-50l62.460411,25.85787l-62.460411,-105.85787l-62.460411,105.85787l62.460411,-25.85787l-86.602539,50l86.602539,-150z"/>
-                        <g class="hex-rose">
-                            <path id="rose-petal-3" d="m100,110c0,0 15,-19 0,-19c-15,0 0,19 0,19"/>
-                            <use transform="rotate(72,100,110)" href="#rose-petal-3"/>
-                            <use transform="rotate(-72,100,110)" href="#rose-petal-3"/>
-                            <use transform="rotate(144,100,110)" href="#rose-petal-3"/>
-                            <use transform="rotate(216,100,110)" href="#rose-petal-3"/>
-                        </g>
-                    </svg>
-                </div>
-                <h3 data-i18n="premium.title" style="font-family:var(--font-heading); color:var(--accent-gold); letter-spacing:0.1em; margin-top:10px;">Premium Access 🗝️</h3>
-            </div>
-            <div class="premium-body">
-                <div id="firebase-auth-container" style="text-align:center; margin-bottom: 25px;">
-                    <p data-i18n="premium.auth_desc" class="helper-text">ログインして履歴機能を解放する</p>
-                    <button id="google-login-btn" class="mystic-btn action-btn" style="width:100%;">Google Sign-in</button>
-                    <p id="auth-status-msg" style="color:var(--text-secondary); font-size:0.85rem; margin-top:10px;"></p>
-                </div>
-                
-                <hr style="border:0; border-top:1px solid rgba(212,175,55,0.2); margin: 25px 0;">
-                
-                <div id="license-key-container" style="text-align:center;">
-                    <p data-i18n="premium.license_desc" class="helper-text">Gumroadライセンスキーで深淵（3枚引き・ディープ解釈）の扉を開く</p>
-                    <div class="input-group" style="margin-bottom:15px;">
-                        <input type="text" id="license-key-input" data-i18n-placeholder="premium.license_placeholder" placeholder="License Key (ex: XXXXXX-XXXXXX-XXXXXX)">
-                    </div>
-                    <button id="verify-license-btn" class="mystic-btn" data-i18n="premium.verify_btn" style="width:100%;">キーを認証する</button>
-                    <p id="license-status-msg" class="msg-text" style="margin-top:10px;"></p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- History Modal -->
     <div id="history-modal" class="modal-overlay">
@@ -360,6 +318,6 @@
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="src/js/cards.js?v=42"></script>
     <script src="src/js/firebase-auth.js?v=1"></script>
-    <script src="src/js/app.js?v=50"></script>
+    <script src="src/js/app.js?v=52"></script>
 </body>
 </html>
