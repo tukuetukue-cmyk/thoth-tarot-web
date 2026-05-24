@@ -278,32 +278,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const readingText = document.getElementById('result-reading-text');
     const symbolTagsContainer = document.getElementById('symbol-tags-container');
     
+
     // Handle Draw Button Click
     drawBtn.addEventListener('click', async () => {
-        let cooldown = { date: new Date().toLocaleDateString("sv-SE"), count: 0 };
-        const today = new Date().toLocaleDateString("sv-SE");
-        const cooldownStr = localStorage.getItem("thoth_tarot_reading_cooldown");
-        if (cooldownStr) {
-            try {
-                const parsed = JSON.parse(cooldownStr);
-                if (parsed.date === today) {
-                    cooldown = parsed;
-                }
-            } catch (e) {
-                console.error("Reading cooldown parse error", e);
-            }
-        }
-
-        // 1日1回制限に達している場合、警告を出して処理を中断
-        if (cooldown.count >= 1) {
-            alert(
-                "🔮 トート・タロットの今日の託宣はすでに受け取っています。\n\n" +
-                "占いは「1日1回まで」となっております。\n\n" +
-                "魂のメッセージを深く内省し、明日また新たな問いかけを行ってみてね。"
-            );
-            return;
-        }
-
         const context = userContextInput.value.trim();
         const spreadType = document.querySelector('input[name="reading-type"]:checked').value;
         const userName = document.getElementById('user-name').value.trim();
@@ -387,10 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // （Gemini のセーフティフィルターがブロックした場合などに発生しうる）
                 if (data.reading) {
                     readingResult = data.reading;
-
-                    // --- 2. 占いの成功時に回数カウントを1増やす ---
-                    cooldown.count += 1;
-                    localStorage.setItem("thoth_tarot_reading_cooldown", JSON.stringify(cooldown));
                 } else {
                     console.error("API returned ok but reading is empty/null:", data);
                     readingResult = t('result.error');
