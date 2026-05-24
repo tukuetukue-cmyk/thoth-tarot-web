@@ -281,6 +281,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle Draw Button Click
     drawBtn.addEventListener('click', async () => {
+        // --- 1日3回制限 ---
+        const today = new Date().toLocaleDateString("sv-SE");
+        let cooldown = { date: today, count: 0 };
+        const cooldownStr = localStorage.getItem("thoth_tarot_reading_cooldown");
+        if (cooldownStr) {
+            try {
+                const parsed = JSON.parse(cooldownStr);
+                if (parsed.date === today) cooldown = parsed;
+            } catch (e) { console.error("Reading cooldown parse error", e); }
+        }
+        if (cooldown.count >= 3) {
+            alert(
+                "🔮 本日の鑑定は3回受け取っています。\n\n" +
+                "魂のエネルギーを休め、明日また新たな問いかけを行ってみてね。"
+            );
+            return;
+        }
+
         const context = userContextInput.value.trim();
         const spreadType = document.querySelector('input[name="reading-type"]:checked').value;
         const userName = document.getElementById('user-name').value.trim();
@@ -364,6 +382,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // （Gemini のセーフティフィルターがブロックした場合などに発生しうる）
                 if (data.reading) {
                     readingResult = data.reading;
+                    // 成功時にカウントを保存
+                    cooldown.count += 1;
+                    localStorage.setItem("thoth_tarot_reading_cooldown", JSON.stringify(cooldown));
                 } else {
                     console.error("API returned ok but reading is empty/null:", data);
                     readingResult = t('result.error');

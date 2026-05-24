@@ -266,7 +266,59 @@
                 return;
             }
 
-            // メタ情報の表示
+            // 同一リーディングを識別するための一意キーを作成（タイムスタンプまたはカード構成）
+            const readingKey = readingData.timestamp || 
+                (cards.map(c => c.id).join("-") + "_" + userName + "_" + birthDate + "_" + theme);
+
+            // --- 1. キャッシュの確認 ---
+            const cacheStr = localStorage.getItem("thoth_tarot_report_cache");
+            let cacheData = null;
+            if (cacheStr) {
+                try {
+                    cacheData = JSON.parse(cacheStr);
+                } catch (e) {
+                    console.error("Cache parse error", e);
+                }
+            }
+
+
+            // キャッシュがヒットした場合、APIを叩かずに即時レンダリング
+            if (cacheData && cacheData.readingKey === readingKey) {
+                console.log("Serving spiritual report from local cache (API saved!)");
+                reportData = cacheData.reportData;
+                
+                activatedSephiroth = reportData.activatedSephiroth || [];
+                activatedPaths = reportData.activatedPaths || [];
+
+                // メタ情報の表示（キャッシュされた時点、または現在のカウント）
+                renderMetaInfo(userName, birthDate, theme);
+
+                // 生命の樹をハイライト
+                highlightActivatedElements();
+
+                // レポート文のレンダリング
+                renderReportBody(reportData.reportText);
+
+                // ローディングを隠して本文を表示
+                loadingEl.classList.add("hidden-section");
+                loadingEl.style.display = "none";
+                textContainer.classList.remove("hidden-section");
+
+                updateSheetPositions();
+                if (isMobile) {
+                    setSheetState("half");
+                }
+
+                setupActionButtons(userName, birthDate, theme);
+
+                setTimeout(() => {
+                    highlightActivatedElements();
+                    initScrollObserver();
+                }, 300);
+                return;
+            }
+
+            // メタ情報の表示（新規生成前）
             renderMetaInfo(userName, birthDate, theme);
 
             // APIリクエストのペイロード構成
@@ -299,6 +351,16 @@
             activatedSephiroth = reportData.activatedSephiroth || [];
             activatedPaths = reportData.activatedPaths || [];
 
+            // --- 3. 成功時にキャッシュ保存 ---
+            const newCache = {
+                readingKey: readingKey,
+                reportData: reportData
+            };
+            localStorage.setItem("thoth_tarot_report_cache", JSON.stringify(newCache));
+
+            // メタ情報の再表示
+            renderMetaInfo(userName, birthDate, theme);
+
             // APIデータに基づいて生命の樹をハイライト
             highlightActivatedElements();
 
@@ -310,7 +372,7 @@
             loadingEl.style.display = "none";
             textContainer.classList.remove("hidden-section");
 
-            // レスポンシブに応じた初期展開状態のセット
+            // レレスポンシブに応じた初期展開状態のセット
             updateSheetPositions();
             if (isMobile) {
                 setSheetState("half"); // モバイルでは半分展開してカルテが見えるようにする
@@ -996,9 +1058,10 @@
     // 7. その他の基本処理
     // ====================================================
     function showError(message) {
+        const formattedMessage = escapeHtml(message).replace(/\n/g, "<br>");
         loadingEl.innerHTML = `
             <div style="color: #e74c3c; font-size: 1.5rem; margin-bottom: 1rem;">🔮</div>
-            <p style="color: var(--text-primary); font-size: 0.95rem; line-height: 1.8;">${escapeHtml(message)}</p>
+            <p style="color: var(--text-primary); font-size: 0.95rem; line-height: 1.8; white-space: normal;">${formattedMessage}</p>
             <a href="index.html" class="report-notice-btn" style="margin-top: 1.5rem; display: inline-block;">リーディングに戻る</a>
         `;
     }
