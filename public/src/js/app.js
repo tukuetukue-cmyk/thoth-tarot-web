@@ -603,13 +603,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     ` : ''}
 
                     <div class="result-actions">
-                        <button id="generate-report-btn" class="mystic-btn action-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold;">霊的カルテを生成する</button>
-                        <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn action-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4); font-weight: bold;">セフィロトで展開する</a>
-                        <button class="mystic-btn action-btn" style="border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2); font-weight: bold;" onclick="document.getElementById('type-three').checked = true; window.scrollTo({top:0, behavior:'smooth'});">スリーカード鑑定を依頼する</button>
-                        <div style="display: flex; gap: 10px; width: 100%;">
-                            <button id="save-image-btn" class="mystic-btn action-btn transparent-btn" style="flex:1;">${t('result.btn_save_img')}</button>
-                            <button id="save-text-btn" class="mystic-btn action-btn transparent-btn" style="flex:1;">${t('result.btn_save_txt')}</button>
-                        </div>
+                        <button id="generate-report-btn" class="mystic-btn restart-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">霊的カルテを生成する</button>
+                        <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">セフィロトで展開する</a>
+                        <button class="mystic-btn restart-btn" style="border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);" onclick="document.getElementById('type-three').checked = true; window.scrollTo({top:0, behavior:'smooth'});">スリーカード鑑定を依頼する</button>
+                        <button id="save-image-btn" class="mystic-btn restart-btn transparent-btn">${t('result.btn_save_img')}</button>
+                        <button id="save-text-btn" class="mystic-btn restart-btn transparent-btn">${t('result.btn_save_txt')}</button>
                         <button class="mystic-btn restart-btn transparent-btn" onclick="location.reload()">${t('result.btn_restart')}</button>
                     </div>
                 </div>
