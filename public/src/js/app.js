@@ -38,6 +38,9 @@ const I18N = {
         "result.btn_share_x": "𝕏 でシェア",
         "result.btn_share_ig": "Instagram でシェア",
         "result.btn_restart": "もう一度対話する",
+        "result.btn_spiritual_report": "霊的カルテを生成する",
+        "result.btn_sephiroth": "セフィロトで展開する",
+        "result.btn_request_three_card": "スリーカード鑑定を依頼する",
         "result.error": "申し訳ありません。星の導きがうまく読み取れませんでした。もう一度お試しください。",
         "result.user_label": "【{name}さんのテーマ】",
         "result.no_context": "今日の運勢",
@@ -128,6 +131,9 @@ const I18N = {
         "result.btn_share_x": "Share on 𝕏",
         "result.btn_share_ig": "Share on Instagram",
         "result.btn_restart": "Begin Again",
+        "result.btn_spiritual_report": "Generate Spiritual Chart",
+        "result.btn_sephiroth": "Spread on the Sephiroth",
+        "result.btn_request_three_card": "Request a 3-Card Reading",
         "result.error": "I apologize. The stellar guidance could not be read clearly. Please try again.",
         "result.user_label": "【{name}'s Theme】",
         "result.no_context": "Today's Fortune",
@@ -210,8 +216,16 @@ window.currentLang = savedLang || (browserLang.startsWith('ja') ? 'ja' : 'en');
 /** テキスト取得ヘルパー */
 function t(key, vars = {}) {
     const dict = I18N[window.currentLang] || I18N['ja'];
-    let str = dict[key] || I18N['ja'][key] || key;
-    Object.entries(vars).forEach(([k, v]) => { str = String(str).replace(`{${k}}`, v); });
+    let val = dict[key] || I18N['ja'][key] || key;
+    if (Array.isArray(val)) {
+        return val.map(s => {
+            let replaced = String(s);
+            Object.entries(vars).forEach(([k, v]) => { replaced = replaced.replace(`{${k}}`, v); });
+            return replaced;
+        });
+    }
+    let str = String(val);
+    Object.entries(vars).forEach(([k, v]) => { str = str.replace(`{${k}}`, v); });
     return str;
 }
 
@@ -477,6 +491,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100); // Slight delay for smoother transition
     }
 
+    // Helper to translate elements
+    function translateElement(elText) {
+        return elText.replace(/火/g, 'Fire').replace(/水/g, 'Water').replace(/風/g, 'Air').replace(/地/g, 'Earth')
+            .replace(/牡羊座/g, 'Aries').replace(/牡牛座/g, 'Taurus').replace(/双子座/g, 'Gemini').replace(/蟹座/g, 'Cancer')
+            .replace(/獅子座/g, 'Leo').replace(/乙女座/g, 'Virgo').replace(/天秤座/g, 'Libra').replace(/蠍座/g, 'Scorpio')
+            .replace(/射手座/g, 'Sagittarius').replace(/山羊座/g, 'Capricorn').replace(/水瓶座/g, 'Aquarius').replace(/魚座/g, 'Pisces')
+            .replace(/太陽/g, 'Sun').replace(/月/g, 'Moon').replace(/水星/g, 'Mercury').replace(/金星/g, 'Venus')
+            .replace(/火星/g, 'Mars').replace(/木星/g, 'Jupiter').replace(/土星/g, 'Saturn')
+            .replace(/の/g, ' of ').replace(/・/g, ' / ');
+    }
+
     // Render result UI
     function renderResult(cards, context, spreadType, readingResult) {
         // Clear previous results
@@ -521,15 +546,22 @@ document.addEventListener('DOMContentLoaded', () => {
             let positionHtml = spreadType === 'three_card' ? `<h3 class="card-position-title">${Array.isArray(positions) ? positions[index] : ''}</h3>` : '';
 
             let esotericHtml = '';
-            if (card.esoteric) {
+            const isEn = window.currentLang === 'en';
+            const eso = isEn && card.esoteric_en ? card.esoteric_en : card.esoteric;
+            if (eso) {
                 esotericHtml = `
                     <div class="esoteric-panel">
-                        <div class="eso-row"><span class="eso-label">${t('modal.kabbalah')}</span> <span class="eso-val">${card.esoteric.kabbalah || '-'}</span></div>
-                        <div class="eso-row"><span class="eso-label">${t('modal.astrology')}</span> <span class="eso-val">${card.esoteric.astrology || '-'}</span></div>
-                        <div class="eso-row"><span class="eso-label">${t('modal.alchemy')}</span> <span class="eso-val">${card.esoteric.alchemy || '-'}</span></div>
-                        <div class="eso-row"><span class="eso-label">${t('modal.iching')}</span> <span class="eso-val">${card.esoteric.iching || '-'}</span></div>
+                        <div class="eso-row"><span class="eso-label">${t('modal.kabbalah')}</span> <span class="eso-val">${eso.kabbalah || '-'}</span></div>
+                        <div class="eso-row"><span class="eso-label">${t('modal.astrology')}</span> <span class="eso-val">${eso.astrology || '-'}</span></div>
+                        <div class="eso-row"><span class="eso-label">${t('modal.alchemy')}</span> <span class="eso-val">${eso.alchemy || '-'}</span></div>
+                        <div class="eso-row"><span class="eso-label">${t('modal.iching')}</span> <span class="eso-val">${eso.iching || '-'}</span></div>
                     </div>
                 `;
+            }
+
+            let elementTxt = card.element;
+            if (window.currentLang === 'en' && elementTxt) {
+                elementTxt = translateElement(elementTxt);
             }
 
             cardsHtml += `
@@ -542,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="card-copyright">© O.T.O. / AGM-Urania</div>
                     <div class="card-info">
                         <h2>${reformatCardName(window.currentLang === 'en' && card.name_en ? card.name_en : card.name, true)}</h2>
-                        <p class="card-meta">${window.currentLang === 'en' && card.type === 'major' ? 'Major Arcana' : (window.currentLang === 'en' && card.type === 'minor' ? 'Minor Arcana' : arcanaText)} | ${window.currentLang === 'en' ? 'Element' : '対応'}: ${card.element}</p>
+                        <p class="card-meta">${window.currentLang === 'en' && card.type === 'major' ? 'Major Arcana' : (window.currentLang === 'en' && card.type === 'minor' ? 'Minor Arcana' : arcanaText)} | ${window.currentLang === 'en' ? 'Element' : '対応'}: ${elementTxt}</p>
                     </div>
                     ${esotericHtml}
                 </div>
