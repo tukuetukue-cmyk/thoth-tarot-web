@@ -6,6 +6,30 @@
 .tree-header {
     text-align: center;
     padding: 2rem 1rem 1rem;
+    position: relative;
+}
+
+/* 言語切り替えトグルの配置 (PC用) */
+.tree-header .lang-toggle-container,
+.report-header .lang-toggle-container {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    width: auto;
+    margin: 0;
+    justify-content: flex-end;
+}
+
+/* モバイル用: 戻るボタン等と重ならないよう、絶対配置を解除してタイトル下に配置 */
+@media (max-width: 767px) {
+    .tree-header .lang-toggle-container,
+    .report-header .lang-toggle-container {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin: 1rem auto 0;
+        width: 100%;
+    }
 }
 
 .back-link {
