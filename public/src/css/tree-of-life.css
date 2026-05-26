@@ -91,7 +91,7 @@
     transition: stroke 3s ease, stroke-width 3s ease, filter 3s ease; /* ホタルのようにゆっくり消える */
 }
 
-.tree-path:hover,
+.path-group:hover .tree-path,
 .tree-path.active {
     stroke: var(--accent-gold);
     stroke-width: 3.5;
@@ -117,8 +117,8 @@
     transition: fill 0.3s;
 }
 
-.tree-path:hover + .path-label,
-.tree-path.active + .path-label {
+.path-group:hover + .path-label,
+.path-group:has(.tree-path.active) + .path-label {
     fill: var(--accent-gold);
 }
 
@@ -200,9 +200,9 @@
 }
 
 .sephira-number {
-    fill: rgba(212, 175, 55, 0.7);
+    fill: rgba(212, 175, 55, 0.9);
     font-family: var(--font-heading);
-    font-size: 11px;
+    font-size: 15px;
     text-anchor: middle;
     dominant-baseline: central;
     pointer-events: none;

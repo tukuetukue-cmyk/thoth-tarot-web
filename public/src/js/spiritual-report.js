@@ -99,16 +99,34 @@
             const from = toSvgCoords(fromSephira.position);
             const to = toSvgCoords(toSephira.position);
 
+            // グループコンテナ
+            const group = createSvgElement("g", {
+                class: "path-group"
+            });
+
+            // 見える細い線
             const line = createSvgElement("line", {
                 x1: from.x, y1: from.y,
                 x2: to.x, y2: to.y,
                 class: "tree-path",
                 "data-path-number": path.number
             });
+            group.appendChild(line);
+
+            // 当たり判定用の太い透明な線（幅20px）
+            const hitbox = createSvgElement("line", {
+                x1: from.x, y1: from.y,
+                x2: to.x, y2: to.y,
+                stroke: "transparent",
+                "stroke-width": "20",
+                fill: "none",
+                cursor: "pointer"
+            });
+            group.appendChild(hitbox);
 
             // クリックイベントのバインド
-            line.addEventListener("click", () => scrollToKabbalahElement("path", path.number));
-            pathsLayer.appendChild(line);
+            group.addEventListener("click", () => scrollToKabbalahElement("path", path.number));
+            pathsLayer.appendChild(group);
 
             // ヘブライ文字
             const midX = (from.x + to.x) / 2;
@@ -180,7 +198,7 @@
             // 番号
             const numText = createSvgElement("text", {
                 x: coords.x,
-                y: coords.y - 8,
+                y: coords.y - 5,
                 class: "sephira-number"
             });
             numText.textContent = sephira.number;
@@ -189,7 +207,7 @@
             // 英語名
             const nameEn = createSvgElement("text", {
                 x: coords.x,
-                y: coords.y + 10,
+                y: coords.y + 13,
                 class: "sephira-name-en"
             });
             nameEn.textContent = sephira.name.en;
