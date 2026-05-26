@@ -338,6 +338,8 @@
         const planetLocal = isEn ? sephira.planet : sephira.planetJa;
         const pillarLocal = isEn ? pillarInfo.name.en : pillarInfo.name.ja;
         const divineNameLocal = isEn ? sephira.divineName : sephira.divineNameJa;
+        const archangelLocal = isEn ? (sephira.archangelEn || sephira.archangel) : sephira.archangel;
+        const angelOrderLocal = isEn ? (sephira.angelOrderEn || sephira.angelOrder) : sephira.angelOrder;
 
         let html = `
             <div class="info-sephira-header">
@@ -361,9 +363,9 @@
                 <span class="info-meta-label">${isEn ? 'God Name' : '神名'}</span>
                 <span class="info-meta-value">${divineNameLocal}</span>
                 <span class="info-meta-label">${isEn ? 'Archangel' : '大天使'}</span>
-                <span class="info-meta-value">${sephira.archangel}</span>
+                <span class="info-meta-value">${archangelLocal}</span>
                 <span class="info-meta-label">${isEn ? 'Angel Order' : '天使団'}</span>
-                <span class="info-meta-value">${sephira.angelOrder}</span>
+                <span class="info-meta-value">${angelOrderLocal}</span>
             </div>
         `;
 

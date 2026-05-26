@@ -18,7 +18,9 @@ const SEPHIROTH = [
         divineName: "אהיה (Eheieh)",
         divineNameJa: "エヘイエ「我は在る」",
         archangel: "メタトロン (Metatron)",
+        archangelEn: "Metatron",
         angelOrder: "聖なる生き物 (Chayoth ha-Qadesh)",
+        angelOrderEn: "Chayoth ha-Qadesh",
         description: "存在の根源。すべてが流出する究極の一点。「在る」という純粋な意志。", desc_en: "The source of existence. The ultimate point from which all emanates. The pure will 'to be'.",
         inquiry: "あなたが本当に成し遂げたいと願う「純粋な意志」は何ですか？", inquiry_en: "What is the 'pure will' that you truly wish to accomplish?",
         position: { x: 50, y: 5 }
@@ -34,7 +36,9 @@ const SEPHIROTH = [
         divineName: "יה (Yah)",
         divineNameJa: "ヤー",
         archangel: "ラツィエル (Raziel)",
+        archangelEn: "Raziel",
         angelOrder: "車輪 (Ophanim)",
+        angelOrderEn: "Ophanim",
         description: "最初の閃き。方向を持たない純粋なエネルギーの噴出。父なる力。", desc_en: "The first flash. The eruption of pure, undirected energy. The paternal force.",
         inquiry: "今、あなたの内側から湧き上がっている抑えきれない衝動は何ですか？", inquiry_en: "What uncontrollable urge is welling up from within you right now?",
         position: { x: 80, y: 15 }
@@ -50,7 +54,9 @@ const SEPHIROTH = [
         divineName: "יהוה אלהים (YHVH Elohim)",
         divineNameJa: "ヤハウェ・エロヒム",
         archangel: "ツァフキエル (Tzaphkiel)",
+        archangelEn: "Tzaphkiel",
         angelOrder: "座天使 (Aralim)",
+        angelOrderEn: "Aralim",
         description: "形を与える母。理解と制限により、混沌に構造を与える。大いなる海。", desc_en: "The mother who gives form. Giving structure to chaos through understanding and restriction. The great sea.",
         inquiry: "形にするために、あなたが今受け入れ、制限すべきものは何ですか？", inquiry_en: "To give it form, what must you accept and limit right now?",
         position: { x: 20, y: 15 }
@@ -66,7 +72,9 @@ const SEPHIROTH = [
         divineName: "אל (El)",
         divineNameJa: "エル「神」",
         archangel: "ツァドキエル (Tzadkiel)",
+        archangelEn: "Tzadkiel",
         angelOrder: "主天使 (Chasmalim)",
+        angelOrderEn: "Chasmalim",
         description: "恩寵と拡張。秩序ある慈愛により万物を育む建設的な力。", desc_en: "Grace and expansion. A constructive force that nurtures all things through orderly benevolence.",
         inquiry: "あなたが今、最も自分を許し、豊かさを広げるべき領域はどこですか？", inquiry_en: "In what area must you forgive yourself the most and expand your abundance?",
         position: { x: 80, y: 35 }
@@ -82,7 +90,9 @@ const SEPHIROTH = [
         divineName: "אלהים גבור (Elohim Gibor)",
         divineNameJa: "エロヒム・ギボール「万能の神」",
         archangel: "カマエル (Kamael)",
+        archangelEn: "Kamael",
         angelOrder: "熾天使 (Seraphim)",
+        angelOrderEn: "Seraphim",
         description: "裁きと浄化の炎。不要なものを焼き払い、真の強さを鍛え上げる。", desc_en: "The flame of judgment and purification. Burning away the unnecessary, forging true strength.",
         inquiry: "真の強さを得るために、今あなたが断ち切るべきものは何ですか？", inquiry_en: "To gain true strength, what must you sever right now?",
         position: { x: 20, y: 35 }
@@ -98,7 +108,9 @@ const SEPHIROTH = [
         divineName: "יהוה אלוה ודעת (YHVH Eloah va-Daath)",
         divineNameJa: "ヤハウェ・エロアー・ヴェ・ダアト",
         archangel: "ラファエル (Raphael)",
+        archangelEn: "Raphael",
         angelOrder: "王 (Melekim)",
+        angelOrderEn: "Melekim",
         description: "生命の樹の中心。上位と下位を調和させる太陽の如き美と均衡。", desc_en: "The center of the Tree of Life. A sun-like beauty and equilibrium that harmonizes the higher and lower.",
         inquiry: "あなたの内なる光と陰が調和したとき、世界にはどんな「美」がもたらされますか？", inquiry_en: "When your inner light and shadow harmonize, what kind of 'beauty' is brought into the world?",
         position: { x: 50, y: 45 }
@@ -114,7 +126,9 @@ const SEPHIROTH = [
         divineName: "יהוה צבאות (YHVH Tzabaoth)",
         divineNameJa: "ヤハウェ・ツァバオト「万軍の神」",
         archangel: "ハニエル (Haniel)",
+        archangelEn: "Haniel",
         angelOrder: "権天使 (Elohim)",
+        angelOrderEn: "Elohim",
         description: "感情、芸術、情熱。本能的な欲求と美的な喜びを生み出す豊かなエネルギー。", desc_en: "Emotion, art, passion. A rich energy that generates instinctive desires and aesthetic joy.",
         inquiry: "論理を超えて、あなたの心が心底求めている喜びは何ですか？", inquiry_en: "Beyond logic, what joy does your heart truly seek?",
         position: { x: 80, y: 60 }
@@ -130,7 +144,9 @@ const SEPHIROTH = [
         divineName: "אלהים צבאות (Elohim Tzabaoth)",
         divineNameJa: "エロヒム・ツァバオト「万軍の神」",
         archangel: "ミカエル (Michael)",
+        archangelEn: "Michael",
         angelOrder: "大天使 (Beni Elohim)",
+        angelOrderEn: "Beni Elohim",
         description: "知性、コミュニケーション、論理。流動するエネルギーを思考によって型に流し込む。", desc_en: "Intellect, communication, logic. Pouring fluid energy into molds through thought.",
         inquiry: "あふれる感情を現実に活かすために、どんな「思考の型」が必要ですか？", inquiry_en: "To utilize your overflowing emotions in reality, what 'mold of thought' is necessary?",
         position: { x: 20, y: 60 }
@@ -146,7 +162,9 @@ const SEPHIROTH = [
         divineName: "שדי אל חי (Shaddai El Chai)",
         divineNameJa: "シャダイ・エル・カイ「全能の生ける神」",
         archangel: "ガブリエル (Gabriel)",
+        archangelEn: "Gabriel",
         angelOrder: "ケルビム (Kerubim)",
+        angelOrderEn: "Kerubim",
         description: "アストラル界の基盤。夢と無意識が物質世界へ投影される門。", desc_en: "The foundation of the astral plane. The gate through which dreams and the unconscious are projected into the material world.",
         inquiry: "あなたの無意識の底で、まだ目覚めを待っている可能性は何ですか？", inquiry_en: "At the bottom of your unconscious, what possibility is still waiting to awaken?",
         position: { x: 50, y: 75 }
