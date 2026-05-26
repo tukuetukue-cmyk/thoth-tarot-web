@@ -10,6 +10,9 @@ const I18N = {
         "history.btn": "履歴",
         "history.title": "リーディング履歴",
         "history.empty": "まだ履歴がありません。カードを引いて星の導きを記録しましょう。",
+        "history.reflection_title": "ハルからの振り返り",
+        "history.reflection_btn": "今だから言えるハルの一言",
+        "error.load_history": "履歴の読み込みに失敗しました。",
         "input.heading": "あなたが今、心に抱えているものは何ですか？",
         "input.helper": "迷いや不安、あるいは叶えたい願い。どんな小さなことでも構いません。ハルがここで、あなたの心の声を静かに聴きます。",
         "input.name_label": "お名前｜ニックネーム等",
@@ -96,7 +99,10 @@ const I18N = {
         "auth.login": "Login",
         "history.btn": "History",
         "history.title": "Reading History",
-        "history.empty": "No history yet. Draw a card to record the stars' guidance.",
+        "history.empty": "No history yet. Draw cards and record the guidance of the stars.",
+        "history.reflection_title": "Reflection from Haru",
+        "history.reflection_btn": "A Word from Haru in Hindsight",
+        "error.load_history": "Failed to load history.",
         "input.heading": "What is weighing on your heart right now?",
         "input.helper": "A doubt, a fear, or a wish you wish to manifest. No matter how small — Haru listens, in quiet and in truth.",
         "input.name_label": "Your Name (or a nickname)",
@@ -314,11 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('tarot_user_birthdate', userBirthdate);
         
         // 1. Show Loading State
-        const loadingMessages = [
-            "すべての男と女は星である...",
-            "汝の欲する事を為せ、それが法の全てとなろう...",
-            "愛は法なり、意志の下の愛こそが..."
-        ];
+        const loadingMessages = t('loading.msgs');
         const randomMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
         document.getElementById('loading-text').textContent = randomMessage;
         switchSection(inputSection, loadingSection);
@@ -539,8 +541,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="card-copyright">© O.T.O. / AGM-Urania</div>
                     <div class="card-info">
-                        <h2>${reformatCardName(card.name, true)}</h2>
-                        <p class="card-meta">${arcanaText} | 対応: ${card.element}</p>
+                        <h2>${reformatCardName(window.currentLang === 'en' && card.name_en ? card.name_en : card.name, true)}</h2>
+                        <p class="card-meta">${window.currentLang === 'en' && card.type === 'major' ? 'Major Arcana' : (window.currentLang === 'en' && card.type === 'minor' ? 'Minor Arcana' : arcanaText)} | ${window.currentLang === 'en' ? 'Element' : '対応'}: ${card.element}</p>
                     </div>
                     ${esotericHtml}
                 </div>
@@ -555,7 +557,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 hasSymbols = true;
                 allSymbolsHtml += card.symbols.map(sym => {
                     const rectStr = sym.rect ? JSON.stringify(sym.rect) : '';
-                    return `<div class="symbol-tag" data-symbol="${sym.name}" data-desc="${sym.desc}" data-card="${reformatCardName(card.name)}" data-card-id="${card.id}" data-rect='${rectStr}'>${sym.name}</div>`;
+                        const isEn = window.currentLang === 'en';
+                        const symName = isEn && sym.name_en ? sym.name_en : sym.name;
+                        const symDescTxt = isEn && sym.desc_en ? sym.desc_en : sym.desc;
+                        const cardName = isEn && card.name_en ? card.name_en : card.name;
+                        return `<div class="symbol-tag" data-symbol="${symName}" data-desc="${symDescTxt}" data-card="${reformatCardName(cardName)}" data-card-id="${card.id}" data-rect='${rectStr}'>${symName}</div>`;
                 }).join('');
             }
         });

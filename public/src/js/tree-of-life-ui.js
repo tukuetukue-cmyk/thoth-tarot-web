@@ -595,19 +595,22 @@
         const card = typeof ALL_CARDS !== 'undefined' ? ALL_CARDS.find(c => c.id === cardId) : null;
         if (!card) return;
 
+        const isEn = window.currentLang === 'en';
+
         // 1. 基本情報のセット
         document.getElementById("dictionary-card-img").src = card.image + "?v=remaster";
-        document.getElementById("dictionary-card-name").textContent = card.name;
+        document.getElementById("dictionary-card-name").textContent = isEn && card.name_en ? card.name_en : card.name;
         
-        let metaText = card.type === "major" ? "大アルカナ" : "小アルカナ";
-        if (card.element) metaText += ` / 対応エレメント: ${card.element}`;
+        let metaText = card.type === "major" ? (isEn ? "Major Arcana" : "大アルカナ") : (isEn ? "Minor Arcana" : "小アルカナ");
+        if (card.element) metaText += isEn ? ` / Element: ${card.element}` : ` / 対応エレメント: ${card.element}`;
         document.getElementById("dictionary-card-meta").textContent = metaText;
 
         // 2. キーワードのセット
         const kwContainer = document.getElementById("dictionary-keywords");
         kwContainer.innerHTML = "";
-        if (card.keywords && card.keywords.length > 0) {
-            kwContainer.innerHTML = card.keywords.map(kw => 
+        const keywords = isEn && card.keywords_en && card.keywords_en.length > 0 ? card.keywords_en : card.keywords;
+        if (keywords && keywords.length > 0) {
+            kwContainer.innerHTML = keywords.map(kw => 
                 `<span class="dictionary-keyword-chip">${kw}</span>`
             ).join("");
         }
@@ -615,12 +618,18 @@
         // 3. Esoteric (神秘的対応) のセット
         const esoGrid = document.getElementById("dictionary-esoteric-grid");
         esoGrid.innerHTML = "";
-        if (card.esoteric) {
-            const esoMap = {
-                "カバラ": card.esoteric.kabbalah,
-                "占星術": card.esoteric.astrology,
-                "錬金術": card.esoteric.alchemy,
-                "易経": card.esoteric.iching
+        const eso = isEn && card.esoteric_en && Object.keys(card.esoteric_en).length > 0 ? card.esoteric_en : card.esoteric;
+        if (eso) {
+            const esoMap = isEn ? {
+                "Kabbalah": eso.kabbalah,
+                "Astrology": eso.astrology,
+                "Alchemy": eso.alchemy,
+                "I Ching": eso.iching
+            } : {
+                "カバラ": eso.kabbalah,
+                "占星術": eso.astrology,
+                "錬金術": eso.alchemy,
+                "易経": eso.iching
             };
             
             for (const [label, val] of Object.entries(esoMap)) {
@@ -649,9 +658,12 @@
             document.getElementById("dictionary-symbols-container").style.display = "block";
             
             card.symbols.forEach(sym => {
+                const symName = isEn && sym.name_en ? sym.name_en : sym.name;
+                const symDescTxt = isEn && sym.desc_en ? sym.desc_en : sym.desc;
+
                 const tag = document.createElement("div");
                 tag.className = "symbol-tag";
-                tag.textContent = sym.name;
+                tag.textContent = symName;
                 
                 // ホバー/クリックで解説＆ハイライト
                 const handleSymbolInteraction = () => {
@@ -661,7 +673,7 @@
 
                     // 解説を表示
                     symDesc.classList.remove("hidden-section");
-                    symDesc.innerHTML = `<strong>${sym.name}</strong><br>${sym.desc}`;
+                    symDesc.innerHTML = `<strong>${symName}</strong><br>${symDescTxt}`;
                 };
 
                 tag.addEventListener("click", handleSymbolInteraction);

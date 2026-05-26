@@ -31,7 +31,9 @@ const MAJOR_ARCANA = [
                     "y": 75,
                     "w": 35,
                     "h": 20
-                }
+                },
+                "name_en": "Crocodile",
+                "desc_en": "Creative energy"
             },
             {
                 "name": "虎",
@@ -41,9 +43,25 @@ const MAJOR_ARCANA = [
                     "y": 75,
                     "w": 30,
                     "h": 20
-                }
+                },
+                "name_en": "Tiger",
+                "desc_en": "Power to calm fear"
             }
-        ]
+        ],
+        "name_en": "The Fool",
+        "keywords_en": [
+            "Innocence",
+            "Potential",
+            "Freedom",
+            "Beginning"
+        ],
+        "esoteric_en": {
+            "hebrew": "Aleph (Ox)",
+            "kabbalah": "Kether (1) - Chokmah (2) [11th Path]",
+            "astrology": "Element of Air",
+            "alchemy": "Extraction from nothingness. The act of drawing possibilities from emptiness.",
+            "iching": "Wu Wang - Heaven Thunder Wu Wang: Unadorned truth, acting naturally"
+        }
     },
     {
         "id": "magus",
@@ -68,25 +86,49 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "猿 (Cynocephalus)",
-                "desc": "トート神の従者としての猿。言葉による幻惑、真実の歪み、機敏さを象徴。"
+                "desc": "トート神の従者としての猿。言葉による幻惑、真実の歪み、機敏さを象徴。",
+                "name_en": "Cynocephalus (Ape)",
+                "desc_en": "An ape as a servant of Thoth. Symbolizes verbal illusion, distortion of truth, and agility."
             },
             {
                 "name": "杖 (Caduceus)",
-                "desc": "ヘルメスの杖。意志と伝達、二重の力。"
+                "desc": "ヘルメスの杖。意志と伝達、二重の力。",
+                "name_en": "Caduceus (Wand)",
+                "desc_en": "Hermes' staff. Will and communication, dual power."
             },
             {
                 "name": "翼の生えた卵と蛇",
-                "desc": "宇宙的エネルギーと再生の象徴。"
+                "desc": "宇宙的エネルギーと再生の象徴。",
+                "name_en": "Winged Egg and Serpent",
+                "desc_en": "Symbol of cosmic energy and regeneration."
             },
             {
                 "name": "矢",
-                "desc": "思考の飛び交う方向性とスピード。"
+                "desc": "思考の飛び交う方向性とスピード。",
+                "name_en": "Arrow",
+                "desc_en": "Direction and speed of thoughts flying around."
             },
             {
                 "name": "スタイラス (書記のペン)",
-                "desc": "記録と伝達、言葉の具現化。"
+                "desc": "記録と伝達、言葉の具現化。",
+                "name_en": "Stylus (Scribe's Pen)",
+                "desc_en": "Recording and communication, materialization of words."
             }
-        ]
+        ],
+        "name_en": "The Magus",
+        "keywords_en": [
+            "Communication",
+            "Skill",
+            "Transmission",
+            "Intellect"
+        ],
+        "esoteric_en": {
+            "hebrew": "Beth (House)",
+            "kabbalah": "Kether (1) - Binah (3) [12th Path]",
+            "astrology": "Mercury",
+            "alchemy": "Mercurius (Mercury). Fluidly transforming thoughts into words and actions.",
+            "iching": "Qian (The Creative): The beginning of creative energy, pure Yang"
+        }
     },
     {
         "id": "priestess",
@@ -111,21 +153,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "ラクダ",
-                "desc": "砂漠（深淵）を渡る力、自己充足と自立性。"
+                "desc": "砂漠（深淵）を渡る力、自己充足と自立性。",
+                "name_en": "Camel",
+                "desc_en": "The power to cross the desert (abyss), self-sufficiency and independence."
             },
             {
                 "name": "アルテミスの弓",
-                "desc": "精神の上昇、処女性、月の象徴。"
+                "desc": "精神の上昇、処女性、月の象徴。",
+                "name_en": "Bow of Artemis",
+                "desc_en": "Ascension of the spirit, virginity, symbol of the Moon."
             },
             {
                 "name": "光の網",
-                "desc": "形を作り出すエーテルの構造。万物を繋ぐ目に見えない絆。"
+                "desc": "形を作り出すエーテルの構造。万物を繋ぐ目に見えない絆。",
+                "name_en": "Net of Light",
+                "desc_en": "Ethereal structure that creates form. Invisible bond connecting all things."
             },
             {
                 "name": "水晶 / 月の冠",
-                "desc": "完全なる受容性と直感、宇宙の光の反射。"
+                "desc": "完全なる受容性と直感、宇宙の光の反射。",
+                "name_en": "Crystal / Lunar Crown",
+                "desc_en": "Complete receptivity and intuition, reflection of cosmic light."
             }
-        ]
+        ],
+        "name_en": "The Priestess",
+        "keywords_en": [
+            "Intuition",
+            "Subconscious",
+            "Purity",
+            "Receptivity"
+        ],
+        "esoteric_en": {
+            "hebrew": "Gimel (Camel)",
+            "kabbalah": "Kether (1) - Tiphareth (6) [The 13th Path]",
+            "astrology": "Moon",
+            "alchemy": "Feminine water. The formation of a vessel that receives and conceives all possibilities.",
+            "iching": "Kun (The Receptive): Complete receptivity, Mother Earth"
+        }
     },
     {
         "id": "empress",
@@ -150,21 +214,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "ペリカン",
-                "desc": "自らの血を与えて子を育てる、自己犠牲と母性。"
+                "desc": "自らの血を与えて子を育てる、自己犠牲と母性。",
+                "name_en": "Pelican",
+                "desc_en": "Feeds its young with its own blood, symbolizing self-sacrifice and motherhood."
             },
             {
                 "name": "蓮",
-                "desc": "イシスの象徴。純潔と再生、水と地の結合。"
+                "desc": "イシスの象徴。純潔と再生、水と地の結合。",
+                "name_en": "Lotus",
+                "desc_en": "Symbol of Isis. Purity and rebirth, union of water and earth."
             },
             {
                 "name": "白鳥",
-                "desc": "エクスタシー、スピリチュアルな愛と美。"
+                "desc": "エクスタシー、スピリチュアルな愛と美。",
+                "name_en": "Swan",
+                "desc_en": "Ecstasy, spiritual love and beauty."
             },
             {
                 "name": "月と地球の球体",
-                "desc": "物質界への愛と豊穣の顕現。"
+                "desc": "物質界への愛と豊穣の顕現。",
+                "name_en": "Spheres of Moon and Earth",
+                "desc_en": "Manifestation of love and fertility into the material world."
             }
-        ]
+        ],
+        "name_en": "The Empress",
+        "keywords_en": [
+            "Love",
+            "Beauty",
+            "Fertility",
+            "Motherhood"
+        ],
+        "esoteric_en": {
+            "hebrew": "Daleth (Daleth: Door)",
+            "kabbalah": "Chokmah (2) - Binah (3) [14th Path]",
+            "astrology": "Venus",
+            "alchemy": "Salt (Sal). A fertile foundation that creates, sustains, and fixes life.",
+            "iching": "Tai (Peace) - Earth over Heaven (Tai): Peace and prosperity, complete union of Yin and Yang"
+        }
     },
     {
         "id": "emperor",
@@ -189,21 +275,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "牡羊",
-                "desc": "牡羊座の象徴。春の活力、リーダーシップ、積極的な行動力。"
+                "desc": "牡羊座の象徴。春の活力、リーダーシップ、積極的な行動力。",
+                "name_en": "Ram",
+                "desc_en": "Symbol of Aries. Spring vitality, leadership, proactive drive."
             },
             {
                 "name": "双頭の鷲",
-                "desc": "錬金術における赤いティンクチャー。権威、完全な知恵、錬金術の火を象徴。"
+                "desc": "錬金術における赤いティンクチャー。権威、完全な知恵、錬金術の火を象徴。",
+                "name_en": "Double-headed Eagle",
+                "desc_en": "The red tincture in alchemy. Symbolizes authority, complete wisdom, and alchemical fire."
             },
             {
                 "name": "ハチ (蜂) と フルールドリス",
-                "desc": "組織、王権、社会の構築を意味するフランス王室の象徴的装飾。"
+                "desc": "組織、王権、社会の構築を意味するフランス王室の象徴的装飾。",
+                "name_en": "Bee and Fleur-de-lis",
+                "desc_en": "Symbolic decoration of the French monarchy, signifying organization, kingship, and the construction of society."
             },
             {
                 "name": "地球を握る手",
-                "desc": "物質界の完全な支配と、現実のコントロール。"
+                "desc": "物質界の完全な支配と、現実のコントロール。",
+                "name_en": "Hand holding the Earth",
+                "desc_en": "Complete dominion over the material world and control of reality."
             }
-        ]
+        ],
+        "name_en": "The Emperor",
+        "keywords_en": [
+            "Power",
+            "Order",
+            "Dominion",
+            "Construction"
+        ],
+        "esoteric_en": {
+            "hebrew": "Tzaddi (Fish-hook) *Crowley's unique attribution",
+            "kabbalah": "Netzach (7) - Yesod (9) [28th Path]",
+            "astrology": "Aries",
+            "alchemy": "Sulfur. Establishment of a strong structure through willpower. Masculine flame.",
+            "iching": "Da Zhuang (Great Vigor) - Lei Tian Da Zhuang: Great power, exercise of correct morality and order"
+        }
     },
     {
         "id": "hierophant",
@@ -228,21 +336,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "牡牛",
-                "desc": "牡牛座の象徴。大地に根差した強さ、忍耐、豊穣をもたらす力。"
+                "desc": "牡牛座の象徴。大地に根差した強さ、忍耐、豊穣をもたらす力。",
+                "name_en": "Bull",
+                "desc_en": "Symbol of Taurus. Strength rooted in the earth, patience, and the power to bring fertility."
             },
             {
                 "name": "五芒星の中の幼児",
-                "desc": "古い信仰から新しい時代（ホルスの時代）への移行、伝統と革新の結合。"
+                "desc": "古い信仰から新しい時代（ホルスの時代）への移行、伝統と革新の結合。",
+                "name_en": "Child in a Pentagram",
+                "desc_en": "Transition from old beliefs to a new era (Age of Horus), combining tradition and innovation."
             },
             {
                 "name": "スワスティカ (鉤十字)",
-                "desc": "雷神の力、万物の回転と周期、エネルギーの放射。"
+                "desc": "雷神の力、万物の回転と周期、エネルギーの放射。",
+                "name_en": "Swastika",
+                "desc_en": "Power of the thunder god, rotation and cycles of all things, radiation of energy."
             },
             {
                 "name": "9本の釘",
-                "desc": "ヘブライ文字のヴァヴ（釘）。上と下、神と人間を結合させる力。"
+                "desc": "ヘブライ文字のヴァヴ（釘）。上と下、神と人間を結合させる力。",
+                "name_en": "Nine Nails",
+                "desc_en": "Hebrew letter Vau (nail). The power to connect above and below, God and humanity."
             }
-        ]
+        ],
+        "name_en": "The Hierophant",
+        "keywords_en": [
+            "Tradition",
+            "Teaching",
+            "Revelation",
+            "Occult"
+        ],
+        "esoteric_en": {
+            "hebrew": "Vau (Vau: Nail)",
+            "kabbalah": "Chokmah (2) - Chesed (4) [16th Path]",
+            "astrology": "Taurus",
+            "alchemy": "Coagulation. Fixing spiritual teachings into laws of reality, making them visible.",
+            "iching": "Ta Ch'u (Great Taming) - Mountain over Heaven: Accumulating inner strength, great teachings and tradition"
+        }
     },
     {
         "id": "lovers",
@@ -267,21 +397,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "剣を持った黒人（あるいは天使）",
-                "desc": "分離と決断、知性の切断力、または錬金術におけるアニムス。"
+                "desc": "分離と決断、知性の切断力、または錬金術におけるアニムス。",
+                "name_en": "Black Figure (or Angel) with a Sword",
+                "desc_en": "Separation and decision, the cutting power of intellect, or the Animus in alchemy."
             },
             {
                 "name": "蛇と翼ある卵",
-                "desc": "宇宙の再生、生命の根源的なエネルギー。"
+                "desc": "宇宙の再生、生命の根源的なエネルギー。",
+                "name_en": "Serpent and Winged Egg",
+                "desc_en": "Cosmic regeneration, the fundamental energy of life."
             },
             {
                 "name": "白い子供と黒い子供",
-                "desc": "アベルとカイン。二元性の対立と、それを内包する愛と選択。"
+                "desc": "アベルとカイン。二元性の対立と、それを内包する愛と選択。",
+                "name_en": "White Child and Black Child",
+                "desc_en": "Abel and Cain. The conflict of duality, and the love and choice that encompass it."
             },
             {
                 "name": "弓を射るクピド (エロス)",
-                "desc": "盲目的な愛ではなく、神聖な意志（テレマ）による知的なインスピレーション。"
+                "desc": "盲目的な愛ではなく、神聖な意志（テレマ）による知的なインスピレーション。",
+                "name_en": "Cupid (Eros) Shooting an Arrow",
+                "desc_en": "Not blind love, but intellectual inspiration guided by divine will (Thelema)."
             }
-        ]
+        ],
+        "name_en": "The Lovers",
+        "keywords_en": [
+            "Choice",
+            "Union",
+            "Inspiration",
+            "Alchemical Marriage"
+        ],
+        "esoteric_en": {
+            "hebrew": "Zain (Sword)",
+            "kabbalah": "Binah (3) - Tiphareth (6) [The 17th Path]",
+            "astrology": "Gemini",
+            "alchemy": "Prelude to Solve and Coagula. Confrontation of opposites and selective integration.",
+            "iching": "Xian (Influence) - Lake over Mountain: The power of mutual feeling, exchange of inspiration and intuition."
+        }
     },
     {
         "id": "chariot",
@@ -306,21 +458,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "聖杯 (グラール)",
-                "desc": "絶対的な受容性、ビナー（母）からの影響を受け止める器。"
+                "desc": "絶対的な受容性、ビナー（母）からの影響を受け止める器。",
+                "name_en": "Holy Grail (Graal)",
+                "desc_en": "Absolute receptivity, a vessel to receive influences from Binah (the Mother)."
             },
             {
                 "name": "スフィンクス",
-                "desc": "四要素の統合（雄牛、獅子、鷲、人）。馬の代わりに戦車を引く神聖な力。"
+                "desc": "四要素の統合（雄牛、獅子、鷲、人）。馬の代わりに戦車を引く神聖な力。",
+                "name_en": "Sphinx",
+                "desc_en": "Integration of the four elements (Bull, Lion, Eagle, Man). Divine power pulling the chariot instead of horses."
             },
             {
                 "name": "蟹の甲冑",
-                "desc": "蟹座の象徴。外側は強固に守り、内なる聖なる血を保護する。"
+                "desc": "蟹座の象徴。外側は強固に守り、内なる聖なる血を保護する。",
+                "name_en": "Crab Armor",
+                "desc_en": "Symbol of Cancer. Strongly protects the outside and safeguards the sacred blood within."
             },
             {
                 "name": "回転する円盤",
-                "desc": "絶え間ない前進の力と、宇宙の周期。"
+                "desc": "絶え間ない前進の力と、宇宙の周期。",
+                "name_en": "Revolving Disk",
+                "desc_en": "The power of continuous advancement and cosmic cycles."
             }
-        ]
+        ],
+        "name_en": "The Chariot",
+        "keywords_en": [
+            "Victory",
+            "Willpower",
+            "Quest",
+            "Self-control"
+        ],
+        "esoteric_en": {
+            "hebrew": "Cheth (Fence)",
+            "kabbalah": "Binah (3) - Geburah (5) [18th Path]",
+            "astrology": "Cancer",
+            "alchemy": "Carries the sublimated will, maintaining dynamic balance towards a goal. A vessel for the Great Work.",
+            "iching": "Shi (The Army) - Earth over Water: Battle and leadership, gathering inner strength"
+        }
     },
     {
         "id": "adjustment",
@@ -345,21 +519,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "剣と天秤を持つ女神（マアト）",
-                "desc": "正義と宇宙の完全な均衡、厳格なカルマの法則。"
+                "desc": "正義と宇宙の完全な均衡、厳格なカルマの法則。",
+                "name_en": "Goddess with Sword and Scales (Ma'at)",
+                "desc_en": "Justice and perfect cosmic equilibrium, strict law of karma."
             },
             {
                 "name": "つま先立ちのポーズ",
-                "desc": "針の先のような一点の完全なバランス、動的平衡。"
+                "desc": "針の先のような一点の完全なバランス、動的平衡。",
+                "name_en": "Tiptoe Pose",
+                "desc_en": "Perfect balance at a single point like the tip of a needle, dynamic equilibrium."
             },
             {
                 "name": "アルファとオメガの球体",
-                "desc": "始まりと終わり、宇宙のすべての極性の統合。"
+                "desc": "始まりと終わり、宇宙のすべての極性の統合。",
+                "name_en": "Alpha and Omega Spheres",
+                "desc_en": "Beginning and end, integration of all cosmic polarities."
             },
             {
                 "name": "ダチョウの羽",
-                "desc": "マアト神の真理の羽。魂の重さを量る基準。"
+                "desc": "マアト神の真理の羽。魂の重さを量る基準。",
+                "name_en": "Ostrich Feather",
+                "desc_en": "Ma'at's feather of truth. The standard for weighing the soul."
             }
-        ]
+        ],
+        "name_en": "Adjustment",
+        "keywords_en": [
+            "Balance",
+            "Karma",
+            "Justice",
+            "Consequences of actions"
+        ],
+        "esoteric_en": {
+            "hebrew": "Lamed (Ox-Goad)",
+            "kabbalah": "Geburah (5) - Tiphareth (6) [22nd Path]",
+            "astrology": "Libra",
+            "alchemy": "Precise equilibrium by the scales of truth and accurate adjustment of karma.",
+            "iching": "Heng (Perseverance) - Thunder over Wind: The unchanging path, balance always maintained at the center"
+        }
     },
     {
         "id": "hermit",
@@ -385,21 +581,44 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "ランプ（輝く太陽）",
-                "desc": "ティファレトの光、暗闇を照らす内なる神性。"
+                "desc": "ティファレトの光、暗闇を照らす内なる神性。",
+                "name_en": "Lamp (Shining Sun)",
+                "desc_en": "Light of Tiphareth, inner divinity illuminating darkness."
             },
             {
                 "name": "精子（精液の粒）とヨド",
-                "desc": "創造の種子、生命の根源的な力の顕現。"
+                "desc": "創造の種子、生命の根源的な力の顕現。",
+                "name_en": "Sperm (Semen droplet) and Yod",
+                "desc_en": "Seed of creation, manifestation of the fundamental force of life."
             },
             {
                 "name": "3つの頭を持つ地獄の番犬（ケルベロス）",
-                "desc": "道を塞ぐカルマの守護者、これを手懐ける力。"
+                "desc": "道を塞ぐカルマの守護者、これを手懐ける力。",
+                "name_en": "Three-headed Hellhound (Cerberus)",
+                "desc_en": "Guardian of karma blocking the path, the power to tame it."
             },
             {
                 "name": "麦の穂とオルフェウスの卵",
-                "desc": "豊穣、生命の神秘、宇宙の誕生。"
+                "desc": "豊穣、生命の神秘、宇宙の誕生。",
+                "name_en": "Ear of Wheat and Orphic Egg",
+                "desc_en": "Fertility, mystery of life, birth of the cosmos."
             }
-        ]
+        ],
+        "name_en": "The Hermit",
+        "keywords_en": [
+            "Introspection",
+            "Wisdom",
+            "Craftsmanship",
+            "Solitude",
+            "Light"
+        ],
+        "esoteric_en": {
+            "hebrew": "Yod (Hand)",
+            "kabbalah": "Chesed (4) - Tiphareth (6) [20th Path]",
+            "astrology": "Virgo",
+            "alchemy": "Extraction of hidden inner light, isolated exploration and purification.",
+            "iching": "Dun (Retreat) - Heaven over Mountain: Retreat, inner wisdom protected by withdrawal."
+        }
     },
     {
         "id": "fortune",
@@ -424,21 +643,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "10本スポークの車輪",
-                "desc": "絶え間ない宇宙の回転、生命のサイクル。"
+                "desc": "絶え間ない宇宙の回転、生命のサイクル。",
+                "name_en": "Ten-spoked Wheel",
+                "desc_en": "Constant cosmic rotation, the cycle of life."
             },
             {
                 "name": "スフィンクス（頂点）",
-                "desc": "錬金術における硫黄。上昇するエネルギー、知性と意志。"
+                "desc": "錬金術における硫黄。上昇するエネルギー、知性と意志。",
+                "name_en": "Sphinx (at the summit)",
+                "desc_en": "Sulfur in alchemy. Ascending energy, intellect, and will."
             },
             {
                 "name": "ヘルマヌビス（上昇する神）",
-                "desc": "錬金術における水銀。変化する流動的な知性、転生。"
+                "desc": "錬金術における水銀。変化する流動的な知性、転生。",
+                "name_en": "Hermanubis (ascending god)",
+                "desc_en": "Mercury in alchemy. Changing, fluid intellect, reincarnation."
             },
             {
                 "name": "テュフォン（下降するワニ）",
-                "desc": "錬金術における塩。下降するエネルギー、破壊と固着。"
+                "desc": "錬金術における塩。下降するエネルギー、破壊と固着。",
+                "name_en": "Typhon (descending crocodile)",
+                "desc_en": "Salt in alchemy. Descending energy, destruction, and fixation."
             }
-        ]
+        ],
+        "name_en": "Fortune",
+        "keywords_en": [
+            "Change",
+            "Cycle",
+            "Destiny",
+            "Opportunity"
+        ],
+        "esoteric_en": {
+            "hebrew": "Kaph (Palm)",
+            "kabbalah": "Chesed (4) - Netzach (7) [21st Path]",
+            "astrology": "Jupiter",
+            "alchemy": "The power of constant change, the circulation and flux of sulfur, mercury, and salt.",
+            "iching": "Tai - Earth over Heaven (Peace): Stability and circulation, the interaction of heaven and earth energies."
+        }
     },
     {
         "id": "lust",
@@ -463,21 +704,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "緋色の女（バビロン）",
-                "desc": "神聖な霊的恍惚、宇宙の全エネルギーを乗りこなす力。"
+                "desc": "神聖な霊的恍惚、宇宙の全エネルギーを乗りこなす力。",
+                "name_en": "Scarlet Woman (Babylon)",
+                "desc_en": "Divine spiritual ecstasy, the power to master all cosmic energy."
             },
             {
                 "name": "7つの頭を持つ獣",
-                "desc": "宇宙の原始的な情熱と力。これらを抑圧せず統合する。"
+                "desc": "宇宙の原始的な情熱と力。これらを抑圧せず統合する。",
+                "name_en": "Seven-headed Beast",
+                "desc_en": "Primitive cosmic passion and power. Integrating these without suppression."
             },
             {
                 "name": "血で満たされた聖杯",
-                "desc": "聖者たちの血、完全な自己犠牲と霊的な抽出。"
+                "desc": "聖者たちの血、完全な自己犠牲と霊的な抽出。",
+                "name_en": "Chalice filled with blood",
+                "desc_en": "Blood of saints, complete self-sacrifice and spiritual extraction."
             },
             {
                 "name": "蛇の形をした光（背景）",
-                "desc": "宇宙に満ちる生命力（クンダリーニ）の完全な覚醒。"
+                "desc": "宇宙に満ちる生命力（クンダリーニ）の完全な覚醒。",
+                "name_en": "Serpent-shaped light (background)",
+                "desc_en": "Complete awakening of the life force (Kundalini) filling the cosmos."
             }
-        ]
+        ],
+        "name_en": "Lust",
+        "keywords_en": [
+            "Passion",
+            "Vitality",
+            "Strength",
+            "Acceptance of Instinct"
+        ],
+        "esoteric_en": {
+            "hebrew": "Teth (Serpent)",
+            "kabbalah": "Chesed (4) - Geburah (5) [19th Path]",
+            "astrology": "Leo",
+            "alchemy": "Blood of Babylon, complete transmutation (transformation) by higher energy.",
+            "iching": "Gou (Encounter) - Heaven Wind Gou: Encounter, intersection of unexpected intense forces"
+        }
     },
     {
         "id": "hanged-man",
@@ -502,13 +765,31 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "逆位置",
-                "desc": "異なる視点"
+                "desc": "異なる視点",
+                "name_en": "Inverted Position",
+                "desc_en": "Different perspective"
             },
             {
                 "name": "蛇",
-                "desc": "変容への力"
+                "desc": "変容への力",
+                "name_en": "Snake",
+                "desc_en": "Power for transformation"
             }
-        ]
+        ],
+        "name_en": "The Hanged Man",
+        "keywords_en": [
+            "Sacrifice",
+            "Shift in perspective",
+            "Surrender",
+            "Bondage"
+        ],
+        "esoteric_en": {
+            "hebrew": "Mem (Mem: Water)",
+            "kabbalah": "Geburah (5) - Hod (8) [23rd Path]",
+            "astrology": "Element of Water",
+            "alchemy": "Liberation from ego through self-sacrifice. Thorough dissolution by water.",
+            "iching": "Kun (Kun) - Ze Shui Kun: Trials in difficulty, shift in perspective"
+        }
     },
     {
         "id": "death",
@@ -533,21 +814,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "鎌を持つ骸骨",
-                "desc": "幻想を刈り取る宇宙の法則、避けられない変容のプロセス。"
+                "desc": "幻想を刈り取る宇宙の法則、避けられない変容のプロセス。",
+                "name_en": "Skeleton with a Scythe",
+                "desc_en": "The cosmic law that reaps illusions, an unavoidable process of transformation."
             },
             {
                 "name": "蠍と蛇と鷲",
-                "desc": "蠍座の3つの段階。低次の欲求（蠍）から、知恵（蛇）、そして完全な解放（鷲）への進化。"
+                "desc": "蠍座の3つの段階。低次の欲求（蠍）から、知恵（蛇）、そして完全な解放（鷲）への進化。",
+                "name_en": "Scorpion, Serpent, and Eagle",
+                "desc_en": "The three stages of Scorpio. Evolution from lower desires (Scorpion) to wisdom (Serpent), and then to complete liberation (Eagle)."
             },
             {
                 "name": "泡と魚",
-                "desc": "生命の源としての水。死の後に残る純粋な生命の種子。"
+                "desc": "生命の源としての水。死の後に残る純粋な生命の種子。",
+                "name_en": "Bubbles and Fish",
+                "desc_en": "Water as the source of life. The pure seeds of life that remain after death."
             },
             {
                 "name": "踊る骸骨",
-                "desc": "死は恐れるものではなく、宇宙の流転というダイナミックなダンスの一部である。"
+                "desc": "死は恐れるものではなく、宇宙の流転というダイナミックなダンスの一部である。",
+                "name_en": "Dancing Skeleton",
+                "desc_en": "Death is not to be feared, but is part of the dynamic dance of cosmic flux."
             }
-        ]
+        ],
+        "name_en": "Death",
+        "keywords_en": [
+            "Transformation",
+            "Letting Go",
+            "Rebirth",
+            "Inevitable End"
+        ],
+        "esoteric_en": {
+            "hebrew": "Nun (Nun: Fish)",
+            "kabbalah": "Tiphareth (6) - Netzach (7) [24th Path]",
+            "astrology": "Scorpio",
+            "alchemy": "Putrefactio. The ultimate transformation where old forms decompose, becoming the foundation for new forms.",
+            "iching": "Po (Stripping) - Mountain over Earth: Stripping away old shells, purification through destruction"
+        }
     },
     {
         "id": "art",
@@ -572,21 +875,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "両性具有の人物（アルテミス/ディアナ）",
-                "desc": "VI. 恋人たちで分離していた二つが完全に融合した姿。"
+                "desc": "VI. 恋人たちで分離していた二つが完全に融合した姿。",
+                "name_en": "Androgynous Figure (Artemis/Diana)",
+                "desc_en": "VI. The complete fusion of the two separated figures from The Lovers."
             },
             {
                 "name": "白い鷲と赤い獅子",
-                "desc": "水銀と硫黄。対立する要素が互いの性質を交換し、完全に交じり合う。"
+                "desc": "水銀と硫黄。対立する要素が互いの性質を交換し、完全に交じり合う。",
+                "name_en": "White Eagle and Red Lion",
+                "desc_en": "Mercury and Sulfur. Opposing elements exchange their properties and completely intermingle."
             },
             {
                 "name": "大釜の中の水と火",
-                "desc": "火によって水を燃やし、水によって火を消す、究極のパラドックスの成就。"
+                "desc": "火によって水を燃やし、水によって火を消す、究極のパラドックスの成就。",
+                "name_en": "Water and Fire in the Cauldron",
+                "desc_en": "The ultimate paradox achieved: fire burning water, and water extinguishing fire."
             },
             {
                 "name": "虹（虹色のオーラ）",
-                "desc": "錬金術の最終段階である「孔雀の尾」、神聖な霊的成就の光。"
+                "desc": "錬金術の最終段階である「孔雀の尾」、神聖な霊的成就の光。",
+                "name_en": "Rainbow (Iridescent Aura)",
+                "desc_en": "The 'Peacock's Tail,' the final stage of alchemy, the light of divine spiritual achievement."
             }
-        ]
+        ],
+        "name_en": "Art",
+        "keywords_en": [
+            "Integration",
+            "Alchemy",
+            "Balance",
+            "Fusion"
+        ],
+        "esoteric_en": {
+            "hebrew": "Samekh (Pillar)",
+            "kabbalah": "Tiphareth (6) - Yesod (9) [25th Path]",
+            "astrology": "Sagittarius",
+            "alchemy": "Alchemical Marriage (Solve et Coagula). Complete integration and transformation of opposites. Achievement of the Great Work.",
+            "iching": "Ding (The Cauldron) - Fire over Wind: The alchemical cauldron, new creation through the harmony of the trinity."
+        }
     },
     {
         "id": "devil",
@@ -611,21 +936,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "パン（森の神）",
-                "desc": "生命の盲目的で純粋な創造エネルギー。男性性の極致。"
+                "desc": "生命の盲目的で純粋な創造エネルギー。男性性の極致。",
+                "name_en": "Pan (God of the Wild)",
+                "desc_en": "Blind and pure creative energy of life. The epitome of masculinity."
             },
             {
                 "name": "巨大な雄ヤギと第三の目",
-                "desc": "山羊座の象徴。物質世界を見透かす全能の目と、霊的洞察力。"
+                "desc": "山羊座の象徴。物質世界を見透かす全能の目と、霊的洞察力。",
+                "name_en": "Giant Goat and Third Eye",
+                "desc_en": "Symbol of Capricorn. An omnipotent eye that sees through the material world, and spiritual insight."
             },
             {
                 "name": "男性器（男根）と睾丸",
-                "desc": "宇宙の生命を生み出す無限の活力。"
+                "desc": "宇宙の生命を生み出す無限の活力。",
+                "name_en": "Male Genitalia (Phallus) and Testicles",
+                "desc_en": "Infinite vitality that creates cosmic life."
             },
             {
                 "name": "ガラスの管（宇宙の根源）",
-                "desc": "下降する霊的エネルギーが物質と結びつく強烈な瞬間。"
+                "desc": "下降する霊的エネルギーが物質と結びつく強烈な瞬間。",
+                "name_en": "Glass Tube (Cosmic Origin)",
+                "desc_en": "The intense moment when descending spiritual energy connects with matter."
             }
-        ]
+        ],
+        "name_en": "The Devil",
+        "keywords_en": [
+            "Material desires",
+            "Humor",
+            "Source of life",
+            "Creativity"
+        ],
+        "esoteric_en": {
+            "hebrew": "Ayin (Eye)",
+            "kabbalah": "Tiphareth (6) - Hod (8) [26th Path]",
+            "astrology": "Capricorn",
+            "alchemy": "Complete incarnation into matter. Pure spiritual energy hidden within crude matter (the power of Pan).",
+            "iching": "Jian (Obstruction) - Water over Mountain: Facing difficulties and stagnation, the limits of the material world."
+        }
     },
     {
         "id": "tower",
@@ -650,21 +997,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "崩れ落ちる塔と目",
-                "desc": "神の目（シヴァの目）による幻想の破壊。エゴの要塞の崩壊。"
+                "desc": "神の目（シヴァの目）による幻想の破壊。エゴの要塞の崩壊。",
+                "name_en": "Collapsing Tower and Eye",
+                "desc_en": "Destruction of illusion by the Eye of God (Shiva's Eye). Collapse of the ego's fortress."
             },
             {
                 "name": "炎を吐く口（ハデス/冥界）",
-                "desc": "ペー（口）の象徴。すべてを飲み込み、浄化する力。"
+                "desc": "ペー（口）の象徴。すべてを飲み込み、浄化する力。",
+                "name_en": "Mouth Spitting Fire (Hades/Underworld)",
+                "desc_en": "Symbol of Peh (Mouth). The power to swallow everything and purify."
             },
             {
                 "name": "落ちていく人物",
-                "desc": "旧来の形態や執着からの解放、幾何学的な結晶体への還元。"
+                "desc": "旧来の形態や執着からの解放、幾何学的な結晶体への還元。",
+                "name_en": "Falling Figures",
+                "desc_en": "Liberation from old forms and attachments, reduction to geometric crystalline forms."
             },
             {
                 "name": "鳩（オリーブの枝）と蛇（アブラクサス）",
-                "desc": "破壊の後に訪れる平和と、新しい生命の再生。"
+                "desc": "破壊の後に訪れる平和と、新しい生命の再生。",
+                "name_en": "Dove (Olive Branch) and Serpent (Abraxas)",
+                "desc_en": "Peace that follows destruction, and the regeneration of new life."
             }
-        ]
+        ],
+        "name_en": "The Tower",
+        "keywords_en": [
+            "Destruction",
+            "Breakthrough",
+            "Purification",
+            "Paradigm Shift"
+        ],
+        "esoteric_en": {
+            "hebrew": "Peh (Pe: Mouth)",
+            "kabbalah": "Netzach (7) - Hod (8) [27th Path]",
+            "astrology": "Mars",
+            "alchemy": "Calcination. Burning away impurities with intense fire, leaving only pure ash.",
+            "iching": "Zhen (Shock) - Zhen Wei Lei: Sudden shock and awakening, collapse of old structures"
+        }
     },
     {
         "id": "star",
@@ -689,21 +1058,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "裸の女神（ヌイト/ハトホル）",
-                "desc": "無限の宇宙の星空、すべての可能性を内包する母なる夜。"
+                "desc": "無限の宇宙の星空、すべての可能性を内包する母なる夜。",
+                "name_en": "Naked Goddess (Nuit/Hathor)",
+                "desc_en": "Starry sky of infinite cosmos, mother night encompassing all possibilities."
             },
             {
                 "name": "金の杯と銀の杯",
-                "desc": "永遠の生命の水と、物質界への具現化。エネルギーの注ぎ込み。"
+                "desc": "永遠の生命の水と、物質界への具現化。エネルギーの注ぎ込み。",
+                "name_en": "Golden Cup and Silver Cup",
+                "desc_en": "Water of eternal life and manifestation into the material world. Influx of energy."
             },
             {
                 "name": "七芒星（セプタグラム）",
-                "desc": "バビロンの星、金星のエネルギー、愛と美の超越的な現れ。"
+                "desc": "バビロンの星、金星のエネルギー、愛と美の超越的な現れ。",
+                "name_en": "Heptagram (Seven-pointed Star)",
+                "desc_en": "Star of Babylon, Venusian energy, transcendent manifestation of love and beauty."
             },
             {
                 "name": "結晶化する幾何学模様",
-                "desc": "純化されたエネルギーが物質界で完璧な形を成すプロセス。"
+                "desc": "純化されたエネルギーが物質界で完璧な形を成すプロセス。",
+                "name_en": "Crystallizing Geometric Patterns",
+                "desc_en": "Process of purified energy forming perfect shapes in the material world."
             }
-        ]
+        ],
+        "name_en": "The Star",
+        "keywords_en": [
+            "Hope",
+            "Inspiration",
+            "Purity",
+            "Future Prospects"
+        ],
+        "esoteric_en": {
+            "hebrew": "He (Heh: Window) *Crowley's unique attribution",
+            "kabbalah": "Hod (8) - Yesod (9) [28th Path]",
+            "astrology": "Aquarius",
+            "alchemy": "Distillation and purification. Circulation of celestial and terrestrial waters. Influx from the Great Star (Nuit).",
+            "iching": "Huan (Dispersion) - Wind over Water: Dispersion, liberation from stagnation and expansion"
+        }
     },
     {
         "id": "moon",
@@ -728,21 +1119,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "2つの塔（アヌビスのジャッカル）",
-                "desc": "生と死の境界線を守る者。潜在意識への入り口。"
+                "desc": "生と死の境界線を守る者。潜在意識への入り口。",
+                "name_en": "Two Towers (Jackals of Anubis)",
+                "desc_en": "Guardians of the boundary between life and death. Entrance to the subconscious."
             },
             {
                 "name": "スカラベ（フンコロガシ）と太陽",
-                "desc": "ケプリ神。真夜中の太陽、最も暗い場所から始まる再生の兆し。"
+                "desc": "ケプリ神。真夜中の太陽、最も暗い場所から始まる再生の兆し。",
+                "name_en": "Scarab (Dung Beetle) and Sun",
+                "desc_en": "Khepri. The midnight sun, a sign of rebirth beginning from the darkest place."
             },
             {
                 "name": "毒々しい血の池",
-                "desc": "無意識の底に沈む恐怖や幻想。これを越えなければ光には到達できない。"
+                "desc": "無意識の底に沈む恐怖や幻想。これを越えなければ光には到達できない。",
+                "name_en": "Pool of Poisonous Blood",
+                "desc_en": "Fears and illusions submerged at the bottom of the unconscious. One cannot reach the light without overcoming this."
             },
             {
                 "name": "不気味な波と満ち欠けする月",
-                "desc": "幻影、魔術的イリュージョン、周期的なリズム。"
+                "desc": "幻影、魔術的イリュージョン、周期的なリズム。",
+                "name_en": "Eerie Waves and Waxing/Waning Moon",
+                "desc_en": "Phantoms, magical illusions, cyclical rhythms."
             }
-        ]
+        ],
+        "name_en": "The Moon",
+        "keywords_en": [
+            "Illusion",
+            "Unconscious",
+            "Fear",
+            "Magic"
+        ],
+        "esoteric_en": {
+            "hebrew": "Qoph (Back of the Head)",
+            "kabbalah": "Netzach (7) - Malkuth (10) [29th Path]",
+            "astrology": "Pisces",
+            "alchemy": "Lunar blood (menstruum). A mixture of poison and medicine from the sea of the subconscious, before taking form.",
+            "iching": "Kan - Kan Wei Shui: Peril and abyss, crossing the dark sea of the unconscious"
+        }
     },
     {
         "id": "sun",
@@ -767,21 +1180,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "踊る双子の子供",
-                "desc": "新しい時代（ホルスの時代）の象徴。無邪気さ、完全な自由と自己表現。"
+                "desc": "新しい時代（ホルスの時代）の象徴。無邪気さ、完全な自由と自己表現。",
+                "name_en": "Dancing Twin Children",
+                "desc_en": "Symbol of the new era (Age of Horus). Innocence, complete freedom, and self-expression."
             },
             {
                 "name": "12の光線を放つ太陽",
-                "desc": "黄道十二宮の完全な支配。生命の源泉、創造的なエネルギーの中心。"
+                "desc": "黄道十二宮の完全な支配。生命の源泉、創造的なエネルギーの中心。",
+                "name_en": "Sun with 12 Rays",
+                "desc_en": "Complete dominion over the twelve zodiac signs. Source of life, center of creative energy."
             },
             {
                 "name": "薔薇と十字の丘",
-                "desc": "錬金術の到達点（薔薇十字）。神聖な霊と物質の完全な融合。"
+                "desc": "錬金術の到達点（薔薇十字）。神聖な霊と物質の完全な融合。",
+                "name_en": "Hill of Roses and Crosses",
+                "desc_en": "Culmination of alchemy (Rosicrucianism). Complete fusion of divine spirit and matter."
             },
             {
                 "name": "緑の蝶と翼ある球体",
-                "desc": "魂の復活、変容の完了と軽やかな飛翔。"
+                "desc": "魂の復活、変容の完了と軽やかな飛翔。",
+                "name_en": "Green Butterfly and Winged Sphere",
+                "desc_en": "Resurrection of the soul, completion of transformation, and light flight."
             }
-        ]
+        ],
+        "name_en": "The Sun",
+        "keywords_en": [
+            "Glory",
+            "Vitality",
+            "Clarity",
+            "Freedom"
+        ],
+        "esoteric_en": {
+            "hebrew": "Resh (Head)",
+            "kabbalah": "Hod (8) - Malkuth (10) [30th Path]",
+            "astrology": "The Sun",
+            "alchemy": "Fermentation and multiplication. Complete generation of gold. Complete integration by the light of consciousness.",
+            "iching": "Li - Li Wei Huo: Bright light, attachment and brilliance of intellect"
+        }
     },
     {
         "id": "aeon",
@@ -806,21 +1241,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "ヌイト（星空の女神）とハディト（翼ある球体）",
-                "desc": "宇宙の無限の空間（母）と、中心にある極微の点（父）。"
+                "desc": "宇宙の無限の空間（母）と、中心にある極微の点（父）。",
+                "name_en": "Nuit (Goddess of the Starry Sky) and Hadit (Winged Sphere)",
+                "desc_en": "The infinite space of the universe (mother) and the infinitesimal point at the center (father)."
             },
             {
                 "name": "双子のホルス（沈黙の子供と戦士）",
-                "desc": "ホール・パアル・クラートとラー・ホール・クイト。新しい時代（アイオン）の到来。"
+                "desc": "ホール・パアル・クラートとラー・ホール・クイト。新しい時代（アイオン）の到来。",
+                "name_en": "Twin Horuses (Child of Silence and Warrior)",
+                "desc_en": "Hoor-Paar-Kraat and Ra-Hoor-Khuit. The advent of a new era (Aeon)."
             },
             {
                 "name": "胎児の透明な姿",
-                "desc": "次の次元への生まれ変わり、霊的な進化の次のステップ。"
+                "desc": "次の次元への生まれ変わり、霊的な進化の次のステップ。",
+                "name_en": "Transparent Form of a Fetus",
+                "desc_en": "Rebirth into the next dimension, the next step in spiritual evolution."
             },
             {
                 "name": "炎の文字シン",
-                "desc": "破壊と創造を同時に行う霊的な火のエネルギー。"
+                "desc": "破壊と創造を同時に行う霊的な火のエネルギー。",
+                "name_en": "Flaming Letter Shin",
+                "desc_en": "Spiritual fire energy that simultaneously destroys and creates."
             }
-        ]
+        ],
+        "name_en": "The Aeon",
+        "keywords_en": [
+            "New Era",
+            "Final Decision",
+            "Taking a Step Forward",
+            "Broadening Horizons"
+        ],
+        "esoteric_en": {
+            "hebrew": "Shin (Shin: Tooth/Fire)",
+            "kabbalah": "Hod (8) - Malkuth (10) [31st Path]",
+            "astrology": "Element of Fire",
+            "alchemy": "Final transformation by fire. The triune fire pushes all things into a new cycle.",
+            "iching": "Ko (Kak) - Ko (Lake over Fire): Revolution and Renewal, transition from an old era to a new one."
+        }
     },
     {
         "id": "universe",
@@ -845,21 +1302,43 @@ const MAJOR_ARCANA = [
         "symbols": [
             {
                 "name": "踊る乙女と大蛇",
-                "desc": "純化された物質界（マルクト）と、それを貫くクンダリーニのエネルギー。"
+                "desc": "純化された物質界（マルクト）と、それを貫くクンダリーニのエネルギー。",
+                "name_en": "Dancing Maiden and Serpent",
+                "desc_en": "The purified material world (Malkuth) and the Kundalini energy that penetrates it."
             },
             {
                 "name": "星々の楕円形の輪（マンドルラ）",
-                "desc": "宇宙の卵、または女陰（ヨニ）。完全な世界と境界線。"
+                "desc": "宇宙の卵、または女陰（ヨニ）。完全な世界と境界線。",
+                "name_en": "Elliptical Ring of Stars (Mandorla)",
+                "desc_en": "Cosmic egg, or yoni. A complete world and its boundaries."
             },
             {
                 "name": "四つのケルビム（牛、獅子、鷲、人）",
-                "desc": "四大元素の完全な固定と、物質界の四隅の安定。"
+                "desc": "四大元素の完全な固定と、物質界の四隅の安定。",
+                "name_en": "Four Cherubim (Ox, Lion, Eagle, Man)",
+                "desc_en": "Complete fixation of the four elements and stability of the four corners of the material world."
             },
             {
                 "name": "骨組みのような土星の構造",
-                "desc": "時間の制限と物質界の法則、そしてそれを完全に理解した上での自由。"
+                "desc": "時間の制限と物質界の法則、そしてそれを完全に理解した上での自由。",
+                "name_en": "Skeletal Saturnian Structure",
+                "desc_en": "The limitations of time and the laws of the material world, and freedom gained through a complete understanding of them."
             }
-        ]
+        ],
+        "name_en": "The Universe",
+        "keywords_en": [
+            "Completion",
+            "Wholeness",
+            "Grand Finale",
+            "Limitations and Structure"
+        ],
+        "esoteric_en": {
+            "hebrew": "Tav (Tau: Cross/Mark)",
+            "kabbalah": "Yesod (9) - Malkuth (10) [32nd Path]",
+            "astrology": "Saturn / Earth Element",
+            "alchemy": "Completion of Coagulatio. The complete materialization of spirit and the completion of the Great Work.",
+            "iching": "Kun - Kun for Earth: Complete receptivity and inclusiveness, the mother earth that actualizes everything."
+        }
     }
 ];
 
@@ -884,13 +1363,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "ピラミッドを上から見た図",
-                "desc": "基礎的な要素（硫黄、水銀、塩）が組み合わさり、安定した物質的構造（仕事）が完成する。"
+                "desc": "基礎的な要素（硫黄、水銀、塩）が組み合わさり、安定した物質的構造（仕事）が完成する。",
+                "name_en": "Pyramid viewed from above",
+                "desc_en": "Fundamental elements (sulfur, mercury, salt) combine to complete a stable material structure (work)."
             },
             {
                 "name": "火星のエネルギー",
-                "desc": "具体的な行動と労働によって、構想が現実の物質的成果として構築される。"
+                "desc": "具体的な行動と労働によって、構想が現実の物質的成果として構築される。",
+                "name_en": "Martian Energy",
+                "desc_en": "Through concrete action and labor, concepts are built into tangible material results."
             }
-        ]
+        ],
+        "name_en": "Works",
+        "keywords_en": [
+            "Constructive Work",
+            "Manifestation",
+            "Laying Foundations",
+            "Skill"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Binah (Understanding)",
+            "astrology": "Mars in Capricorn",
+            "alchemy": null,
+            "iching": null
+        }
     },
     {
         "id": "disks_8",
@@ -905,16 +1402,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "生命の樹の形に似た花のディスク",
-                "desc": "細部にまで注意を払い、知性（ホド）を使って丁寧に物質を育て上げるプロセス。"
+                "desc": "細部にまで注意を払い、知性（ホド）を使って丁寧に物質を育て上げるプロセス。",
+                "name_en": "Floral disk resembling the Tree of Life",
+                "desc_en": "The process of carefully cultivating matter with attention to detail, using intellect (Hod)."
             },
             {
                 "name": "幾何学的な精密さ",
-                "desc": "失敗（7）から学び、太陽の光（意識）を当てながら、着実に基礎を固める忍耐。"
+                "desc": "失敗（7）から学び、太陽の光（意識）を当てながら、着実に基礎を固める忍耐。",
+                "name_en": "Geometric precision",
+                "desc_en": "Patience in steadily building foundations, learning from failures (7) and applying the light of the Sun (consciousness)."
             }
         ],
         "esoteric": {
             "sephira": "ホド (Hod: 栄光)",
             "astrology": "乙女座の太陽"
+        },
+        "name_en": "Prudence",
+        "keywords_en": [
+            "Prudence"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Hod (Glory)",
+            "astrology": "Sun in Virgo",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -930,16 +1442,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "踊る乙女と白鳥",
-                "desc": "純粋な感情が物質界に結晶化した美しさ。優雅さ、ロマンス、無垢な喜び。"
+                "desc": "純粋な感情が物質界に結晶化した美しさ。優雅さ、ロマンス、無垢な喜び。",
+                "name_en": "Dancing Maiden and Swan",
+                "desc_en": "The beauty of pure emotion crystallized in the material world. Grace, romance, innocent joy."
             },
             {
                 "name": "亀の甲羅を持つ杯",
-                "desc": "感情が物質的な形（氷や結晶）となり、安定した愛情や芸術的才能として実を結ぶ。"
+                "desc": "感情が物質的な形（氷や結晶）となり、安定した愛情や芸術的才能として実を結ぶ。",
+                "name_en": "Cup with a Turtle Shell",
+                "desc_en": "Emotions take material form (ice or crystal), bearing fruit as stable affection or artistic talent."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth) の水",
             "astrology": "地のなかの水 (巨蟹宮・天蝎宮・双魚宮の天空)"
+        },
+        "name_en": "Princess of Cups",
+        "keywords_en": [
+            "Emotions bearing fruit"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Malkuth of Water",
+            "astrology": "Water in Earth (Cancer, Scorpio, Pisces in the sky)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -955,16 +1482,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "回転する幾何学的なディスク",
-                "desc": "霊的なエネルギーが物質界に顕現し、形を成し始めた最初の瞬間。"
+                "desc": "霊的なエネルギーが物質界に顕現し、形を成し始めた最初の瞬間。",
+                "name_en": "Rotating Geometric Disk",
+                "desc_en": "The first moment spiritual energy manifests in the material world and begins to take form."
             },
             {
                 "name": "中心にある七芒星と六芒星",
-                "desc": "すべての惑星エネルギーと太陽の力が、1つの物質的な基盤に凝縮されている。"
+                "desc": "すべての惑星エネルギーと太陽の力が、1つの物質的な基盤に凝縮されている。",
+                "name_en": "Heptagram and Hexagram at the Center",
+                "desc_en": "All planetary energies and solar power are condensed into one material foundation."
             }
         ],
         "esoteric": {
             "sephira": "ケテル (Kether: 王冠)",
             "astrology": "地のエレメントの根源"
+        },
+        "name_en": "Ace of Disks",
+        "keywords_en": [
+            "Primal Earth Power"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Kether: Crown",
+            "astrology": "Root of the Earth Element",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -980,16 +1522,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "電光のように飛ぶ8本のワンド",
-                "desc": "水星の知性とコミュニケーションの速度が、火のエネルギーに乗って一直線に進む。"
+                "desc": "水星の知性とコミュニケーションの速度が、火のエネルギーに乗って一直線に進む。",
+                "name_en": "Eight Wands Flying Like Lightning",
+                "desc_en": "The speed of Mercury's intellect and communication, riding on the energy of fire, proceeds in a straight line."
             },
             {
                 "name": "虹色の背景",
-                "desc": "思考とエネルギーが物質化する直前の、光のスペクトルのような純粋な速度。"
+                "desc": "思考とエネルギーが物質化する直前の、光のスペクトルのような純粋な速度。",
+                "name_en": "Rainbow-colored Background",
+                "desc_en": "Pure speed, like a spectrum of light, just before thought and energy materialize."
             }
         ],
         "esoteric": {
             "sephira": "ホド (Hod: 栄光)",
             "astrology": "射手座の水星"
+        },
+        "name_en": "Swiftness",
+        "keywords_en": [
+            "Swiftness"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Hod: Glory",
+            "astrology": "Mercury in Sagittarius",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1005,16 +1562,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "牛が引く鉄の戦車",
-                "desc": "物質の構造を論理的に理解し、建築物やシステムを作り上げる実用的な知性。"
+                "desc": "物質の構造を論理的に理解し、建築物やシステムを作り上げる実用的な知性。",
+                "name_en": "Iron Chariot Drawn by an Ox",
+                "desc_en": "Practical intelligence that logically understands the structure of matter and builds structures and systems."
             },
             {
                 "name": "球体を持つ手",
-                "desc": "具体的な計画、設計図の実行、そして目標に向けた揺るぎない現実的なアプローチ。"
+                "desc": "具体的な計画、設計図の実行、そして目標に向けた揺るぎない現実的なアプローチ。",
+                "name_en": "Hand Holding a Sphere",
+                "desc_en": "Concrete planning, execution of blueprints, and an unwavering realistic approach towards goals."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth) の地",
             "astrology": "風のなかの地 (牡羊座20度〜牡牛座20度)"
+        },
+        "name_en": "Prince of Disks",
+        "keywords_en": [
+            "Planning and Practicality"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Tiphareth of Earth",
+            "astrology": "Earth in Air (Aries 20 degrees to Taurus 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1030,16 +1602,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "薔薇を貫く3本の剣",
-                "desc": "母なる理解（ビナー）の薔薇が、論理的思考の残酷な分析によって引き裂かれる苦痛。"
+                "desc": "母なる理解（ビナー）の薔薇が、論理的思考の残酷な分析によって引き裂かれる苦痛。",
+                "name_en": "Three Swords Piercing a Rose",
+                "desc_en": "The pain of the Rose of Motherly Understanding (Binah) being torn apart by the cruel analysis of logical thought."
             },
             {
                 "name": "嵐の背景",
-                "desc": "精神的な重圧と土星の冷酷な現実認識による深い悲哀。"
+                "desc": "精神的な重圧と土星の冷酷な現実認識による深い悲哀。",
+                "name_en": "Stormy Background",
+                "desc_en": "Deep sorrow caused by mental pressure and Saturn's ruthless recognition of reality."
             }
         ],
         "esoteric": {
             "sephira": "ビナー (Binah: 理解)",
             "astrology": "天秤座の土星"
+        },
+        "name_en": "Sorrow",
+        "keywords_en": [
+            "Sorrow"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Binah (Understanding)",
+            "astrology": "Saturn in Libra",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1055,16 +1642,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "2本の交差するドルジェ（金剛杵）",
-                "desc": "破壊と創造を司るチベットの法具。強大なエネルギーの制御。"
+                "desc": "破壊と創造を司るチベットの法具。強大なエネルギーの制御。",
+                "name_en": "Two Crossed Dorjes (Vajras)",
+                "desc_en": "Tibetan ritual implements governing destruction and creation. Control of immense energy."
             },
             {
                 "name": "炎とエネルギーの放射",
-                "desc": "意志が明確な方向性を持ち、強力な支配力として発露する状態。"
+                "desc": "意志が明確な方向性を持ち、強力な支配力として発露する状態。",
+                "name_en": "Emission of Flame and Energy",
+                "desc_en": "A state where will has a clear direction and manifests as powerful dominion."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah: 知恵)",
             "astrology": "牡羊座の火星"
+        },
+        "name_en": "Dominion",
+        "keywords_en": [
+            "Dominion"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Chokmah (Wisdom)",
+            "astrology": "Mars in Aries",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1080,16 +1682,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "木立の中に立つ妊娠した乙女",
-                "desc": "純粋な物質、結実、生命の誕生。宇宙のエネルギーが完全に具現化された究極の形態。"
+                "desc": "純粋な物質、結実、生命の誕生。宇宙のエネルギーが完全に具現化された究極の形態。",
+                "name_en": "Pregnant Maiden Standing in a Grove",
+                "desc_en": "Pure matter, fruition, birth of life. The ultimate form where cosmic energy is fully materialized."
             },
             {
                 "name": "羊の頭のついた杖",
-                "desc": "新しいサイクルの始まり。古いものが土に還り、そこから新しい生命が芽吹く希望。"
+                "desc": "新しいサイクルの始まり。古いものが土に還り、そこから新しい生命が芽吹く希望。",
+                "name_en": "Staff with a Ram's Head",
+                "desc_en": "Beginning of a new cycle. Hope for new life to sprout from the old returning to the earth."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth) の地",
             "astrology": "地のなかの地 (金牛宮・処女宮・磨羯宮の天空)"
+        },
+        "name_en": "Princess of Disks",
+        "keywords_en": [
+            "Material Foundation"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Malkuth of Earth",
+            "astrology": "Earth of Earth (Taurus, Virgo, Capricorn)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1105,16 +1722,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "巨大な生命の樹の形に並ぶ10の杯",
-                "desc": "感情的経験の究極の到達点。すべてが満たされた最終形態。"
+                "desc": "感情的経験の究極の到達点。すべてが満たされた最終形態。",
+                "name_en": "Ten cups arranged in the shape of the giant Tree of Life",
+                "desc_en": "The ultimate culmination of emotional experience. The final form where everything is fulfilled."
             },
             {
                 "name": "傾いて水がこぼれる杯",
-                "desc": "満たされすぎたため、これ以上の感情の入る余地がなく、次のサイクルへの崩壊（火星）を待つ。"
+                "desc": "満たされすぎたため、これ以上の感情の入る余地がなく、次のサイクルへの崩壊（火星）を待つ。",
+                "name_en": "Tilted cup spilling water",
+                "desc_en": "Over-filled, leaving no room for further emotion, awaiting collapse (Mars) into the next cycle."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth: 王国)",
             "astrology": "魚座の火星"
+        },
+        "name_en": "Satiety",
+        "keywords_en": [
+            "Satiety"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Malkuth: Kingdom",
+            "astrology": "Mars in Pisces",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1130,16 +1762,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "生命の樹の形に配置されたコイン",
-                "desc": "物質界における豊かさの究極の到達点であり、同時にこれ以上成長できない飽和状態。"
+                "desc": "物質界における豊かさの究極の到達点であり、同時にこれ以上成長できない飽和状態。",
+                "name_en": "Coins arranged in the shape of the Tree of Life",
+                "desc_en": "The ultimate culmination of abundance in the material world, and at the same time, a state of saturation where no further growth is possible."
             },
             {
                 "name": "重厚で固まった富",
-                "desc": "水星の力により物質の価値が完全に定まったが、同時に生命力を失い、次の崩壊を待つ巨大な富。"
+                "desc": "水星の力により物質の価値が完全に定まったが、同時に生命力を失い、次の崩壊を待つ巨大な富。",
+                "name_en": "Heavy and solidified wealth",
+                "desc_en": "Immense wealth whose material value has been completely fixed by the power of Mercury, but which has also lost its vitality and awaits its next collapse."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth: 王国)",
             "astrology": "乙女座の水星"
+        },
+        "name_en": "Wealth",
+        "keywords_en": [
+            "Wealth"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Malkuth (Kingdom)",
+            "astrology": "Mercury in Virgo",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1155,16 +1802,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "重々しい馬と農具",
-                "desc": "大地を耕す力。忍耐強く、着実に物質的な利益や成果を生み出す労働のエネルギー。"
+                "desc": "大地を耕す力。忍耐強く、着実に物質的な利益や成果を生み出す労働のエネルギー。",
+                "name_en": "Heavy horse and farm tools",
+                "desc_en": "The power to cultivate the earth. The energy of labor that patiently and steadily produces material gains and results."
             },
             {
                 "name": "太陽のような盾",
-                "desc": "火のエネルギーが地に注がれ、植物を成長させるような生命を育む活力。"
+                "desc": "火のエネルギーが地に注がれ、植物を成長させるような生命を育む活力。",
+                "name_en": "Sun-like shield",
+                "desc_en": "The vitality that nurtures life, as if fire energy is poured into the earth to grow plants."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah) の地",
             "astrology": "火のなかの地 (獅子座20度〜乙女座20度)"
+        },
+        "name_en": "Knight of Disks",
+        "keywords_en": [
+            "Sure progress and labor"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Earth of Chokmah",
+            "astrology": "Earth in Fire (Leo 20 degrees - Virgo 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1180,16 +1842,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "バランスを崩しつつある6本と1本の太い棍棒",
-                "desc": "圧倒的な不利な状況下での最後の決死の抵抗。"
+                "desc": "圧倒的な不利な状況下での最後の決死の抵抗。",
+                "name_en": "Six and one thick clubs losing balance",
+                "desc_en": "A final desperate resistance under overwhelmingly unfavorable conditions."
             },
             {
                 "name": "炎の揺らぎ",
-                "desc": "安定が崩れつつあるが、火星の暴力的なエネルギーで辛うじて持ち堪えている。"
+                "desc": "安定が崩れつつあるが、火星の暴力的なエネルギーで辛うじて持ち堪えている。",
+                "name_en": "Flickering flames",
+                "desc_en": "Stability is crumbling, but it is barely holding on with the violent energy of Mars."
             }
         ],
         "esoteric": {
             "sephira": "ネツァク (Netzach: 勝利/永遠)",
             "astrology": "獅子座の火星"
+        },
+        "name_en": "Valor",
+        "keywords_en": [
+            "Courage"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Netzach (Victory/Eternity)",
+            "astrology": "Mars in Leo",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1205,16 +1882,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "中央に集まる4本の剣と薔薇",
-                "desc": "争いから一歩引き、保護（ケセド）された空間で知的な妥協点を見出す。"
+                "desc": "争いから一歩引き、保護（ケセド）された空間で知的な妥協点を見出す。",
+                "name_en": "Four Swords and a Rose Gathered in the Center",
+                "desc_en": "Stepping back from conflict to find an intellectual compromise in a protected (Chesed) space."
             },
             {
                 "name": "緑色の背景",
-                "desc": "木星の恩恵による一時的な回復と、傷を癒やすための静止状態。"
+                "desc": "木星の恩恵による一時的な回復と、傷を癒やすための静止状態。",
+                "name_en": "Green Background",
+                "desc_en": "Temporary recovery due to Jupiter's benevolence and a state of stillness to heal wounds."
             }
         ],
         "esoteric": {
             "sephira": "ケセド (Chesed: 慈悲)",
             "astrology": "天秤座の木星"
+        },
+        "name_en": "Truce",
+        "keywords_en": [
+            "Truce"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Jupiter in Libra",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1230,16 +1922,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "血の滴る錆びた剣",
-                "desc": "無意識（イエソド）の深層に潜む純粋な悪意、自虐的思考、激しい精神的苦痛。"
+                "desc": "無意識（イエソド）の深層に潜む純粋な悪意、自虐的思考、激しい精神的苦痛。",
+                "name_en": "Blood-dripping rusty sword",
+                "desc_en": "Pure malice, self-deprecating thoughts, and intense mental anguish lurking in the depths of the unconscious (Yesod)."
             },
             {
                 "name": "鋸状の刃",
-                "desc": "心を容赦なく切り刻む、救いのない自己批判と終わらない絶望のサイクル。"
+                "desc": "心を容赦なく切り刻む、救いのない自己批判と終わらない絶望のサイクル。",
+                "name_en": "Saw-like blade",
+                "desc_en": "A relentless cycle of hopeless self-criticism and unending despair that mercilessly cuts through the mind."
             }
         ],
         "esoteric": {
             "sephira": "イエソド (Yesod: 基礎)",
             "astrology": "双子座の火星"
+        },
+        "name_en": "Cruelty",
+        "keywords_en": [
+            "Cruelty"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Yesod: Foundation",
+            "astrology": "Mars in Gemini",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1255,16 +1962,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "四角い要塞の四隅にあるディスク",
-                "desc": "物質的な基盤が極めて強固になり、絶対的な安定と権力を確立した状態。"
+                "desc": "物質的な基盤が極めて強固になり、絶対的な安定と権力を確立した状態。",
+                "name_en": "Discs at the four corners of the square fortress",
+                "desc_en": "A state where the material foundation has become extremely solid, establishing absolute stability and power."
             },
             {
                 "name": "太陽の印",
-                "desc": "物質界における揺るぎない支配力と、確立された法則による力の保持。"
+                "desc": "物質界における揺るぎない支配力と、確立された法則による力の保持。",
+                "name_en": "Mark of the Sun",
+                "desc_en": "Unwavering dominance in the material world and the retention of power through established laws."
             }
         ],
         "esoteric": {
             "sephira": "ケセド (Chesed: 慈悲)",
             "astrology": "山羊座の太陽"
+        },
+        "name_en": "Power",
+        "keywords_en": [
+            "Power"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Chesed: Mercy",
+            "astrology": "Sun in Capricorn",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1280,16 +2002,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "オアシスに座る女王",
-                "desc": "生命を育む豊穣な大地。休息、滋養、そして物質的な豊かさの究極の受容態。"
+                "desc": "生命を育む豊穣な大地。休息、滋養、そして物質的な豊かさの究極の受容態。",
+                "name_en": "Queen sitting in an oasis",
+                "desc_en": "Fertile land that nurtures life. The ultimate recipient of rest, nourishment, and material abundance."
             },
             {
                 "name": "角のある兜と地球儀",
-                "desc": "自然界の法則の理解と、現実世界（地球）における静かで確固たる支配力。"
+                "desc": "自然界の法則の理解と、現実世界（地球）における静かで確固たる支配力。",
+                "name_en": "Horned helmet and globe",
+                "desc_en": "Understanding of the laws of the natural world and a quiet, firm dominion over the real world (Earth)."
             }
         ],
         "esoteric": {
             "sephira": "ビナー (Binah) の地",
             "astrology": "水のなかの地 (射手座20度〜山羊座20度)"
+        },
+        "name_en": "Queen of Disks",
+        "keywords_en": [
+            "Fertility and Nurturing"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Binah of Earth",
+            "astrology": "Earth in Water (Sagittarius 20 degrees - Capricorn 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1305,16 +2042,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "白馬と輝く鎧",
-                "desc": "水面を駆け抜ける熱い波。感情的な衝動、ロマンチシズム、熱狂的な献身。"
+                "desc": "水面を駆け抜ける熱い波。感情的な衝動、ロマンチシズム、熱狂的な献身。",
+                "name_en": "White horse and shining armor",
+                "desc_en": "Hot waves rushing across the water's surface. Emotional impulses, romanticism, fervent devotion."
             },
             {
                 "name": "蟹が描かれた杯",
-                "desc": "攻撃的でありながらも、内面には傷つきやすい純粋な感情を隠し持っている。"
+                "desc": "攻撃的でありながらも、内面には傷つきやすい純粋な感情を隠し持っている。",
+                "name_en": "Cup adorned with a crab",
+                "desc_en": "Aggressive yet harboring vulnerable, pure emotions within."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah) の水",
             "astrology": "火のなかの水 (水瓶座20度〜魚座20度)"
+        },
+        "name_en": "Knight of Cups",
+        "keywords_en": [
+            "Artistic impulse"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Water of Chokmah",
+            "astrology": "Water in Fire (Aquarius 20 degrees - Pisces 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1330,16 +2082,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "しおれた蓮と欠けた杯",
-                "desc": "感情的なエネルギーの枯渇。土星の重圧によって水が淀む。"
+                "desc": "感情的なエネルギーの枯渇。土星の重圧によって水が淀む。",
+                "name_en": "Withered Lotus and Broken Cups",
+                "desc_en": "Depletion of emotional energy. Water stagnates due to the pressure of Saturn."
             },
             {
                 "name": "3つの空の杯と5つの満たされた杯",
-                "desc": "まだ残っているものがあるにもかかわらず、気力を失い放棄する。"
+                "desc": "まだ残っているものがあるにもかかわらず、気力を失い放棄する。",
+                "name_en": "Three Empty Cups and Five Full Cups",
+                "desc_en": "Loss of will and abandonment despite still having something left."
             }
         ],
         "esoteric": {
             "sephira": "ホド (Hod: 栄光)",
             "astrology": "魚座の土星"
+        },
+        "name_en": "Indolence",
+        "keywords_en": [
+            "Indolence"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Hod",
+            "astrology": "Saturn in Pisces",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1355,16 +2122,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "逆五芒星の形に配置されたディスク",
-                "desc": "物質的基盤が崩れ、システムが機能不全に陥った不安定な状態。"
+                "desc": "物質的基盤が崩れ、システムが機能不全に陥った不安定な状態。",
+                "name_en": "Disks arranged in an inverted pentagram",
+                "desc_en": "An unstable state where the material foundation has collapsed and the system is dysfunctional."
             },
             {
                 "name": "黒い背景と赤い幾何学線",
-                "desc": "経済的な不安、肉体的な不調、あるいは現実の基盤に対する強迫的な心配とストレス。"
+                "desc": "経済的な不安、肉体的な不調、あるいは現実の基盤に対する強迫的な心配とストレス。",
+                "name_en": "Black background and red geometric lines",
+                "desc_en": "Financial anxiety, physical ailments, or obsessive worry and stress regarding the foundation of reality."
             }
         ],
         "esoteric": {
             "sephira": "ゲブラー (Geburah: 峻厳)",
             "astrology": "牡牛座の水星"
+        },
+        "name_en": "Worry",
+        "keywords_en": [
+            "Worry"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Geburah: Severity",
+            "astrology": "Mercury in Taurus",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1380,16 +2162,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "太陽の光を浴びる蓮の花",
-                "desc": "感情の完全な再生と調和。ティファレト（美）の純粋な喜び。"
+                "desc": "感情の完全な再生と調和。ティファレト（美）の純粋な喜び。",
+                "name_en": "Lotus flower bathed in sunlight",
+                "desc_en": "Complete regeneration and harmony of emotions. The pure joy of Tiphareth (Beauty)."
             },
             {
                 "name": "6つの杯から溢れる水",
-                "desc": "過去（5）の傷を癒やし、再び感情が自由に流れる健全な状態。"
+                "desc": "過去（5）の傷を癒やし、再び感情が自由に流れる健全な状態。",
+                "name_en": "Water overflowing from six cups",
+                "desc_en": "Healing the wounds of the past (5) and a healthy state where emotions flow freely again."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth: 美)",
             "astrology": "蠍座の太陽"
+        },
+        "name_en": "Pleasure",
+        "keywords_en": [
+            "Joy"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Tiphareth",
+            "astrology": "Sun in Scorpio",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1405,16 +2202,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "完璧なシンメトリーに並ぶ9つの杯",
-                "desc": "木星の恩恵による完全な感情的充足と深い幸福感。"
+                "desc": "木星の恩恵による完全な感情的充足と深い幸福感。",
+                "name_en": "Nine cups arranged in perfect symmetry",
+                "desc_en": "Complete emotional fulfillment and deep happiness due to Jupiter's blessings."
             },
             {
                 "name": "豊かに咲き誇る蓮",
-                "desc": "無意識（イエソド）の領域で感情が深く安定し、霊的な喜びに満ちている。"
+                "desc": "無意識（イエソド）の領域で感情が深く安定し、霊的な喜びに満ちている。",
+                "name_en": "Abundantly blooming lotus",
+                "desc_en": "Emotions are deeply stable in the realm of the unconscious (Yesod), filled with spiritual joy."
             }
         ],
         "esoteric": {
             "sephira": "イエソド (Yesod: 基礎)",
             "astrology": "魚座の木星"
+        },
+        "name_en": "Happiness",
+        "keywords_en": [
+            "Happiness"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Yesod: Foundation",
+            "astrology": "Jupiter in Pisces",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1430,16 +2242,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "3本の蓮の花がついたワンド",
-                "desc": "春の目覚め、意志（火）が母なる理解（水）と結びついて調和した誕生。"
+                "desc": "春の目覚め、意志（火）が母なる理解（水）と結びついて調和した誕生。",
+                "name_en": "Wand with three lotus flowers",
+                "desc_en": "Spring awakening, harmonious birth where will (fire) unites with maternal understanding (water)."
             },
             {
                 "name": "黄金の光",
-                "desc": "太陽のエネルギーによる純粋で高潔な意図の輝き。"
+                "desc": "太陽のエネルギーによる純粋で高潔な意図の輝き。",
+                "name_en": "Golden light",
+                "desc_en": "Radiance of pure and noble intention powered by solar energy."
             }
         ],
         "esoteric": {
             "sephira": "ビナー (Binah: 理解)",
             "astrology": "牡羊座の太陽"
+        },
+        "name_en": "Virtue",
+        "keywords_en": [
+            "Virtue"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Binah (Understanding)",
+            "astrology": "Sun in Aries",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1455,16 +2282,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "鉄格子のように交差するワンド",
-                "desc": "火のエネルギーが物質界の重圧（土星）によって完全に閉じ込められ、窒息している状態。"
+                "desc": "火のエネルギーが物質界の重圧（土星）によって完全に閉じ込められ、窒息している状態。",
+                "name_en": "Wands crossed like iron bars",
+                "desc_en": "The energy of fire is completely trapped and suffocated by the pressure of the material world (Saturn)."
             },
             {
                 "name": "目を閉じたドルジェと燃え尽きた炎",
-                "desc": "意志の力が盲目的になり、目的を見失ってただ重荷となっている。"
+                "desc": "意志の力が盲目的になり、目的を見失ってただ重荷となっている。",
+                "name_en": "Dorje with closed eyes and burnt-out flame",
+                "desc_en": "The power of will becomes blind, losing its purpose and merely becoming a burden."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth: 王国)",
             "astrology": "射手座の土星"
+        },
+        "name_en": "Oppression",
+        "keywords_en": [
+            "Oppression"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Malkuth",
+            "astrology": "Saturn in Sagittarius",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1480,16 +2322,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "炎をまとった棍棒",
-                "desc": "純粋な霊的意志の最初の顕現。創造エネルギーの爆発。"
+                "desc": "純粋な霊的意志の最初の顕現。創造エネルギーの爆発。",
+                "name_en": "Flaming Club",
+                "desc_en": "The first manifestation of pure spiritual will. An explosion of creative energy."
             },
             {
                 "name": "落雷（10の光線）",
-                "desc": "生命の樹（10のセフィロト）へ降り注ぐ純粋な火のエネルギー。"
+                "desc": "生命の樹（10のセフィロト）へ降り注ぐ純粋な火のエネルギー。",
+                "name_en": "Lightning Bolt (10 Rays)",
+                "desc_en": "Pure fire energy pouring down onto the Tree of Life (10 Sephiroth)."
             }
         ],
         "esoteric": {
             "sephira": "ケテル (Kether: 王冠)",
             "astrology": "火のエレメントの根源"
+        },
+        "name_en": "Ace of Wands",
+        "keywords_en": [
+            "Primal Fire"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Kether (Crown)",
+            "astrology": "Root of the Fire Element",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1505,16 +2362,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "交差する2本の剣と青い薔薇",
-                "desc": "対立する二つの力が互いに牽制し合い、一時的ながらも完璧な均衡（平和）を保つ状態。"
+                "desc": "対立する二つの力が互いに牽制し合い、一時的ながらも完璧な均衡（平和）を保つ状態。",
+                "name_en": "Two Crossed Swords and a Blue Rose",
+                "desc_en": "A state where two opposing forces mutually restrain each other, maintaining a temporary yet perfect balance (peace)."
             },
             {
                 "name": "月の静寂",
-                "desc": "知性の活動が一時的に停止し、心が穏やかに休まるときの静かな緊張感。"
+                "desc": "知性の活動が一時的に停止し、心が穏やかに休まるときの静かな緊張感。",
+                "name_en": "Lunar Stillness",
+                "desc_en": "A quiet tension when intellectual activity temporarily ceases and the mind rests peacefully."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah: 知恵)",
             "astrology": "天秤座の月"
+        },
+        "name_en": "Peace",
+        "keywords_en": [
+            "Peace"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Moon in Libra",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1530,16 +2402,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "雲の上に座る女王",
-                "desc": "感情の雲の上に立ち、完全に切り離された客観的で冷徹な観察者。"
+                "desc": "感情の雲の上に立ち、完全に切り離された客観的で冷徹な観察者。",
+                "name_en": "Queen Seated on Clouds",
+                "desc_en": "Standing above the clouds of emotion, a completely detached, objective, and cold observer."
             },
             {
                 "name": "切断された男性の首",
-                "desc": "不要な幻想や非論理的なものを、慈悲なく切り捨てる絶対的な知性。"
+                "desc": "不要な幻想や非論理的なものを、慈悲なく切り捨てる絶対的な知性。",
+                "name_en": "Severed Male Head",
+                "desc_en": "Absolute intellect that mercilessly cuts away unnecessary illusions and illogical things."
             }
         ],
         "esoteric": {
             "sephira": "ビナー (Binah) の風",
             "astrology": "水のなかの風 (乙女座20度〜天秤座20度)"
+        },
+        "name_en": "Queen of Swords",
+        "keywords_en": [
+            "Clarity and Coldness"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Air in Water (Virgo 20 degrees to Libra 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1555,16 +2442,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "蛇（ウロボロス）が描く無限大（∞）",
-                "desc": "物質界の絶え間ない変化と、終わりのないエネルギーの循環。"
+                "desc": "物質界の絶え間ない変化と、終わりのないエネルギーの循環。",
+                "name_en": "Ouroboros snake forming the infinity symbol (∞)",
+                "desc_en": "Constant change in the material world and the endless cycle of energy."
             },
             {
                 "name": "陰陽を持つ2つのディスク",
-                "desc": "相対する2つの力が互いに入れ替わりながら、宇宙の動的なバランスを保つ。"
+                "desc": "相対する2つの力が互いに入れ替わりながら、宇宙の動的なバランスを保つ。",
+                "name_en": "Two discs with Yin and Yang",
+                "desc_en": "Two opposing forces interchange, maintaining the dynamic balance of the universe."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah: 知恵)",
             "astrology": "山羊座の木星"
+        },
+        "name_en": "Change",
+        "keywords_en": [
+            "Change"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Chokmah (Wisdom)",
+            "astrology": "Jupiter in Capricorn",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1580,16 +2482,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "聖杯（グラール）",
-                "desc": "霊的な愛と受容の器。尽きることのない恩寵の源。"
+                "desc": "霊的な愛と受容の器。尽きることのない恩寵の源。",
+                "name_en": "Holy Grail",
+                "desc_en": "Vessel of spiritual love and reception. A source of inexhaustible grace."
             },
             {
                 "name": "三つのリングを持つ光",
-                "desc": "上位三セフィロト（ケテル・コクマー・ビナー）の霊的なエネルギーが聖杯に降り注ぐ。"
+                "desc": "上位三セフィロト（ケテル・コクマー・ビナー）の霊的なエネルギーが聖杯に降り注ぐ。",
+                "name_en": "Light with Three Rings",
+                "desc_en": "Spiritual energy of the Supernal Triad (Kether, Chokmah, Binah) pours into the Holy Grail."
             }
         ],
         "esoteric": {
             "sephira": "ケテル (Kether: 王冠)",
             "astrology": "水のエレメントの根源"
+        },
+        "name_en": "Ace of Cups",
+        "keywords_en": [
+            "Primal Water Power"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Kether (Crown)",
+            "astrology": "Root of the Water Element",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1605,16 +2522,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "邪魔し合う長さの違う剣",
-                "desc": "過剰な思考の分析や外部からの細かな干渉により、本来の意図が完全に阻害される。"
+                "desc": "過剰な思考の分析や外部からの細かな干渉により、本来の意図が完全に阻害される。",
+                "name_en": "Swords of varying lengths interfering with each other",
+                "desc_en": "The original intention is completely obstructed by excessive analytical thinking or subtle external interference."
             },
             {
                 "name": "ランダムな幾何学模様",
-                "desc": "思考が複雑に絡み合い、身動きが取れなくなる知的な自己破滅。"
+                "desc": "思考が複雑に絡み合い、身動きが取れなくなる知的な自己破滅。",
+                "name_en": "Random geometric patterns",
+                "desc_en": "Intellectual self-destruction where thoughts become intricately entangled, making movement impossible."
             }
         ],
         "esoteric": {
             "sephira": "ホド (Hod: 栄光)",
             "astrology": "双子座の木星"
+        },
+        "name_en": "Interference",
+        "keywords_en": [
+            "Interference"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Jupiter in Gemini",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1630,16 +2562,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "六芒星の形に配置された剣と薔薇十字",
-                "desc": "知性が完璧な美（ティファレト）のバランスに達し、客観的で冷徹な真理（科学）を確立する。"
+                "desc": "知性が完璧な美（ティファレト）のバランスに達し、客観的で冷徹な真理（科学）を確立する。",
+                "name_en": "Swords and Rosy Cross arranged in the shape of a hexagram",
+                "desc_en": "Intellect reaches the balance of perfect beauty (Tiphareth), establishing objective and dispassionate truth (Science)."
             },
             {
                 "name": "風車の的",
-                "desc": "すべての思考が的の中央（核心）に向かって収束する、明晰で狂いのない論理。"
+                "desc": "すべての思考が的の中央（核心）に向かって収束する、明晰で狂いのない論理。",
+                "name_en": "Windmill target",
+                "desc_en": "Clear and unwavering logic where all thoughts converge towards the center (core) of the target."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth: 美)",
             "astrology": "水瓶座の水星"
+        },
+        "name_en": "Science",
+        "keywords_en": [
+            "Science"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Tiphareth: Beauty",
+            "astrology": "Mercury in Aquarius",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1655,16 +2602,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "空を飛ぶ馬（プロペラのような動き）",
-                "desc": "思考の猛烈なスピードと突撃。論理の刃を振り回し、障害を容赦なく切り裂く。"
+                "desc": "思考の猛烈なスピードと突撃。論理の刃を振り回し、障害を容赦なく切り裂く。",
+                "name_en": "Flying Horse (Propeller-like movement)",
+                "desc_en": "Furious speed and charge of thought. Wielding the blade of logic, mercilessly cutting through obstacles."
             },
             {
                 "name": "二刀流",
-                "desc": "火と風の結合による狂信的な知性。目的のためには手段を選ばない過激さ。"
+                "desc": "火と風の結合による狂信的な知性。目的のためには手段を選ばない過激さ。",
+                "name_en": "Dual Wielding",
+                "desc_en": "Fanatical intellect from the union of fire and air. Extremism that stops at nothing to achieve its goals."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah) の風",
             "astrology": "火のなかの風 (牡牛座20度〜双子座20度)"
+        },
+        "name_en": "Knight of Swords",
+        "keywords_en": [
+            "Logic and Assertiveness"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Wind of Chokmah",
+            "astrology": "Air in Fire (Taurus 20 degrees - Gemini 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1680,16 +2642,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "円形に配置された4本のワンド",
-                "desc": "意志（火）が物質世界で最初の安定と法則を獲得した完全なる調和。"
+                "desc": "意志（火）が物質世界で最初の安定と法則を獲得した完全なる調和。",
+                "name_en": "Four Wands arranged in a circle",
+                "desc_en": "Perfect harmony where Will (Fire) has achieved initial stability and law in the material world."
             },
             {
                 "name": "鳩と雄羊の頭飾りがついたワンド",
-                "desc": "愛と平和（鳩）と、創造的エネルギー（雄羊）の結合。"
+                "desc": "愛と平和（鳩）と、創造的エネルギー（雄羊）の結合。",
+                "name_en": "Wands adorned with dove and ram heads",
+                "desc_en": "The union of love and peace (dove) and creative energy (ram)."
             }
         ],
         "esoteric": {
             "sephira": "ケセド (Chesed: 慈悲)",
             "astrology": "牡羊座の金星"
+        },
+        "name_en": "Completion",
+        "keywords_en": [
+            "Completion"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Venus in Aries",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1705,16 +2682,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "心臓を完全に破壊する10本の剣",
-                "desc": "論理的な思考が極限まで行き着き、それ自体を崩壊させる完全な破滅。"
+                "desc": "論理的な思考が極限まで行き着き、それ自体を崩壊させる完全な破滅。",
+                "name_en": "Ten Swords Completely Destroying the Heart",
+                "desc_en": "Complete ruin where logical thought reaches its extreme and collapses itself."
             },
             {
                 "name": "太陽の狂気",
-                "desc": "明確すぎる知性（太陽）が、逆にすべての幻想を焼き払い、物質的基盤（マルクト）を灰にする。"
+                "desc": "明確すぎる知性（太陽）が、逆にすべての幻想を焼き払い、物質的基盤（マルクト）を灰にする。",
+                "name_en": "Madness of the Sun",
+                "desc_en": "Intelligence (Sun) that is too clear, conversely burns away all illusions and turns the material foundation (Malkuth) to ashes."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth: 王国)",
             "astrology": "双子座の太陽"
+        },
+        "name_en": "Ruin",
+        "keywords_en": [
+            "Ruin"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Malkuth (Kingdom)",
+            "astrology": "Sun in Gemini",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1730,16 +2722,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "メデューサの首を持つ乙女",
-                "desc": "空想やアイデアを現実の世界に引き下ろす（地の風）。時には破壊的で反抗的な現実主義。"
+                "desc": "空想やアイデアを現実の世界に引き下ろす（地の風）。時には破壊的で反抗的な現実主義。",
+                "name_en": "Maiden with Medusa's Head",
+                "desc_en": "Bringing fantasies and ideas down to the real world (Air of Earth). Sometimes destructive and rebellious realism."
             },
             {
                 "name": "吹き荒れる嵐と煙",
-                "desc": "概念が物質と衝突して起きる摩擦。論理的な破壊と、その跡地での新しい創造。"
+                "desc": "概念が物質と衝突して起きる摩擦。論理的な破壊と、その跡地での新しい創造。",
+                "name_en": "Raging Storm and Smoke",
+                "desc_en": "Friction caused by concepts colliding with matter. Logical destruction and new creation in its wake."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth) の風",
             "astrology": "地のなかの風 (双児宮・天秤宮・宝瓶宮の天空)"
+        },
+        "name_en": "Princess of Swords",
+        "keywords_en": [
+            "Embodiment of Logic"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Air in Earth (Celestial spheres of Gemini, Libra, Aquarius)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1755,16 +2762,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "ザクロの果実",
-                "desc": "豊かさと生命のシンボル。ペルセポネの象徴。"
+                "desc": "豊かさと生命のシンボル。ペルセポネの象徴。",
+                "name_en": "Pomegranate Fruit",
+                "desc_en": "Symbol of abundance and life. Symbol of Persephone."
             },
             {
                 "name": "黄金の3つの杯",
-                "desc": "精神的な理解（ビナー）と感情が結びつき、豊かさが物質界へ溢れ出る。"
+                "desc": "精神的な理解（ビナー）と感情が結びつき、豊かさが物質界へ溢れ出る。",
+                "name_en": "Three Golden Cups",
+                "desc_en": "Spiritual understanding (Binah) and emotions combine, and abundance overflows into the material world."
             }
         ],
         "esoteric": {
             "sephira": "ビナー (Binah: 理解)",
             "astrology": "蟹座の水星"
+        },
+        "name_en": "Abundance",
+        "keywords_en": [
+            "Abundance"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Binah",
+            "astrology": "Mercury in Cancer",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1780,16 +2802,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "中心を外して突き刺さる剣",
-                "desc": "努力の方向が定まらず、知性が感情（ネツァク）に邪魔されて空回りしている状態。"
+                "desc": "努力の方向が定まらず、知性が感情（ネツァク）に邪魔されて空回りしている状態。",
+                "name_en": "Sword piercing off-center",
+                "desc_en": "Efforts lack direction, and intellect is hindered by emotions (Netzach), leading to futility."
             },
             {
                 "name": "欠けた剣",
-                "desc": "目標に到達する前に力が尽き、策略や妥協が最終的に無意味に終わること。"
+                "desc": "目標に到達する前に力が尽き、策略や妥協が最終的に無意味に終わること。",
+                "name_en": "Broken sword",
+                "desc_en": "Strength runs out before reaching the goal, and strategies or compromises ultimately prove meaningless."
             }
         ],
         "esoteric": {
             "sephira": "ネツァク (Netzach: 勝利/永遠)",
             "astrology": "水瓶座の月"
+        },
+        "name_en": "Futility",
+        "keywords_en": [
+            "Futility"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Netzach (Victory/Eternity)",
+            "astrology": "Moon in Aquarius",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1805,16 +2842,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "絡み合う2匹の魚（イルカ）",
-                "desc": "蟹座と水の象徴。完全な調和と魂の深い結びつき。"
+                "desc": "蟹座と水の象徴。完全な調和と魂の深い結びつき。",
+                "name_en": "Two Intertwined Fish (Dolphins)",
+                "desc_en": "Symbol of Cancer and water. Perfect harmony and deep soul connection."
             },
             {
                 "name": "溢れ出る水と2つの杯",
-                "desc": "愛が枯渇することなく、互いを満たし合う完全な感情の交流。"
+                "desc": "愛が枯渇することなく、互いを満たし合う完全な感情の交流。",
+                "name_en": "Overflowing Water and Two Cups",
+                "desc_en": "Complete emotional exchange where love never runs dry and they fulfill each other."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah: 知恵)",
             "astrology": "蟹座の金星"
+        },
+        "name_en": "Love",
+        "keywords_en": [
+            "Love"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Venus in Cancer",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1830,16 +2882,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "毒々しい緑色のスライムとヒキガエル",
-                "desc": "感情や欲望が過剰に腐敗し、不健全な幻想に溺れる状態。"
+                "desc": "感情や欲望が過剰に腐敗し、不健全な幻想に溺れる状態。",
+                "name_en": "Poisonous Green Slime and Toads",
+                "desc_en": "A state where emotions and desires are excessively corrupted, leading to indulgence in unhealthy fantasies."
             },
             {
                 "name": "割れた杯から漏れるヘドロ",
-                "desc": "美（金星）が蠍座の深淵で堕落し、快楽主義が悪習に変わる。"
+                "desc": "美（金星）が蠍座の深淵で堕落し、快楽主義が悪習に変わる。",
+                "name_en": "Sludge Leaking from a Broken Cup",
+                "desc_en": "Beauty (Venus) degenerates in the abyss of Scorpio, and hedonism turns into vice."
             }
         ],
         "esoteric": {
             "sephira": "ネツァク (Netzach: 勝利/永遠)",
             "astrology": "蠍座の金星"
+        },
+        "name_en": "Debauch",
+        "keywords_en": [
+            "Debauchery"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Netzach (Victory/Eternity)",
+            "astrology": "Venus in Scorpio",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1855,16 +2922,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "六芒星の形に並ぶ惑星のディスク",
-                "desc": "物質界において、すべてのエネルギーが太陽を中心に完璧な調和と成功を収める。"
+                "desc": "物質界において、すべてのエネルギーが太陽を中心に完璧な調和と成功を収める。",
+                "name_en": "Planetary Discs arranged in a Hexagram",
+                "desc_en": "In the material world, all energies achieve perfect harmony and success centered around the Sun."
             },
             {
                 "name": "美と豊かさ",
-                "desc": "努力（3）と困難（5）を乗り越え、物質と精神が最高にバランスした満ち足りた状態。"
+                "desc": "努力（3）と困難（5）を乗り越え、物質と精神が最高にバランスした満ち足りた状態。",
+                "name_en": "Beauty and Abundance",
+                "desc_en": "Overcoming effort (3) and difficulties (5), a state of fulfillment where matter and spirit are in perfect balance."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth: 美)",
             "astrology": "牡牛座の月"
+        },
+        "name_en": "Success",
+        "keywords_en": [
+            "Success"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Tiphareth",
+            "astrology": "Moon in Taurus",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1880,16 +2962,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "枯死した枝と鉛のディスク",
-                "desc": "成長が止まり、土星の重圧によって物質的な試みが腐敗・失敗する状態。"
+                "desc": "成長が止まり、土星の重圧によって物質的な試みが腐敗・失敗する状態。",
+                "name_en": "Withered Branch and Lead Disk",
+                "desc_en": "A state where growth has stopped, and material endeavors decay and fail due to the pressure of Saturn."
             },
             {
                 "name": "淀んだ背景",
-                "desc": "投じた努力や期待に対して、現実の成果が見合わず、計画が行き詰まる。"
+                "desc": "投じた努力や期待に対して、現実の成果が見合わず、計画が行き詰まる。",
+                "name_en": "Stagnant Background",
+                "desc_en": "The actual results do not match the efforts and expectations invested, and plans come to a standstill."
             }
         ],
         "esoteric": {
             "sephira": "ネツァク (Netzach: 勝利/永遠)",
             "astrology": "牡牛座の土星"
+        },
+        "name_en": "Failure",
+        "keywords_en": [
+            "Failure"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Saturn in Taurus",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1905,16 +3002,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "豹を撫でる女王",
-                "desc": "荒々しい火のエネルギー（豹）を、感情と直感（水）で手懐け支配する力。"
+                "desc": "荒々しい火のエネルギー（豹）を、感情と直感（水）で手懐け支配する力。",
+                "name_en": "Queen stroking a leopard",
+                "desc_en": "The power to tame and control fierce fire energy (leopard) with emotion and intuition (water)."
             },
             {
                 "name": "松ぼっくりの杖",
-                "desc": "豊穣と生命の種子。燃え上がる情熱を現実の成長へと結びつける。"
+                "desc": "豊穣と生命の種子。燃え上がる情熱を現実の成長へと結びつける。",
+                "name_en": "Pine cone staff",
+                "desc_en": "Seeds of fertility and life. Connecting burning passion to real growth."
             }
         ],
         "esoteric": {
             "sephira": "ビナー (Binah) の火",
             "astrology": "水のなかの火 (魚座20度〜牡羊座20度)"
+        },
+        "name_en": "Queen of Wands",
+        "keywords_en": [
+            "Intuition and Charm"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Fire of Binah",
+            "astrology": "Fire in Water (Pisces 20 degrees - Aries 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1930,16 +3042,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "ライオンが引く戦車",
-                "desc": "火のエネルギーを知性（風）によって方向付け、目標へ向かって拡大していく力。"
+                "desc": "火のエネルギーを知性（風）によって方向付け、目標へ向かって拡大していく力。",
+                "name_en": "Chariot drawn by a lion",
+                "desc_en": "The power to direct fire energy with intellect (air) and expand towards a goal."
             },
             {
                 "name": "フェニックスの杖",
-                "desc": "破壊と再生。古い思考パターンを燃やし尽くし、新しい理想へと飛翔する。"
+                "desc": "破壊と再生。古い思考パターンを燃やし尽くし、新しい理想へと飛翔する。",
+                "name_en": "Phoenix Wand",
+                "desc_en": "Destruction and rebirth. Burning away old thought patterns and soaring towards new ideals."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth) の火",
             "astrology": "風のなかの火 (蟹座20度〜獅子座20度)"
+        },
+        "name_en": "Prince of Wands",
+        "keywords_en": [
+            "Intellect and determination"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Fire of Tiphareth",
+            "astrology": "Fire in Air (Cancer 20 degrees to Leo 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1955,16 +3082,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "重くて太いクラブ（棍棒）",
-                "desc": "重圧、制限、土星的な困難が火のエネルギー（獅子座）を抑圧・摩擦させる状態。"
+                "desc": "重圧、制限、土星的な困難が火のエネルギー（獅子座）を抑圧・摩擦させる状態。",
+                "name_en": "Heavy and thick clubs (cudgels)",
+                "desc_en": "A state where pressure, restriction, and Saturnian difficulties suppress and create friction with the energy of fire (Leo)."
             },
             {
                 "name": "フェニックスのワンドと蓮のワンドの対立",
-                "desc": "過去の遺物と新しい力の激しいぶつかり合い。"
+                "desc": "過去の遺物と新しい力の激しいぶつかり合い。",
+                "name_en": "Conflict between the Phoenix Wand and the Lotus Wand",
+                "desc_en": "A fierce clash between relics of the past and new forces."
             }
         ],
         "esoteric": {
             "sephira": "ゲブラー (Geburah: 峻厳)",
             "astrology": "獅子座の土星"
+        },
+        "name_en": "Strife",
+        "keywords_en": [
+            "Strife"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Geburah: Severity",
+            "astrology": "Saturn in Leo",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -1980,16 +3122,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "太い柱のようなワンド",
-                "desc": "内なる確固たる基盤、蓄積された無意識のエネルギーの強大な備え。"
+                "desc": "内なる確固たる基盤、蓄積された無意識のエネルギーの強大な備え。",
+                "name_en": "Thick pillar-like wand",
+                "desc_en": "A solid inner foundation, a mighty reserve of accumulated unconscious energy."
             },
             {
                 "name": "月と矢の象徴",
-                "desc": "変化する状況（月）の中で、真っ直ぐに目的（矢）を見据える安定した力。"
+                "desc": "変化する状況（月）の中で、真っ直ぐに目的（矢）を見据える安定した力。",
+                "name_en": "Symbol of the Moon and Arrow",
+                "desc_en": "A stable force that looks straight at its goal (arrow) amidst changing circumstances (moon)."
             }
         ],
         "esoteric": {
             "sephira": "イエソド (Yesod: 基礎)",
             "astrology": "射手座の月"
+        },
+        "name_en": "Strength",
+        "keywords_en": [
+            "Strength"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Moon in Sagittarius",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2005,16 +3162,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "黄金の装飾が施された杯",
-                "desc": "感情的な豊かさの極致。しかし、水は流れず停滞し始めている。"
+                "desc": "感情的な豊かさの極致。しかし、水は流れず停滞し始めている。",
+                "name_en": "Golden decorated cups",
+                "desc_en": "The pinnacle of emotional abundance. However, the water is not flowing and has begun to stagnate."
             },
             {
                 "name": "安定した正方形の配置",
-                "desc": "物質的な安定と感情的な満たされ方。同時に、変化のなさと倦怠感。"
+                "desc": "物質的な安定と感情的な満たされ方。同時に、変化のなさと倦怠感。",
+                "name_en": "Stable square arrangement",
+                "desc_en": "Material stability and emotional fulfillment. At the same time, lack of change and boredom."
             }
         ],
         "esoteric": {
             "sephira": "ケセド (Chesed: 慈悲)",
             "astrology": "蟹座の月"
+        },
+        "name_en": "Luxury",
+        "keywords_en": [
+            "Luxury"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Moon in Cancer",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2030,16 +3202,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "妖精に引かれる幾何学的な戦車",
-                "desc": "純粋な論理と理性の活動。規則正しく、目的のために完璧に組織化された思考。"
+                "desc": "純粋な論理と理性の活動。規則正しく、目的のために完璧に組織化された思考。",
+                "name_en": "Geometric chariot drawn by fairies",
+                "desc_en": "The activity of pure logic and reason. Thought that is orderly and perfectly organized for a purpose."
             },
             {
                 "name": "剣と鎌",
-                "desc": "思考を構築し、同時に不要なアイデアを刈り取る、絶え間ない精神的作業。"
+                "desc": "思考を構築し、同時に不要なアイデアを刈り取る、絶え間ない精神的作業。",
+                "name_en": "Sword and scythe",
+                "desc_en": "Constant mental work that constructs thoughts and simultaneously prunes unnecessary ideas."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth) の風",
             "astrology": "風のなかの風 (山羊座20度〜水瓶座20度)"
+        },
+        "name_en": "Prince of Swords",
+        "keywords_en": [
+            "Pure thought"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Wind of Tiphareth",
+            "astrology": "Air of Air (20 degrees Capricorn to 20 degrees Aquarius)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2055,16 +3242,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "3つの三角形を形成するディスク",
-                "desc": "木星、金星、月の恩恵が複雑に結びつき、物質的な利益と幸運が転がり込む。"
+                "desc": "木星、金星、月の恩恵が複雑に結びつき、物質的な利益と幸運が転がり込む。",
+                "name_en": "Disk forming three triangles",
+                "desc_en": "The blessings of Jupiter, Venus, and the Moon are intricately linked, bringing material gains and good fortune."
             },
             {
                 "name": "豊かに成長する植物",
-                "desc": "無意識（イエソド）のレベルで豊かなエネルギーが定着し、物質界で自然に増殖していく状態。"
+                "desc": "無意識（イエソド）のレベルで豊かなエネルギーが定着し、物質界で自然に増殖していく状態。",
+                "name_en": "Luxuriantly growing plants",
+                "desc_en": "Abundant energy is established at the unconscious (Yesod) level, naturally multiplying in the material world."
             }
         ],
         "esoteric": {
             "sephira": "イエソド (Yesod: 基礎)",
             "astrology": "乙女座の金星"
+        },
+        "name_en": "Gain",
+        "keywords_en": [
+            "Gain"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Venus in Virgo",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2080,16 +3282,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "鷲が引く戦車",
-                "desc": "感情（水）を知性（風）で冷徹に分析し、形を与えようとする複雑な精神状態。"
+                "desc": "感情（水）を知性（風）で冷徹に分析し、形を与えようとする複雑な精神状態。",
+                "name_en": "Chariot drawn by an eagle",
+                "desc_en": "A complex mental state that coldly analyzes emotions (water) with intellect (air) and attempts to give them form."
             },
             {
                 "name": "蛇が巻きつく杯",
-                "desc": "隠された意図や欲望。時には計算高く、目的のために感情を利用する。"
+                "desc": "隠された意図や欲望。時には計算高く、目的のために感情を利用する。",
+                "name_en": "Cup entwined with a snake",
+                "desc_en": "Hidden intentions and desires. Sometimes calculating, using emotions for a purpose."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth) の水",
             "astrology": "風のなかの水 (天秤座20度〜蠍座20度)"
+        },
+        "name_en": "Prince of Cups",
+        "keywords_en": [
+            "Hidden intelligence"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Tiphareth of Water",
+            "astrology": "Water in Air (Libra 20 degrees to Scorpio 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2105,16 +3322,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "黒い馬と燃え盛る炎",
-                "desc": "爆発的で制御困難な純粋なエネルギー。雷光のような速度と暴力性。"
+                "desc": "爆発的で制御困難な純粋なエネルギー。雷光のような速度と暴力性。",
+                "name_en": "Black Horse and Blazing Flames",
+                "desc_en": "Explosive and uncontrollable pure energy. Lightning-like speed and violence."
             },
             {
                 "name": "松明（たいまつ）",
-                "desc": "あらゆるものを焼き尽くし、新しいものを生み出す原初の意志。"
+                "desc": "あらゆるものを焼き尽くし、新しいものを生み出す原初の意志。",
+                "name_en": "Torch",
+                "desc_en": "The primal will that burns everything down and creates new things."
             }
         ],
         "esoteric": {
             "sephira": "コクマー (Chokmah) の火",
             "astrology": "火のなかの火 (蠍座20度〜射手座20度)"
+        },
+        "name_en": "Knight of Wands",
+        "keywords_en": [
+            "Passion and drive"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Chokmah of Fire",
+            "astrology": "Fire of Fire (Scorpio 20 degrees to Sagittarius 20 degrees)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2130,16 +3362,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "均整の取れた6本のワンド",
-                "desc": "闘争（5）を乗り越えた後の、完全なバランスと輝かしい勝利。"
+                "desc": "闘争（5）を乗り越えた後の、完全なバランスと輝かしい勝利。",
+                "name_en": "Six balanced wands",
+                "desc_en": "Perfect balance and glorious victory after overcoming conflict (5)."
             },
             {
                 "name": "炎の十字と蓮の花",
-                "desc": "太陽の中心でエネルギーが最も純粋かつ強力に調和している状態。"
+                "desc": "太陽の中心でエネルギーが最も純粋かつ強力に調和している状態。",
+                "name_en": "Fiery cross and lotus flowers",
+                "desc_en": "A state where energy is most purely and powerfully harmonized at the center of the sun."
             }
         ],
         "esoteric": {
             "sephira": "ティファレト (Tiphareth: 美)",
             "astrology": "獅子座の木星"
+        },
+        "name_en": "Victory",
+        "keywords_en": [
+            "Victory"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Tiphareth (Beauty)",
+            "astrology": "Jupiter in Leo",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2155,16 +3402,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "ひび割れたガラスの杯",
-                "desc": "感情的な喪失、崩壊、過去への執着による苦しみ。"
+                "desc": "感情的な喪失、崩壊、過去への執着による苦しみ。",
+                "name_en": "Cracked glass cups",
+                "desc_en": "Emotional loss, collapse, suffering due to attachment to the past."
             },
             {
                 "name": "枯れ果てた根と乾いた風",
-                "desc": "生命力（水）が失われ、火星の攻撃性が感情の基盤を破壊した状態。"
+                "desc": "生命力（水）が失われ、火星の攻撃性が感情の基盤を破壊した状態。",
+                "name_en": "Withered roots and dry wind",
+                "desc_en": "A state where life force (water) is lost, and Mars's aggression has destroyed the emotional foundation."
             }
         ],
         "esoteric": {
             "sephira": "ゲブラー (Geburah: 峻厳)",
             "astrology": "蠍座の火星"
+        },
+        "name_en": "Disappointment",
+        "keywords_en": [
+            "Disappointment"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": null,
+            "astrology": "Mars in Scorpio",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2180,16 +3442,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "いびつに曲がり欠けた剣",
-                "desc": "ゲブラーの激しい力によって知性が破壊され、自己欺瞞と悪意が渦巻く状態。"
+                "desc": "ゲブラーの激しい力によって知性が破壊され、自己欺瞞と悪意が渦巻く状態。",
+                "name_en": "Bent and Broken Sword",
+                "desc_en": "Intellect destroyed by the fierce power of Geburah, a state where self-deception and malice prevail."
             },
             {
                 "name": "逆五芒星",
-                "desc": "精神が物質や低次の感情の奴隷となり、完全な敗北と屈辱を味わう。"
+                "desc": "精神が物質や低次の感情の奴隷となり、完全な敗北と屈辱を味わう。",
+                "name_en": "Inverted Pentagram",
+                "desc_en": "The spirit becomes a slave to matter and lower emotions, experiencing complete defeat and humiliation."
             }
         ],
         "esoteric": {
             "sephira": "ゲブラー (Geburah: 峻厳)",
             "astrology": "水瓶座の金星"
+        },
+        "name_en": "Defeat",
+        "keywords_en": [
+            "Defeat"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Geburah: Severity",
+            "astrology": "Venus in Aquarius",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2205,16 +3482,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "静かな水面の上の玉座",
-                "desc": "完全な受容性と反射。他者の感情を鏡のように映し出し、すべてを包み込む。"
+                "desc": "完全な受容性と反射。他者の感情を鏡のように映し出し、すべてを包み込む。",
+                "name_en": "Throne on a calm water surface",
+                "desc_en": "Complete receptivity and reflection. Mirrors the emotions of others and embraces everything."
             },
             {
                 "name": "顔を隠すベール",
-                "desc": "無意識の深淵。彼女自身の本性は見えず、底知れぬ神秘を秘めている。"
+                "desc": "無意識の深淵。彼女自身の本性は見えず、底知れぬ神秘を秘めている。",
+                "name_en": "Veil covering the face",
+                "desc_en": "Abyss of the unconscious. Her true nature is unseen, holding unfathomable mystery."
             }
         ],
         "esoteric": {
             "sephira": "ビナー (Binah) の水",
             "astrology": "水のなかの水 (双子座20度〜蟹座20度)"
+        },
+        "name_en": "Queen of Cups",
+        "keywords_en": [
+            "Deep emotions and compassion"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Water of Binah",
+            "astrology": "Water within Water (Gemini 20° to Cancer 20°)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2230,16 +3522,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "裸の乙女と虎",
-                "desc": "地の底で燃えるマグマのようなエネルギー。恐れを知らない原始的な衝動。"
+                "desc": "地の底で燃えるマグマのようなエネルギー。恐れを知らない原始的な衝動。",
+                "name_en": "Naked Maiden and Tiger",
+                "desc_en": "Magma-like energy burning deep within the earth. Fearless, primitive impulse."
             },
             {
                 "name": "祭壇の炎",
-                "desc": "霊的な火が物質界に定着し、具体的な熱や光となって現れる瞬間。"
+                "desc": "霊的な火が物質界に定着し、具体的な熱や光となって現れる瞬間。",
+                "name_en": "Altar Flame",
+                "desc_en": "The moment spiritual fire settles in the material world, manifesting as concrete heat and light."
             }
         ],
         "esoteric": {
             "sephira": "マルクト (Malkuth) の火",
             "astrology": "地のなかの火 (白羊宮・獅子宮・人馬宮の天空)"
+        },
+        "name_en": "Princess of Wands",
+        "keywords_en": [
+            "New spark of fire"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Fire of Malkuth",
+            "astrology": "Fire in Earth (Aries, Leo, Sagittarius in the heavens)",
+            "alchemy": null,
+            "iching": null
         }
     },
     {
@@ -2255,18 +3562,31 @@ const MINOR_ARCANA = [
         "symbols": [
             {
                 "name": "太陽と月が彫られた剣",
-                "desc": "二元性（光と闇）を切り裂き、真実の核心に迫る純粋な知性の輝き。"
+                "desc": "二元性（光と闇）を切り裂き、真実の核心に迫る純粋な知性の輝き。",
+                "name_en": "Sword Engraved with Sun and Moon",
+                "desc_en": "The radiance of pure intellect that cuts through duality (light and darkness) to approach the core of truth."
             },
             {
                 "name": "王冠の貫通",
-                "desc": "物質界の王冠を貫くことで、至高の真理（ケテル）へ直接アクセスする意志。"
+                "desc": "物質界の王冠を貫くことで、至高の真理（ケテル）へ直接アクセスする意志。",
+                "name_en": "Penetration of the Crown",
+                "desc_en": "The will to directly access the supreme truth (Kether) by penetrating the crown of the material world."
             }
         ],
         "esoteric": {
             "sephira": "ケテル (Kether: 王冠)",
             "astrology": "風のエレメントの根源"
+        },
+        "name_en": "Ace of Swords",
+        "keywords_en": [
+            "Primal Air Force"
+        ],
+        "esoteric_en": {
+            "hebrew": null,
+            "kabbalah": "Kether (Crown)",
+            "astrology": "Root of the Air Element",
+            "alchemy": null,
+            "iching": null
         }
     }
 ];
-
-const ALL_CARDS = [...MAJOR_ARCANA, ...MINOR_ARCANA];
