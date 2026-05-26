@@ -409,7 +409,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else if (response.status === 429) {
                 console.error("API Rate Limit Exceeded");
-                readingResult = "今、星の導きが混み合っているようです。\n魂のエネルギーを少し休ませてから、1分後にもう一度問いかけてみてください。";
+                readingResult = window.currentLang === 'en'
+                    ? "The stellar guidance is currently overloaded.\nPlease rest your soul's energy and try again in a minute."
+                    : "今、星の導きが混み合っているようです。\n魂のエネルギーを少し休ませてから、1分後にもう一度問いかけてみてください。";
             } else {
                 console.error("API error status:", response.status);
                 // Simple error handling for user, no maintenance text
@@ -646,9 +648,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     ` : ''}
 
                     <div class="result-actions">
-                        <button id="generate-report-btn" class="mystic-btn restart-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">霊的カルテを生成する</button>
-                        <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">セフィロトで展開する</a>
-                        <a href="https://mosh.jp/cinnamonclove/profile" target="_blank" rel="noopener noreferrer" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);">スリーカード鑑定を依頼する</a>
+                        <button id="generate-report-btn" class="mystic-btn restart-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">${t('result.btn_spiritual_report')}</button>
+                        <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">${t('result.btn_sephiroth')}</a>
+                        <a href="https://mosh.jp/cinnamonclove/profile" target="_blank" rel="noopener noreferrer" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);">${t('result.btn_request_three_card')}</a>
                         <button id="save-image-btn" class="mystic-btn restart-btn transparent-btn">${t('result.btn_save_img')}</button>
                         <button id="save-text-btn" class="mystic-btn restart-btn transparent-btn">${t('result.btn_save_txt')}</button>
                         <button class="mystic-btn restart-btn transparent-btn" onclick="location.reload()">${t('result.btn_restart')}</button>
