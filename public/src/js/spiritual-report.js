@@ -180,7 +180,7 @@
             // 番号
             const numText = createSvgElement("text", {
                 x: coords.x,
-                y: coords.y - 12,
+                y: coords.y - 8,
                 class: "sephira-number"
             });
             numText.textContent = sephira.number;
@@ -189,20 +189,11 @@
             // 英語名
             const nameEn = createSvgElement("text", {
                 x: coords.x,
-                y: coords.y + 1,
+                y: coords.y + 10,
                 class: "sephira-name-en"
             });
             nameEn.textContent = sephira.name.en;
             group.appendChild(nameEn);
-
-            // 日本語名
-            const nameJa = createSvgElement("text", {
-                x: coords.x,
-                y: coords.y + 14,
-                class: "sephira-name-ja"
-            });
-            nameJa.textContent = sephira.name.ja;
-            group.appendChild(nameJa);
 
             group.addEventListener("click", () => scrollToKabbalahElement("sephira", sephira.id));
             sephirothLayer.appendChild(group);

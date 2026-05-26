@@ -200,9 +200,9 @@
 }
 
 .sephira-number {
-    fill: rgba(212, 175, 55, 0.3);
+    fill: rgba(212, 175, 55, 0.7);
     font-family: var(--font-heading);
-    font-size: 7px;
+    font-size: 11px;
     text-anchor: middle;
     dominant-baseline: central;
     pointer-events: none;
