@@ -18,18 +18,24 @@
         ? "http://localhost:8000"
         : "https://thoth-tarot-api.onrender.com";
 
+    // --- 言語設定の初期化 ---
+    const savedLang = localStorage.getItem('tarot_lang');
+    const browserLang = navigator.language || navigator.userLanguage || 'ja';
+    window.currentLang = savedLang || (browserLang.startsWith('ja') ? 'ja' : 'en');
+    let isEn = window.currentLang === 'en';
+
     // カバラ要素のキーワードマッピング（スクロール連動ハイライト用）
     const SEPHIRA_KEYWORDS = {
-        "kether": "ケテル", "chokmah": "コクマー", "binah": "ビナー",
-        "chesed": "ケセド", "geburah": "ゲブラー", "tiphareth": "ティファレト",
-        "netzach": "ネツァク", "hod": "ホド", "yesod": "イェソド", "malkuth": "マルクト", "daath": "ダアト"
+        "kether": ["ケテル", "kether"], "chokmah": ["コクマー", "chokmah"], "binah": ["ビナー", "binah"],
+        "chesed": ["ケセド", "chesed"], "geburah": ["ゲブラー", "geburah"], "tiphareth": ["ティファレト", "tiphareth"],
+        "netzach": ["ネツァク", "netzach"], "hod": ["ホド", "hod"], "yesod": ["イェソド", "yesod"], "malkuth": ["マルクト", "malkuth"], "daath": ["ダアト", "daath"]
     };
 
     const PATH_KEYWORDS = {
-        11: "愚者", 12: "魔術師", 13: "女教皇", 14: "女帝", 15: "星", 16: "神官",
-        17: "恋人", 18: "戦車", 19: "欲望", 20: "隠者", 21: "運命", 22: "調整",
-        23: "吊るされた男", 24: "死神", 25: "術", 26: "悪魔", 27: "塔",
-        28: "皇帝", 29: "月", 30: "太陽", 31: "永劫", 32: "宇宙"
+        11: ["愚者", "fool"], 12: ["魔術師", "magus"], 13: ["女教皇", "priestess"], 14: ["女帝", "empress"], 15: ["星", "star"], 16: ["神官", "hierophant"],
+        17: ["恋人", "lovers"], 18: ["戦車", "chariot"], 19: ["欲望", "lust"], 20: ["隠者", "hermit"], 21: ["運命", "fortune"], 22: ["調整", "adjustment"],
+        23: ["吊るされた男", "hanged"], 24: ["死神", "death"], 25: ["術", "art"], 26: ["悪魔", "devil"], 27: ["塔", "tower"],
+        28: ["皇帝", "emperor"], 29: ["月", "moon"], 30: ["太陽", "sun"], 31: ["永劫", "aeon"], 32: ["宇宙", "universe"]
     };
 
     // --- DOM要素の参照 ---
@@ -250,7 +256,7 @@
         // セッションまたはローカルストレージから最新のリーディングデータを取得
         const recentReadingStr = localStorage.getItem("recent_reading") || sessionStorage.getItem("recent_reading");
         if (!recentReadingStr) {
-            showError("最新のリーディング結果が見つかりません。まずはリーディングを行ってください。");
+            showError(isEn ? "No recent reading result found. Please perform a reading first." : "最新のリーディング結果が見つかりません。まずはリーディングを行ってください。");
             return;
         }
 
@@ -259,16 +265,16 @@
             const cards = readingData.cards;
             const userName = readingData.userName || "";
             const birthDate = readingData.birthDate || "";
-            const theme = readingData.theme || "総合リーディング";
+            const theme = readingData.theme || (isEn ? "General Reading" : "総合リーディング");
 
             if (!cards || cards.length === 0) {
-                showError("リーディング結果にカードデータが含まれていません。");
+                showError(isEn ? "No card data found in the reading." : "リーディング結果にカードデータが含まれていません。");
                 return;
             }
 
             // 同一リーディングを識別するための一意キーを作成（タイムスタンプまたはカード構成）
-            const readingKey = readingData.timestamp || 
-                (cards.map(c => c.id).join("-") + "_" + userName + "_" + birthDate + "_" + theme);
+            const readingKey = (readingData.timestamp || 
+                (cards.map(c => c.id).join("-") + "_" + userName + "_" + birthDate + "_" + theme)) + "_" + window.currentLang;
 
             // --- 1. キャッシュの確認 ---
             const cacheStr = localStorage.getItem("thoth_tarot_report_cache");
@@ -331,7 +337,7 @@
                 user_name: userName,
                 birth_date: birthDate,
                 theme: theme,
-                language: "ja"
+                language: window.currentLang
             };
 
             // APIの呼び出し
@@ -397,7 +403,7 @@
         let html = `
             <div class="report-meta-item"><strong>THEME</strong>${escapeHtml(theme)}</div>
         `;
-        if (name && name !== "あなた") {
+        if (name && name !== "あなた" && name !== "You") {
             html += `<div class="report-meta-item"><strong>SEEKER</strong>${escapeHtml(name)}</div>`;
         }
         if (birth) {
@@ -428,13 +434,13 @@
 
             // 章タイトル見出しのパース (例: "1. 魂の現在地 ｜ 活性化されたセフィラ")
             // markdown記号を排除しているため、プレーンテキストとして「1.」「2.」「3.」で始まるものを検出
-            const isHeading = /^[1-3]\.\s+/.test(trimmed) || trimmed.startsWith("霊的カルテ");
+            const isHeading = /^[1-3]\.\s+/.test(trimmed) || trimmed.startsWith("霊的カルテ") || trimmed.startsWith("Spiritual Chart");
             
             if (isHeading) {
                 let idAttr = "";
-                if (trimmed.includes("1.") || trimmed.includes("現在地")) idAttr = 'id="section-sephiroth"';
-                else if (trimmed.includes("2.") || trimmed.includes("変容")) idAttr = 'id="section-paths"';
-                else if (trimmed.includes("3.") || trimmed.includes("作業")) idAttr = 'id="section-guidance"';
+                if (trimmed.includes("1.") || trimmed.includes("現在地") || trimmed.includes("Location")) idAttr = 'id="section-sephiroth"';
+                else if (trimmed.includes("2.") || trimmed.includes("変容") || trimmed.includes("Transformation")) idAttr = 'id="section-paths"';
+                else if (trimmed.includes("3.") || trimmed.includes("作業") || trimmed.includes("Guidance") || trimmed.includes("Work")) idAttr = 'id="section-guidance"';
 
                 html += `<h3 class="report-section-header" ${idAttr}>${escapeHtml(trimmed)}</h3>`;
             } else {
@@ -443,8 +449,8 @@
                 let targetAttr = "";
                 
                 // セフィラのチェック
-                for (const [key, jpName] of Object.entries(SEPHIRA_KEYWORDS)) {
-                    if (trimmed.includes(jpName)) {
+                for (const [key, keywords] of Object.entries(SEPHIRA_KEYWORDS)) {
+                    if (keywords.some(kw => trimmed.toLowerCase().includes(kw.toLowerCase()))) {
                         targetAttr = `data-sephira-target="${key}"`;
                         break;
                     }
@@ -452,8 +458,8 @@
                 
                 // パスのチェック（セフィラが含まれていない場合のみ）
                 if (!targetAttr) {
-                    for (const [num, jpName] of Object.entries(PATH_KEYWORDS)) {
-                        if (trimmed.includes(jpName)) {
+                    for (const [num, keywords] of Object.entries(PATH_KEYWORDS)) {
+                        if (keywords.some(kw => trimmed.toLowerCase().includes(kw.toLowerCase()))) {
                             targetAttr = `data-path-target="${num}"`;
                             break;
                         }
@@ -1097,11 +1103,52 @@
         }
     });
 
+    function updateStaticUiText() {
+        document.title = isEn ? "Spiritual Chart | Personal AI Report ── Thoth Tarot" : "霊的カルテ ｜ パーソナル・AIレポート ── トート・タロット";
+        const backLink = document.getElementById("back-link");
+        if (backLink) backLink.textContent = isEn ? "← Back to Reading" : "← リーディングに戻る";
+        
+        const reportTitle = document.querySelector(".report-title");
+        if (reportTitle) reportTitle.textContent = "Spiritual Chart";
+        const reportSubtitle = document.querySelector(".report-subtitle");
+        if (reportSubtitle) reportSubtitle.textContent = isEn ? "Spiritual Chart | Activation State" : "霊的カルテ ｜ 生命の樹の活性状態";
+
+        const loadingText = document.querySelector(".loading-text");
+        if (loadingText) loadingText.textContent = isEn ? "Tracing the steps of the soul, verifying True Will..." : "魂の階梯を辿り、真の意志を照合しています...";
+
+        const saveImgBtn = document.getElementById("report-save-image-btn");
+        if (saveImgBtn) saveImgBtn.textContent = isEn ? "Save as Image" : "結果を画像で保存";
+        const saveTxtBtn = document.getElementById("report-save-text-btn");
+        if (saveTxtBtn) saveTxtBtn.textContent = isEn ? "Copy as Text" : "結果を文章でコピー";
+
+        const toggleBtn = document.getElementById("lang-toggle-btn");
+        if (toggleBtn) toggleBtn.textContent = isEn ? "JP" : "EN";
+    }
+
+    function switchLang() {
+        window.currentLang = window.currentLang === 'ja' ? 'en' : 'ja';
+        isEn = window.currentLang === 'en';
+        localStorage.setItem('tarot_lang', window.currentLang);
+        updateStaticUiText();
+        
+        // 言語が変わったのでカルテを再読み込み（ローディング表示）
+        loadingEl.classList.remove("hidden-section");
+        loadingEl.style.display = "flex";
+        textContainer.classList.add("hidden-section");
+        resetSvgStyles();
+        
+        loadSpiritualReport();
+    }
+
     // 初期起動処理
     function init() {
+        updateStaticUiText();
         drawPaths();
         drawAbyss();
         drawSephiroth();
+
+        const langToggleBtn = document.getElementById('lang-toggle-btn');
+        if (langToggleBtn) langToggleBtn.addEventListener('click', switchLang);
 
         // 霊的カルテAPIのデータロード
         loadSpiritualReport();

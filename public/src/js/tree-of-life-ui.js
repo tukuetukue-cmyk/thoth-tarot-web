@@ -28,32 +28,42 @@
     const savedLang = localStorage.getItem('tarot_lang');
     const browserLang = navigator.language || navigator.userLanguage || 'ja';
     window.currentLang = savedLang || (browserLang.startsWith('ja') ? 'ja' : 'en');
-    const isEn = window.currentLang === 'en';
+    let isEn = window.currentLang === 'en';
 
     // --- アクティブ状態の追跡 ---
-    let activeElement = null;
+    let activeElement = null; // { type: 'sephira' | 'path' | 'daath', id: string|number }
 
     function applyI18nToStaticHtml() {
-        if (!isEn) return;
-        document.title = "Sefirot | Tree of Life ── Thoth Tarot";
+        document.title = isEn ? "Sefirot | Tree of Life ── Thoth Tarot" : "Sefirot｜セフィロト ── トート・タロット";
         const backLink1 = document.querySelector(".tree-header .back-link");
-        if (backLink1) backLink1.textContent = "← Back to Reading";
+        if (backLink1) backLink1.textContent = isEn ? "← Back to Reading" : "← リーディングに戻る";
         const treeSubtitle = document.querySelector(".tree-page-subtitle");
-        if (treeSubtitle) treeSubtitle.textContent = "Sefirot | Exploration of the Tree of Life";
+        if (treeSubtitle) treeSubtitle.textContent = isEn ? "Sefirot | Exploration of the Tree of Life" : "セフィロト｜生命の樹の探索";
         const infoHint = document.querySelector(".info-hint");
-        if (infoHint) infoHint.textContent = "Touch a Sephira or Path";
+        if (infoHint) infoHint.textContent = isEn ? "Touch a Sephira or Path" : "セフィラまたはパスに触れてください";
         const footerBackLink = document.querySelector(".footer-back-link");
-        if (footerBackLink) footerBackLink.textContent = "← Back to Thoth Tarot Reading";
+        if (footerBackLink) footerBackLink.textContent = isEn ? "← Back to Thoth Tarot Reading" : "← トート・タロット リーディングに戻る";
         
         const dictName = document.getElementById("dictionary-card-name");
-        if (dictName && dictName.textContent === "カード名") dictName.textContent = "Card Name";
+        if (dictName) dictName.textContent = isEn ? "Card Name" : "カード名";
         const dictMeta = document.getElementById("dictionary-card-meta");
-        if (dictMeta && dictMeta.textContent === "エレメント / 属性") dictMeta.textContent = "Element / Attribute";
+        if (dictMeta) dictMeta.textContent = isEn ? "Element / Attribute" : "エレメント / 属性";
         
         const esotericTitle = document.querySelector(".dictionary-esoteric .dictionary-section-title");
-        if (esotericTitle) esotericTitle.textContent = "ESOTERIC ── Occult Correspondences";
+        if (esotericTitle) esotericTitle.textContent = isEn ? "ESOTERIC ── Occult Correspondences" : "ESOTERIC ── 神秘的対応";
         const symbolsTitle = document.querySelector(".dictionary-symbols .dictionary-section-title");
-        if (symbolsTitle) symbolsTitle.textContent = "SYMBOLS ── Illustrated Symbols";
+        if (symbolsTitle) symbolsTitle.textContent = isEn ? "SYMBOLS ── Illustrated Symbols" : "SYMBOLS ── 象徴図解";
+
+        const toggleBtn = document.getElementById('lang-toggle-btn');
+        if (toggleBtn) toggleBtn.textContent = isEn ? 'JP' : 'EN';
+    }
+
+    function switchLang() {
+        window.currentLang = window.currentLang === 'ja' ? 'en' : 'ja';
+        isEn = window.currentLang === 'en';
+        localStorage.setItem('tarot_lang', window.currentLang);
+        applyI18nToStaticHtml();
+        // 次にセフィラ/パスをタップしたとき自動的に新しい言語で表示される
     }
 
     // ====================================================
@@ -642,7 +652,7 @@
 
     function openDictionaryModal(cardId) {
         // tree-of-life.js で結合した ALL_CARDS の配列からカードを探す
-        const card = typeof ALL_CARDS !== 'undefined' ? ALL_CARDS.find(c => c.id === cardId) : null;
+        const card = (window.ALL_CARDS || [...MAJOR_ARCANA, ...MINOR_ARCANA]).find(c => c.id === cardId);
         if (!card) return;
 
         const isEn = window.currentLang === 'en';
@@ -768,7 +778,7 @@
         `;
 
         drawnIds.forEach(cardId => {
-            const card = typeof ALL_CARDS !== 'undefined' ? ALL_CARDS.find(c => c.id === cardId) : null;
+            const card = (window.ALL_CARDS || [...MAJOR_ARCANA, ...MINOR_ARCANA]).find(c => c.id === cardId);
             if (!card) return;
 
             // チップの追加
@@ -824,6 +834,9 @@
         drawAbyss();
         drawSephiroth();
         processReadingParams();
+
+        const langToggleBtn = document.getElementById('lang-toggle-btn');
+        if (langToggleBtn) langToggleBtn.addEventListener('click', switchLang);
 
         // ユーザーインタラクションの監視（アンビエントタイマー用）
         document.addEventListener("mousemove", resetIdleTimer, { passive: true });

@@ -442,19 +442,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // Debug: force specific cards via pre-parsed global variable
         if (window.forceCards && window.forceCards.length > 0) {
             window.forceCards.forEach(id => {
-                const cardIndex = ALL_CARDS.findIndex(c => c.id === id);
+                const cardIndex = window.ALL_CARDS.findIndex(c => c.id === id);
                 if (cardIndex !== -1 && result.length < count && !usedIndices.has(cardIndex)) {
                     usedIndices.add(cardIndex);
-                    result.push(ALL_CARDS[cardIndex]);
+                    result.push(window.ALL_CARDS[cardIndex]);
                 }
             });
         }
 
         while(result.length < count) {
-            const randomIndex = Math.floor(Math.random() * ALL_CARDS.length);
+            const randomIndex = Math.floor(Math.random() * window.ALL_CARDS.length);
             if (!usedIndices.has(randomIndex)) {
                 usedIndices.add(randomIndex);
-                result.push(ALL_CARDS[randomIndex]);
+                result.push(window.ALL_CARDS[randomIndex]);
             }
         }
         return result;

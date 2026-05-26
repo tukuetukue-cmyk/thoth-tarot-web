@@ -17,10 +17,14 @@
 <body>
     <div class="app-container">
         <!-- ヘッダー -->
-        <header class="tree-header">
+        <header class="tree-header" style="position: relative;">
             <a href="index.html?restore=true" class="back-link">← リーディングに戻る</a>
             <h1 class="tree-page-title">Sefirot</h1>
             <p class="tree-page-subtitle">セフィロト｜生命の樹の探索</p>
+            <!-- Language Toggle -->
+            <div class="lang-toggle-container" style="position: absolute; right: 1rem; top: 1rem;">
+                <button id="lang-toggle-btn" class="lang-toggle" aria-label="Switch language">EN</button>
+            </div>
         </header>
 
         <!-- メインコンテンツ -->
@@ -100,8 +104,8 @@
     </div>
 
     <!-- データ & ロジック -->
-    <script src="src/js/cards.js?v=42"></script>
+    <script src="src/js/cards.js?v=43"></script>
     <script src="src/js/tree-of-life.js?v=10"></script>
-    <script src="src/js/tree-of-life-ui.js?v=13"></script>
+    <script src="src/js/tree-of-life-ui.js?v=14"></script>
 </body>
 </html>

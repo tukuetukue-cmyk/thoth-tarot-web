@@ -3590,3 +3590,6 @@ const MINOR_ARCANA = [
         }
     }
 ];
+
+window.ALL_CARDS = [...MAJOR_ARCANA, ...MINOR_ARCANA];
+

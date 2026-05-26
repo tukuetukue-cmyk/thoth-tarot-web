@@ -312,7 +312,7 @@ function getSephiraByNumber(num) {
 function getCardForPath(pathNumber) {
     const path = PATHS.find(p => p.number === pathNumber);
     if (!path) return null;
-    return ALL_CARDS.find(c => c.id === path.cardId) || null;
+    return (window.ALL_CARDS || [...MAJOR_ARCANA, ...MINOR_ARCANA]).find(c => c.id === path.cardId) || null;
 }
 
 /**
@@ -365,7 +365,7 @@ function getAllCardsForSephira(sephiraId) {
     const relatedPaths = PATHS.filter(p => p.from === sephiraId || p.to === sephiraId);
     const majorPaths = relatedPaths.map(path => ({
         path,
-        card: ALL_CARDS.find(c => c.id === path.cardId) || null
+        card: (window.ALL_CARDS || [...MAJOR_ARCANA, ...MINOR_ARCANA]).find(c => c.id === path.cardId) || null
     }));
 
     return { pip, court, majorPaths };
