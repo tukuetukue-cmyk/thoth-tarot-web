@@ -313,9 +313,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // ローカル環境の場合は制限をバイパス
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        if (!isLocalhost && cooldown.count >= 6) {
+        if (!isLocalhost && cooldown.count >= 12) {
             alert(
-                "本日の鑑定は6回受け取っています。\n\n" +
+                "本日の鑑定は12回受け取っています。\n\n" +
                 "魂のエネルギーを休め、明日また新たな問いかけを行ってみてね。"
             );
             return;
