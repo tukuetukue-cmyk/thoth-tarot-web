@@ -33,10 +33,8 @@ const I18N = {
         "result.symbols_title": "象徴｜シンボルの学び",
         "result.symbols_helper": "気になるキーワードに触れてみてください。",
         "result.symbols_pending": "※ このカードの象徴図鑑は現在準備中です。今後のアップデートをお待ちください。",
-        "result.btn_save_img": "結果を画像で保存",
         "result.btn_save_txt": "結果を文章でコピー",
         "result.btn_share_x": "𝕏 でシェア",
-        "result.btn_share_ig": "Instagram でシェア",
         "result.btn_restart": "もう一度対話する",
         "result.btn_spiritual_report": "霊的カルテを生成する",
         "result.btn_sephiroth": "セフィロトで展開する",
@@ -50,8 +48,8 @@ const I18N = {
         "result.positions": ["経緯", "現状", "可能性"],
         "result.copy_success": "リーディング結果のテキストをコピーしました！\nメモ帳やLINEなどに貼り付け｜ペーストして保存してください。",
         "result.copy_fail": "コピーに失敗しました。お使いのブラウザでは手動でテキストを選択してコピーしてください。",
-        "result.ig_success": "【Instagram投稿の準備完了！】\n画像をダウンロードし、ハッシュタグ付きのテキストをコピーしました。\nInstagramアプリを開いて、画像を貼り付けて投稿してください。",
-        "result.ig_fail": "画像の保存に失敗しました。",
+        "result.ig_success": "【Instagram投稿の準備完了！】\nハッシュタグ付きのテキストをコピーしました。\nInstagramアプリを開いて、投稿してください。",
+        "result.ig_fail": "テキストのコピーに失敗しました。",
         "modal.symbol_in_card": "{card}における意味:",
         "modal.esoteric_title": "── 象徴の深淵 ──",
         "modal.kabbalah": "カバラ (生命の樹)",
@@ -126,10 +124,8 @@ const I18N = {
         "result.symbols_title": "The Study of Symbols",
         "result.symbols_helper": "Tap a keyword to explore its occult meaning.",
         "result.symbols_pending": "※ The symbol encyclopedia for this card is currently being compiled.",
-        "result.btn_save_img": "Save as Image",
         "result.btn_save_txt": "Copy as Text",
         "result.btn_share_x": "Share on 𝕏",
-        "result.btn_share_ig": "Share on Instagram",
         "result.btn_restart": "Begin Again",
         "result.btn_spiritual_report": "Generate Spiritual Chart",
         "result.btn_sephiroth": "Spread on the Sephiroth",
@@ -650,8 +646,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="result-actions">
                         <button id="generate-report-btn" class="mystic-btn restart-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">${t('result.btn_spiritual_report')}</button>
                         <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">${t('result.btn_sephiroth')}</a>
-                        <a href="https://mosh.jp/cinnamonclove/profile" target="_blank" rel="noopener noreferrer" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);">${t('result.btn_request_three_card')}</a>
-                        <button id="save-image-btn" class="mystic-btn restart-btn transparent-btn">${t('result.btn_save_img')}</button>
                         <button id="save-text-btn" class="mystic-btn restart-btn transparent-btn">${t('result.btn_save_txt')}</button>
                         <button class="mystic-btn restart-btn transparent-btn" onclick="location.reload()">${t('result.btn_restart')}</button>
                     </div>
@@ -763,163 +757,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Image generation function
-        // Image generation function (バグ完全回避のため、撮影用の無垢なDOMをゼロから作る)
-        const generateAndDownloadImage = async (filename) => {
-            const captureContainer = document.createElement('div');
-            // ブラウザの描画省略（画面外だから描画しない）による「真っ黒バグ」を防ぐため、
-            // あえて画面のド真ん中に「カメラのフラッシュ」として白紙を堂々と表示する
-            captureContainer.style.position = 'fixed'; // absoluteではなくfixedで画面に確実に固定
-            captureContainer.style.top = '0';
-            captureContainer.style.left = '0';
-            captureContainer.style.width = '100vw'; // 画面全体を覆う
-            captureContainer.style.height = '100vh';
-            captureContainer.style.overflowY = 'auto'; // はみ出す場合はスクロール可能に
-            captureContainer.style.padding = '50px';
-            captureContainer.style.background = '#ffffff'; // 完璧な白
-            captureContainer.style.color = '#111111'; // 完璧な黒
-            captureContainer.style.fontFamily = '"Noto Serif JP", serif';
-            captureContainer.style.boxSizing = 'border-box';
-            captureContainer.style.zIndex = '99999'; // 最前面に持ってきて確実に画面に描画させる
-            
-            // 撮影用のコンテナの中に中身を寄せるラッパー
-            const innerWrapper = document.createElement('div');
-            innerWrapper.style.maxWidth = '800px';
-            innerWrapper.style.margin = '0 auto';
-            innerWrapper.style.background = '#ffffff';
-            captureContainer.appendChild(innerWrapper);
-            
-            // タイトル
-            const titleDiv = document.createElement('h2');
-            titleDiv.innerText = t('image.title');
-            titleDiv.style.textAlign = 'center';
-            titleDiv.style.color = '#d4af37';
-            titleDiv.style.borderBottom = '1px solid #eeeeee';
-            titleDiv.style.paddingBottom = '20px';
-            innerWrapper.appendChild(titleDiv);
-
-            // テーマ
-            const themeDiv = document.createElement('div');
-            themeDiv.style.background = '#f9f9f9';
-            themeDiv.style.borderLeft = '6px solid #d4af37';
-            themeDiv.style.padding = '20px';
-            themeDiv.style.margin = '30px 0';
-            themeDiv.style.fontSize = '18px';
-            themeDiv.innerHTML = `<strong>${t('image.theme_label')}</strong><br>${context || t('result.no_theme')}`;
-            captureContainer.appendChild(themeDiv);
-
-            // カード群
-            const cardsFlex = document.createElement('div');
-            cardsFlex.style.display = 'flex';
-            cardsFlex.style.justifyContent = 'center';
-            cardsFlex.style.gap = '20px';
-            cardsFlex.style.marginBottom = '40px';
-            
-            cards.forEach(card => {
-                const cardWrap = document.createElement('div');
-                cardWrap.style.textAlign = 'center';
-                
-                const img = new Image();
-                img.crossOrigin = 'anonymous';
-                // キャッシュ回避のパラメータをつけて確実に追加
-                img.src = card.image + '?v=remaster';
-                img.style.maxHeight = '300px';
-                img.style.borderRadius = '10px';
-                img.style.border = '2px solid #dddddd';
-                
-                const cardName = document.createElement('div');
-                cardName.style.marginTop = '10px';
-                cardName.style.fontWeight = 'bold';
-                cardName.style.fontSize = '14px';
-                cardName.innerText = card.name;
-                
-                cardWrap.appendChild(img);
-                cardWrap.appendChild(cardName);
-                cardsFlex.appendChild(cardWrap);
-            });
-            innerWrapper.appendChild(cardsFlex);
-
-            // 結果テキスト
-            const readingDiv = document.createElement('div');
-            readingDiv.style.whiteSpace = 'pre-wrap';
-            readingDiv.style.lineHeight = '1.8';
-            readingDiv.style.fontSize = '16px';
-            readingDiv.style.borderTop = '1px dotted #cccccc';
-            readingDiv.style.paddingTop = '30px';
-            readingDiv.innerHTML = `<strong>${t('image.reading_label')}</strong><br><br>${personalizedReading}`;
-            innerWrapper.appendChild(readingDiv);
-
-            // フッター
-            const footerDiv = document.createElement('div');
-            footerDiv.style.marginTop = '50px';
-            footerDiv.style.textAlign = 'center';
-            footerDiv.style.color = '#888888';
-            footerDiv.innerText = 'cinnamonclove.com';
-            innerWrapper.appendChild(footerDiv);
-
-            // 画面の最前面に被せる（フラッシュ演出）
-            document.body.appendChild(captureContainer);
-            
-            // カメラフラッシュのようなテキスト演出
-            const loadingText = document.createElement('div');
-            loadingText.innerText = t('image.taking');
-            loadingText.style.position = 'fixed';
-            loadingText.style.top = '20px';
-            loadingText.style.right = '20px';
-            loadingText.style.background = '#d4af37';
-            loadingText.style.color = '#000';
-            loadingText.style.padding = '10px 20px';
-            loadingText.style.borderRadius = '5px';
-            loadingText.style.fontWeight = 'bold';
-            captureContainer.appendChild(loadingText);
-            
-            // 画像の完全な読み込みを待つ
-            const images = Array.from(captureContainer.querySelectorAll('img'));
-            await Promise.all(images.map(img => {
-                if (img.complete) return Promise.resolve();
-                return new Promise(resolve => {
-                    img.onload = resolve;
-                    img.onerror = resolve; // 失敗しても止まらないように
-                });
-            }));
-            
-            // 描画がスキップされないように、実際に画面に表示してから少し待つ（重要！）
-            await new Promise(resolve => setTimeout(resolve, 800));
-
-            try {
-                // innerWrapper（中身）の範囲だけを撮影する
-                const canvas = await html2canvas(innerWrapper, {
-                    backgroundColor: '#ffffff', 
-                    scale: 2,
-                    useCORS: true, 
-                    logging: false
-                });
-                
-                document.body.removeChild(captureContainer);
-
-                const link = document.createElement('a');
-                link.download = filename;
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-                return true;
-            } catch (err) {
-                console.error("画像生成エラー:", err);
-                if(captureContainer.parentNode) document.body.removeChild(captureContainer);
-                return false;
-            }
-        };
-
         // Attach event listeners for new buttons
-        document.getElementById('save-image-btn').addEventListener('click', async () => {
-            await generateAndDownloadImage(`thoth-reading-${new Date().getTime()}.png`);
-        });
 
         document.getElementById('save-text-btn').addEventListener('click', async () => {
             let cardNames = cards.map(c => reformatCardName(c.name)).join(', ');
-            let text = `${t('image.title')}\n\n`;
-            text += `${t('result.your_theme')} ${context || t('result.no_theme')}\n`;
-            text += `Card: ${cardNames}\n\n`;
-            text += `${t('image.reading_label')}\n${personalizedReading}\n\n`;
+            
+            // Markdown記号（#や*）を除去し、プレーンテキストに整形
+            let cleanReading = personalizedReading.trim()
+                .replace(/#/g, '')
+                .replace(/\*\*/g, '')
+                .replace(/\*/g, '');
+                
+            let text = `【${t('image.title')}】\n\n`;
+            text += `◆ ${t('result.your_theme')}\n  ${context || t('result.no_theme')}\n\n`;
+            text += `◆ Card:\n  ${cardNames}\n\n`;
+            text += `----------------------------------------\n\n`;
+            text += `${cleanReading}\n\n`;
+            text += `----------------------------------------\n`;
             text += `https://cinnamonclove.com`;
             
             try {
