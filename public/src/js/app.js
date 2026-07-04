@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div class="result-actions">
                         <button id="generate-report-btn" class="mystic-btn restart-btn generate-report-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">${t('result.btn_spiritual_report')}</button>
-                        <a href="tree-of-life.html?cards=${drawnCardIds}" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">${t('result.btn_sephiroth')}</a>
+                        <button id="go-sephiroth-btn" class="mystic-btn restart-btn" style="display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);">${t('result.btn_sephiroth')}</button>
                         <!-- Temporarily disabled for copyright application (Commercial link to MOSH)
                         <a href="https://mosh.jp/cinnamonclove/profile" target="_blank" rel="noopener noreferrer" class="mystic-btn restart-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent-gold); box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);">${t('result.btn_request_three_card')}</a>
                         -->
@@ -801,6 +801,20 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('recent_reading', JSON.stringify(recentReading));
             sessionStorage.setItem('recent_reading', JSON.stringify(recentReading));
             window.location.href = "spiritual-report.html";
+        });
+
+        document.getElementById('go-sephiroth-btn').addEventListener('click', () => {
+            const recentReading = {
+                theme: context || t('result.no_theme'),
+                spread_type: spreadType,
+                cards: cards,
+                userName: window.tempUserName || "",
+                birthDate: window.tempUserBirthdate || "",
+                readingResult: readingResult
+            };
+            localStorage.setItem('recent_reading', JSON.stringify(recentReading));
+            sessionStorage.setItem('recent_reading', JSON.stringify(recentReading));
+            window.location.href = `tree-of-life.html?cards=${drawnCardIds}`;
         });
 
         // Setup Premium AI Chat (only for premium users)
