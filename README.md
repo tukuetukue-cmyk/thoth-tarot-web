@@ -1,58 +1,38 @@
-# Thoth Tarot プロジェクト
+# Thoth Tarot Web
 
 ## 概要
 
-このリポジトリは、トート・タロット（Thoth Tarot）デッキの情報をデジタル化し、API と Web インターフェースを提供するプロジェクトです。占星術・カバラ・タロットの深遠なシンボリズムを活かし、モダンなウェブ体験と高品質なデータ提供を目指しています。
+トート・タロット占いサイト（cinnamonclove.com）の静的フロントエンド・リポジトリです。
+ダークモード、グラスモーフィズム、SVGによる生命の樹描画を用いたプレミアムなUI/UXを提供します。
+バックエンド（FastAPI / Gemini API）は別のリポジトリ（`thoth-tarot-api`）で管理されています。
 
 ## 主な機能
 
-- **API**: タロットカード情報、リーディング、データ検索を提供する RESTful API (`thoth-tarot-api`)
-- **Web アプリ**: カード閲覧・リーディング体験を提供するフロントエンド (`thoth-tarot-web`)
-- **多言語対応**: 日本語・英語をはじめとした多言語サポート
-- **プレミアムデザイン**: ダークモード、グラスモーフィズム、マイクロアニメーションを駆使した UI
+- **リーディングUI**: アニメーション付きのカード展開
+- **セフィロトUI**: 生命の樹をSVGで描画したインタラクティブ画面
+- **霊的カルテ**: ユーザー状況に応じた長文解説の表示
+- **多言語対応**: 日本語（JP）/ 英語（EN）の部分的な切り替え
 
 ## セットアップ手順
 
 ```bash
-# 必要なツール
-# - Python 3.11
-# - pip
-
 # リポジトリをクローン
-git clone https://github.com/your-org/thoth-tarot-project.git
-cd thoth-tarot-project
+git clone https://github.com/tukuetukue-cmyk/thoth-tarot-web.git
+cd thoth-tarot-web
 
-# API サーバーのセットアップ
-cd thoth-tarot-api
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-# .env に GEMINI_API_KEY 等を設定
-uvicorn main:app --reload  # => http://localhost:8000
-
-# Web フロントエンドのセットアップ（静的ファイル）
-cd ../thoth-tarot-web
-# ローカルで確認する場合
-python -m http.server 8080 --directory public  # => http://localhost:8080
-# 本番デプロイは Firebase Hosting
-# firebase deploy --only hosting
+# ローカルサーバー起動 (例: Pythonモジュールを使用)
+cd public
+python3 -m http.server 3000
 ```
-
-## 使用方法
-
-- API エンドポイントは `http://localhost:8000/api/...` にあります。
-- Web アプリは Firebase Hosting（`https://cinnamonclove.com`）または ローカルサーバーでカード閲覧やリーディングが可能です。
+ブラウザで `http://localhost:3000` にアクセスしてください。
 
 ## 開発ガイドライン
 
 - コーディング規約は `AGENTS.md` に記載。
-- 日本語コメントを必ず使用してください。
-- 変更は必ず Git で管理し、プルリクエストを通じてレビューしてください。
+- 日本語コメントを必ず使用すること。
+- UI設計・要件については `docs/DESIGN.md` を参照。
 
-## ライセンス
+## ドキュメント
 
-MIT License. 詳細は `LICENSE` ファイルをご参照ください。
-
-## 連絡先
-
-質問や提案は GitHub Issues か、メール `contact@cinnamonclove.com` までお願いします。
+`docs/` ディレクトリに詳細な技術ドキュメントを格納しています。
+詳細は [docs/README.md](docs/README.md) を参照してください。

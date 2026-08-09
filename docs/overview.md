@@ -1,19 +1,19 @@
 # Overview
 
-Thoth Tarot プロジェクトは、トート・タロットのカード情報・シンボリズムをデジタル化し、FastAPI と 静的 HTML/CSS/JavaScript で提供するプロジェクトです。占星術、カバラ、錬金術などの深遠な象徴体系を活かし、マルチリンガルで高品質なリーディング体験を実現します。
+Thoth Tarot Web は、トート・タロット占いサイト（cinnamonclove.com）の静的フロントエンドを提供するプロジェクトです。ダークモード、グラスモーフィズム、SVG描画などの高度な UI/UX によって、神秘的でプレミアムなリーディング体験を提供します。
 
 ## 主なコンポーネント
 
-- **thoth-tarot-api**: RESTful API サーバー (FastAPI)。カードデータ、リーディングロジック、検索エンドポイントを提供。Python の `requirements.txt` で依存管理。
-- **thoth-tarot-web**: 静的フロントエンド (HTML/CSS/JavaScript)。`public/` ディレクトリ配下のファイルで構成。Firebase Hosting でデプロイ。
-- **docs/**: 本リポジトリのドキュメント集。セットアップ、API 仕様、開発ガイドラインが含まれます。
+- **thoth-tarot-web** (本リポジトリ): 静的 HTML/CSS/JavaScript を管理。ビルドツールは使用せず、`public/` ディレクトリ配下をそのままデプロイします。
+- **thoth-tarot-api** (別リポジトリ): バックエンド API (FastAPI)。カードデータや AI 生成ロジックはすべてこちらで処理されます。
+- **docs/**: 本リポジトリのフロントエンド用ドキュメント集。
 
 ## デザイン指針
 
 - ダークモード & グラスモーフィズム
 - 微細なマイクロアニメーションでインタラクティブ性を向上
 - カスタム Google フォント (Julius Sans One, Noto Serif JP, Noto Sans JP) を使用したタイポグラフィ
+- 生命の樹などの象徴体系のSVGによる視覚的表現
 
 ---
-
 *このドキュメントは Codex へ引き継ぐ際のプロジェクト概要として活用してください。*
