@@ -4,8 +4,8 @@ Thoth Tarot Web は、トート・タロット占いサイト（cinnamonclove.co
 
 ## 主なコンポーネント
 
-- **thoth-tarot-web** (本リポジトリ): 静的 HTML/CSS/JavaScript を管理。ビルドツールは使用せず、`public/` ディレクトリ配下をそのままデプロイします。
-- **thoth-tarot-api** (別リポジトリ): バックエンド API (FastAPI)。カードデータや AI 生成ロジックはすべてこちらで処理されます。
+- **thoth-tarot-web** (本リポジトリ): 静的 HTML/CSS/JavaScript を管理。ビルドツールは使用せず、`public/` ディレクトリ配下をそのままデプロイします。Web側にも `public/src/js/cards.js` として78枚のカードデータが存在し、カード抽選等に利用されています。
+- **thoth-tarot-api** (別リポジトリ): バックエンド API (FastAPI)。AI 生成ロジック等はこちらで処理されます。
 - **docs/**: 本リポジトリのフロントエンド用ドキュメント集。
 
 ## デザイン指針
